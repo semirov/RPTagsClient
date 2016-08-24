@@ -1,0 +1,290 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace RPTagsTest
+{
+    public partial class TagChange : Form
+    {
+        int TAG_ID = 0;
+        DataTable temp_dt = new DataTable("temp_dt");
+        public TagChange()
+        {
+            InitializeComponent();
+        }
+
+
+        private void TagChange_Load(object sender, EventArgs e)
+        {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.Filtres". При необходимости она может быть перемещена или удалена.
+            this.filtresTableAdapter.Fill(this.rPTagsDataSet.Filtres);
+            try
+            {
+                // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet1.Gruptype". При необходимости она может быть перемещена или удалена.
+                this.gruptypeTableAdapter.Fill(this.rPTagsDataSet1.Gruptype);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet1.TagType". При необходимости она может быть перемещена или удалена.
+            this.tagTypeTableAdapter.Fill(this.rPTagsDataSet1.TagType);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.Tag". При необходимости она может быть перемещена или удалена.
+            //   this.tagTableAdapter.Fill(this.rPTagsDataSet.Tag);
+
+
+            Form2 main = this.Owner as Form2;
+                if (main != null)
+                {
+                    TAG_ID = main.Send_tag_id();
+                    this.Text = main.tag_path();
+                }
+                if (TAG_ID == 0)
+                {
+                    rPTagsDataSet.Tag.Clear();
+                    this.Text = main.new_tag_path();
+                }
+                else
+                {
+                    this.tagTableAdapter.FillById(this.rPTagsDataSet.Tag, TAG_ID);
+                }
+                
+                // установим checkBox
+
+                if (rPTagsDataSet.Tag[0]["HH"].ToString() == "R")
+                {
+                    checkBox1.Checked = true;
+                }
+                if (rPTagsDataSet.Tag[0]["UDM_Input"].ToString() == "R")
+                {
+                    checkBox2.Checked = true;
+                }
+                if (rPTagsDataSet.Tag[0]["UDM_Output"].ToString() == "W")
+                {
+                    checkBox3.Checked = true;
+                }
+
+                //разрешение для алармов
+
+                if (rPTagsDataSet.Tag[0]["TagType"].ToString() != "3")
+                {
+                    baseTextTextBox.ReadOnly = true;
+                    alarmMSGTextBox.ReadOnly = true;
+                    normalMSGTextBox.ReadOnly = true;
+                    tLA_MSGTextBox.ReadOnly = true;
+                    relatedValue1TextBox.ReadOnly = true;
+                    relatedValue3TextBox.ReadOnly = true;
+                    relatedValue2TextBox.ReadOnly = true;
+                    relatedValue4TextBox.ReadOnly = true;
+                    relatedValue5TextBox.ReadOnly = true;
+
+                
+
+                }
+
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e) // чекбокс хайпера
+        {
+            if (checkBox1.Checked)
+            {
+                checkBox2.Checked = false;
+                checkBox2.Enabled = false;
+                checkBox3.Checked = false;
+                checkBox3.Enabled = false;
+                
+            }
+            else
+            {
+                checkBox2.Enabled = true;
+                checkBox3.Enabled = true;
+                
+
+
+            }
+            if (checkBox2.Checked)
+            {
+                checkBox1.Checked = false;
+                checkBox1.Enabled = false;
+                
+            }
+            else
+            {
+                
+            }
+            if (checkBox3.Checked)
+            {
+                checkBox1.Checked = false;
+                checkBox1.Enabled = false;
+                
+            }
+            else
+            {
+                
+                
+            }
+            if (!checkBox2.Checked && !checkBox3.Checked)
+            {
+                checkBox1.Enabled = true;
+            }
+
+        }
+
+        private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            
+            // для state по умолчанию напрявляем в хайпер
+            if (comboBox1.SelectedValue.ToString() == "1")
+            {
+                checkBox1.Checked = true;
+                checkBox2.Checked = false;
+                checkBox3.Checked = false;
+            }
+            //для сетов по умолчанию считаем 
+            if (comboBox1.SelectedValue.ToString() == "2")
+            {
+                checkBox1.Checked = false;
+                checkBox2.Checked = true;
+                checkBox3.Checked = true;
+            }
+            // для алармов по умолчанию считаем
+            if (comboBox1.SelectedValue.ToString() == "3")
+            {
+                checkBox1.Checked = false;
+                checkBox2.Checked = true;
+                checkBox3.Checked = false;
+
+                baseTextTextBox.ReadOnly = false;
+                alarmMSGTextBox.ReadOnly = false;
+                normalMSGTextBox.ReadOnly = false;
+                tLA_MSGTextBox.ReadOnly = false;
+                relatedValue1TextBox.ReadOnly = false;
+                relatedValue3TextBox.ReadOnly = false;
+                relatedValue2TextBox.ReadOnly = false;
+                relatedValue4TextBox.ReadOnly = false;
+                relatedValue5TextBox.ReadOnly = false;
+
+
+            } else
+            {
+                baseTextTextBox.ReadOnly = true;
+                alarmMSGTextBox.ReadOnly = true;
+                normalMSGTextBox.ReadOnly = true;
+                tLA_MSGTextBox.ReadOnly = true;
+                relatedValue1TextBox.ReadOnly = true;
+                relatedValue3TextBox.ReadOnly = true;
+                relatedValue2TextBox.ReadOnly = true;
+                relatedValue4TextBox.ReadOnly = true;
+                relatedValue5TextBox.ReadOnly = true;
+            }
+            // для ACK по умолчанию считаем
+            if (comboBox1.SelectedValue.ToString() == "4")
+            {
+                checkBox1.Checked = false;
+                checkBox2.Checked = true;
+                checkBox3.Checked = true;
+            } 
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e) // сохранить
+        {
+            if (TAG_ID != 0) // если изменяем уже существующий тег
+            {
+                if (checkBox1.Checked)
+                    rPTagsDataSet.Tag[0]["HH"] = "R";
+                else rPTagsDataSet.Tag[0]["HH"] = "";
+                if (checkBox2.Checked)
+                    rPTagsDataSet.Tag[0]["UDM_Input"] = "R";
+                else rPTagsDataSet.Tag[0]["UDM_Input"] = "";
+                if (checkBox3.Checked)
+                    rPTagsDataSet.Tag[0]["UDM_Output"] = "W";
+                else rPTagsDataSet.Tag[0]["UDM_Output"] = "";
+
+                tagTableAdapter.Update(rPTagsDataSet.Tag);
+            }
+            else
+            {
+                RPTagsDataSet.TagRow newRow = rPTagsDataSet.Tag.NewTagRow();
+                //получим поля
+                newRow.GrupType = Convert.ToInt16(comboBox2.SelectedValue);
+                newRow.TagType =  Convert.ToInt16(comboBox1.SelectedValue);
+                newRow.Filter = Convert.ToInt16(comboBox3.SelectedValue);
+
+                if (checkBox1.Checked)
+                    newRow.HH = "R";
+                if (checkBox2.Checked)
+                    newRow.UDM_Input = "R";
+                if (checkBox3.Checked)
+                    newRow.UDM_Output = "W";
+
+                newRow.Name = textBox1.Text.ToString();
+                newRow.Description = textBox2.Text.ToString();
+                newRow.TType = comboBox1.SelectedText.ToString();
+                newRow.BaseText = baseTextTextBox.Text.ToString();
+                newRow.AlarmMSG = alarmMSGTextBox.Text.ToString();
+                newRow.NormalMSG = normalMSGTextBox.Text.ToString();
+                newRow.RelatedValue1 = relatedValue1TextBox.Text.ToString();
+                newRow.RelatedValue2 = relatedValue2TextBox.Text.ToString();
+                newRow.RelatedValue3 = relatedValue3TextBox.Text.ToString();
+                newRow.RelatedValue4 = relatedValue4TextBox.Text.ToString();
+                newRow.RelatedValue5 = relatedValue5TextBox.Text.ToString();
+                newRow.TLA_MSG = tLA_MSGTextBox.Text.ToString();
+
+                // нужно проверить обязательные поля
+                if (newRow.Name == "" || newRow.GrupType == 0 || newRow.TagType ==0 || newRow.Filter == 0)
+                {
+                    string msg = "";
+                    if (newRow.Name == "")
+                        msg += "Name ";
+                    if (newRow.GrupType == 0)
+                        msg += "\nGrupType ";
+                    if (newRow.TagType == 0)
+                        msg += "\nTagType ";
+                    if (newRow.Filter == 0)
+                        msg += "\nFilter ";
+                    MessageBox.Show("Не все обязательные поля заполнены:\n" + msg, "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                } else
+                {
+                    //добавим строку в датасет
+                    rPTagsDataSet.Tag.AddTagRow(newRow);
+                    // обновим базу
+                    tagTableAdapter.Update(rPTagsDataSet.Tag);
+                    this.Close();
+                }
+                
+                
+                
+
+                /* забытое
+                 *
+ newRow.GMPT
+  newRow.GMPHm
+  newRow.GMPCAV
+  newRow.GMPVAV
+  newRow.GMPDP
+  newRow.TLA_MSG
+  newRow.Filter
+  newRow.GMPW
+
+*/
+            }
+
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e) // отмена
+        {
+            
+                this.Close();
+            
+
+        }
+    }
+}
