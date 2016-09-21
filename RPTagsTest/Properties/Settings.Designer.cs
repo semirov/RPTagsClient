@@ -33,5 +33,14 @@ namespace RPTagsTest.Properties {
                 return ((string)(this["RPTagsConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("test")]
+        public string test {
+            get {
+                return ((string)(this["test"]));
+            }
+        }
     }
 }

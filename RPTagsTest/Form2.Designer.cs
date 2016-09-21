@@ -281,8 +281,14 @@
             this.cutDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Sys_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gr_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.sAIDNullTableAdapter = new RPTagsTest.RPTagsDataSetTableAdapters.SAIDNullTableAdapter();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.aDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -519,7 +525,7 @@
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView2.Location = new System.Drawing.Point(3, 27);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(930, 485);
+            this.dataGridView2.Size = new System.Drawing.Size(930, 507);
             this.dataGridView2.TabIndex = 2;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             this.dataGridView2.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView6_DataError);
@@ -1703,6 +1709,7 @@
             this.dataGridView15.Size = new System.Drawing.Size(916, 460);
             this.dataGridView15.StandardTab = true;
             this.dataGridView15.TabIndex = 8;
+            this.dataGridView15.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView15_CellContentClick);
             // 
             // nameDataGridViewTextBoxColumn7
             // 
@@ -1814,6 +1821,7 @@
             this.dataGridView16.Size = new System.Drawing.Size(916, 460);
             this.dataGridView16.StandardTab = true;
             this.dataGridView16.TabIndex = 11;
+            this.dataGridView16.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView16_CellClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1946,7 +1954,15 @@
             // 
             this.dataGridView8.AllowUserToAddRows = false;
             this.dataGridView8.AllowUserToDeleteRows = false;
+            this.dataGridView8.AutoGenerateColumns = false;
             this.dataGridView8.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView8.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.aDataGridViewTextBoxColumn,
+            this.bDataGridViewTextBoxColumn,
+            this.cDataGridViewTextBoxColumn,
+            this.dDataGridViewTextBoxColumn,
+            this.eDataGridViewTextBoxColumn});
+            this.dataGridView8.DataSource = this.areaAWXBindingSource;
             this.dataGridView8.Location = new System.Drawing.Point(354, 35);
             this.dataGridView8.Name = "dataGridView8";
             this.dataGridView8.ReadOnly = true;
@@ -1961,6 +1977,7 @@
             this.AreaAWXdgvGen.TabIndex = 4;
             this.AreaAWXdgvGen.Text = "Сгенерировать";
             this.AreaAWXdgvGen.UseVisualStyleBackColor = true;
+            this.AreaAWXdgvGen.Click += new System.EventHandler(this.AreaAWXdgvGen_Click);
             // 
             // button1
             // 
@@ -2606,6 +2623,7 @@
             this.statusStrip1.Size = new System.Drawing.Size(944, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
             // 
             // toolStripStatusLabel1
             // 
@@ -2623,6 +2641,8 @@
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabel3.Text = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Click += new System.EventHandler(this.toolStripStatusLabel3_Click);
+            this.toolStripStatusLabel3.DoubleClick += new System.EventHandler(this.toolStripStatusLabel3_Click);
             // 
             // areaAWXTableAdapter
             // 
@@ -2722,6 +2742,47 @@
             // sAIDNullTableAdapter
             // 
             this.sAIDNullTableAdapter.ClearBeforeFill = true;
+            // 
+            // aDataGridViewTextBoxColumn
+            // 
+            this.aDataGridViewTextBoxColumn.DataPropertyName = "A";
+            this.aDataGridViewTextBoxColumn.HeaderText = "A";
+            this.aDataGridViewTextBoxColumn.Name = "aDataGridViewTextBoxColumn";
+            this.aDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bDataGridViewTextBoxColumn
+            // 
+            this.bDataGridViewTextBoxColumn.DataPropertyName = "B";
+            this.bDataGridViewTextBoxColumn.HeaderText = "B";
+            this.bDataGridViewTextBoxColumn.Name = "bDataGridViewTextBoxColumn";
+            this.bDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cDataGridViewTextBoxColumn
+            // 
+            this.cDataGridViewTextBoxColumn.DataPropertyName = "C";
+            this.cDataGridViewTextBoxColumn.HeaderText = "C";
+            this.cDataGridViewTextBoxColumn.Name = "cDataGridViewTextBoxColumn";
+            this.cDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dDataGridViewTextBoxColumn
+            // 
+            this.dDataGridViewTextBoxColumn.DataPropertyName = "D";
+            this.dDataGridViewTextBoxColumn.HeaderText = "D";
+            this.dDataGridViewTextBoxColumn.Name = "dDataGridViewTextBoxColumn";
+            this.dDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // eDataGridViewTextBoxColumn
+            // 
+            this.eDataGridViewTextBoxColumn.DataPropertyName = "E";
+            this.eDataGridViewTextBoxColumn.HeaderText = "E";
+            this.eDataGridViewTextBoxColumn.Name = "eDataGridViewTextBoxColumn";
+            this.eDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // Form2
             // 
@@ -3116,5 +3177,11 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn Corpus;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iPAddrDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eDataGridViewTextBoxColumn;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

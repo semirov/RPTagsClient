@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -57,6 +58,8 @@ namespace RPTagsTest
         public Form2()
         {
             InitializeComponent();
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1.WorkerSupportsCancellation = true;
         }
 
         #region основные таблицы
@@ -118,8 +121,17 @@ namespace RPTagsTest
 
             toolStripStatusLabel3.Text = tagTableAdapter.Connection.DataSource.ToString() +" ("+ tagTableAdapter.Connection.Database.ToString() + ")";
 
-
+            prename = DateTime.Today.ToString(); //нужно для имени файла конфигурации
         }
+        
+        
+        private void toolStripStatusLabel3_Click(object sender, EventArgs e) // настройка параметров подключения
+        {
+            // Application.Restart();
+            SQLConnection form = new SQLConnection();
+            form.Show();
+        }
+
         public int Send_tag_id()
         {
             return TAG_ID;
@@ -1173,34 +1185,152 @@ namespace RPTagsTest
 
         //--------------Тип тега---------------------------------------------------------------------------------------
 
-        private void toolStripMenuItem23_Click(object sender, EventArgs e)// добавить
+        private void TagType_changed()
         {
+            if (rPTagsDataSet.TagType.GetChanges(DataRowState.Modified) != null)
+            {
 
+                temp_Modifed_FilterDataTable.Merge(rPTagsDataSet.TagType.GetChanges(DataRowState.Modified));
+                tabPage17.Text = "*Тип тега";
+                changed_Modifed_FilterDataTable = true;
+            }
+            if (rPTagsDataSet.TagType.GetChanges(DataRowState.Added) != null)
+            {
+                temp_Modifed_FilterDataTable.Merge(rPTagsDataSet.TagType.GetChanges(DataRowState.Added));
+                tabPage17.Text = "*Тип тега";
+                changed_Modifed_FilterDataTable = true;
+            }
+            if (rPTagsDataSet.TagType.GetChanges(DataRowState.Deleted) != null)
+            {
+                temp_Modifed_FilterDataTable.Merge(rPTagsDataSet.TagType.GetChanges(DataRowState.Deleted));
+                tabPage17.Text = "*Тип тега";
+                changed_Modifed_FilterDataTable = true;
+            }
         }
-        private void toolStripMenuItem24_Click(object sender, EventArgs e)//удалить
+        private void toolStripMenuItem22_Click(object sender, EventArgs e)// добавить
         {
+            try
+            {
+                dataGridView15.AllowUserToAddRows = true;
+                dataGridView15.CurrentCell = dataGridView15[0, dataGridView15.RowCount - 1];
+                TagType_changed();
+            }
+            catch (System.Exception ex)
+            {
 
+            }
         }
-        private void toolStripMenuItem22_Click(object sender, EventArgs e)
+        private void toolStripMenuItem23_Click(object sender, EventArgs e)//удалить
         {
+            try
+            {
+                int index = Convert.ToInt16(dataGridView15.CurrentRow.Index);
+                dataGridView15.Rows.RemoveAt(index);
+                TagType_changed();
+            }
+            catch
+            {
 
+            }
         }
+        private void toolStripMenuItem24_Click(object sender, EventArgs e) // сохранить
+        {
+            if (changed_Modifed_FilterDataTable)
+            {
+                rPTagsDataSet.TagType.Merge(temp_Modifed_FilterDataTable);
+                tagTypeTableAdapter.Update(rPTagsDataSet.TagType);
+                tabPage17.Text = "Тип тега";
+                temp_Modifed_FilterDataTable.Clear();
+                dataGridView15.AllowUserToAddRows = false;
+            }
+        }
+        private void dataGridView15_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            TagType_changed();
+            
+        }
+
         
 
 
 
+
+
         //--------------OPC---------------------------------------------------------------------------------------
-        private void toolStripMenuItem12_Click(object sender, EventArgs e)// добавить
+        private void OPC_changed()
+        {
+            if (rPTagsDataSet.OPC.GetChanges(DataRowState.Modified) != null)
+            {
+
+                temp_Modifed_FilterDataTable.Merge(rPTagsDataSet.OPC.GetChanges(DataRowState.Modified));
+                tabPage18.Text = "*OPC";
+                changed_Modifed_FilterDataTable = true;
+            }
+            if (rPTagsDataSet.OPC.GetChanges(DataRowState.Added) != null)
+            {
+                temp_Modifed_FilterDataTable.Merge(rPTagsDataSet.OPC.GetChanges(DataRowState.Added));
+                tabPage18.Text = "*OPC";
+                changed_Modifed_FilterDataTable = true;
+            }
+            if (rPTagsDataSet.OPC.GetChanges(DataRowState.Deleted) != null)
+            {
+                temp_Modifed_FilterDataTable.Merge(rPTagsDataSet.OPC.GetChanges(DataRowState.Deleted));
+                tabPage18.Text = "*OPC";
+                changed_Modifed_FilterDataTable = true;
+            }
+        }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }
+
+        
+
+        private void toolStripMenuItem12_Click(object sender, EventArgs e)// добавить
+        {
+            try
+            {
+                dataGridView16.AllowUserToAddRows = true;
+                dataGridView16.CurrentCell = dataGridView16[0, dataGridView16.RowCount - 1];
+                OPC_changed();
+            }
+            catch (System.Exception ex)
+            {
+
+            }
+        }
         private void toolStripMenuItem25_Click(object sender, EventArgs e)//удалить
         {
+            try
+            {
+                int index = Convert.ToInt16(dataGridView16.CurrentRow.Index);
+                dataGridView16.Rows.RemoveAt(index);
+                OPC_changed();
+            }
+            catch
+            {
+
+            }
 
         }
         private void toolStripMenuItem28_Click(object sender, EventArgs e)//сохранить
         {
+            if (changed_Modifed_FilterDataTable)
+            {
+                rPTagsDataSet.OPC.Merge(temp_Modifed_FilterDataTable);
+                oPCTableAdapter.Update(rPTagsDataSet.OPC);
+                tabPage18.Text = "OPC";
+                temp_Modifed_FilterDataTable.Clear();
+                dataGridView16.AllowUserToAddRows = false;
+            }
+        }
 
+       
+
+        private void dataGridView16_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            OPC_changed();
         }
 
         #endregion второстепенные таблицы
@@ -1211,32 +1341,54 @@ namespace RPTagsTest
             toolStripStatusLabel2.Text = "     Какие то проблемы с датагридом";
            
         } // обработчик ошибок
+
+
+
+
+
+
+        //-----------------генератор конфигураций-------------------------------------------------------------------
+        #region конфигурации
+
+        string prename;
+       
         
+        //------------------areaAWX---------------------------------------------
+        private void AreaAWXdgvGen_Click(object sender, EventArgs e)
+        {
+
+            if (backgroundWorker1.IsBusy != true)
+            {
+                backgroundWorker1.RunWorkerAsync();
+                toolStripStatusLabel1.Text = "Загрузка конфигурации AreaAWX...";
+            }
+
+          
+            
+        }
+        // зальемся ассинхронно
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+            
+            this.areaAWXTableAdapter.Fill(this.rPTagsDataSet.AreaAWX, textBox2.Text);
+           
 
 
+        }
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            // возможно сюда засунем прогресс, если сможем его отыскать
+        }
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Загрузка конфигурации AreaAWX завершена!";
+            dataGridView8.DataSource = rPTagsDataSet.AreaAWX;
+
+        }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//-----------------генератор конфигураций-------------------------------------------------------------------
-
-
-
-
+        #endregion конфигурации
 
 
         /*   private void fillToolStripButton_Click(object sender, EventArgs e)
@@ -1305,5 +1457,6 @@ namespace RPTagsTest
            }
            */
 
-    }}
+    }
+}
 
