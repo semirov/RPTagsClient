@@ -188,6 +188,12 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView8 = new System.Windows.Forms.DataGridView();
+            this.aDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.areaAWXBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AreaAWXdgvGen = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -236,15 +242,12 @@
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.systemaBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.sAIDNullBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tagAWXBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.areaAWXBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tagAWXBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tagHHBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tagUDMBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -269,6 +272,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.areaAWXTableAdapter = new RPTagsTest.RPTagsDataSetTableAdapters.AreaAWXTableAdapter();
             this.tagAWXTableAdapter = new RPTagsTest.RPTagsDataSetTableAdapters.TagAWXTableAdapter();
             this.tagHHTableAdapter = new RPTagsTest.RPTagsDataSetTableAdapters.TagHHTableAdapter();
@@ -283,12 +287,12 @@
             this.Gr_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sAIDNullTableAdapter = new RPTagsTest.RPTagsDataSetTableAdapters.SAIDNullTableAdapter();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.aDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker3 = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker4 = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker5 = new System.ComponentModel.BackgroundWorker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -354,6 +358,7 @@
             this.tabControl2.SuspendLayout();
             this.tabPage9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.areaAWXBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).BeginInit();
@@ -367,7 +372,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.systemaBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sAIDNullBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tagAWXBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.areaAWXBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tagAWXBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tagHHBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tagUDMBindingSource)).BeginInit();
@@ -1939,7 +1943,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(243, 20);
             this.textBox3.TabIndex = 7;
-            this.textBox3.Text = "AreaAWX.csv";
+            this.textBox3.Text = "AreaAWX";
             // 
             // button3
             // 
@@ -1949,6 +1953,7 @@
             this.button3.TabIndex = 6;
             this.button3.Text = "Сохранить";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // dataGridView8
             // 
@@ -1968,6 +1973,57 @@
             this.dataGridView8.ReadOnly = true;
             this.dataGridView8.Size = new System.Drawing.Size(434, 175);
             this.dataGridView8.TabIndex = 5;
+            this.dataGridView8.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView6_DataError);
+            // 
+            // aDataGridViewTextBoxColumn
+            // 
+            this.aDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.aDataGridViewTextBoxColumn.DataPropertyName = "A";
+            this.aDataGridViewTextBoxColumn.HeaderText = "A";
+            this.aDataGridViewTextBoxColumn.Name = "aDataGridViewTextBoxColumn";
+            this.aDataGridViewTextBoxColumn.ReadOnly = true;
+            this.aDataGridViewTextBoxColumn.Width = 39;
+            // 
+            // bDataGridViewTextBoxColumn
+            // 
+            this.bDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.bDataGridViewTextBoxColumn.DataPropertyName = "B";
+            this.bDataGridViewTextBoxColumn.HeaderText = "B";
+            this.bDataGridViewTextBoxColumn.Name = "bDataGridViewTextBoxColumn";
+            this.bDataGridViewTextBoxColumn.ReadOnly = true;
+            this.bDataGridViewTextBoxColumn.Width = 39;
+            // 
+            // cDataGridViewTextBoxColumn
+            // 
+            this.cDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cDataGridViewTextBoxColumn.DataPropertyName = "C";
+            this.cDataGridViewTextBoxColumn.HeaderText = "C";
+            this.cDataGridViewTextBoxColumn.Name = "cDataGridViewTextBoxColumn";
+            this.cDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cDataGridViewTextBoxColumn.Width = 39;
+            // 
+            // dDataGridViewTextBoxColumn
+            // 
+            this.dDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dDataGridViewTextBoxColumn.DataPropertyName = "D";
+            this.dDataGridViewTextBoxColumn.HeaderText = "D";
+            this.dDataGridViewTextBoxColumn.Name = "dDataGridViewTextBoxColumn";
+            this.dDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dDataGridViewTextBoxColumn.Width = 40;
+            // 
+            // eDataGridViewTextBoxColumn
+            // 
+            this.eDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.eDataGridViewTextBoxColumn.DataPropertyName = "E";
+            this.eDataGridViewTextBoxColumn.HeaderText = "E";
+            this.eDataGridViewTextBoxColumn.Name = "eDataGridViewTextBoxColumn";
+            this.eDataGridViewTextBoxColumn.ReadOnly = true;
+            this.eDataGridViewTextBoxColumn.Width = 39;
+            // 
+            // areaAWXBindingSource
+            // 
+            this.areaAWXBindingSource.DataMember = "AreaAWX";
+            this.areaAWXBindingSource.DataSource = this.rPTagsDataSetBindingSource;
             // 
             // AreaAWXdgvGen
             // 
@@ -1987,6 +2043,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Выбрать путь";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -2067,7 +2124,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(243, 20);
             this.textBox4.TabIndex = 16;
-            this.textBox4.Text = "TagAWX.csv";
+            this.textBox4.Text = "TagAWX";
             // 
             // button2
             // 
@@ -2077,6 +2134,7 @@
             this.button2.TabIndex = 15;
             this.button2.Text = "Сохранить";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // dataGridView9
             // 
@@ -2088,6 +2146,7 @@
             this.dataGridView9.ReadOnly = true;
             this.dataGridView9.Size = new System.Drawing.Size(434, 175);
             this.dataGridView9.TabIndex = 14;
+            this.dataGridView9.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView6_DataError);
             // 
             // button4
             // 
@@ -2097,6 +2156,7 @@
             this.button4.TabIndex = 13;
             this.button4.Text = "Сгенерировать";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -2106,6 +2166,7 @@
             this.button5.TabIndex = 12;
             this.button5.Text = "Выбрать путь";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // textBox5
             // 
@@ -2167,7 +2228,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(243, 20);
             this.textBox6.TabIndex = 25;
-            this.textBox6.Text = "TagHH.csv";
+            this.textBox6.Text = "TagHH";
             // 
             // button6
             // 
@@ -2177,6 +2238,7 @@
             this.button6.TabIndex = 24;
             this.button6.Text = "Сохранить";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // dataGridView10
             // 
@@ -2188,6 +2250,7 @@
             this.dataGridView10.ReadOnly = true;
             this.dataGridView10.Size = new System.Drawing.Size(434, 175);
             this.dataGridView10.TabIndex = 23;
+            this.dataGridView10.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView6_DataError);
             // 
             // button7
             // 
@@ -2197,6 +2260,7 @@
             this.button7.TabIndex = 22;
             this.button7.Text = "Сгенерировать";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -2206,6 +2270,7 @@
             this.button8.TabIndex = 21;
             this.button8.Text = "Выбрать путь";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // textBox7
             // 
@@ -2267,7 +2332,7 @@
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(243, 20);
             this.textBox8.TabIndex = 34;
-            this.textBox8.Text = "TagUDM.csv";
+            this.textBox8.Text = "TagUDM";
             // 
             // button9
             // 
@@ -2277,6 +2342,7 @@
             this.button9.TabIndex = 33;
             this.button9.Text = "Сохранить";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // dataGridView11
             // 
@@ -2285,6 +2351,7 @@
             this.dataGridView11.Name = "dataGridView11";
             this.dataGridView11.Size = new System.Drawing.Size(434, 175);
             this.dataGridView11.TabIndex = 32;
+            this.dataGridView11.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView6_DataError);
             // 
             // button10
             // 
@@ -2294,6 +2361,7 @@
             this.button10.TabIndex = 31;
             this.button10.Text = "Сгенерировать";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button11
             // 
@@ -2303,6 +2371,7 @@
             this.button11.TabIndex = 30;
             this.button11.Text = "Выбрать путь";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // textBox9
             // 
@@ -2364,7 +2433,7 @@
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(243, 20);
             this.textBox10.TabIndex = 34;
-            this.textBox10.Text = "TagOPC_.csv";
+            this.textBox10.Text = "TagOPC";
             // 
             // button12
             // 
@@ -2374,6 +2443,7 @@
             this.button12.TabIndex = 33;
             this.button12.Text = "Сохранить";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // dataGridView12
             // 
@@ -2385,6 +2455,7 @@
             this.dataGridView12.ReadOnly = true;
             this.dataGridView12.Size = new System.Drawing.Size(434, 175);
             this.dataGridView12.TabIndex = 32;
+            this.dataGridView12.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView6_DataError);
             // 
             // button13
             // 
@@ -2394,6 +2465,7 @@
             this.button13.TabIndex = 31;
             this.button13.Text = "Сгенерировать";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // button14
             // 
@@ -2403,6 +2475,7 @@
             this.button14.TabIndex = 30;
             this.button14.Text = "Выбрать путь";
             this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // textBox11
             // 
@@ -2424,8 +2497,6 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.comboBox3);
-            this.groupBox5.Controls.Add(this.comboBox2);
-            this.groupBox5.Controls.Add(this.label14);
             this.groupBox5.Controls.Add(this.comboBox1);
             this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Controls.Add(this.label12);
@@ -2438,7 +2509,6 @@
             // 
             // comboBox3
             // 
-            this.comboBox3.DisplayMember = "FT1";
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
             "OnlyON",
@@ -2449,29 +2519,6 @@
             this.comboBox3.TabIndex = 14;
             this.comboBox3.Text = "OnlyON";
             this.comboBox3.ValueMember = "1";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DisplayMember = "FT1";
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "FT1",
-            "FT10"});
-            this.comboBox2.Location = new System.Drawing.Point(135, 81);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(155, 21);
-            this.comboBox2.TabIndex = 13;
-            this.comboBox2.Text = "FT1";
-            this.comboBox2.ValueMember = "1";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 81);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(55, 13);
-            this.label14.TabIndex = 12;
-            this.label14.Text = "Источник";
             // 
             // comboBox1
             // 
@@ -2517,11 +2564,6 @@
             // 
             this.tagAWXBindingSource1.DataMember = "TagAWX";
             this.tagAWXBindingSource1.DataSource = this.rPTagsDataSetBindingSource;
-            // 
-            // areaAWXBindingSource
-            // 
-            this.areaAWXBindingSource.DataMember = "AreaAWX";
-            this.areaAWXBindingSource.DataSource = this.rPTagsDataSetBindingSource;
             // 
             // tagAWXBindingSource
             // 
@@ -2617,7 +2659,8 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2,
-            this.toolStripStatusLabel3});
+            this.toolStripStatusLabel3,
+            this.toolStripStatusLabel4});
             this.statusStrip1.Location = new System.Drawing.Point(0, 559);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(944, 22);
@@ -2643,6 +2686,11 @@
             this.toolStripStatusLabel3.Text = "toolStripStatusLabel3";
             this.toolStripStatusLabel3.Click += new System.EventHandler(this.toolStripStatusLabel3_Click);
             this.toolStripStatusLabel3.DoubleClick += new System.EventHandler(this.toolStripStatusLabel3_Click);
+            // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(0, 17);
             // 
             // areaAWXTableAdapter
             // 
@@ -2743,46 +2791,31 @@
             // 
             this.sAIDNullTableAdapter.ClearBeforeFill = true;
             // 
-            // aDataGridViewTextBoxColumn
-            // 
-            this.aDataGridViewTextBoxColumn.DataPropertyName = "A";
-            this.aDataGridViewTextBoxColumn.HeaderText = "A";
-            this.aDataGridViewTextBoxColumn.Name = "aDataGridViewTextBoxColumn";
-            this.aDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bDataGridViewTextBoxColumn
-            // 
-            this.bDataGridViewTextBoxColumn.DataPropertyName = "B";
-            this.bDataGridViewTextBoxColumn.HeaderText = "B";
-            this.bDataGridViewTextBoxColumn.Name = "bDataGridViewTextBoxColumn";
-            this.bDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cDataGridViewTextBoxColumn
-            // 
-            this.cDataGridViewTextBoxColumn.DataPropertyName = "C";
-            this.cDataGridViewTextBoxColumn.HeaderText = "C";
-            this.cDataGridViewTextBoxColumn.Name = "cDataGridViewTextBoxColumn";
-            this.cDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dDataGridViewTextBoxColumn
-            // 
-            this.dDataGridViewTextBoxColumn.DataPropertyName = "D";
-            this.dDataGridViewTextBoxColumn.HeaderText = "D";
-            this.dDataGridViewTextBoxColumn.Name = "dDataGridViewTextBoxColumn";
-            this.dDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // eDataGridViewTextBoxColumn
-            // 
-            this.eDataGridViewTextBoxColumn.DataPropertyName = "E";
-            this.eDataGridViewTextBoxColumn.HeaderText = "E";
-            this.eDataGridViewTextBoxColumn.Name = "eDataGridViewTextBoxColumn";
-            this.eDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // backgroundWorker2
+            // 
+            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
+            this.backgroundWorker2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker2_RunWorkerCompleted);
+            // 
+            // backgroundWorker3
+            // 
+            this.backgroundWorker3.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker3_DoWork);
+            this.backgroundWorker3.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker3_RunWorkerCompleted);
+            // 
+            // backgroundWorker4
+            // 
+            this.backgroundWorker4.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker4_DoWork);
+            this.backgroundWorker4.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker4_RunWorkerCompleted);
+            // 
+            // backgroundWorker5
+            // 
+            this.backgroundWorker5.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker5_DoWork);
+            this.backgroundWorker5.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker5_RunWorkerCompleted);
             // 
             // Form2
             // 
@@ -2885,6 +2918,7 @@
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.areaAWXBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage10.ResumeLayout(false);
@@ -2904,7 +2938,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.systemaBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sAIDNullBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tagAWXBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.areaAWXBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tagAWXBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tagHHBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tagUDMBindingSource)).EndInit();
@@ -3037,8 +3070,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
@@ -3170,6 +3201,14 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem12;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem25;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem28;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eDataGridViewTextBoxColumn;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
@@ -3177,11 +3216,9 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn Corpus;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iPAddrDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn aDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn eDataGridViewTextBoxColumn;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker3;
+        private System.ComponentModel.BackgroundWorker backgroundWorker4;
+        private System.ComponentModel.BackgroundWorker backgroundWorker5;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
     }
 }

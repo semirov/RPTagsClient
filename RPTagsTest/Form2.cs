@@ -4,10 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+
 
 namespace RPTagsTest
 {
@@ -58,8 +61,21 @@ namespace RPTagsTest
         public Form2()
         {
             InitializeComponent();
+            
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.WorkerSupportsCancellation = true;
+
+            backgroundWorker2.WorkerReportsProgress = true;
+            backgroundWorker2.WorkerSupportsCancellation = true;
+
+            backgroundWorker3.WorkerReportsProgress = true;
+            backgroundWorker3.WorkerSupportsCancellation = true;
+
+            backgroundWorker4.WorkerReportsProgress = true;
+            backgroundWorker4.WorkerSupportsCancellation = true;
+
+            backgroundWorker5.WorkerReportsProgress = true;
+            backgroundWorker5.WorkerSupportsCancellation = true;
         }
 
         #region основные таблицы
@@ -74,6 +90,7 @@ namespace RPTagsTest
             // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.TagAWX". При необходимости она может быть перемещена или удалена.
             //  this.tagAWXTableAdapter.Fill(this.rPTagsDataSet.TagAWX);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.Device_Tag". При необходимости она может быть перемещена или удалена.
+            //this.tagAWXTableAdapter.Adapter.SelectCommand.CommandTimeout = 300;
             this.device_TagTableAdapter.Fill(this.rPTagsDataSet.Device_Tag);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.Corpus". При необходимости она может быть перемещена или удалена.
             this.corpusTableAdapter.Fill(this.rPTagsDataSet.Corpus);
@@ -121,7 +138,8 @@ namespace RPTagsTest
 
             toolStripStatusLabel3.Text = tagTableAdapter.Connection.DataSource.ToString() +" ("+ tagTableAdapter.Connection.Database.ToString() + ")";
 
-            prename = DateTime.Today.ToString(); //нужно для имени файла конфигурации
+            prename = DateTime.Today.Day.ToString() + DateTime.Today.Month.ToString() + DateTime.Today.Year.ToString(); //нужно для имени файла конфигурации
+            //toolStripStatusLabel3.Text = prename;
         }
         
         
@@ -976,6 +994,7 @@ namespace RPTagsTest
             if (changed_Modifed_DeviceTagDataTable)
             {
                 device_TagTableAdapter.Update(rPTagsDataSet.Device_Tag);
+                
                 tabPage7.Text = "Устройство";
                 changed_Modifed_DeviceTagDataTable = false;
                 temp_Modifed_DeviceTagDataTable.Clear();
@@ -1040,6 +1059,7 @@ namespace RPTagsTest
         {
             if (changed_Modifed_FilterDataTable)
             {
+                changed_Modifed_FilterDataTable = false;
                 rPTagsDataSet.Filtres.Merge(temp_Modifed_FilterDataTable);
                 filtresTableAdapter.Update(rPTagsDataSet.Filtres);
                 tabPage14.Text = "Фильтр";
@@ -1060,19 +1080,19 @@ namespace RPTagsTest
 
                 temp_Modifed_FilterDataTable.Merge(rPTagsDataSet.SystemType.GetChanges(DataRowState.Modified));
                 tabPage15.Text = "*Тип системы";
-                changed_Modifed_FilterDataTable = true;
+                changed_Modifed_SystemTypeDataTable = true;
             }
             if (rPTagsDataSet.SystemType.GetChanges(DataRowState.Added) != null)
             {
                 temp_Modifed_FilterDataTable.Merge(rPTagsDataSet.SystemType.GetChanges(DataRowState.Added));
                 tabPage15.Text = "*Тип системы";
-                changed_Modifed_FilterDataTable = true;
+                changed_Modifed_SystemTypeDataTable = true;
             }
             if (rPTagsDataSet.SystemType.GetChanges(DataRowState.Deleted) != null)
             {
                 temp_Modifed_FilterDataTable.Merge(rPTagsDataSet.SystemType.GetChanges(DataRowState.Deleted));
                 tabPage15.Text = "*Тип системы";
-                changed_Modifed_FilterDataTable = true;
+                changed_Modifed_SystemTypeDataTable = true;
             }
         }
         private void toolStripMenuItem16_Click(object sender, EventArgs e)// добавить
@@ -1103,13 +1123,14 @@ namespace RPTagsTest
         }
         private void toolStripMenuItem18_Click(object sender, EventArgs e)//сохранить
         {
-            if (changed_Modifed_FilterDataTable)
+            if (changed_Modifed_SystemTypeDataTable)
             {
                 rPTagsDataSet.SystemType.Merge(temp_Modifed_FilterDataTable);
                 systemTypeTableAdapter.Update(rPTagsDataSet.SystemType);
                 tabPage15.Text = "Тип системы";
                 temp_Modifed_FilterDataTable.Clear();
                 dataGridView13.AllowUserToAddRows = false;
+                changed_Modifed_SystemTypeDataTable = false;
             }
         }
         private void dataGridView13_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1124,21 +1145,21 @@ namespace RPTagsTest
             if (rPTagsDataSet.Gruptype.GetChanges(DataRowState.Modified) != null)
             {
 
-                temp_Modifed_FilterDataTable.Merge(rPTagsDataSet.Gruptype.GetChanges(DataRowState.Modified));
+                temp_Modifed_GrupTypeDataTable.Merge(rPTagsDataSet.Gruptype.GetChanges(DataRowState.Modified));
                 tabPage16.Text = "*Тип группы";
-                changed_Modifed_FilterDataTable = true;
+                changed_Modifed_GrupTypeDataTable = true;
             }
             if (rPTagsDataSet.Gruptype.GetChanges(DataRowState.Added) != null)
             {
-                temp_Modifed_FilterDataTable.Merge(rPTagsDataSet.Gruptype.GetChanges(DataRowState.Added));
+                temp_Modifed_GrupTypeDataTable.Merge(rPTagsDataSet.Gruptype.GetChanges(DataRowState.Added));
                 tabPage16.Text = "*Тип группы";
-                changed_Modifed_FilterDataTable = true;
+                changed_Modifed_GrupTypeDataTable = true;
             }
             if (rPTagsDataSet.Gruptype.GetChanges(DataRowState.Deleted) != null)
             {
-                temp_Modifed_FilterDataTable.Merge(rPTagsDataSet.Gruptype.GetChanges(DataRowState.Deleted));
+                temp_Modifed_GrupTypeDataTable.Merge(rPTagsDataSet.Gruptype.GetChanges(DataRowState.Deleted));
                 tabPage16.Text = "*Тип группы";
-                changed_Modifed_FilterDataTable = true;
+                changed_Modifed_GrupTypeDataTable = true;
             }
         }
         private void toolStripMenuItem19_Click(object sender, EventArgs e)//добавить
@@ -1169,13 +1190,14 @@ namespace RPTagsTest
         }
         private void toolStripMenuItem21_Click(object sender, EventArgs e)//сохранить
         {
-            if (changed_Modifed_FilterDataTable)
+            if (changed_Modifed_GrupTypeDataTable)
             {
-                rPTagsDataSet.Gruptype.Merge(temp_Modifed_FilterDataTable);
+                rPTagsDataSet.Gruptype.Merge(temp_Modifed_GrupTypeDataTable);
                 gruptypeTableAdapter.Update(rPTagsDataSet.Gruptype);
                 tabPage16.Text = "Тип группы";
-                temp_Modifed_FilterDataTable.Clear();
+                temp_Modifed_GrupTypeDataTable.Clear();
                 dataGridView14.AllowUserToAddRows = false;
+                changed_Modifed_GrupTypeDataTable = false;
             }
         }
         private void dataGridView14_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1190,21 +1212,21 @@ namespace RPTagsTest
             if (rPTagsDataSet.TagType.GetChanges(DataRowState.Modified) != null)
             {
 
-                temp_Modifed_FilterDataTable.Merge(rPTagsDataSet.TagType.GetChanges(DataRowState.Modified));
+                temp_Modifed_TagTypeDataTable.Merge(rPTagsDataSet.TagType.GetChanges(DataRowState.Modified));
                 tabPage17.Text = "*Тип тега";
-                changed_Modifed_FilterDataTable = true;
+                changed_Modifed_TagTypeDataTable = true;
             }
             if (rPTagsDataSet.TagType.GetChanges(DataRowState.Added) != null)
             {
-                temp_Modifed_FilterDataTable.Merge(rPTagsDataSet.TagType.GetChanges(DataRowState.Added));
+                temp_Modifed_TagTypeDataTable.Merge(rPTagsDataSet.TagType.GetChanges(DataRowState.Added));
                 tabPage17.Text = "*Тип тега";
-                changed_Modifed_FilterDataTable = true;
+                changed_Modifed_TagTypeDataTable = true;
             }
             if (rPTagsDataSet.TagType.GetChanges(DataRowState.Deleted) != null)
             {
-                temp_Modifed_FilterDataTable.Merge(rPTagsDataSet.TagType.GetChanges(DataRowState.Deleted));
+                temp_Modifed_TagTypeDataTable.Merge(rPTagsDataSet.TagType.GetChanges(DataRowState.Deleted));
                 tabPage17.Text = "*Тип тега";
-                changed_Modifed_FilterDataTable = true;
+                changed_Modifed_TagTypeDataTable = true;
             }
         }
         private void toolStripMenuItem22_Click(object sender, EventArgs e)// добавить
@@ -1235,13 +1257,14 @@ namespace RPTagsTest
         }
         private void toolStripMenuItem24_Click(object sender, EventArgs e) // сохранить
         {
-            if (changed_Modifed_FilterDataTable)
+            if (changed_Modifed_TagTypeDataTable)
             {
-                rPTagsDataSet.TagType.Merge(temp_Modifed_FilterDataTable);
+                rPTagsDataSet.TagType.Merge(temp_Modifed_TagTypeDataTable);
                 tagTypeTableAdapter.Update(rPTagsDataSet.TagType);
                 tabPage17.Text = "Тип тега";
-                temp_Modifed_FilterDataTable.Clear();
+                temp_Modifed_TagTypeDataTable.Clear();
                 dataGridView15.AllowUserToAddRows = false;
+                changed_Modifed_TagTypeDataTable = false;
             }
         }
         private void dataGridView15_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1249,34 +1272,28 @@ namespace RPTagsTest
             TagType_changed();
             
         }
-
         
-
-
-
-
-
         //--------------OPC---------------------------------------------------------------------------------------
         private void OPC_changed()
         {
             if (rPTagsDataSet.OPC.GetChanges(DataRowState.Modified) != null)
             {
 
-                temp_Modifed_FilterDataTable.Merge(rPTagsDataSet.OPC.GetChanges(DataRowState.Modified));
+                temp_Modifed_OPCDataTable.Merge(rPTagsDataSet.OPC.GetChanges(DataRowState.Modified));
                 tabPage18.Text = "*OPC";
-                changed_Modifed_FilterDataTable = true;
+                changed_Modifed_OPCDataTable = true;
             }
             if (rPTagsDataSet.OPC.GetChanges(DataRowState.Added) != null)
             {
-                temp_Modifed_FilterDataTable.Merge(rPTagsDataSet.OPC.GetChanges(DataRowState.Added));
+                temp_Modifed_OPCDataTable.Merge(rPTagsDataSet.OPC.GetChanges(DataRowState.Added));
                 tabPage18.Text = "*OPC";
-                changed_Modifed_FilterDataTable = true;
+                changed_Modifed_OPCDataTable = true;
             }
             if (rPTagsDataSet.OPC.GetChanges(DataRowState.Deleted) != null)
             {
-                temp_Modifed_FilterDataTable.Merge(rPTagsDataSet.OPC.GetChanges(DataRowState.Deleted));
+                temp_Modifed_OPCDataTable.Merge(rPTagsDataSet.OPC.GetChanges(DataRowState.Deleted));
                 tabPage18.Text = "*OPC";
-                changed_Modifed_FilterDataTable = true;
+                changed_Modifed_OPCDataTable = true;
             }
         }
 
@@ -1284,9 +1301,6 @@ namespace RPTagsTest
         {
 
         }
-
-        
-
         private void toolStripMenuItem12_Click(object sender, EventArgs e)// добавить
         {
             try
@@ -1316,13 +1330,14 @@ namespace RPTagsTest
         }
         private void toolStripMenuItem28_Click(object sender, EventArgs e)//сохранить
         {
-            if (changed_Modifed_FilterDataTable)
+            if (changed_Modifed_OPCDataTable)
             {
-                rPTagsDataSet.OPC.Merge(temp_Modifed_FilterDataTable);
+                rPTagsDataSet.OPC.Merge(temp_Modifed_OPCDataTable);
                 oPCTableAdapter.Update(rPTagsDataSet.OPC);
                 tabPage18.Text = "OPC";
-                temp_Modifed_FilterDataTable.Clear();
+                temp_Modifed_OPCDataTable.Clear();
                 dataGridView16.AllowUserToAddRows = false;
+                changed_Modifed_OPCDataTable = false;
             }
         }
 
@@ -1341,107 +1356,261 @@ namespace RPTagsTest
             toolStripStatusLabel2.Text = "     Какие то проблемы с датагридом";
            
         } // обработчик ошибок
-
-
-
-
-
-
-        //-----------------генератор конфигураций-------------------------------------------------------------------
+       
+      
         #region конфигурации
 
         string prename;
-       
-        
-        //------------------areaAWX---------------------------------------------
-        private void AreaAWXdgvGen_Click(object sender, EventArgs e)
-        {
 
+        private static bool SaveDGVToCSVfile(string filename, string patch, DataGridView table)
+        {
+            try
+            {
+                filename += ".csv";
+                string fullfilepatch = patch + "\\" + filename;
+                Directory.CreateDirectory(patch);
+                StreamWriter sw = new StreamWriter(fullfilepatch, false, Encoding.Unicode);
+
+                List<int> col_n = new List<int>();
+                foreach (DataGridViewColumn col in table.Columns)
+                    if (col.Visible)
+                    {
+                        //sw.Write(col.HeaderText + "\t");
+                        col_n.Add(col.Index);
+                    }
+                sw.WriteLine();
+                int x = table.RowCount;
+                if (table.AllowUserToAddRows) x--;
+
+                for (int i = 0; i < x; i++)
+                {
+                    for (int y = 0; y < col_n.Count; y++)
+                        sw.Write(table[col_n[y], i].Value + "\t");
+                    sw.Write(" \r\n");
+                }
+                sw.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return false;
+            }
+            
+            return true;
+        }
+        private string FileDialog()
+        {
+            string s = "C:\\";
+        if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                s = folderBrowserDialog1.SelectedPath + "\\config_" + prename;
+            }
+            textBox1.Text = s;
+            textBox5.Text = s;
+            textBox7.Text = s;
+            textBox9.Text = s;
+            textBox11.Text = s;
+            return s;
+           
+        }
+
+
+
+        //------------------areaAWX---------------------------------------------
+        private void AreaAWXdgvGen_Click(object sender, EventArgs e)// пуск генератора
+        {
             if (backgroundWorker1.IsBusy != true)
             {
                 backgroundWorker1.RunWorkerAsync();
-                toolStripStatusLabel1.Text = "Загрузка конфигурации AreaAWX...";
-            }
-
-          
-            
+                toolStripStatusLabel4.Text = "Идет загрузка конфигрураци...";
+            }        
         }
-        // зальемся ассинхронно
+                // зальемся ассинхронно
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
             
             this.areaAWXTableAdapter.Fill(this.rPTagsDataSet.AreaAWX, textBox2.Text);
            
-
-
         }
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             // возможно сюда засунем прогресс, если сможем его отыскать
-        }
+        }     
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            toolStripStatusLabel1.Text = "Загрузка конфигурации AreaAWX завершена!";
+            System.Windows.Forms.MessageBox.Show("Загрузка конфигурации AreaAWX завершена!");
+            toolStripStatusLabel4.Text = "";
             dataGridView8.DataSource = rPTagsDataSet.AreaAWX;
 
         }
+        private void button1_Click(object sender, EventArgs e) // выбор пути к файлу
+        {
+          FileDialog();
+        }
+        private void button3_Click(object sender, EventArgs e) // сохранить файл
+        {
+         SaveDGVToCSVfile(textBox3.Text, textBox1.Text, dataGridView8);
+        }
 
+        
+
+        //----------------tagAWX----------------------------------------------
+        private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+            
+            this.tagAWXTableAdapter.Fill(this.rPTagsDataSet.TagAWX);
+        }
+        private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Загрузка конфигурации TagAWX завершена!");
+            toolStripStatusLabel4.Text = "";
+            dataGridView9.DataSource = rPTagsDataSet.TagAWX;
+        } 
+        private void button4_Click(object sender, EventArgs e) // сгенерировать
+        {
+            if (backgroundWorker2.IsBusy != true)
+            {
+                backgroundWorker2.RunWorkerAsync();
+                toolStripStatusLabel4.Text = "Идет загрузка конфигрураци...";
+            }
+        }
+        private void button5_Click(object sender, EventArgs e) // путь сохранения
+        {
+            FileDialog();
+        }
+        private void button2_Click(object sender, EventArgs e) // сохранить файл
+        {
+            SaveDGVToCSVfile(textBox4.Text, textBox5.Text, dataGridView9);
+        }
+
+        
+
+        //----------------tagHH----------------------------------------------
+        private void backgroundWorker3_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+
+            this.tagHHTableAdapter.Fill(this.rPTagsDataSet.TagHH);
+        }
+        private void backgroundWorker3_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Загрузка конфигурации TagHH завершена!");
+            toolStripStatusLabel4.Text = "";
+            dataGridView10.DataSource = rPTagsDataSet.TagHH;
+        }    
+        private void button7_Click(object sender, EventArgs e) // generate
+        {
+            if (backgroundWorker3.IsBusy != true)
+            {
+                backgroundWorker3.RunWorkerAsync();
+                toolStripStatusLabel4.Text = "Идет загрузка конфигрураци...";
+            }
+        }
+        private void button8_Click(object sender, EventArgs e) // filepath
+        {
+            FileDialog();
+        }
+        private void button6_Click(object sender, EventArgs e) // save file
+        {
+            SaveDGVToCSVfile(textBox6.Text, textBox7.Text, dataGridView10);
+        }
+
+        
+
+        //----------------tagUDM----------------------------------------------
+        private void backgroundWorker4_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+
+            this.tagUDMTableAdapter.Fill(this.rPTagsDataSet.TagUDM);
+        }
+        private void backgroundWorker4_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Загрузка конфигурации TagUDM завершена!");
+            toolStripStatusLabel4.Text = "";
+            dataGridView11.DataSource = rPTagsDataSet.TagUDM;
+        }      
+        private void button10_Click(object sender, EventArgs e) // generate
+        {
+            if (backgroundWorker4.IsBusy != true)
+            {
+                backgroundWorker4.RunWorkerAsync();
+                toolStripStatusLabel4.Text = "Идет загрузка конфигрураци...";
+            }
+        }
+        private void button11_Click(object sender, EventArgs e) // fileparth
+        {
+            FileDialog();
+        }
+        private void button9_Click(object sender, EventArgs e) //savefile
+        {
+            SaveDGVToCSVfile(textBox8.Text, textBox9.Text, dataGridView11);
+        }
+
+
+        //----------------tagOPC----------------------------------------------
+        private void backgroundWorker5_DoWork(object sender, DoWorkEventArgs e)
+        {
+            
+            BackgroundWorker worker = sender as BackgroundWorker;
+
+            var param = (TagOPCparam)e.Argument; // принимаем параметры в воркер
+            this.rPTagsDataSet.TagOPC.Clear();
+            this.tagOPCTableAdapter.Fill(this.rPTagsDataSet.TagOPC, param.PLC, param.SetParam, "FT1");
+        }
+        private void backgroundWorker5_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Загрузка конфигурации TagOPC завершена!");
+            toolStripStatusLabel4.Text = "";
+            
+           
+            dataGridView12.DataSource = rPTagsDataSet.TagOPC;
+           
+        }
+        struct TagOPCparam // нужно передать параметры в поток
+        {
+           public string PLC;
+           public string SetParam;
+
+        }
+        private void button13_Click(object sender, EventArgs e) // generate
+        {
+            
+            var param = new TagOPCparam(); // экземпляр структуры
+            param.PLC = comboBox1.SelectedValue.ToString();
+            param.SetParam = comboBox3.SelectedItem.ToString();
+            textBox10.Text = param.PLC;
+            toolStripStatusLabel4.Text = param.PLC + " "+ param.SetParam;
+            if (backgroundWorker5.IsBusy != true)
+            {
+                backgroundWorker5.RunWorkerAsync(param); // передаем параметры при запуске воркера
+               // toolStripStatusLabel4.Text ="Параметры: "+ param.PLC + " " + param.SetParam;
+                toolStripStatusLabel4.Text = "Идет загрузка конфигрураци...";
+                
+            }
+            
+        }
+        private void button14_Click(object sender, EventArgs e) // setfile path
+        {
+            FileDialog();
+        }
+        private void button12_Click(object sender, EventArgs e) // save file
+        {
+            SaveDGVToCSVfile(textBox10.Text, textBox11.Text, dataGridView12);
+        }
 
         #endregion конфигурации
 
 
-        /*   private void fillToolStripButton_Click(object sender, EventArgs e)
-           {
-               try
-               {
-                   this.areaAWXTableAdapter.Fill(this.rPTagsDataSet.AreaAWX, confNAMEToolStripTextBox.Text);
-               }
-               catch (System.Exception ex)
-               {
-                   System.Windows.Forms.MessageBox.Show(ex.Message);
-               }
+        /*   
 
-           }
+          
 
-           private void fillToolStripButton1_Click(object sender, EventArgs e)
-           {
-               try
-               {
-                   this.tagAWXTableAdapter.Fill(this.rPTagsDataSet.TagAWX);
-               }
-               catch (System.Exception ex)
-               {
-                   System.Windows.Forms.MessageBox.Show(ex.Message);
-               }
+           
 
-           }
-
-           private void fillToolStripButton2_Click(object sender, EventArgs e)
-           {
-               try
-               {
-                   this.tagHHTableAdapter.Fill(this.rPTagsDataSet.TagHH);
-               }
-               catch (System.Exception ex)
-               {
-                   System.Windows.Forms.MessageBox.Show(ex.Message);
-               }
-
-           }
-
-           private void fillToolStripButton3_Click(object sender, EventArgs e)
-           {
-               try
-               {
-                   this.tagUDMTableAdapter.Fill(this.rPTagsDataSet.TagUDM);
-               }
-               catch (System.Exception ex)
-               {
-                   System.Windows.Forms.MessageBox.Show(ex.Message);
-               }
-
-           }
+          
 
            private void fillToolStripButton4_Click(object sender, EventArgs e)
            {

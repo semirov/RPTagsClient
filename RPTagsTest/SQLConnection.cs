@@ -65,8 +65,8 @@ namespace RPTagsTest
             {
 
                 connect.DataSource = textBox1.Text;
-                
 
+                connect.ConnectTimeout = 300;
                 connect.InitialCatalog = textBox2.Text;
                 
 
@@ -91,6 +91,7 @@ namespace RPTagsTest
                 // Открываем подключение
                 textBox5.Text = connect.ConnectionString;
                 connection.Open();
+                
                 label5.Text = "Тест подключения: OK";
                 connection.Close();
             }
