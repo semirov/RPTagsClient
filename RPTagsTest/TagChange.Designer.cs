@@ -73,6 +73,32 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grupTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tagTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hHDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uDMInputDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uDMOutputDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.baseTextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.alarmMSGDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.normalMSGDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.relatedValue1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.relatedValue2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.relatedValue3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.relatedValue4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.relatedValue5DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gMPTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gMPHmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gMPCAVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gMPVAVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gMPDPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tLAMSGDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.filterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gMPWDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             baseTextLabel = new System.Windows.Forms.Label();
             alarmMSGLabel = new System.Windows.Forms.Label();
             normalMSGLabel = new System.Windows.Forms.Label();
@@ -89,6 +115,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.rPTagsDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gruptypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filtresBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // baseTextLabel
@@ -461,11 +488,199 @@
             this.comboBox3.TabIndex = 33;
             this.comboBox3.ValueMember = "id";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.grupTypeDataGridViewTextBoxColumn,
+            this.tagTypeDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.hHDataGridViewTextBoxColumn,
+            this.uDMInputDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn,
+            this.uDMOutputDataGridViewTextBoxColumn,
+            this.tTypeDataGridViewTextBoxColumn,
+            this.baseTextDataGridViewTextBoxColumn,
+            this.alarmMSGDataGridViewTextBoxColumn,
+            this.normalMSGDataGridViewTextBoxColumn,
+            this.relatedValue1DataGridViewTextBoxColumn,
+            this.relatedValue2DataGridViewTextBoxColumn,
+            this.relatedValue3DataGridViewTextBoxColumn,
+            this.relatedValue4DataGridViewTextBoxColumn,
+            this.relatedValue5DataGridViewTextBoxColumn,
+            this.gMPTDataGridViewTextBoxColumn,
+            this.gMPHmDataGridViewTextBoxColumn,
+            this.gMPCAVDataGridViewTextBoxColumn,
+            this.gMPVAVDataGridViewTextBoxColumn,
+            this.gMPDPDataGridViewTextBoxColumn,
+            this.tLAMSGDataGridViewTextBoxColumn,
+            this.filterDataGridViewTextBoxColumn,
+            this.gMPWDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.tagBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(16, 378);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(782, 150);
+            this.dataGridView1.TabIndex = 34;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // grupTypeDataGridViewTextBoxColumn
+            // 
+            this.grupTypeDataGridViewTextBoxColumn.DataPropertyName = "GrupType";
+            this.grupTypeDataGridViewTextBoxColumn.HeaderText = "GrupType";
+            this.grupTypeDataGridViewTextBoxColumn.Name = "grupTypeDataGridViewTextBoxColumn";
+            // 
+            // tagTypeDataGridViewTextBoxColumn
+            // 
+            this.tagTypeDataGridViewTextBoxColumn.DataPropertyName = "TagType";
+            this.tagTypeDataGridViewTextBoxColumn.HeaderText = "TagType";
+            this.tagTypeDataGridViewTextBoxColumn.Name = "tagTypeDataGridViewTextBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // hHDataGridViewTextBoxColumn
+            // 
+            this.hHDataGridViewTextBoxColumn.DataPropertyName = "HH";
+            this.hHDataGridViewTextBoxColumn.HeaderText = "HH";
+            this.hHDataGridViewTextBoxColumn.Name = "hHDataGridViewTextBoxColumn";
+            // 
+            // uDMInputDataGridViewTextBoxColumn
+            // 
+            this.uDMInputDataGridViewTextBoxColumn.DataPropertyName = "UDM_Input";
+            this.uDMInputDataGridViewTextBoxColumn.HeaderText = "UDM_Input";
+            this.uDMInputDataGridViewTextBoxColumn.Name = "uDMInputDataGridViewTextBoxColumn";
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            // 
+            // uDMOutputDataGridViewTextBoxColumn
+            // 
+            this.uDMOutputDataGridViewTextBoxColumn.DataPropertyName = "UDM_Output";
+            this.uDMOutputDataGridViewTextBoxColumn.HeaderText = "UDM_Output";
+            this.uDMOutputDataGridViewTextBoxColumn.Name = "uDMOutputDataGridViewTextBoxColumn";
+            // 
+            // tTypeDataGridViewTextBoxColumn
+            // 
+            this.tTypeDataGridViewTextBoxColumn.DataPropertyName = "TType";
+            this.tTypeDataGridViewTextBoxColumn.HeaderText = "TType";
+            this.tTypeDataGridViewTextBoxColumn.Name = "tTypeDataGridViewTextBoxColumn";
+            // 
+            // baseTextDataGridViewTextBoxColumn
+            // 
+            this.baseTextDataGridViewTextBoxColumn.DataPropertyName = "BaseText";
+            this.baseTextDataGridViewTextBoxColumn.HeaderText = "BaseText";
+            this.baseTextDataGridViewTextBoxColumn.Name = "baseTextDataGridViewTextBoxColumn";
+            // 
+            // alarmMSGDataGridViewTextBoxColumn
+            // 
+            this.alarmMSGDataGridViewTextBoxColumn.DataPropertyName = "AlarmMSG";
+            this.alarmMSGDataGridViewTextBoxColumn.HeaderText = "AlarmMSG";
+            this.alarmMSGDataGridViewTextBoxColumn.Name = "alarmMSGDataGridViewTextBoxColumn";
+            // 
+            // normalMSGDataGridViewTextBoxColumn
+            // 
+            this.normalMSGDataGridViewTextBoxColumn.DataPropertyName = "NormalMSG";
+            this.normalMSGDataGridViewTextBoxColumn.HeaderText = "NormalMSG";
+            this.normalMSGDataGridViewTextBoxColumn.Name = "normalMSGDataGridViewTextBoxColumn";
+            // 
+            // relatedValue1DataGridViewTextBoxColumn
+            // 
+            this.relatedValue1DataGridViewTextBoxColumn.DataPropertyName = "RelatedValue1";
+            this.relatedValue1DataGridViewTextBoxColumn.HeaderText = "RelatedValue1";
+            this.relatedValue1DataGridViewTextBoxColumn.Name = "relatedValue1DataGridViewTextBoxColumn";
+            // 
+            // relatedValue2DataGridViewTextBoxColumn
+            // 
+            this.relatedValue2DataGridViewTextBoxColumn.DataPropertyName = "RelatedValue2";
+            this.relatedValue2DataGridViewTextBoxColumn.HeaderText = "RelatedValue2";
+            this.relatedValue2DataGridViewTextBoxColumn.Name = "relatedValue2DataGridViewTextBoxColumn";
+            // 
+            // relatedValue3DataGridViewTextBoxColumn
+            // 
+            this.relatedValue3DataGridViewTextBoxColumn.DataPropertyName = "RelatedValue3";
+            this.relatedValue3DataGridViewTextBoxColumn.HeaderText = "RelatedValue3";
+            this.relatedValue3DataGridViewTextBoxColumn.Name = "relatedValue3DataGridViewTextBoxColumn";
+            // 
+            // relatedValue4DataGridViewTextBoxColumn
+            // 
+            this.relatedValue4DataGridViewTextBoxColumn.DataPropertyName = "RelatedValue4";
+            this.relatedValue4DataGridViewTextBoxColumn.HeaderText = "RelatedValue4";
+            this.relatedValue4DataGridViewTextBoxColumn.Name = "relatedValue4DataGridViewTextBoxColumn";
+            // 
+            // relatedValue5DataGridViewTextBoxColumn
+            // 
+            this.relatedValue5DataGridViewTextBoxColumn.DataPropertyName = "RelatedValue5";
+            this.relatedValue5DataGridViewTextBoxColumn.HeaderText = "RelatedValue5";
+            this.relatedValue5DataGridViewTextBoxColumn.Name = "relatedValue5DataGridViewTextBoxColumn";
+            // 
+            // gMPTDataGridViewTextBoxColumn
+            // 
+            this.gMPTDataGridViewTextBoxColumn.DataPropertyName = "GMPT";
+            this.gMPTDataGridViewTextBoxColumn.HeaderText = "GMPT";
+            this.gMPTDataGridViewTextBoxColumn.Name = "gMPTDataGridViewTextBoxColumn";
+            // 
+            // gMPHmDataGridViewTextBoxColumn
+            // 
+            this.gMPHmDataGridViewTextBoxColumn.DataPropertyName = "GMPHm";
+            this.gMPHmDataGridViewTextBoxColumn.HeaderText = "GMPHm";
+            this.gMPHmDataGridViewTextBoxColumn.Name = "gMPHmDataGridViewTextBoxColumn";
+            // 
+            // gMPCAVDataGridViewTextBoxColumn
+            // 
+            this.gMPCAVDataGridViewTextBoxColumn.DataPropertyName = "GMPCAV";
+            this.gMPCAVDataGridViewTextBoxColumn.HeaderText = "GMPCAV";
+            this.gMPCAVDataGridViewTextBoxColumn.Name = "gMPCAVDataGridViewTextBoxColumn";
+            // 
+            // gMPVAVDataGridViewTextBoxColumn
+            // 
+            this.gMPVAVDataGridViewTextBoxColumn.DataPropertyName = "GMPVAV";
+            this.gMPVAVDataGridViewTextBoxColumn.HeaderText = "GMPVAV";
+            this.gMPVAVDataGridViewTextBoxColumn.Name = "gMPVAVDataGridViewTextBoxColumn";
+            // 
+            // gMPDPDataGridViewTextBoxColumn
+            // 
+            this.gMPDPDataGridViewTextBoxColumn.DataPropertyName = "GMPDP";
+            this.gMPDPDataGridViewTextBoxColumn.HeaderText = "GMPDP";
+            this.gMPDPDataGridViewTextBoxColumn.Name = "gMPDPDataGridViewTextBoxColumn";
+            // 
+            // tLAMSGDataGridViewTextBoxColumn
+            // 
+            this.tLAMSGDataGridViewTextBoxColumn.DataPropertyName = "TLA_MSG";
+            this.tLAMSGDataGridViewTextBoxColumn.HeaderText = "TLA_MSG";
+            this.tLAMSGDataGridViewTextBoxColumn.Name = "tLAMSGDataGridViewTextBoxColumn";
+            // 
+            // filterDataGridViewTextBoxColumn
+            // 
+            this.filterDataGridViewTextBoxColumn.DataPropertyName = "Filter";
+            this.filterDataGridViewTextBoxColumn.HeaderText = "Filter";
+            this.filterDataGridViewTextBoxColumn.Name = "filterDataGridViewTextBoxColumn";
+            // 
+            // gMPWDataGridViewTextBoxColumn
+            // 
+            this.gMPWDataGridViewTextBoxColumn.DataPropertyName = "GMPW";
+            this.gMPWDataGridViewTextBoxColumn.HeaderText = "GMPW";
+            this.gMPWDataGridViewTextBoxColumn.Name = "gMPWDataGridViewTextBoxColumn";
+            // 
             // TagChange
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 395);
+            this.ClientSize = new System.Drawing.Size(845, 566);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(filterLabel);
             this.Controls.Add(this.button2);
@@ -508,6 +723,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.rPTagsDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gruptypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.filtresBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -548,5 +764,31 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn grupTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tagTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hHDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uDMInputDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uDMOutputDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn baseTextDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn alarmMSGDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn normalMSGDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn relatedValue1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn relatedValue2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn relatedValue3DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn relatedValue4DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn relatedValue5DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gMPTDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gMPHmDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gMPCAVDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gMPVAVDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gMPDPDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tLAMSGDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn filterDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gMPWDataGridViewTextBoxColumn;
     }
 }

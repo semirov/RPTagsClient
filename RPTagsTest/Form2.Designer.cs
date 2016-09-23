@@ -184,6 +184,10 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -212,6 +216,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -222,6 +230,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
@@ -357,14 +369,17 @@
             this.tabPage8.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage9.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.areaAWXBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).BeginInit();
             this.tabPage11.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).BeginInit();
             this.tabPage12.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).BeginInit();
             this.tabPage13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).BeginInit();
@@ -434,6 +449,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(930, 507);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // nameDataGridViewTextBoxColumn1
             // 
@@ -532,6 +548,7 @@
             this.dataGridView2.Size = new System.Drawing.Size(930, 507);
             this.dataGridView2.TabIndex = 2;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
+            this.dataGridView2.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             this.dataGridView2.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView6_DataError);
             // 
             // nameDataGridViewTextBoxColumn
@@ -665,6 +682,7 @@
             this.dataGridView3.Size = new System.Drawing.Size(930, 485);
             this.dataGridView3.TabIndex = 3;
             this.dataGridView3.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellClick);
+            this.dataGridView3.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellClick);
             this.dataGridView3.Leave += new System.EventHandler(this.dataGridView3_Leave);
             // 
             // nameDataGridViewTextBoxColumn2
@@ -825,6 +843,7 @@
             this.dataGridView4.Size = new System.Drawing.Size(930, 485);
             this.dataGridView4.TabIndex = 4;
             this.dataGridView4.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellClick);
+            this.dataGridView4.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellClick);
             // 
             // nameDataGridViewTextBoxColumn3
             // 
@@ -1027,6 +1046,7 @@
             this.dataGridView6.StandardTab = true;
             this.dataGridView6.TabIndex = 6;
             this.dataGridView6.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView6_CellClick);
+            this.dataGridView6.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView6_CellClick);
             this.dataGridView6.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView6_DataError);
             // 
             // nameDataGridViewTextBoxColumn4
@@ -1215,6 +1235,7 @@
             this.dataGridView7.Name = "dataGridView7";
             this.dataGridView7.Size = new System.Drawing.Size(930, 507);
             this.dataGridView7.TabIndex = 9;
+            this.dataGridView7.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView7_CellLeave);
             this.dataGridView7.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView6_DataError);
             // 
             // sysidDataGridViewTextBoxColumn1
@@ -1399,6 +1420,7 @@
             this.dataGridView5.TabIndex = 8;
             this.dataGridView5.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellClick);
             this.dataGridView5.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellClick);
+            this.dataGridView5.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellClick);
             // 
             // typeDataGridViewTextBoxColumn
             // 
@@ -1535,6 +1557,7 @@
             this.dataGridView13.StandardTab = true;
             this.dataGridView13.TabIndex = 8;
             this.dataGridView13.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView13_CellContentClick);
+            this.dataGridView13.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView13_CellContentClick);
             // 
             // nameDataGridViewTextBoxColumn5
             // 
@@ -1623,6 +1646,7 @@
             this.dataGridView14.StandardTab = true;
             this.dataGridView14.TabIndex = 8;
             this.dataGridView14.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView14_CellClick);
+            this.dataGridView14.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView14_CellClick);
             // 
             // nameDataGridViewTextBoxColumn6
             // 
@@ -1714,6 +1738,7 @@
             this.dataGridView15.StandardTab = true;
             this.dataGridView15.TabIndex = 8;
             this.dataGridView15.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView15_CellContentClick);
+            this.dataGridView15.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView15_CellContentClick);
             // 
             // nameDataGridViewTextBoxColumn7
             // 
@@ -1826,6 +1851,7 @@
             this.dataGridView16.StandardTab = true;
             this.dataGridView16.TabIndex = 11;
             this.dataGridView16.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView16_CellClick);
+            this.dataGridView16.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView16_CellClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1911,6 +1937,7 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.groupBox6);
             this.tabPage9.Controls.Add(this.label3);
             this.tabPage9.Controls.Add(this.textBox3);
             this.tabPage9.Controls.Add(this.button3);
@@ -1927,6 +1954,49 @@
             this.tabPage9.TabIndex = 0;
             this.tabPage9.Text = "AreaAWX";
             this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.textBox12);
+            this.groupBox6.Controls.Add(this.label14);
+            this.groupBox6.Controls.Add(this.checkBox1);
+            this.groupBox6.Location = new System.Drawing.Point(6, 122);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(296, 141);
+            this.groupBox6.TabIndex = 5;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Выходные параметры";
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(135, 52);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(155, 20);
+            this.textBox12.TabIndex = 4;
+            this.textBox12.Text = "Areas_AWX_stable.csv";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 55);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(62, 13);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "Имя Stable";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(5, 29);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(145, 17);
+            this.checkBox1.TabIndex = 2;
+            this.checkBox1.Text = "Добавить Stable            ";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // label3
             // 
@@ -2068,7 +2138,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(296, 257);
+            this.groupBox1.Size = new System.Drawing.Size(296, 110);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Входные параметры";
@@ -2196,6 +2266,7 @@
             // 
             // tabPage11
             // 
+            this.tabPage11.Controls.Add(this.groupBox7);
             this.tabPage11.Controls.Add(this.label6);
             this.tabPage11.Controls.Add(this.textBox6);
             this.tabPage11.Controls.Add(this.button6);
@@ -2212,6 +2283,49 @@
             this.tabPage11.TabIndex = 2;
             this.tabPage11.Text = "TagHH";
             this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.textBox13);
+            this.groupBox7.Controls.Add(this.label15);
+            this.groupBox7.Controls.Add(this.checkBox2);
+            this.groupBox7.Location = new System.Drawing.Point(6, 122);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(296, 141);
+            this.groupBox7.TabIndex = 27;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Выходные параметры";
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(135, 52);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(155, 20);
+            this.textBox13.TabIndex = 4;
+            this.textBox13.Text = "HH_stable.csv";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 55);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(62, 13);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Имя Stable";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Location = new System.Drawing.Point(5, 29);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(145, 17);
+            this.checkBox2.TabIndex = 2;
+            this.checkBox2.Text = "Добавить Stable            ";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // label6
             // 
@@ -2293,13 +2407,14 @@
             // 
             this.groupBox3.Location = new System.Drawing.Point(6, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(296, 257);
+            this.groupBox3.Size = new System.Drawing.Size(296, 110);
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Входные параметры";
             // 
             // tabPage12
             // 
+            this.tabPage12.Controls.Add(this.groupBox8);
             this.tabPage12.Controls.Add(this.label8);
             this.tabPage12.Controls.Add(this.textBox8);
             this.tabPage12.Controls.Add(this.button9);
@@ -2316,6 +2431,49 @@
             this.tabPage12.TabIndex = 3;
             this.tabPage12.Text = "TagUDM";
             this.tabPage12.UseVisualStyleBackColor = true;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.textBox14);
+            this.groupBox8.Controls.Add(this.label16);
+            this.groupBox8.Controls.Add(this.checkBox3);
+            this.groupBox8.Location = new System.Drawing.Point(6, 122);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(296, 141);
+            this.groupBox8.TabIndex = 36;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Выходные параметры";
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(135, 52);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(155, 20);
+            this.textBox14.TabIndex = 4;
+            this.textBox14.Text = "UDM_register_stable.csv";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 55);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(62, 13);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Имя Stable";
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox3.Checked = true;
+            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox3.Location = new System.Drawing.Point(5, 29);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(145, 17);
+            this.checkBox3.TabIndex = 2;
+            this.checkBox3.Text = "Добавить Stable            ";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // label8
             // 
@@ -2394,7 +2552,7 @@
             // 
             this.groupBox4.Location = new System.Drawing.Point(6, 6);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(296, 257);
+            this.groupBox4.Size = new System.Drawing.Size(296, 110);
             this.groupBox4.TabIndex = 27;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Входные параметры";
@@ -2509,6 +2667,7 @@
             // 
             // comboBox3
             // 
+            this.comboBox3.DisplayMember = "1";
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
             "OnlyON",
@@ -2917,6 +3076,8 @@
             this.tabControl2.ResumeLayout(false);
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.areaAWXBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -2926,9 +3087,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).EndInit();
             this.tabPage11.ResumeLayout(false);
             this.tabPage11.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).EndInit();
             this.tabPage12.ResumeLayout(false);
             this.tabPage12.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).EndInit();
             this.tabPage13.ResumeLayout(false);
             this.tabPage13.PerformLayout();
@@ -3220,5 +3385,17 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker4;
         private System.ComponentModel.BackgroundWorker backgroundWorker5;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.CheckBox checkBox3;
     }
 }

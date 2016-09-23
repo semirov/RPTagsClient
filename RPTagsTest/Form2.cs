@@ -289,6 +289,7 @@ namespace RPTagsTest
                 DGW_reloader();
             }
 
+
         } // обработка изменений
         private void Corpus_changed()
         {
@@ -340,6 +341,26 @@ namespace RPTagsTest
         } // удалить
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)// сохранить
         {
+            // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
+            // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
+            DataGridView dtw = dataGridView1;
+            int x = dtw.CurrentCell.RowIndex;
+            int y = dtw.CurrentCell.ColumnIndex;
+            if (x > 0)
+            {
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+
+            }
+            else
+            {
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+            }
             if (changed_Modifed_KorpusDataTable)
             {
                 rPTagsDataSet.Corpus.Merge(temp_Modifed_KorpusDataTable);
@@ -438,6 +459,26 @@ namespace RPTagsTest
         }
         private void toolStripMenuItem3_Click(object sender, EventArgs e)// сохранить
         {
+            // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
+            // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
+            DataGridView dtw = dataGridView2;
+            int x = dtw.CurrentCell.RowIndex;
+            int y = dtw.CurrentCell.ColumnIndex;
+            if (x > 0)
+            {
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+
+            }
+            else
+            {
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+            }
             if (changed_Modifed_PLCDataTable)
             {
                 rPTagsDataSet.PLC.Merge(temp_Modifed_PLCDataTable);
@@ -534,6 +575,26 @@ namespace RPTagsTest
         }
         private void toolStripMenuItem6_Click(object sender, EventArgs e)// сохранить
         {
+            // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
+            // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
+            DataGridView dtw = dataGridView3;
+            int x = dtw.CurrentCell.RowIndex;
+            int y = dtw.CurrentCell.ColumnIndex;
+            if (x > 0)
+            {
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+
+            }
+            else
+            {
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+            }
             if (changed_Modifed_SystemaDataTable)
             {
                 rPTagsDataSet.Systema.Merge(temp_Modifed_SystemaDataTable);
@@ -631,6 +692,26 @@ namespace RPTagsTest
         }
         private void toolStripMenuItem9_Click(object sender, EventArgs e)// сохранить
         {
+            // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
+            // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
+            DataGridView dtw = dataGridView4;
+            int x = dtw.CurrentCell.RowIndex;
+            int y = dtw.CurrentCell.ColumnIndex;
+            if (x > 0)
+            {
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+
+            }
+            else
+            {
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+            }
             if (changed_Modifed_GruppaDataTable)
             {
                 rPTagsDataSet.Gruppa.Merge(temp_Modifed_GruppaDataTable);
@@ -712,6 +793,26 @@ namespace RPTagsTest
         }
         private void toolStripMenuItem11_Click(object sender, EventArgs e)
         {
+            // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
+            // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
+            DataGridView dtw = dataGridView6;
+            int x = dtw.CurrentCell.RowIndex;
+            int y = dtw.CurrentCell.ColumnIndex;
+            if (x > 0)
+            {
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+
+            }
+            else
+            {
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+            }
             try
             {
                 int index = Convert.ToInt16(dataGridView6.CurrentRow.Index);
@@ -977,6 +1078,10 @@ namespace RPTagsTest
         {
             DeviceTag_changed();
         }
+        private void dataGridView7_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            DeviceTag_changed();
+        }
         private void toolStripMenuItem26_Click(object sender, EventArgs e) // удалить
         {
             try
@@ -991,6 +1096,26 @@ namespace RPTagsTest
         }
         private void toolStripMenuItem27_Click(object sender, EventArgs e) // сохранить
         {
+            // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
+            // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
+            DataGridView dtw = dataGridView7;
+            int x = dtw.CurrentCell.RowIndex;
+            int y = dtw.CurrentCell.ColumnIndex;
+            if (x > 0)
+            {
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+
+            }
+            else
+            {
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+            }
             if (changed_Modifed_DeviceTagDataTable)
             {
                 device_TagTableAdapter.Update(rPTagsDataSet.Device_Tag);
@@ -1057,6 +1182,26 @@ namespace RPTagsTest
         }
         private void toolStripMenuItem15_Click(object sender, EventArgs e)//сохранить
         {
+            // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
+            // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
+            DataGridView dtw = dataGridView5;
+            int x = dtw.CurrentCell.RowIndex;
+            int y = dtw.CurrentCell.ColumnIndex;
+            if (x > 0)
+            {
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+
+            }
+            else
+            {
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+            }
             if (changed_Modifed_FilterDataTable)
             {
                 changed_Modifed_FilterDataTable = false;
@@ -1123,6 +1268,26 @@ namespace RPTagsTest
         }
         private void toolStripMenuItem18_Click(object sender, EventArgs e)//сохранить
         {
+            // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
+            // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
+            DataGridView dtw = dataGridView13;
+            int x = dtw.CurrentCell.RowIndex;
+            int y = dtw.CurrentCell.ColumnIndex;
+            if (x > 0)
+            {
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+
+            }
+            else
+            {
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+            }
             if (changed_Modifed_SystemTypeDataTable)
             {
                 rPTagsDataSet.SystemType.Merge(temp_Modifed_FilterDataTable);
@@ -1190,6 +1355,26 @@ namespace RPTagsTest
         }
         private void toolStripMenuItem21_Click(object sender, EventArgs e)//сохранить
         {
+            // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
+            // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
+            DataGridView dtw = dataGridView14;
+            int x = dtw.CurrentCell.RowIndex;
+            int y = dtw.CurrentCell.ColumnIndex;
+            if (x > 0)
+            {
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+
+            }
+            else
+            {
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+            }
             if (changed_Modifed_GrupTypeDataTable)
             {
                 rPTagsDataSet.Gruptype.Merge(temp_Modifed_GrupTypeDataTable);
@@ -1257,6 +1442,26 @@ namespace RPTagsTest
         }
         private void toolStripMenuItem24_Click(object sender, EventArgs e) // сохранить
         {
+            // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
+            // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
+            DataGridView dtw = dataGridView15;
+            int x = dtw.CurrentCell.RowIndex;
+            int y = dtw.CurrentCell.ColumnIndex;
+            if (x > 0)
+            {
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+
+            }
+            else
+            {
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+            }
             if (changed_Modifed_TagTypeDataTable)
             {
                 rPTagsDataSet.TagType.Merge(temp_Modifed_TagTypeDataTable);
@@ -1330,6 +1535,26 @@ namespace RPTagsTest
         }
         private void toolStripMenuItem28_Click(object sender, EventArgs e)//сохранить
         {
+            // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
+            // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
+            DataGridView dtw = dataGridView16;
+            int x = dtw.CurrentCell.RowIndex;
+            int y = dtw.CurrentCell.ColumnIndex;
+            if (x > 0)
+            {
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+
+            }
+            else
+            {
+                x++;
+                dtw.CurrentCell = dtw[y, x];
+                x--;
+                dtw.CurrentCell = dtw[y, x];
+            }
             if (changed_Modifed_OPCDataTable)
             {
                 rPTagsDataSet.OPC.Merge(temp_Modifed_OPCDataTable);
@@ -1362,7 +1587,7 @@ namespace RPTagsTest
 
         string prename;
 
-        private static bool SaveDGVToCSVfile(string filename, string patch, DataGridView table)
+        private static bool SaveDGVToCSVfile(string filename, string patch, DataGridView table,bool addStb, string stable)
         {
             try
             {
@@ -1384,11 +1609,42 @@ namespace RPTagsTest
 
                 for (int i = 0; i < x; i++)
                 {
-                    for (int y = 0; y < col_n.Count; y++)
-                        sw.Write(table[col_n[y], i].Value + "\t");
-                    sw.Write(" \r\n");
+                    int y = 0;
+                    for (y = 0; y < col_n.Count; y++)
+                    {
+
+                        sw.Write(table[col_n[y], i].Value);
+                        if (y < col_n.Count-1)
+                        {
+                            sw.Write(",");
+                        }
+                    }
+                                
+                    sw.Write("\r\n");
                 }
+                if (addStb)
+                {
+                    StreamReader fs = new StreamReader(stable);
+                    sw.Write("\r\n");
+                    
+
+                    while (true)
+                    {
+                        // Читаем строку из файла во временную переменную.
+                        string temp = fs.ReadLine();
+
+                        // Если достигнут конец файла, прерываем считывание.
+                        if (temp == null) break;
+                        sw.Write(temp);
+                        sw.Write("\r\n"); 
+                        
+                       
+                    }
+                }
+
                 sw.Close();
+                MessageBox.Show("Конфигурация " + filename + " сохранена!","", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
             }
             catch (Exception ex)
             {
@@ -1448,9 +1704,17 @@ namespace RPTagsTest
         {
           FileDialog();
         }
+        private void checkBox1_CheckedChanged(object sender, EventArgs e) // добавка stable
+        {
+            if (checkBox1.Checked)
+            {
+                textBox12.ReadOnly = false;
+            }
+            else textBox12.ReadOnly = true;
+        }
         private void button3_Click(object sender, EventArgs e) // сохранить файл
         {
-         SaveDGVToCSVfile(textBox3.Text, textBox1.Text, dataGridView8);
+            SaveDGVToCSVfile(textBox3.Text, textBox1.Text, dataGridView8, true, textBox12.Text);
         }
 
         
@@ -1479,10 +1743,10 @@ namespace RPTagsTest
         private void button5_Click(object sender, EventArgs e) // путь сохранения
         {
             FileDialog();
-        }
+        }     
         private void button2_Click(object sender, EventArgs e) // сохранить файл
         {
-            SaveDGVToCSVfile(textBox4.Text, textBox5.Text, dataGridView9);
+            SaveDGVToCSVfile(textBox4.Text, textBox5.Text, dataGridView9, false, "");
         }
 
         
@@ -1512,9 +1776,17 @@ namespace RPTagsTest
         {
             FileDialog();
         }
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                textBox13.ReadOnly = false;
+            }
+            else textBox13.ReadOnly = true;
+        }
         private void button6_Click(object sender, EventArgs e) // save file
         {
-            SaveDGVToCSVfile(textBox6.Text, textBox7.Text, dataGridView10);
+            SaveDGVToCSVfile(textBox6.Text, textBox7.Text, dataGridView10, checkBox2.Checked, textBox13.Text);
         }
 
         
@@ -1544,9 +1816,17 @@ namespace RPTagsTest
         {
             FileDialog();
         }
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked)
+            {
+                textBox14.ReadOnly = false;
+            }
+            else textBox14.ReadOnly = true;
+        }
         private void button9_Click(object sender, EventArgs e) //savefile
         {
-            SaveDGVToCSVfile(textBox8.Text, textBox9.Text, dataGridView11);
+            SaveDGVToCSVfile(textBox8.Text, textBox9.Text, dataGridView11, checkBox3.Checked, textBox14.Text);
         }
 
 
@@ -1560,6 +1840,9 @@ namespace RPTagsTest
             this.rPTagsDataSet.TagOPC.Clear();
             this.tagOPCTableAdapter.Fill(this.rPTagsDataSet.TagOPC, param.PLC, param.SetParam, "FT1");
         }
+
+        
+
         private void backgroundWorker5_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             System.Windows.Forms.MessageBox.Show("Загрузка конфигурации TagOPC завершена!");
@@ -1598,7 +1881,7 @@ namespace RPTagsTest
         }
         private void button12_Click(object sender, EventArgs e) // save file
         {
-            SaveDGVToCSVfile(textBox10.Text, textBox11.Text, dataGridView12);
+            SaveDGVToCSVfile(textBox10.Text, textBox11.Text, dataGridView12, false, "");
         }
 
         #endregion конфигурации

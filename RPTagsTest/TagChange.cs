@@ -197,17 +197,46 @@ namespace RPTagsTest
         {
             if (TAG_ID != 0) // если изменяем уже существующий тег
             {
+                rPTagsDataSet.Tag[0].BeginEdit();
                 if (checkBox1.Checked)
-                    rPTagsDataSet.Tag[0]["HH"] = "R";
-                else rPTagsDataSet.Tag[0]["HH"] = "";
+                    rPTagsDataSet.Tag[0].HH = "R";
+                else rPTagsDataSet.Tag[0].HH = "";
                 if (checkBox2.Checked)
-                    rPTagsDataSet.Tag[0]["UDM_Input"] = "R";
-                else rPTagsDataSet.Tag[0]["UDM_Input"] = "";
+                    rPTagsDataSet.Tag[0].UDM_Input = "R";
+                else rPTagsDataSet.Tag[0].UDM_Input = "";
                 if (checkBox3.Checked)
-                    rPTagsDataSet.Tag[0]["UDM_Output"] = "W";
-                else rPTagsDataSet.Tag[0]["UDM_Output"] = "";
+                    rPTagsDataSet.Tag[0].UDM_Output = "W";
+                else rPTagsDataSet.Tag[0].UDM_Output = "";
+
+                rPTagsDataSet.Tag[0].GrupType = Convert.ToInt16(comboBox2.SelectedValue);
+                rPTagsDataSet.Tag[0].TagType = Convert.ToInt16(comboBox1.SelectedValue);
+                rPTagsDataSet.Tag[0].Filter = Convert.ToInt16(comboBox3.SelectedValue);
+                rPTagsDataSet.Tag[0].Name = textBox1.Text.ToString();
+                rPTagsDataSet.Tag[0].Description = textBox2.Text.ToString();
+                rPTagsDataSet.Tag[0].TType = comboBox1.SelectedText.ToString();
+                rPTagsDataSet.Tag[0].BaseText = baseTextTextBox.Text.ToString();
+                rPTagsDataSet.Tag[0].AlarmMSG = alarmMSGTextBox.Text.ToString();
+                rPTagsDataSet.Tag[0].NormalMSG = normalMSGTextBox.Text.ToString();
+                rPTagsDataSet.Tag[0].RelatedValue1 = relatedValue1TextBox.Text.ToString();
+                rPTagsDataSet.Tag[0].RelatedValue2 = relatedValue2TextBox.Text.ToString();
+                rPTagsDataSet.Tag[0].RelatedValue3 = relatedValue3TextBox.Text.ToString();
+                rPTagsDataSet.Tag[0].RelatedValue4 = relatedValue4TextBox.Text.ToString();
+                rPTagsDataSet.Tag[0].RelatedValue5 = relatedValue5TextBox.Text.ToString();
+                rPTagsDataSet.Tag[0].TLA_MSG = tLA_MSGTextBox.Text.ToString();
+
+                rPTagsDataSet.Tag[0].EndEdit();
+                
 
                 tagTableAdapter.Update(rPTagsDataSet.Tag);
+
+                rPTagsDataSet.Tag[0].AcceptChanges();
+
+                if (rPTagsDataSet.Tag.GetChanges() == null)
+                {
+                    this.Close();
+                }
+
+
             }
             else
             {
