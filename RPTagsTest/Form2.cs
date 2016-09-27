@@ -83,6 +83,8 @@ namespace RPTagsTest
         //-----------------------------------------------------------------------------
         private void Form2_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.TagIdTagTypeID". При необходимости она может быть перемещена или удалена.
+            this.tagIdTagTypeIDTableAdapter.Fill(this.rPTagsDataSet.TagIdTagTypeID);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.TagUDM". При необходимости она может быть перемещена или удалена.
             //  this.tagUDMTableAdapter.Fill(this.rPTagsDataSet.TagUDM);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.TagHH". При необходимости она может быть перемещена или удалена.
@@ -1837,7 +1839,7 @@ namespace RPTagsTest
 
             var param = (TagOPCparam)e.Argument; // принимаем параметры в воркер
             this.rPTagsDataSet.TagOPC.Clear();
-            this.tagOPCTableAdapter.Fill(this.rPTagsDataSet.TagOPC, param.PLC, param.SetParam, "FT1");
+            this.tagOPCTableAdapter.Fill(this.rPTagsDataSet.TagOPC, param.PLC, param.SetParam);
         }
 
         
