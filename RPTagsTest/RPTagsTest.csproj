@@ -91,6 +91,9 @@
     <Compile Include="TagChange.Designer.cs">
       <DependentUpon>TagChange.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form2.asa-TZ.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>

@@ -1603,7 +1603,6 @@ namespace RPTagsTest
                         //sw.Write(col.HeaderText + "\t");
                         col_n.Add(col.Index);
                     }
-                sw.WriteLine();
                 int x = table.RowCount;
                 if (table.AllowUserToAddRows) x--;
 
