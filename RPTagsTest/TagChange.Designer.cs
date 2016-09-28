@@ -73,32 +73,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grupTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tagTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hHDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uDMInputDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uDMOutputDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.baseTextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.alarmMSGDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.normalMSGDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.relatedValue1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.relatedValue2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.relatedValue3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.relatedValue4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.relatedValue5DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gMPTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gMPHmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gMPCAVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gMPVAVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gMPDPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tLAMSGDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.filterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gMPWDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             baseTextLabel = new System.Windows.Forms.Label();
             alarmMSGLabel = new System.Windows.Forms.Label();
             normalMSGLabel = new System.Windows.Forms.Label();
@@ -115,7 +90,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.rPTagsDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gruptypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filtresBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // baseTextLabel
@@ -157,7 +131,8 @@
             // relatedValue2Label
             // 
             relatedValue2Label.AutoSize = true;
-            relatedValue2Label.Location = new System.Drawing.Point(341, 78);
+            relatedValue2Label.Enabled = false;
+            relatedValue2Label.Location = new System.Drawing.Point(341, 42);
             relatedValue2Label.Name = "relatedValue2Label";
             relatedValue2Label.Size = new System.Drawing.Size(83, 13);
             relatedValue2Label.TabIndex = 21;
@@ -166,7 +141,7 @@
             // relatedValue3Label
             // 
             relatedValue3Label.AutoSize = true;
-            relatedValue3Label.Location = new System.Drawing.Point(341, 43);
+            relatedValue3Label.Location = new System.Drawing.Point(341, 77);
             relatedValue3Label.Name = "relatedValue3Label";
             relatedValue3Label.Size = new System.Drawing.Size(83, 13);
             relatedValue3Label.TabIndex = 23;
@@ -175,6 +150,7 @@
             // relatedValue4Label
             // 
             relatedValue4Label.AutoSize = true;
+            relatedValue4Label.Enabled = false;
             relatedValue4Label.Location = new System.Drawing.Point(341, 110);
             relatedValue4Label.Name = "relatedValue4Label";
             relatedValue4Label.Size = new System.Drawing.Size(83, 13);
@@ -193,6 +169,7 @@
             // relatedValue5Label
             // 
             relatedValue5Label.AutoSize = true;
+            relatedValue5Label.Enabled = false;
             relatedValue5Label.Location = new System.Drawing.Point(341, 142);
             relatedValue5Label.Name = "relatedValue5Label";
             relatedValue5Label.Size = new System.Drawing.Size(83, 13);
@@ -255,6 +232,7 @@
             this.tableAdapterManager.GruptypeTableAdapter = this.gruptypeTableAdapter;
             this.tableAdapterManager.OPCTableAdapter = null;
             this.tableAdapterManager.PLCTableAdapter = null;
+            this.tableAdapterManager.SAIDNullTableAdapter = null;
             this.tableAdapterManager.SystemaTableAdapter = null;
             this.tableAdapterManager.SystemTypeTableAdapter = null;
             this.tableAdapterManager.TagTableAdapter = null;
@@ -277,6 +255,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(230, 20);
             this.textBox1.TabIndex = 2;
+            this.textBox1.MouseEnter += new System.EventHandler(this.textBox1_MouseEnter);
             // 
             // label1
             // 
@@ -308,6 +287,7 @@
             this.comboBox1.TabIndex = 5;
             this.comboBox1.ValueMember = "id";
             this.comboBox1.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
+            this.comboBox1.MouseEnter += new System.EventHandler(this.comboBox1_MouseEnter);
             // 
             // label3
             // 
@@ -329,6 +309,7 @@
             this.comboBox2.Size = new System.Drawing.Size(230, 21);
             this.comboBox2.TabIndex = 7;
             this.comboBox2.ValueMember = "id";
+            this.comboBox2.MouseEnter += new System.EventHandler(this.comboBox2_MouseEnter);
             // 
             // checkBox1
             // 
@@ -341,6 +322,7 @@
             this.checkBox1.Text = "HH";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox1.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox2
             // 
@@ -353,6 +335,7 @@
             this.checkBox2.Text = "UDM Input";
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox2.MouseEnter += new System.EventHandler(this.checkBox2_MouseEnter);
             // 
             // checkBox3
             // 
@@ -365,6 +348,7 @@
             this.checkBox3.Text = "UDM Output";
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox3.MouseEnter += new System.EventHandler(this.checkBox3_MouseEnter);
             // 
             // textBox2
             // 
@@ -374,6 +358,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(230, 52);
             this.textBox2.TabIndex = 12;
+            this.textBox2.MouseEnter += new System.EventHandler(this.textBox2_MouseEnter);
             // 
             // label4
             // 
@@ -391,6 +376,7 @@
             this.baseTextTextBox.Name = "baseTextTextBox";
             this.baseTextTextBox.Size = new System.Drawing.Size(230, 20);
             this.baseTextTextBox.TabIndex = 14;
+            this.baseTextTextBox.MouseEnter += new System.EventHandler(this.baseTextTextBox_MouseEnter);
             // 
             // alarmMSGTextBox
             // 
@@ -399,6 +385,7 @@
             this.alarmMSGTextBox.Name = "alarmMSGTextBox";
             this.alarmMSGTextBox.Size = new System.Drawing.Size(230, 20);
             this.alarmMSGTextBox.TabIndex = 16;
+            this.alarmMSGTextBox.MouseEnter += new System.EventHandler(this.alarmMSGTextBox_MouseEnter);
             // 
             // normalMSGTextBox
             // 
@@ -407,6 +394,7 @@
             this.normalMSGTextBox.Name = "normalMSGTextBox";
             this.normalMSGTextBox.Size = new System.Drawing.Size(230, 20);
             this.normalMSGTextBox.TabIndex = 18;
+            this.normalMSGTextBox.MouseEnter += new System.EventHandler(this.normalMSGTextBox_MouseEnter);
             // 
             // relatedValue1TextBox
             // 
@@ -415,11 +403,13 @@
             this.relatedValue1TextBox.Name = "relatedValue1TextBox";
             this.relatedValue1TextBox.Size = new System.Drawing.Size(209, 20);
             this.relatedValue1TextBox.TabIndex = 20;
+            this.relatedValue1TextBox.MouseEnter += new System.EventHandler(this.relatedValue1TextBox_MouseEnter);
             // 
             // relatedValue2TextBox
             // 
             this.relatedValue2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource, "RelatedValue2", true));
-            this.relatedValue2TextBox.Location = new System.Drawing.Point(430, 75);
+            this.relatedValue2TextBox.Enabled = false;
+            this.relatedValue2TextBox.Location = new System.Drawing.Point(430, 39);
             this.relatedValue2TextBox.Name = "relatedValue2TextBox";
             this.relatedValue2TextBox.Size = new System.Drawing.Size(209, 20);
             this.relatedValue2TextBox.TabIndex = 22;
@@ -427,14 +417,16 @@
             // relatedValue3TextBox
             // 
             this.relatedValue3TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource, "RelatedValue3", true));
-            this.relatedValue3TextBox.Location = new System.Drawing.Point(430, 40);
+            this.relatedValue3TextBox.Location = new System.Drawing.Point(430, 74);
             this.relatedValue3TextBox.Name = "relatedValue3TextBox";
             this.relatedValue3TextBox.Size = new System.Drawing.Size(209, 20);
             this.relatedValue3TextBox.TabIndex = 24;
+            this.relatedValue3TextBox.MouseEnter += new System.EventHandler(this.relatedValue3TextBox_MouseEnter);
             // 
             // relatedValue4TextBox
             // 
             this.relatedValue4TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource, "RelatedValue4", true));
+            this.relatedValue4TextBox.Enabled = false;
             this.relatedValue4TextBox.Location = new System.Drawing.Point(430, 107);
             this.relatedValue4TextBox.Name = "relatedValue4TextBox";
             this.relatedValue4TextBox.Size = new System.Drawing.Size(209, 20);
@@ -447,10 +439,12 @@
             this.tLA_MSGTextBox.Name = "tLA_MSGTextBox";
             this.tLA_MSGTextBox.Size = new System.Drawing.Size(230, 20);
             this.tLA_MSGTextBox.TabIndex = 28;
+            this.tLA_MSGTextBox.MouseEnter += new System.EventHandler(this.tLA_MSGTextBox_MouseEnter);
             // 
             // relatedValue5TextBox
             // 
             this.relatedValue5TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource, "RelatedValue5", true));
+            this.relatedValue5TextBox.Enabled = false;
             this.relatedValue5TextBox.Location = new System.Drawing.Point(430, 139);
             this.relatedValue5TextBox.Name = "relatedValue5TextBox";
             this.relatedValue5TextBox.Size = new System.Drawing.Size(209, 20);
@@ -458,7 +452,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(242, 349);
+            this.button1.Location = new System.Drawing.Point(237, 369);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 31;
@@ -468,7 +462,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(340, 349);
+            this.button2.Location = new System.Drawing.Point(344, 369);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 32;
@@ -487,200 +481,24 @@
             this.comboBox3.Size = new System.Drawing.Size(209, 21);
             this.comboBox3.TabIndex = 33;
             this.comboBox3.ValueMember = "id";
+            this.comboBox3.MouseEnter += new System.EventHandler(this.comboBox3_MouseEnter);
             // 
-            // dataGridView1
+            // richTextBox1
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.grupTypeDataGridViewTextBoxColumn,
-            this.tagTypeDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.hHDataGridViewTextBoxColumn,
-            this.uDMInputDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn,
-            this.uDMOutputDataGridViewTextBoxColumn,
-            this.tTypeDataGridViewTextBoxColumn,
-            this.baseTextDataGridViewTextBoxColumn,
-            this.alarmMSGDataGridViewTextBoxColumn,
-            this.normalMSGDataGridViewTextBoxColumn,
-            this.relatedValue1DataGridViewTextBoxColumn,
-            this.relatedValue2DataGridViewTextBoxColumn,
-            this.relatedValue3DataGridViewTextBoxColumn,
-            this.relatedValue4DataGridViewTextBoxColumn,
-            this.relatedValue5DataGridViewTextBoxColumn,
-            this.gMPTDataGridViewTextBoxColumn,
-            this.gMPHmDataGridViewTextBoxColumn,
-            this.gMPCAVDataGridViewTextBoxColumn,
-            this.gMPVAVDataGridViewTextBoxColumn,
-            this.gMPDPDataGridViewTextBoxColumn,
-            this.tLAMSGDataGridViewTextBoxColumn,
-            this.filterDataGridViewTextBoxColumn,
-            this.gMPWDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.tagBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 378);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(782, 150);
-            this.dataGridView1.TabIndex = 34;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // grupTypeDataGridViewTextBoxColumn
-            // 
-            this.grupTypeDataGridViewTextBoxColumn.DataPropertyName = "GrupType";
-            this.grupTypeDataGridViewTextBoxColumn.HeaderText = "GrupType";
-            this.grupTypeDataGridViewTextBoxColumn.Name = "grupTypeDataGridViewTextBoxColumn";
-            // 
-            // tagTypeDataGridViewTextBoxColumn
-            // 
-            this.tagTypeDataGridViewTextBoxColumn.DataPropertyName = "TagType";
-            this.tagTypeDataGridViewTextBoxColumn.HeaderText = "TagType";
-            this.tagTypeDataGridViewTextBoxColumn.Name = "tagTypeDataGridViewTextBoxColumn";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // hHDataGridViewTextBoxColumn
-            // 
-            this.hHDataGridViewTextBoxColumn.DataPropertyName = "HH";
-            this.hHDataGridViewTextBoxColumn.HeaderText = "HH";
-            this.hHDataGridViewTextBoxColumn.Name = "hHDataGridViewTextBoxColumn";
-            // 
-            // uDMInputDataGridViewTextBoxColumn
-            // 
-            this.uDMInputDataGridViewTextBoxColumn.DataPropertyName = "UDM_Input";
-            this.uDMInputDataGridViewTextBoxColumn.HeaderText = "UDM_Input";
-            this.uDMInputDataGridViewTextBoxColumn.Name = "uDMInputDataGridViewTextBoxColumn";
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            // 
-            // uDMOutputDataGridViewTextBoxColumn
-            // 
-            this.uDMOutputDataGridViewTextBoxColumn.DataPropertyName = "UDM_Output";
-            this.uDMOutputDataGridViewTextBoxColumn.HeaderText = "UDM_Output";
-            this.uDMOutputDataGridViewTextBoxColumn.Name = "uDMOutputDataGridViewTextBoxColumn";
-            // 
-            // tTypeDataGridViewTextBoxColumn
-            // 
-            this.tTypeDataGridViewTextBoxColumn.DataPropertyName = "TType";
-            this.tTypeDataGridViewTextBoxColumn.HeaderText = "TType";
-            this.tTypeDataGridViewTextBoxColumn.Name = "tTypeDataGridViewTextBoxColumn";
-            // 
-            // baseTextDataGridViewTextBoxColumn
-            // 
-            this.baseTextDataGridViewTextBoxColumn.DataPropertyName = "BaseText";
-            this.baseTextDataGridViewTextBoxColumn.HeaderText = "BaseText";
-            this.baseTextDataGridViewTextBoxColumn.Name = "baseTextDataGridViewTextBoxColumn";
-            // 
-            // alarmMSGDataGridViewTextBoxColumn
-            // 
-            this.alarmMSGDataGridViewTextBoxColumn.DataPropertyName = "AlarmMSG";
-            this.alarmMSGDataGridViewTextBoxColumn.HeaderText = "AlarmMSG";
-            this.alarmMSGDataGridViewTextBoxColumn.Name = "alarmMSGDataGridViewTextBoxColumn";
-            // 
-            // normalMSGDataGridViewTextBoxColumn
-            // 
-            this.normalMSGDataGridViewTextBoxColumn.DataPropertyName = "NormalMSG";
-            this.normalMSGDataGridViewTextBoxColumn.HeaderText = "NormalMSG";
-            this.normalMSGDataGridViewTextBoxColumn.Name = "normalMSGDataGridViewTextBoxColumn";
-            // 
-            // relatedValue1DataGridViewTextBoxColumn
-            // 
-            this.relatedValue1DataGridViewTextBoxColumn.DataPropertyName = "RelatedValue1";
-            this.relatedValue1DataGridViewTextBoxColumn.HeaderText = "RelatedValue1";
-            this.relatedValue1DataGridViewTextBoxColumn.Name = "relatedValue1DataGridViewTextBoxColumn";
-            // 
-            // relatedValue2DataGridViewTextBoxColumn
-            // 
-            this.relatedValue2DataGridViewTextBoxColumn.DataPropertyName = "RelatedValue2";
-            this.relatedValue2DataGridViewTextBoxColumn.HeaderText = "RelatedValue2";
-            this.relatedValue2DataGridViewTextBoxColumn.Name = "relatedValue2DataGridViewTextBoxColumn";
-            // 
-            // relatedValue3DataGridViewTextBoxColumn
-            // 
-            this.relatedValue3DataGridViewTextBoxColumn.DataPropertyName = "RelatedValue3";
-            this.relatedValue3DataGridViewTextBoxColumn.HeaderText = "RelatedValue3";
-            this.relatedValue3DataGridViewTextBoxColumn.Name = "relatedValue3DataGridViewTextBoxColumn";
-            // 
-            // relatedValue4DataGridViewTextBoxColumn
-            // 
-            this.relatedValue4DataGridViewTextBoxColumn.DataPropertyName = "RelatedValue4";
-            this.relatedValue4DataGridViewTextBoxColumn.HeaderText = "RelatedValue4";
-            this.relatedValue4DataGridViewTextBoxColumn.Name = "relatedValue4DataGridViewTextBoxColumn";
-            // 
-            // relatedValue5DataGridViewTextBoxColumn
-            // 
-            this.relatedValue5DataGridViewTextBoxColumn.DataPropertyName = "RelatedValue5";
-            this.relatedValue5DataGridViewTextBoxColumn.HeaderText = "RelatedValue5";
-            this.relatedValue5DataGridViewTextBoxColumn.Name = "relatedValue5DataGridViewTextBoxColumn";
-            // 
-            // gMPTDataGridViewTextBoxColumn
-            // 
-            this.gMPTDataGridViewTextBoxColumn.DataPropertyName = "GMPT";
-            this.gMPTDataGridViewTextBoxColumn.HeaderText = "GMPT";
-            this.gMPTDataGridViewTextBoxColumn.Name = "gMPTDataGridViewTextBoxColumn";
-            // 
-            // gMPHmDataGridViewTextBoxColumn
-            // 
-            this.gMPHmDataGridViewTextBoxColumn.DataPropertyName = "GMPHm";
-            this.gMPHmDataGridViewTextBoxColumn.HeaderText = "GMPHm";
-            this.gMPHmDataGridViewTextBoxColumn.Name = "gMPHmDataGridViewTextBoxColumn";
-            // 
-            // gMPCAVDataGridViewTextBoxColumn
-            // 
-            this.gMPCAVDataGridViewTextBoxColumn.DataPropertyName = "GMPCAV";
-            this.gMPCAVDataGridViewTextBoxColumn.HeaderText = "GMPCAV";
-            this.gMPCAVDataGridViewTextBoxColumn.Name = "gMPCAVDataGridViewTextBoxColumn";
-            // 
-            // gMPVAVDataGridViewTextBoxColumn
-            // 
-            this.gMPVAVDataGridViewTextBoxColumn.DataPropertyName = "GMPVAV";
-            this.gMPVAVDataGridViewTextBoxColumn.HeaderText = "GMPVAV";
-            this.gMPVAVDataGridViewTextBoxColumn.Name = "gMPVAVDataGridViewTextBoxColumn";
-            // 
-            // gMPDPDataGridViewTextBoxColumn
-            // 
-            this.gMPDPDataGridViewTextBoxColumn.DataPropertyName = "GMPDP";
-            this.gMPDPDataGridViewTextBoxColumn.HeaderText = "GMPDP";
-            this.gMPDPDataGridViewTextBoxColumn.Name = "gMPDPDataGridViewTextBoxColumn";
-            // 
-            // tLAMSGDataGridViewTextBoxColumn
-            // 
-            this.tLAMSGDataGridViewTextBoxColumn.DataPropertyName = "TLA_MSG";
-            this.tLAMSGDataGridViewTextBoxColumn.HeaderText = "TLA_MSG";
-            this.tLAMSGDataGridViewTextBoxColumn.Name = "tLAMSGDataGridViewTextBoxColumn";
-            // 
-            // filterDataGridViewTextBoxColumn
-            // 
-            this.filterDataGridViewTextBoxColumn.DataPropertyName = "Filter";
-            this.filterDataGridViewTextBoxColumn.HeaderText = "Filter";
-            this.filterDataGridViewTextBoxColumn.Name = "filterDataGridViewTextBoxColumn";
-            // 
-            // gMPWDataGridViewTextBoxColumn
-            // 
-            this.gMPWDataGridViewTextBoxColumn.DataPropertyName = "GMPW";
-            this.gMPWDataGridViewTextBoxColumn.HeaderText = "GMPW";
-            this.gMPWDataGridViewTextBoxColumn.Name = "gMPWDataGridViewTextBoxColumn";
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Location = new System.Drawing.Point(82, 305);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(557, 58);
+            this.richTextBox1.TabIndex = 34;
+            this.richTextBox1.Text = "";
             // 
             // TagChange
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(845, 566);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(657, 401);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(filterLabel);
             this.Controls.Add(this.button2);
@@ -723,7 +541,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.rPTagsDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gruptypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.filtresBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -764,31 +581,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn grupTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tagTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hHDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn uDMInputDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn uDMOutputDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn baseTextDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn alarmMSGDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn normalMSGDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn relatedValue1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn relatedValue2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn relatedValue3DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn relatedValue4DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn relatedValue5DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gMPTDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gMPHmDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gMPCAVDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gMPVAVDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gMPDPDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tLAMSGDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn filterDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gMPWDataGridViewTextBoxColumn;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
