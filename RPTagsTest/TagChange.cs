@@ -153,7 +153,6 @@ namespace RPTagsTest
                 checkBox2.Checked = true;
                 checkBox3.Checked = true;
             }
-            
             // для алармов по умолчанию считаем
             if (comboBox1.SelectedValue.ToString() == "3")
             {
@@ -164,24 +163,25 @@ namespace RPTagsTest
                 baseTextTextBox.ReadOnly = false;
                 alarmMSGTextBox.ReadOnly = false;
                 normalMSGTextBox.ReadOnly = false;
+                tLA_MSGTextBox.ReadOnly = false;
                 relatedValue1TextBox.ReadOnly = false;
                 relatedValue3TextBox.ReadOnly = false;
                 relatedValue2TextBox.ReadOnly = false;
                 relatedValue4TextBox.ReadOnly = false;
                 relatedValue5TextBox.ReadOnly = false;
-                tLA_MSGTextBox.ReadOnly = false;
+
 
             } else
             {
                 baseTextTextBox.ReadOnly = true;
                 alarmMSGTextBox.ReadOnly = true;
                 normalMSGTextBox.ReadOnly = true;
+                tLA_MSGTextBox.ReadOnly = true;
                 relatedValue1TextBox.ReadOnly = true;
                 relatedValue3TextBox.ReadOnly = true;
                 relatedValue2TextBox.ReadOnly = true;
                 relatedValue4TextBox.ReadOnly = true;
                 relatedValue5TextBox.ReadOnly = true;
-                tLA_MSGTextBox.ReadOnly = true;
             }
             // для ACK по умолчанию считаем
             if (comboBox1.SelectedValue.ToString() == "4")
@@ -314,78 +314,6 @@ namespace RPTagsTest
                 this.Close();
             
 
-        }
-        // подсказки!
-        private void textBox1_MouseEnter(object sender, EventArgs e)
-        {
-            richTextBox1.Text = "Имя тега, является обязательным параметров фигурирует во всех файлах конфигурации.";
-        }
-
-        private void comboBox1_MouseEnter(object sender, EventArgs e)
-        {
-            richTextBox1.Text = "Тип тега, является обязательным параметров. Alarm - аварийный параметр, " +
-                "State - значение, Set - уставка параметра, ACK - тег квитирования аварии (не применим отдельно от тега Alarm).";
-        }
-
-        private void comboBox2_MouseEnter(object sender, EventArgs e)
-        {
-            richTextBox1.Text = "Тип группы. Определяет принадлежность тега к тому или иному набору.";
-        }
-
-        private void textBox2_MouseEnter(object sender, EventArgs e)
-        {
-            richTextBox1.Text = "Примечание. Должен содержать краткое описание тега.";
-        }
-
-        private void baseTextTextBox_MouseEnter(object sender, EventArgs e)
-        {
-            richTextBox1.Text = "Базовый текст. Только для Alarm. Содержит описание параметра или устройства для которого возникло аварийное событие.";
-        }
-
-        private void alarmMSGTextBox_MouseEnter(object sender, EventArgs e)
-        {
-            richTextBox1.Text = "Аварийное сообщение. Только для Alarm. Сообщение возникающее при аварии. Дополняет базовый текст.";
-        }
-
-        private void normalMSGTextBox_MouseEnter(object sender, EventArgs e)
-        {
-            richTextBox1.Text = "Сообщение при возвращении параметра в норму. Только для Alarm. Дополняет базовый текст.";
-        }
-
-        private void tLA_MSGTextBox_MouseEnter(object sender, EventArgs e)
-        {
-            richTextBox1.Text = "Только для Alarm. При наличии текста в поле будет сформирован тег контроля изменения уставки для соответствующего аварийнго параметра."+
-                " Включенная опция UDM_input формирует TLA событие совместное с Alarm. Отключеная опция формирует отдельный TLA Alarm тег.";
-        }
-
-        private void relatedValue1TextBox_MouseEnter(object sender, EventArgs e)
-        {
-            richTextBox1.Text = "Применяется для описания предельных аварийных событий, например: \"Верхний аварийный предел\".";
-        }
-
-        private void relatedValue3TextBox_MouseEnter(object sender, EventArgs e)
-        {
-            richTextBox1.Text = "Применяется для описание устройства в котором произошла авария.";
-        }
-
-        private void comboBox3_MouseEnter(object sender, EventArgs e)
-        {
-            richTextBox1.Text = "Применяется для тегов с опцией HH.";
-        }
-
-        private void checkBox1_MouseEnter(object sender, EventArgs e)
-        {
-            richTextBox1.Text = "Опция определяет попадание тега в Hyper Historian";
-        }
-
-        private void checkBox2_MouseEnter(object sender, EventArgs e)
-        {
-            richTextBox1.Text = "Опция определяет попадание тега в UDM, и формирование входного тега";
-        }
-
-        private void checkBox3_MouseEnter(object sender, EventArgs e)
-        {
-            richTextBox1.Text = "Опция определяет попадание тега в UDM, и формирование выходного тега";
         }
     }
 }
