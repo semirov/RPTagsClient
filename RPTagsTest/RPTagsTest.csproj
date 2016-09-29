@@ -79,6 +79,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RPTagsDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="RPTagsDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPTagsDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SQLConnection.cs">
       <SubType>Form</SubType>
     </Compile>
