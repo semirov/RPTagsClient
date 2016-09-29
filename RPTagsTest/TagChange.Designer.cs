@@ -232,7 +232,7 @@
             this.tableAdapterManager.GruptypeTableAdapter = this.gruptypeTableAdapter;
             this.tableAdapterManager.OPCTableAdapter = null;
             this.tableAdapterManager.PLCTableAdapter = null;
-            this.tableAdapterManager.SAIDNullTableAdapter = null;
+          //  this.tableAdapterManager.SAIDNullTableAdapter = null;
             this.tableAdapterManager.SystemaTableAdapter = null;
             this.tableAdapterManager.SystemTypeTableAdapter = null;
             this.tableAdapterManager.TagTableAdapter = null;
