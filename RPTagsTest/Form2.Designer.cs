@@ -1162,7 +1162,6 @@
             this.dataGridView7.DataSource = this.deviceTagBindingSource;
             resources.ApplyResources(this.dataGridView7, "dataGridView7");
             this.dataGridView7.Name = "dataGridView7";
-            this.dataGridView7.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView7_CellEndEdit);
             this.dataGridView7.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView6_DataError);
             // 
             // sysidDataGridViewTextBoxColumn1

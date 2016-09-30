@@ -83,10 +83,9 @@ namespace RPTagsTest
             
             
             dataGridView7.CellEndEdit += DataGridView7_CellEndEdit;
-            dataGridView7.CellLeave += DataGridView7_CellEndEdit;
-            //dataGridView7.
-            dataGridView7.RowsRemoved += DataGridView7_RowsRemoved;
-            dataGridView7.RowsAdded += DataGridView7_RowsAdded;
+           
+            
+           
         }
 
         #region основные таблицы
@@ -864,20 +863,19 @@ namespace RPTagsTest
         //----------------Девайс---------------------------------------------------------------------------------------------------
         private void change_device_tag()
         {
-            bool add = false;
-            bool del = false;
-            bool mod = false;
+            bool notsaved = false;
+            
             if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Added) != null)
             {
                 DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Added));
                 tabPage7.Text = "+Устройство";
-                add = true;
+                notsaved = true;
             }
             if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Deleted) != null)
             {
                 DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Deleted));
                 tabPage7.Text = "-Устройство";
-                del = true;
+                notsaved = true;
             }
             
             if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified) != null)
@@ -885,20 +883,13 @@ namespace RPTagsTest
                 DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified));
                 tabPage7.Text = "*Устройство";
                 DataGridView dtw = dataGridView7;
-                int x = dtw.CurrentCell.RowIndex;
-                int y = dtw.CurrentCell.ColumnIndex;
-                Validate();
-                dtw.Update();
-                dtw.EndEdit();
-                dtw.CurrentCell = dtw[y, x];
-                mod = true;
+
+                notsaved = true;
             }
-            if (add || mod || del)
+            if (notsaved)
             {
                 rPTagsDataSet.Device_Tag.AcceptChanges();
-                add = false;
-                del = false;
-                mod = false;
+                notsaved = false;
             }
 
         }
@@ -952,12 +943,7 @@ namespace RPTagsTest
         {
             toolStripStatusLabel4.Text = "";
             change_device_tag();
-        }
-        private void DefectDevice_tag()
-        {
-           
-        }    
-       
+        }     
         private void tabPage7_Enter(object sender, EventArgs e) // устройство
         {
             try
@@ -1001,7 +987,7 @@ namespace RPTagsTest
 
 
                                     rPTagsDataSet.Device_Tag.AddDevice_TagRow(newRow);
-                                   // device_TagTableAdapter.Update(rPTagsDataSet.Device_Tag);
+                                    change_device_tag();
                                 }
                             }
                         }
@@ -1046,7 +1032,7 @@ namespace RPTagsTest
 
 
                                     rPTagsDataSet.Device_Tag.AddDevice_TagRow(newRow);
-                                  //  device_TagTableAdapter.Update(rPTagsDataSet.Device_Tag);
+                                    change_device_tag();
                                 }
                             }
                         }
@@ -1090,7 +1076,7 @@ namespace RPTagsTest
                                     newRow.Gr_id = Convert.ToInt16(row["Gr_id"]);
                                     newRow.Tag_id = Convert.ToInt16(row["Tag_id"]);
                                     rPTagsDataSet.Device_Tag.AddDevice_TagRow(newRow);
-                                  //  device_TagTableAdapter.Update(rPTagsDataSet.Device_Tag);
+                                    change_device_tag();
                                 }
                             }
                         }
@@ -1117,23 +1103,17 @@ namespace RPTagsTest
             }
             
         }
-        private void DataGridView7_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            change_device_tag();
-        }           
-        private void DataGridView7_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
-        {
-            change_device_tag();
-        }
         private void DataGridView7_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            change_device_tag();
+            if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified) != null)
+            {
+                DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified));
+                tabPage7.Text = "*Устройство";
+            }
         }
-
-            
         private void tabPage7_Leave(object sender, EventArgs e)
         {
-
+            change_device_tag();
         }       
         private void toolStripMenuItem26_Click(object sender, EventArgs e) // удалить
         {
@@ -1141,6 +1121,7 @@ namespace RPTagsTest
             {
                 int index = Convert.ToInt16(dataGridView7.CurrentRow.Index);
                 dataGridView7.Rows.RemoveAt(index);
+                change_device_tag();
             }
             catch
             {
@@ -1158,27 +1139,6 @@ namespace RPTagsTest
 
                 DataGridView dtw = dataGridView7;
                 
-                if (dtw.Rows.Count > 1)
-                {
-                    int x = dtw.CurrentCell.RowIndex;
-                    int y = dtw.CurrentCell.ColumnIndex;
-                    if (x > 0)
-                    {
-                        x--;
-                        
-                        x++;
-                        dtw.CurrentCell = dtw[y, x];
-
-                    }
-                    else
-                    {
-                        
-                        
-                        dtw.CurrentCell = dtw[y, x];
-                    }
-                }
-
-
 
                 device_TagTableAdapter.Update(DeviceTag_temp_DT);
                 tabPage7.Text = "Устройство";
