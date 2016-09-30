@@ -868,7 +868,7 @@ namespace RPTagsTest
             {
 
                 int sys_id = Convert.ToInt16(rPTagsDataSet.Device_Tag[0]["Sys_id"]);
-                sAIDNullTableAdapter.FillBySystema(rPTagsDataSet.SAIDNull, sys_id);
+                sAIDNullTableAdapter.FillBySystemaDefect(rPTagsDataSet.SAIDNull, sys_id);
                 DataView dw = new DataView(rPTagsDataSet.SAIDNull);
                 int failrows = 0;
                 int maximum = 0;
