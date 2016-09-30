@@ -21,5 +21,8 @@ namespace RPTagsTest
 
     public partial class RPTagsDataSet
     {
+        partial class Device_TagDataTable
+        {
+        }
     }
 }

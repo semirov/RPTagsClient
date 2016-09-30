@@ -39,7 +39,7 @@ namespace RPTagsTest
         DataTable temp_Modifed_SystemTypeDataTable = new DataTable("temp_Modifed_SystemTypeDataTable");
         DataTable temp_Modifed_GrupTypeDataTable = new DataTable("temp_Modifed_GrupTypeDataTable");
         DataTable temp_Modifed_TagTypeDataTable = new DataTable("temp_Modifed_TagTypeDataTable");
-        DataTable temp_Modifed_DeviceTagDataTable = new DataTable("temp_Modifed_DeviceTagDataTable");
+        RPTagsDataSet.Device_TagDataTable DeviceTag_temp_DT = new RPTagsDataSet.Device_TagDataTable();
 
         bool changed_Modifed_KorpusDataTable;
         bool changed_Modifed_PLCDataTable;
@@ -50,7 +50,6 @@ namespace RPTagsTest
         bool changed_Modifed_SystemTypeDataTable;
         bool changed_Modifed_GrupTypeDataTable;
         bool changed_Modifed_TagTypeDataTable;
-        bool changed_Modifed_DeviceTagDataTable;
 
         bool devicetaganalizebegin = false;
 
@@ -78,6 +77,16 @@ namespace RPTagsTest
 
             backgroundWorker5.WorkerReportsProgress = true;
             backgroundWorker5.WorkerSupportsCancellation = true;
+
+           
+            
+            
+            
+            dataGridView7.CellEndEdit += DataGridView7_CellEndEdit;
+            dataGridView7.CellLeave += DataGridView7_CellEndEdit;
+            //dataGridView7.
+            dataGridView7.RowsRemoved += DataGridView7_RowsRemoved;
+            dataGridView7.RowsAdded += DataGridView7_RowsAdded;
         }
 
         #region основные таблицы
@@ -141,7 +150,7 @@ namespace RPTagsTest
 
 
 
-            temp_Modifed_DeviceTagDataTable.Columns.Add();
+           
 
             TagChange newForm = new TagChange();
             newForm.Owner = this;
@@ -150,8 +159,9 @@ namespace RPTagsTest
 
             prename = DateTime.Today.Day.ToString() + DateTime.Today.Month.ToString() + DateTime.Today.Year.ToString(); //нужно для имени файла конфигурации
                                                                                                                         //toolStripStatusLabel3.Text = prename;
+            tooltiptext();
 
-            
+
 
         }
         
@@ -267,7 +277,7 @@ namespace RPTagsTest
         {
             toolStripStatusLabel2.Text = "";
         }
-        //-----------------------------------------------------------------------------
+      
 
         //----------------Корпус---------------------------------------------------------------------------------------------------
         private void tabPage1_Enter(object sender, EventArgs e) // Корпус
@@ -858,25 +868,28 @@ namespace RPTagsTest
             {
                 int failrows = 0;
                 int maximum = 0;
+                
                 rPTagsDataSet.SAIDNull.Clear();
                 maximum = rPTagsDataSet.Device_Tag.Count;
-                foreach (DataRow row in rPTagsDataSet.Device_Tag)
+                foreach (DataRow row in rPTagsDataSet.Device_Tag.Select())
                 {
                     int sys_id = Convert.ToInt16(row["Sys_id"]);
                     int gr_id = Convert.ToInt16(row["Gr_id"]);
                     int tag_id = Convert.ToInt16(row["Tag_id"]);
                     sAIDNullTableAdapter.FillBySysGrTagDefect(rPTagsDataSet.SAIDNull, gr_id, sys_id, tag_id);
+                    rPTagsDataSet.SAIDNull.
                     if (rPTagsDataSet.SAIDNull.Rows.Count == 0)
                     {
                         failrows++;
                         row.Delete();
+                        //arr. row.ItemArray;
                         
                     }
 
                 }
                 // проведем анализ в потоке
                 devicetaganalizebegin = false;
-                DeviceTag_changed();
+                //DeviceTag_changed();
 
                 if (failrows != 0)
                 {
@@ -891,22 +904,8 @@ namespace RPTagsTest
             {
                 toolStripStatusLabel2.Text = "Кто - то накосячил с DataSet";
             }
-        }
-    
-        private void проверитьОшибкиToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            rPTagsDataSet.TagIdTagTypeID.Clear();
-            tagIdTagTypeIDTableAdapter.Fill(rPTagsDataSet.TagIdTagTypeID);
-
-
-            if (!devicetaganalizebegin)
-            {
-            devicetaganalizebegin = true;
-            // проведем анализ в потоке
-            DefectDevice_tag();
-            }
-
-        }
+        }    
+       
         private void tabPage7_Enter(object sender, EventArgs e) // устройство
         {
             try
@@ -950,7 +949,7 @@ namespace RPTagsTest
 
 
                                     rPTagsDataSet.Device_Tag.AddDevice_TagRow(newRow);
-                                    device_TagTableAdapter.Update(rPTagsDataSet.Device_Tag);
+                                   // device_TagTableAdapter.Update(rPTagsDataSet.Device_Tag);
                                 }
                             }
                         }
@@ -995,7 +994,7 @@ namespace RPTagsTest
 
 
                                     rPTagsDataSet.Device_Tag.AddDevice_TagRow(newRow);
-                                    device_TagTableAdapter.Update(rPTagsDataSet.Device_Tag);
+                                  //  device_TagTableAdapter.Update(rPTagsDataSet.Device_Tag);
                                 }
                             }
                         }
@@ -1039,7 +1038,7 @@ namespace RPTagsTest
                                     newRow.Gr_id = Convert.ToInt16(row["Gr_id"]);
                                     newRow.Tag_id = Convert.ToInt16(row["Tag_id"]);
                                     rPTagsDataSet.Device_Tag.AddDevice_TagRow(newRow);
-                                    device_TagTableAdapter.Update(rPTagsDataSet.Device_Tag);
+                                  //  device_TagTableAdapter.Update(rPTagsDataSet.Device_Tag);
                                 }
                             }
                         }
@@ -1066,41 +1065,52 @@ namespace RPTagsTest
             }
             
         }
-        private void DeviceTag_changed()
+        private void DataGridView7_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified) != null)
-            {
-
-                temp_Modifed_DeviceTagDataTable.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified),true);
-                
-                tabPage7.Text = "*Устройство";
-                changed_Modifed_DeviceTagDataTable = true;
-            }
             if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Added) != null)
             {
-                temp_Modifed_DeviceTagDataTable.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Added), true);
-                
-                tabPage7.Text = "*Устройство";
-                changed_Modifed_DeviceTagDataTable = true;
+                DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Added));
+                rPTagsDataSet.Device_Tag.AcceptChanges();
+                tabPage7.Text = "+Устройство";
             }
+        }
+              
+        private void DataGridView7_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+           
             if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Deleted) != null)
             {
-                temp_Modifed_DeviceTagDataTable.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Deleted), true);
-                
+                DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Deleted));
+                rPTagsDataSet.Device_Tag.AcceptChanges();
+                tabPage7.Text = "-Устройство";
+            }
+        }
+        private void DataGridView7_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dtw = dataGridView7;
+            int x = dtw.CurrentCell.RowIndex;
+            int y = dtw.CurrentCell.ColumnIndex;
+            Validate();
+            dtw.Update();
+            dtw.EndEdit();
+            if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified) != null)
+            {
+                DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified));
+                rPTagsDataSet.Device_Tag.AcceptChanges();
                 tabPage7.Text = "*Устройство";
 
-                changed_Modifed_DeviceTagDataTable = true;
-            }
-            dataGridView18.DataSource = temp_Modifed_DeviceTagDataTable;
 
-        } // ловим изменения
-        private void dataGridView7_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DeviceTag_changed();
+
+
+                dtw.CurrentCell = dtw[y, x];
+
+            }
         }
+
+            
         private void tabPage7_Leave(object sender, EventArgs e)
         {
-           // DeviceTag_changed();
+
         }       
         private void toolStripMenuItem26_Click(object sender, EventArgs e) // удалить
         {
@@ -1116,49 +1126,61 @@ namespace RPTagsTest
         }
         private void toolStripMenuItem27_Click(object sender, EventArgs e) // сохранить
         {
-            // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
-            // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
-            
-            DataGridView dtw = dataGridView7;
-            if (dtw.Rows.Count > 1)
-            {
-                int x = dtw.CurrentCell.RowIndex;
-                int y = dtw.CurrentCell.ColumnIndex;
-                if (x > 0)
-                {
-                    x--;
-                    dtw.CurrentCell = dtw[y, x];
-                    x++;
-                    dtw.CurrentCell = dtw[y, x];
-
-                }
-                else
-                {
-                    x++;
-                    dtw.CurrentCell = dtw[y, x];
-                    x--;
-                    dtw.CurrentCell = dtw[y, x];
-                }
-            }
-
             try
             {
-                if (changed_Modifed_DeviceTagDataTable)
+                
+
+                // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
+                // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
+
+                DataGridView dtw = dataGridView7;
+                
+                if (dtw.Rows.Count > 1)
                 {
+                    int x = dtw.CurrentCell.RowIndex;
+                    int y = dtw.CurrentCell.ColumnIndex;
+                    if (x > 0)
+                    {
+                        x--;
+                        
+                        x++;
+                        dtw.CurrentCell = dtw[y, x];
 
-                    rPTagsDataSet.Device_Tag.Merge(temp_Modifed_DeviceTagDataTable);
-                    tabPage7.Text = "Устройство";
-                    device_TagTableAdapter.Update(rPTagsDataSet.Device_Tag);
-
-                    
-                    changed_Modifed_DeviceTagDataTable = false;
-                    temp_Modifed_DeviceTagDataTable.Clear();
+                    }
+                    else
+                    {
+                        
+                        
+                        dtw.CurrentCell = dtw[y, x];
+                    }
                 }
-            } catch (System.Data.DBConcurrencyException)
+
+
+
+                device_TagTableAdapter.Update(DeviceTag_temp_DT);
+                tabPage7.Text = "Устройство";
+                dtw.DataSource = null;
+                dtw.DataSource = rPTagsDataSet.Device_Tag;
+            }
+            catch (DBConcurrencyException)
             {
                 toolStripStatusLabel2.Text = "Что - то пошло не так";
-
+                
             }
+        }
+        private void проверитьОшибкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rPTagsDataSet.TagIdTagTypeID.Clear();
+            tagIdTagTypeIDTableAdapter.Fill(rPTagsDataSet.TagIdTagTypeID);
+
+
+            if (!devicetaganalizebegin)
+            {
+                devicetaganalizebegin = true;
+                // проведем анализ в потоке
+                DefectDevice_tag();
+            }
+
         }
 
         #endregion основные таблицы
@@ -1431,7 +1453,28 @@ namespace RPTagsTest
         }
         private void dataGridView14_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            GrupType_changed();
+            
+            try
+            {
+                if (dataGridView14.CurrentRow != null)
+                {
+                    int index = Convert.ToInt16(dataGridView14.CurrentRow.Index);
+                    int id = Convert.ToInt16(rPTagsDataSet.Gruptype[index]["id"]);
+
+                    this.tagTableAdapter.FillByGrupType(this.rPTagsDataSet.Tag, id);
+                }
+                else
+                {
+                   
+                }
+                GrupType_changed();
+                
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
         }
 
         //--------------Тип тега---------------------------------------------------------------------------------------
@@ -1614,10 +1657,7 @@ namespace RPTagsTest
                 dataGridView16.AllowUserToAddRows = false;
                 changed_Modifed_OPCDataTable = false;
             }
-        }
-
-       
-
+        }    
         private void dataGridView16_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             OPC_changed();
@@ -1626,11 +1666,7 @@ namespace RPTagsTest
         #endregion второстепенные таблицы
         //----------------------------------------------------------------------------------------------------
 
-        private void dataGridView6_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-            toolStripStatusLabel2.Text = "     Какие то проблемы с датагридом";
-           
-        } // обработчик ошибок
+       
        
       
         #region конфигурации
@@ -1646,7 +1682,7 @@ namespace RPTagsTest
                    filename += ".csv";
                 string fullfilepatch = patch + "\\" + filename;
                 Directory.CreateDirectory(patch);
-                StreamWriter sw = new StreamWriter(fullfilepatch, false, Encoding.Unicode);
+                StreamWriter sw = new StreamWriter(fullfilepatch, false, Encoding.UTF8);
 
                 List<int> col_n = new List<int>();
                 foreach (DataGridViewColumn col in table.Columns)
@@ -1728,6 +1764,15 @@ namespace RPTagsTest
                 checkBox5.Checked = true;
                 checkBox6.Checked = true;
                 checkBox7.Checked = true;
+                // если грузим конфиги по корпусу нужно заблокировать 
+                //stable конфигурации (хотя возможно позже их можно будет разделить по корпусам)
+                checkBox1.Checked = true;
+                checkBox1.Enabled = true;
+                checkBox2.Checked = true;
+                checkBox2.Enabled = true;
+                checkBox3.Checked = true;
+                checkBox3.Enabled = true;
+
             }
             else
             {
@@ -1735,6 +1780,17 @@ namespace RPTagsTest
                 checkBox5.Checked = false;
                 checkBox6.Checked = false;
                 checkBox7.Checked = false;
+
+                // если грузим конфиги по корпусу нужно заблокировать 
+                //stable конфигурации (хотя возможно позже их можно будет разделить по корпусам)
+                checkBox1.Checked = false;
+                checkBox1.Enabled = false;
+                checkBox2.Checked = false;
+                checkBox2.Enabled = false;
+                checkBox3.Checked = false;
+                checkBox3.Enabled = false;
+
+
             }
         }
 
@@ -1794,7 +1850,7 @@ namespace RPTagsTest
         }
         private void button3_Click(object sender, EventArgs e) // сохранить файл
         {
-            SaveDGVToCSVfile(textBox3.Text, textBox1.Text, dataGridView8, true, textBox12.Text);
+            SaveDGVToCSVfile(textBox3.Text, textBox1.Text, dataGridView8, checkBox1.Checked, textBox12.Text);
         }
         private void checkBox4_CheckedChanged(object sender, EventArgs e) // выбор всех корпусов
         {
@@ -2033,6 +2089,12 @@ namespace RPTagsTest
            public string SetParam;
 
         }
+
+        private void toolStripContainer1_ContentPanel_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void button13_Click(object sender, EventArgs e) // generate
         {
             if (dataGridView12.RowCount != 0)
@@ -2054,6 +2116,13 @@ namespace RPTagsTest
             }
             
         }
+
+        private void fillByGrupTypeToolStripButton_Click(object sender, EventArgs e)
+        {
+           
+
+        }
+
         private void button14_Click(object sender, EventArgs e) // setfile path
         {
             FileDialog();
@@ -2065,9 +2134,17 @@ namespace RPTagsTest
 
         #endregion конфигурации
 
+        #region подсказки
 
-           
-         private void Form2_MouseDoubleClick(object sender, MouseEventArgs e)
+        void tooltiptext()
+        {
+            dataGridView1.Columns[0].ToolTipText = "Имя корпуса / строения";
+        }
+
+
+        #endregion
+
+        private void Form2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (toolStripMenuItem11.Enabled)
             {
@@ -2100,12 +2177,15 @@ namespace RPTagsTest
 
 
         }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-       
+        private void dataGridView6_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            toolStripStatusLabel2.Text = "     Какие то проблемы с датагридом";
+
+        } // обработчик ошибок
 
     }
 }
