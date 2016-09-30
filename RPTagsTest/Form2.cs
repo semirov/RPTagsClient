@@ -866,23 +866,30 @@ namespace RPTagsTest
         {
             try
             {
+
+                int sys_id = Convert.ToInt16(rPTagsDataSet.Device_Tag[0]["Sys_id"]);
+                sAIDNullTableAdapter.FillBySystema(rPTagsDataSet.SAIDNull, sys_id);
+                DataView dw = new DataView(rPTagsDataSet.SAIDNull);
                 int failrows = 0;
                 int maximum = 0;
                 
-                rPTagsDataSet.SAIDNull.Clear();
+               
                 maximum = rPTagsDataSet.Device_Tag.Count;
                 foreach (DataRow row in rPTagsDataSet.Device_Tag.Select())
                 {
-                    int sys_id = Convert.ToInt16(row["Sys_id"]);
+                        sys_id = Convert.ToInt16(row["Sys_id"]);
                     int gr_id = Convert.ToInt16(row["Gr_id"]);
                     int tag_id = Convert.ToInt16(row["Tag_id"]);
-                    sAIDNullTableAdapter.FillBySysGrTagDefect(rPTagsDataSet.SAIDNull, gr_id, sys_id, tag_id);
-                    rPTagsDataSet.SAIDNull.
-                    if (rPTagsDataSet.SAIDNull.Rows.Count == 0)
+                    string expression = "Sys_id = " + sys_id + " Gr_id = " + gr_id + " tag_id = " + tag_id;
+                    dw.RowFilter = string.Empty;
+                    dw.RowFilter = expression;
+
+
+                    if (dw.Count == 0)
                     {
                         failrows++;
                         row.Delete();
-                        //arr. row.ItemArray;
+                       
                         
                     }
 
