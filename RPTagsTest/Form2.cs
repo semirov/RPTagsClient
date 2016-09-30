@@ -51,7 +51,7 @@ namespace RPTagsTest
         bool changed_Modifed_GrupTypeDataTable;
         bool changed_Modifed_TagTypeDataTable;
 
-        bool devicetaganalizebegin = false;
+       
 
         string Name_Corpus, Name_PLC, Name_Systema, Name_Gryppa, Name_TagType, Name_Tag = "";
 
@@ -345,7 +345,7 @@ namespace RPTagsTest
                 dataGridView1.AllowUserToAddRows = true;
                 dataGridView1.CurrentCell = dataGridView1[0, dataGridView1.RowCount - 1];
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
 
             }
@@ -466,7 +466,7 @@ namespace RPTagsTest
                 dataGridView2.AllowUserToAddRows = true;
                 dataGridView2.CurrentCell = dataGridView2[0, dataGridView2.RowCount - 1];
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
 
             }
@@ -585,7 +585,7 @@ namespace RPTagsTest
                 dataGridView3.AllowUserToAddRows = true;
                 dataGridView3.CurrentCell = dataGridView3[0, dataGridView3.RowCount - 1];
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
 
             }
@@ -705,7 +705,7 @@ namespace RPTagsTest
                 dataGridView4.AllowUserToAddRows = true;
                 dataGridView4.CurrentCell = dataGridView4[0, dataGridView4.RowCount - 1];
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
 
             }
@@ -821,7 +821,7 @@ namespace RPTagsTest
                 newForm.Owner = this;
                 newForm.Show();
             }
-            catch (System.Exception ex)
+            catch (System.Exception )
             {
 
             }
@@ -862,25 +862,65 @@ namespace RPTagsTest
 
 
         //----------------Девайс---------------------------------------------------------------------------------------------------
-        private void DefectDevice_tag()
+        private void change_device_tag()
+        {
+            bool add = false;
+            bool del = false;
+            bool mod = false;
+            if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Added) != null)
+            {
+                DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Added));
+                tabPage7.Text = "+Устройство";
+                add = true;
+            }
+            if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Deleted) != null)
+            {
+                DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Deleted));
+                tabPage7.Text = "-Устройство";
+                del = true;
+            }
+            
+            if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified) != null)
+            {
+                DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified));
+                tabPage7.Text = "*Устройство";
+                DataGridView dtw = dataGridView7;
+                int x = dtw.CurrentCell.RowIndex;
+                int y = dtw.CurrentCell.ColumnIndex;
+                Validate();
+                dtw.Update();
+                dtw.EndEdit();
+                dtw.CurrentCell = dtw[y, x];
+                mod = true;
+            }
+            if (add || mod || del)
+            {
+                rPTagsDataSet.Device_Tag.AcceptChanges();
+                add = false;
+                del = false;
+                mod = false;
+            }
+
+        }
+        private void backgroundWorker6_DoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
 
                 int sys_id = Convert.ToInt16(rPTagsDataSet.Device_Tag[0]["Sys_id"]);
-                sAIDNullTableAdapter.f(rPTagsDataSet.SAIDNull, sys_id);
+                sAIDNullTableAdapter.FillBySystemaDefect(rPTagsDataSet.SAIDNull, sys_id);
                 DataView dw = new DataView(rPTagsDataSet.SAIDNull);
                 int failrows = 0;
                 int maximum = 0;
-                
-               
+
+
                 maximum = rPTagsDataSet.Device_Tag.Count;
                 foreach (DataRow row in rPTagsDataSet.Device_Tag.Select())
                 {
-                        sys_id = Convert.ToInt16(row["Sys_id"]);
+                    sys_id = Convert.ToInt16(row["Sys_id"]);
                     int gr_id = Convert.ToInt16(row["Gr_id"]);
                     int tag_id = Convert.ToInt16(row["Tag_id"]);
-                    string expression = "Sys_id = " + sys_id + " Gr_id = " + gr_id + " tag_id = " + tag_id;
+                    string expression = "Sys_id = " + sys_id + "AND Gr_id = " + gr_id + "AND tag_id = " + tag_id;
                     dw.RowFilter = string.Empty;
                     dw.RowFilter = expression;
 
@@ -889,20 +929,16 @@ namespace RPTagsTest
                     {
                         failrows++;
                         row.Delete();
-                       
-                        
+
+
                     }
 
                 }
-                // проведем анализ в потоке
-                devicetaganalizebegin = false;
-                //DeviceTag_changed();
-
                 if (failrows != 0)
                 {
-                    //toolStripStatusLabel2.Text = failrows.ToString();
                     MessageBox.Show("Из таблицы исключено: \n " + failrows + " ошибочных SAID", "Проверка путей", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } else
+                }
+                else
                 {
                     MessageBox.Show("Ошибочные строки отсутствуют", "Проверка путей", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -911,6 +947,15 @@ namespace RPTagsTest
             {
                 toolStripStatusLabel2.Text = "Кто - то накосячил с DataSet";
             }
+        }
+        private void backgroundWorker6_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            toolStripStatusLabel4.Text = "";
+            change_device_tag();
+        }
+        private void DefectDevice_tag()
+        {
+           
         }    
        
         private void tabPage7_Enter(object sender, EventArgs e) // устройство
@@ -1074,44 +1119,15 @@ namespace RPTagsTest
         }
         private void DataGridView7_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Added) != null)
-            {
-                DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Added));
-                rPTagsDataSet.Device_Tag.AcceptChanges();
-                tabPage7.Text = "+Устройство";
-            }
-        }
-              
+            change_device_tag();
+        }           
         private void DataGridView7_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
-           
-            if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Deleted) != null)
-            {
-                DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Deleted));
-                rPTagsDataSet.Device_Tag.AcceptChanges();
-                tabPage7.Text = "-Устройство";
-            }
+            change_device_tag();
         }
         private void DataGridView7_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView dtw = dataGridView7;
-            int x = dtw.CurrentCell.RowIndex;
-            int y = dtw.CurrentCell.ColumnIndex;
-            Validate();
-            dtw.Update();
-            dtw.EndEdit();
-            if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified) != null)
-            {
-                DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified));
-                rPTagsDataSet.Device_Tag.AcceptChanges();
-                tabPage7.Text = "*Устройство";
-
-
-
-
-                dtw.CurrentCell = dtw[y, x];
-
-            }
+            change_device_tag();
         }
 
             
@@ -1177,15 +1193,16 @@ namespace RPTagsTest
         }
         private void проверитьОшибкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // затычка для работы при смене груптайпов
             rPTagsDataSet.TagIdTagTypeID.Clear();
             tagIdTagTypeIDTableAdapter.Fill(rPTagsDataSet.TagIdTagTypeID);
 
 
-            if (!devicetaganalizebegin)
+            if (backgroundWorker6.IsBusy != true)
             {
-                devicetaganalizebegin = true;
-                // проведем анализ в потоке
-                DefectDevice_tag();
+
+                backgroundWorker6.RunWorkerAsync();
+                toolStripStatusLabel4.Text = "Идет проверка ошибок в таблице Устройства...";
             }
 
         }
@@ -1226,7 +1243,7 @@ namespace RPTagsTest
                 dataGridView5.CurrentCell = dataGridView5[0, dataGridView5.RowCount - 1];
                 Filtres_changed();
             }
-            catch (System.Exception ex)
+            catch (System.Exception )
             {
 
             }
@@ -1315,7 +1332,7 @@ namespace RPTagsTest
                 dataGridView13.CurrentCell = dataGridView13[0, dataGridView13.RowCount - 1];
                 SystemType_changed();
             }
-            catch (System.Exception ex)
+            catch (System.Exception )
             {
 
             }
@@ -1405,7 +1422,7 @@ namespace RPTagsTest
                 dataGridView14.CurrentCell = dataGridView14[0, dataGridView14.RowCount - 1];
                 GrupType_changed();
             }
-            catch (System.Exception ex)
+            catch (System.Exception )
             {
 
             }
@@ -1516,7 +1533,7 @@ namespace RPTagsTest
                 dataGridView15.CurrentCell = dataGridView15[0, dataGridView15.RowCount - 1];
                 TagType_changed();
             }
-            catch (System.Exception ex)
+            catch (System.Exception )
             {
 
             }
@@ -1611,7 +1628,7 @@ namespace RPTagsTest
                 dataGridView16.CurrentCell = dataGridView16[0, dataGridView16.RowCount - 1];
                 OPC_changed();
             }
-            catch (System.Exception ex)
+            catch (System.Exception )
             {
 
             }
@@ -2134,6 +2151,9 @@ namespace RPTagsTest
         {
             FileDialog();
         }
+
+        
+
         private void button12_Click(object sender, EventArgs e) // save file
         {
             SaveDGVToCSVfile(textBox10.Text, textBox11.Text, dataGridView12, false, "");

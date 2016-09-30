@@ -71,10 +71,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RPTagsDataSet.cs">
-      <DependentUpon>RPTagsDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="RPTagsDataSet.Designer.cs">
+    <Compile Include="RPTagsDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RPTagsDataSet.xsd</DependentUpon>

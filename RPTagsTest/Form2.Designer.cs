@@ -33,6 +33,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.corpusBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.rPTagsDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.rPTagsDataSet = new RPTagsTest.RPTagsDataSet();
@@ -42,8 +44,13 @@
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Node = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.oPCBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Corpus = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.corpusBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iPAddrDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pLCBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,8 +58,14 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pLCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.pLCBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.systemtypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.systemTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.enablDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.systemaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip3 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,8 +73,20 @@
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.systemaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.systemaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.grupTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.gruptypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.descriptionDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.areaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gMPTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gMPHmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gMPCAVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gMPVAVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gMPDPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.enablDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.gMPWDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gruppaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip4 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,9 +94,17 @@
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.dataGridView6 = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grupTypeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.gruptypeBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tagTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tagTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.hHDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.uDMInputDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.uDMOutputDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.filterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.filtresBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.descriptionDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tagBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip5 = new System.Windows.Forms.MenuStrip();
             this.изменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -301,39 +334,7 @@
             this.tagIdTagTypeIDTableAdapter = new RPTagsTest.RPTagsDataSetTableAdapters.TagIdTagTypeIDTableAdapter();
             this.corpusBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Node = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Corpus = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iPAddrDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pLCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.systemtypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.enablDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.nameDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.systemaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.grupTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.areaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gMPTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gMPHmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gMPCAVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gMPVAVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gMPDPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.enablDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.gMPWDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grupTypeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.tagTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.hHDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.uDMInputDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.uDMOutputDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.filterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.backgroundWorker6 = new System.ComponentModel.BackgroundWorker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -476,6 +477,20 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            resources.ApplyResources(this.nameDataGridViewTextBoxColumn1, "nameDataGridViewTextBoxColumn1");
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            this.nameDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // descriptionDataGridViewTextBoxColumn1
+            // 
+            this.descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
+            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn1, "descriptionDataGridViewTextBoxColumn1");
+            this.descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
+            this.descriptionDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // corpusBindingSource
             // 
             this.corpusBindingSource.DataMember = "Corpus";
@@ -548,15 +563,60 @@
             this.dataGridView2.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             this.dataGridView2.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView6_DataError);
             // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            resources.ApplyResources(this.nameDataGridViewTextBoxColumn, "nameDataGridViewTextBoxColumn");
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Node
+            // 
+            this.Node.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Node.DataPropertyName = "Node";
+            this.Node.DataSource = this.oPCBindingSource;
+            this.Node.DisplayMember = "Name";
+            this.Node.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            resources.ApplyResources(this.Node, "Node");
+            this.Node.Name = "Node";
+            this.Node.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Node.ValueMember = "id";
+            // 
             // oPCBindingSource
             // 
             this.oPCBindingSource.DataMember = "OPC";
             this.oPCBindingSource.DataSource = this.rPTagsDataSetBindingSource;
             // 
+            // Corpus
+            // 
+            this.Corpus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Corpus.DataPropertyName = "Corpus";
+            this.Corpus.DataSource = this.corpusBindingSource1;
+            this.Corpus.DisplayMember = "Name";
+            this.Corpus.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            resources.ApplyResources(this.Corpus, "Corpus");
+            this.Corpus.Name = "Corpus";
+            this.Corpus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Corpus.ValueMember = "id";
+            // 
             // corpusBindingSource1
             // 
             this.corpusBindingSource1.DataMember = "Corpus";
             this.corpusBindingSource1.DataSource = this.rPTagsDataSetBindingSource;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn, "descriptionDataGridViewTextBoxColumn");
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // iPAddrDataGridViewTextBoxColumn
+            // 
+            this.iPAddrDataGridViewTextBoxColumn.DataPropertyName = "IPAddr";
+            resources.ApplyResources(this.iPAddrDataGridViewTextBoxColumn, "iPAddrDataGridViewTextBoxColumn");
+            this.iPAddrDataGridViewTextBoxColumn.Name = "iPAddrDataGridViewTextBoxColumn";
+            this.iPAddrDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // pLCBindingSource
             // 
@@ -620,15 +680,74 @@
             this.dataGridView3.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellClick);
             this.dataGridView3.Leave += new System.EventHandler(this.dataGridView3_Leave);
             // 
+            // nameDataGridViewTextBoxColumn2
+            // 
+            this.nameDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nameDataGridViewTextBoxColumn2.DataPropertyName = "Name";
+            resources.ApplyResources(this.nameDataGridViewTextBoxColumn2, "nameDataGridViewTextBoxColumn2");
+            this.nameDataGridViewTextBoxColumn2.Name = "nameDataGridViewTextBoxColumn2";
+            this.nameDataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // descriptionDataGridViewTextBoxColumn2
+            // 
+            this.descriptionDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.descriptionDataGridViewTextBoxColumn2.DataPropertyName = "Description";
+            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn2, "descriptionDataGridViewTextBoxColumn2");
+            this.descriptionDataGridViewTextBoxColumn2.Name = "descriptionDataGridViewTextBoxColumn2";
+            this.descriptionDataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // RName
+            // 
+            this.RName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.RName.DataPropertyName = "RName";
+            resources.ApplyResources(this.RName, "RName");
+            this.RName.Name = "RName";
+            this.RName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // pLCDataGridViewTextBoxColumn
+            // 
+            this.pLCDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.pLCDataGridViewTextBoxColumn.DataPropertyName = "PLC";
+            this.pLCDataGridViewTextBoxColumn.DataSource = this.pLCBindingSource1;
+            this.pLCDataGridViewTextBoxColumn.DisplayMember = "Name";
+            this.pLCDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            resources.ApplyResources(this.pLCDataGridViewTextBoxColumn, "pLCDataGridViewTextBoxColumn");
+            this.pLCDataGridViewTextBoxColumn.Name = "pLCDataGridViewTextBoxColumn";
+            this.pLCDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.pLCDataGridViewTextBoxColumn.ValueMember = "id";
+            // 
             // pLCBindingSource1
             // 
             this.pLCBindingSource1.DataMember = "PLC";
             this.pLCBindingSource1.DataSource = this.rPTagsDataSetBindingSource;
             // 
+            // systemtypeDataGridViewTextBoxColumn
+            // 
+            this.systemtypeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.systemtypeDataGridViewTextBoxColumn.DataPropertyName = "Systemtype";
+            this.systemtypeDataGridViewTextBoxColumn.DataSource = this.systemTypeBindingSource;
+            this.systemtypeDataGridViewTextBoxColumn.DisplayMember = "Name";
+            this.systemtypeDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            resources.ApplyResources(this.systemtypeDataGridViewTextBoxColumn, "systemtypeDataGridViewTextBoxColumn");
+            this.systemtypeDataGridViewTextBoxColumn.Name = "systemtypeDataGridViewTextBoxColumn";
+            this.systemtypeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.systemtypeDataGridViewTextBoxColumn.ValueMember = "id";
+            // 
             // systemTypeBindingSource
             // 
             this.systemTypeBindingSource.DataMember = "SystemType";
             this.systemTypeBindingSource.DataSource = this.rPTagsDataSetBindingSource;
+            // 
+            // enablDataGridViewTextBoxColumn
+            // 
+            this.enablDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.enablDataGridViewTextBoxColumn.DataPropertyName = "Enabl";
+            this.enablDataGridViewTextBoxColumn.FalseValue = "0";
+            resources.ApplyResources(this.enablDataGridViewTextBoxColumn, "enablDataGridViewTextBoxColumn");
+            this.enablDataGridViewTextBoxColumn.IndeterminateValue = "2";
+            this.enablDataGridViewTextBoxColumn.Name = "enablDataGridViewTextBoxColumn";
+            this.enablDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.enablDataGridViewTextBoxColumn.TrueValue = "1";
             // 
             // systemaBindingSource
             // 
@@ -699,15 +818,120 @@
             this.dataGridView4.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellClick);
             this.dataGridView4.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView6_DataError);
             // 
+            // nameDataGridViewTextBoxColumn3
+            // 
+            this.nameDataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nameDataGridViewTextBoxColumn3.DataPropertyName = "Name";
+            resources.ApplyResources(this.nameDataGridViewTextBoxColumn3, "nameDataGridViewTextBoxColumn3");
+            this.nameDataGridViewTextBoxColumn3.Name = "nameDataGridViewTextBoxColumn3";
+            this.nameDataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // systemaDataGridViewTextBoxColumn
+            // 
+            this.systemaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.systemaDataGridViewTextBoxColumn.DataPropertyName = "Systema";
+            this.systemaDataGridViewTextBoxColumn.DataSource = this.systemaBindingSource1;
+            this.systemaDataGridViewTextBoxColumn.DisplayMember = "Name";
+            this.systemaDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            resources.ApplyResources(this.systemaDataGridViewTextBoxColumn, "systemaDataGridViewTextBoxColumn");
+            this.systemaDataGridViewTextBoxColumn.Name = "systemaDataGridViewTextBoxColumn";
+            this.systemaDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.systemaDataGridViewTextBoxColumn.ValueMember = "id";
+            // 
             // systemaBindingSource1
             // 
             this.systemaBindingSource1.DataMember = "Systema";
             this.systemaBindingSource1.DataSource = this.rPTagsDataSetBindingSource;
             // 
+            // grupTypeDataGridViewTextBoxColumn
+            // 
+            this.grupTypeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.grupTypeDataGridViewTextBoxColumn.DataPropertyName = "GrupType";
+            this.grupTypeDataGridViewTextBoxColumn.DataSource = this.gruptypeBindingSource;
+            this.grupTypeDataGridViewTextBoxColumn.DisplayMember = "Name";
+            this.grupTypeDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            resources.ApplyResources(this.grupTypeDataGridViewTextBoxColumn, "grupTypeDataGridViewTextBoxColumn");
+            this.grupTypeDataGridViewTextBoxColumn.Name = "grupTypeDataGridViewTextBoxColumn";
+            this.grupTypeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.grupTypeDataGridViewTextBoxColumn.ValueMember = "id";
+            // 
             // gruptypeBindingSource
             // 
             this.gruptypeBindingSource.DataMember = "Gruptype";
             this.gruptypeBindingSource.DataSource = this.rPTagsDataSetBindingSource;
+            // 
+            // descriptionDataGridViewTextBoxColumn3
+            // 
+            this.descriptionDataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.descriptionDataGridViewTextBoxColumn3.DataPropertyName = "Description";
+            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn3, "descriptionDataGridViewTextBoxColumn3");
+            this.descriptionDataGridViewTextBoxColumn3.Name = "descriptionDataGridViewTextBoxColumn3";
+            this.descriptionDataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // areaDataGridViewTextBoxColumn
+            // 
+            this.areaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.areaDataGridViewTextBoxColumn.DataPropertyName = "Area";
+            resources.ApplyResources(this.areaDataGridViewTextBoxColumn, "areaDataGridViewTextBoxColumn");
+            this.areaDataGridViewTextBoxColumn.Name = "areaDataGridViewTextBoxColumn";
+            this.areaDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // gMPTDataGridViewTextBoxColumn
+            // 
+            this.gMPTDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.gMPTDataGridViewTextBoxColumn.DataPropertyName = "GMPT";
+            resources.ApplyResources(this.gMPTDataGridViewTextBoxColumn, "gMPTDataGridViewTextBoxColumn");
+            this.gMPTDataGridViewTextBoxColumn.Name = "gMPTDataGridViewTextBoxColumn";
+            this.gMPTDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // gMPHmDataGridViewTextBoxColumn
+            // 
+            this.gMPHmDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.gMPHmDataGridViewTextBoxColumn.DataPropertyName = "GMPHm";
+            resources.ApplyResources(this.gMPHmDataGridViewTextBoxColumn, "gMPHmDataGridViewTextBoxColumn");
+            this.gMPHmDataGridViewTextBoxColumn.Name = "gMPHmDataGridViewTextBoxColumn";
+            this.gMPHmDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // gMPCAVDataGridViewTextBoxColumn
+            // 
+            this.gMPCAVDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.gMPCAVDataGridViewTextBoxColumn.DataPropertyName = "GMPCAV";
+            resources.ApplyResources(this.gMPCAVDataGridViewTextBoxColumn, "gMPCAVDataGridViewTextBoxColumn");
+            this.gMPCAVDataGridViewTextBoxColumn.Name = "gMPCAVDataGridViewTextBoxColumn";
+            this.gMPCAVDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // gMPVAVDataGridViewTextBoxColumn
+            // 
+            this.gMPVAVDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.gMPVAVDataGridViewTextBoxColumn.DataPropertyName = "GMPVAV";
+            resources.ApplyResources(this.gMPVAVDataGridViewTextBoxColumn, "gMPVAVDataGridViewTextBoxColumn");
+            this.gMPVAVDataGridViewTextBoxColumn.Name = "gMPVAVDataGridViewTextBoxColumn";
+            this.gMPVAVDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // gMPDPDataGridViewTextBoxColumn
+            // 
+            this.gMPDPDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.gMPDPDataGridViewTextBoxColumn.DataPropertyName = "GMPDP";
+            resources.ApplyResources(this.gMPDPDataGridViewTextBoxColumn, "gMPDPDataGridViewTextBoxColumn");
+            this.gMPDPDataGridViewTextBoxColumn.Name = "gMPDPDataGridViewTextBoxColumn";
+            this.gMPDPDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // enablDataGridViewTextBoxColumn1
+            // 
+            this.enablDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.enablDataGridViewTextBoxColumn1.DataPropertyName = "Enabl";
+            resources.ApplyResources(this.enablDataGridViewTextBoxColumn1, "enablDataGridViewTextBoxColumn1");
+            this.enablDataGridViewTextBoxColumn1.Name = "enablDataGridViewTextBoxColumn1";
+            this.enablDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.enablDataGridViewTextBoxColumn1.TrueValue = "1";
+            // 
+            // gMPWDataGridViewTextBoxColumn
+            // 
+            this.gMPWDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.gMPWDataGridViewTextBoxColumn.DataPropertyName = "GMPW";
+            resources.ApplyResources(this.gMPWDataGridViewTextBoxColumn, "gMPWDataGridViewTextBoxColumn");
+            this.gMPWDataGridViewTextBoxColumn.Name = "gMPWDataGridViewTextBoxColumn";
+            this.gMPWDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // gruppaBindingSource
             // 
@@ -776,20 +1000,107 @@
             this.dataGridView6.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView6_CellClick);
             this.dataGridView6.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView6_DataError);
             // 
+            // nameDataGridViewTextBoxColumn4
+            // 
+            this.nameDataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nameDataGridViewTextBoxColumn4.DataPropertyName = "Name";
+            resources.ApplyResources(this.nameDataGridViewTextBoxColumn4, "nameDataGridViewTextBoxColumn4");
+            this.nameDataGridViewTextBoxColumn4.Name = "nameDataGridViewTextBoxColumn4";
+            this.nameDataGridViewTextBoxColumn4.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // grupTypeDataGridViewTextBoxColumn1
+            // 
+            this.grupTypeDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.grupTypeDataGridViewTextBoxColumn1.DataPropertyName = "GrupType";
+            this.grupTypeDataGridViewTextBoxColumn1.DataSource = this.gruptypeBindingSource1;
+            this.grupTypeDataGridViewTextBoxColumn1.DisplayMember = "Name";
+            this.grupTypeDataGridViewTextBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            resources.ApplyResources(this.grupTypeDataGridViewTextBoxColumn1, "grupTypeDataGridViewTextBoxColumn1");
+            this.grupTypeDataGridViewTextBoxColumn1.Name = "grupTypeDataGridViewTextBoxColumn1";
+            this.grupTypeDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.grupTypeDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.grupTypeDataGridViewTextBoxColumn1.ValueMember = "id";
+            // 
             // gruptypeBindingSource1
             // 
             this.gruptypeBindingSource1.DataMember = "Gruptype";
             this.gruptypeBindingSource1.DataSource = this.rPTagsDataSetBindingSource;
+            // 
+            // tagTypeDataGridViewTextBoxColumn
+            // 
+            this.tagTypeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.tagTypeDataGridViewTextBoxColumn.DataPropertyName = "TagType";
+            this.tagTypeDataGridViewTextBoxColumn.DataSource = this.tagTypeBindingSource;
+            this.tagTypeDataGridViewTextBoxColumn.DisplayMember = "Name";
+            this.tagTypeDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            resources.ApplyResources(this.tagTypeDataGridViewTextBoxColumn, "tagTypeDataGridViewTextBoxColumn");
+            this.tagTypeDataGridViewTextBoxColumn.Name = "tagTypeDataGridViewTextBoxColumn";
+            this.tagTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tagTypeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.tagTypeDataGridViewTextBoxColumn.ValueMember = "id";
             // 
             // tagTypeBindingSource
             // 
             this.tagTypeBindingSource.DataMember = "TagType";
             this.tagTypeBindingSource.DataSource = this.rPTagsDataSetBindingSource;
             // 
+            // hHDataGridViewTextBoxColumn
+            // 
+            this.hHDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.hHDataGridViewTextBoxColumn.DataPropertyName = "HH";
+            resources.ApplyResources(this.hHDataGridViewTextBoxColumn, "hHDataGridViewTextBoxColumn");
+            this.hHDataGridViewTextBoxColumn.Name = "hHDataGridViewTextBoxColumn";
+            this.hHDataGridViewTextBoxColumn.ReadOnly = true;
+            this.hHDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.hHDataGridViewTextBoxColumn.TrueValue = "R";
+            // 
+            // uDMInputDataGridViewTextBoxColumn
+            // 
+            this.uDMInputDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.uDMInputDataGridViewTextBoxColumn.DataPropertyName = "UDM_Input";
+            resources.ApplyResources(this.uDMInputDataGridViewTextBoxColumn, "uDMInputDataGridViewTextBoxColumn");
+            this.uDMInputDataGridViewTextBoxColumn.Name = "uDMInputDataGridViewTextBoxColumn";
+            this.uDMInputDataGridViewTextBoxColumn.ReadOnly = true;
+            this.uDMInputDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.uDMInputDataGridViewTextBoxColumn.TrueValue = "R";
+            // 
+            // uDMOutputDataGridViewTextBoxColumn
+            // 
+            this.uDMOutputDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.uDMOutputDataGridViewTextBoxColumn.DataPropertyName = "UDM_Output";
+            resources.ApplyResources(this.uDMOutputDataGridViewTextBoxColumn, "uDMOutputDataGridViewTextBoxColumn");
+            this.uDMOutputDataGridViewTextBoxColumn.Name = "uDMOutputDataGridViewTextBoxColumn";
+            this.uDMOutputDataGridViewTextBoxColumn.ReadOnly = true;
+            this.uDMOutputDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.uDMOutputDataGridViewTextBoxColumn.TrueValue = "W";
+            // 
+            // filterDataGridViewTextBoxColumn
+            // 
+            this.filterDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.filterDataGridViewTextBoxColumn.DataPropertyName = "Filter";
+            this.filterDataGridViewTextBoxColumn.DataSource = this.filtresBindingSource;
+            this.filterDataGridViewTextBoxColumn.DisplayMember = "Description";
+            this.filterDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            resources.ApplyResources(this.filterDataGridViewTextBoxColumn, "filterDataGridViewTextBoxColumn");
+            this.filterDataGridViewTextBoxColumn.Name = "filterDataGridViewTextBoxColumn";
+            this.filterDataGridViewTextBoxColumn.ReadOnly = true;
+            this.filterDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.filterDataGridViewTextBoxColumn.ValueMember = "id";
+            // 
             // filtresBindingSource
             // 
             this.filtresBindingSource.DataMember = "Filtres";
             this.filtresBindingSource.DataSource = this.rPTagsDataSetBindingSource;
+            // 
+            // descriptionDataGridViewTextBoxColumn4
+            // 
+            this.descriptionDataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.descriptionDataGridViewTextBoxColumn4.DataPropertyName = "Description";
+            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn4, "descriptionDataGridViewTextBoxColumn4");
+            this.descriptionDataGridViewTextBoxColumn4.Name = "descriptionDataGridViewTextBoxColumn4";
+            this.descriptionDataGridViewTextBoxColumn4.ReadOnly = true;
+            this.descriptionDataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // tagBindingSource
             // 
@@ -2508,315 +2819,10 @@
             this.corpusBindingSource2.DataMember = "Corpus";
             this.corpusBindingSource2.DataSource = this.rPTagsDataSet;
             // 
-            // nameDataGridViewTextBoxColumn1
+            // backgroundWorker6
             // 
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            resources.ApplyResources(this.nameDataGridViewTextBoxColumn1, "nameDataGridViewTextBoxColumn1");
-            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
-            this.nameDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // descriptionDataGridViewTextBoxColumn1
-            // 
-            this.descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
-            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn1, "descriptionDataGridViewTextBoxColumn1");
-            this.descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
-            this.descriptionDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            resources.ApplyResources(this.nameDataGridViewTextBoxColumn, "nameDataGridViewTextBoxColumn");
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Node
-            // 
-            this.Node.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Node.DataPropertyName = "Node";
-            this.Node.DataSource = this.oPCBindingSource;
-            this.Node.DisplayMember = "Name";
-            this.Node.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            resources.ApplyResources(this.Node, "Node");
-            this.Node.Name = "Node";
-            this.Node.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Node.ValueMember = "id";
-            // 
-            // Corpus
-            // 
-            this.Corpus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Corpus.DataPropertyName = "Corpus";
-            this.Corpus.DataSource = this.corpusBindingSource1;
-            this.Corpus.DisplayMember = "Name";
-            this.Corpus.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            resources.ApplyResources(this.Corpus, "Corpus");
-            this.Corpus.Name = "Corpus";
-            this.Corpus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Corpus.ValueMember = "id";
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn, "descriptionDataGridViewTextBoxColumn");
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // iPAddrDataGridViewTextBoxColumn
-            // 
-            this.iPAddrDataGridViewTextBoxColumn.DataPropertyName = "IPAddr";
-            resources.ApplyResources(this.iPAddrDataGridViewTextBoxColumn, "iPAddrDataGridViewTextBoxColumn");
-            this.iPAddrDataGridViewTextBoxColumn.Name = "iPAddrDataGridViewTextBoxColumn";
-            this.iPAddrDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // nameDataGridViewTextBoxColumn2
-            // 
-            this.nameDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.nameDataGridViewTextBoxColumn2.DataPropertyName = "Name";
-            resources.ApplyResources(this.nameDataGridViewTextBoxColumn2, "nameDataGridViewTextBoxColumn2");
-            this.nameDataGridViewTextBoxColumn2.Name = "nameDataGridViewTextBoxColumn2";
-            this.nameDataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // descriptionDataGridViewTextBoxColumn2
-            // 
-            this.descriptionDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.descriptionDataGridViewTextBoxColumn2.DataPropertyName = "Description";
-            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn2, "descriptionDataGridViewTextBoxColumn2");
-            this.descriptionDataGridViewTextBoxColumn2.Name = "descriptionDataGridViewTextBoxColumn2";
-            this.descriptionDataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // RName
-            // 
-            this.RName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.RName.DataPropertyName = "RName";
-            resources.ApplyResources(this.RName, "RName");
-            this.RName.Name = "RName";
-            this.RName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // pLCDataGridViewTextBoxColumn
-            // 
-            this.pLCDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.pLCDataGridViewTextBoxColumn.DataPropertyName = "PLC";
-            this.pLCDataGridViewTextBoxColumn.DataSource = this.pLCBindingSource1;
-            this.pLCDataGridViewTextBoxColumn.DisplayMember = "Name";
-            this.pLCDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            resources.ApplyResources(this.pLCDataGridViewTextBoxColumn, "pLCDataGridViewTextBoxColumn");
-            this.pLCDataGridViewTextBoxColumn.Name = "pLCDataGridViewTextBoxColumn";
-            this.pLCDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.pLCDataGridViewTextBoxColumn.ValueMember = "id";
-            // 
-            // systemtypeDataGridViewTextBoxColumn
-            // 
-            this.systemtypeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.systemtypeDataGridViewTextBoxColumn.DataPropertyName = "Systemtype";
-            this.systemtypeDataGridViewTextBoxColumn.DataSource = this.systemTypeBindingSource;
-            this.systemtypeDataGridViewTextBoxColumn.DisplayMember = "Name";
-            this.systemtypeDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            resources.ApplyResources(this.systemtypeDataGridViewTextBoxColumn, "systemtypeDataGridViewTextBoxColumn");
-            this.systemtypeDataGridViewTextBoxColumn.Name = "systemtypeDataGridViewTextBoxColumn";
-            this.systemtypeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.systemtypeDataGridViewTextBoxColumn.ValueMember = "id";
-            // 
-            // enablDataGridViewTextBoxColumn
-            // 
-            this.enablDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.enablDataGridViewTextBoxColumn.DataPropertyName = "Enabl";
-            this.enablDataGridViewTextBoxColumn.FalseValue = "0";
-            resources.ApplyResources(this.enablDataGridViewTextBoxColumn, "enablDataGridViewTextBoxColumn");
-            this.enablDataGridViewTextBoxColumn.IndeterminateValue = "2";
-            this.enablDataGridViewTextBoxColumn.Name = "enablDataGridViewTextBoxColumn";
-            this.enablDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.enablDataGridViewTextBoxColumn.TrueValue = "1";
-            // 
-            // nameDataGridViewTextBoxColumn3
-            // 
-            this.nameDataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.nameDataGridViewTextBoxColumn3.DataPropertyName = "Name";
-            resources.ApplyResources(this.nameDataGridViewTextBoxColumn3, "nameDataGridViewTextBoxColumn3");
-            this.nameDataGridViewTextBoxColumn3.Name = "nameDataGridViewTextBoxColumn3";
-            this.nameDataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // systemaDataGridViewTextBoxColumn
-            // 
-            this.systemaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.systemaDataGridViewTextBoxColumn.DataPropertyName = "Systema";
-            this.systemaDataGridViewTextBoxColumn.DataSource = this.systemaBindingSource1;
-            this.systemaDataGridViewTextBoxColumn.DisplayMember = "Name";
-            this.systemaDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            resources.ApplyResources(this.systemaDataGridViewTextBoxColumn, "systemaDataGridViewTextBoxColumn");
-            this.systemaDataGridViewTextBoxColumn.Name = "systemaDataGridViewTextBoxColumn";
-            this.systemaDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.systemaDataGridViewTextBoxColumn.ValueMember = "id";
-            // 
-            // grupTypeDataGridViewTextBoxColumn
-            // 
-            this.grupTypeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.grupTypeDataGridViewTextBoxColumn.DataPropertyName = "GrupType";
-            this.grupTypeDataGridViewTextBoxColumn.DataSource = this.gruptypeBindingSource;
-            this.grupTypeDataGridViewTextBoxColumn.DisplayMember = "Name";
-            this.grupTypeDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            resources.ApplyResources(this.grupTypeDataGridViewTextBoxColumn, "grupTypeDataGridViewTextBoxColumn");
-            this.grupTypeDataGridViewTextBoxColumn.Name = "grupTypeDataGridViewTextBoxColumn";
-            this.grupTypeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.grupTypeDataGridViewTextBoxColumn.ValueMember = "id";
-            // 
-            // descriptionDataGridViewTextBoxColumn3
-            // 
-            this.descriptionDataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.descriptionDataGridViewTextBoxColumn3.DataPropertyName = "Description";
-            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn3, "descriptionDataGridViewTextBoxColumn3");
-            this.descriptionDataGridViewTextBoxColumn3.Name = "descriptionDataGridViewTextBoxColumn3";
-            this.descriptionDataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // areaDataGridViewTextBoxColumn
-            // 
-            this.areaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.areaDataGridViewTextBoxColumn.DataPropertyName = "Area";
-            resources.ApplyResources(this.areaDataGridViewTextBoxColumn, "areaDataGridViewTextBoxColumn");
-            this.areaDataGridViewTextBoxColumn.Name = "areaDataGridViewTextBoxColumn";
-            this.areaDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // gMPTDataGridViewTextBoxColumn
-            // 
-            this.gMPTDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.gMPTDataGridViewTextBoxColumn.DataPropertyName = "GMPT";
-            resources.ApplyResources(this.gMPTDataGridViewTextBoxColumn, "gMPTDataGridViewTextBoxColumn");
-            this.gMPTDataGridViewTextBoxColumn.Name = "gMPTDataGridViewTextBoxColumn";
-            this.gMPTDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // gMPHmDataGridViewTextBoxColumn
-            // 
-            this.gMPHmDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.gMPHmDataGridViewTextBoxColumn.DataPropertyName = "GMPHm";
-            resources.ApplyResources(this.gMPHmDataGridViewTextBoxColumn, "gMPHmDataGridViewTextBoxColumn");
-            this.gMPHmDataGridViewTextBoxColumn.Name = "gMPHmDataGridViewTextBoxColumn";
-            this.gMPHmDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // gMPCAVDataGridViewTextBoxColumn
-            // 
-            this.gMPCAVDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.gMPCAVDataGridViewTextBoxColumn.DataPropertyName = "GMPCAV";
-            resources.ApplyResources(this.gMPCAVDataGridViewTextBoxColumn, "gMPCAVDataGridViewTextBoxColumn");
-            this.gMPCAVDataGridViewTextBoxColumn.Name = "gMPCAVDataGridViewTextBoxColumn";
-            this.gMPCAVDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // gMPVAVDataGridViewTextBoxColumn
-            // 
-            this.gMPVAVDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.gMPVAVDataGridViewTextBoxColumn.DataPropertyName = "GMPVAV";
-            resources.ApplyResources(this.gMPVAVDataGridViewTextBoxColumn, "gMPVAVDataGridViewTextBoxColumn");
-            this.gMPVAVDataGridViewTextBoxColumn.Name = "gMPVAVDataGridViewTextBoxColumn";
-            this.gMPVAVDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // gMPDPDataGridViewTextBoxColumn
-            // 
-            this.gMPDPDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.gMPDPDataGridViewTextBoxColumn.DataPropertyName = "GMPDP";
-            resources.ApplyResources(this.gMPDPDataGridViewTextBoxColumn, "gMPDPDataGridViewTextBoxColumn");
-            this.gMPDPDataGridViewTextBoxColumn.Name = "gMPDPDataGridViewTextBoxColumn";
-            this.gMPDPDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // enablDataGridViewTextBoxColumn1
-            // 
-            this.enablDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.enablDataGridViewTextBoxColumn1.DataPropertyName = "Enabl";
-            resources.ApplyResources(this.enablDataGridViewTextBoxColumn1, "enablDataGridViewTextBoxColumn1");
-            this.enablDataGridViewTextBoxColumn1.Name = "enablDataGridViewTextBoxColumn1";
-            this.enablDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.enablDataGridViewTextBoxColumn1.TrueValue = "1";
-            // 
-            // gMPWDataGridViewTextBoxColumn
-            // 
-            this.gMPWDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.gMPWDataGridViewTextBoxColumn.DataPropertyName = "GMPW";
-            resources.ApplyResources(this.gMPWDataGridViewTextBoxColumn, "gMPWDataGridViewTextBoxColumn");
-            this.gMPWDataGridViewTextBoxColumn.Name = "gMPWDataGridViewTextBoxColumn";
-            this.gMPWDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // nameDataGridViewTextBoxColumn4
-            // 
-            this.nameDataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.nameDataGridViewTextBoxColumn4.DataPropertyName = "Name";
-            resources.ApplyResources(this.nameDataGridViewTextBoxColumn4, "nameDataGridViewTextBoxColumn4");
-            this.nameDataGridViewTextBoxColumn4.Name = "nameDataGridViewTextBoxColumn4";
-            this.nameDataGridViewTextBoxColumn4.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // grupTypeDataGridViewTextBoxColumn1
-            // 
-            this.grupTypeDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.grupTypeDataGridViewTextBoxColumn1.DataPropertyName = "GrupType";
-            this.grupTypeDataGridViewTextBoxColumn1.DataSource = this.gruptypeBindingSource1;
-            this.grupTypeDataGridViewTextBoxColumn1.DisplayMember = "Name";
-            this.grupTypeDataGridViewTextBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            resources.ApplyResources(this.grupTypeDataGridViewTextBoxColumn1, "grupTypeDataGridViewTextBoxColumn1");
-            this.grupTypeDataGridViewTextBoxColumn1.Name = "grupTypeDataGridViewTextBoxColumn1";
-            this.grupTypeDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.grupTypeDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.grupTypeDataGridViewTextBoxColumn1.ValueMember = "id";
-            // 
-            // tagTypeDataGridViewTextBoxColumn
-            // 
-            this.tagTypeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.tagTypeDataGridViewTextBoxColumn.DataPropertyName = "TagType";
-            this.tagTypeDataGridViewTextBoxColumn.DataSource = this.tagTypeBindingSource;
-            this.tagTypeDataGridViewTextBoxColumn.DisplayMember = "Name";
-            this.tagTypeDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            resources.ApplyResources(this.tagTypeDataGridViewTextBoxColumn, "tagTypeDataGridViewTextBoxColumn");
-            this.tagTypeDataGridViewTextBoxColumn.Name = "tagTypeDataGridViewTextBoxColumn";
-            this.tagTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tagTypeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.tagTypeDataGridViewTextBoxColumn.ValueMember = "id";
-            // 
-            // hHDataGridViewTextBoxColumn
-            // 
-            this.hHDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.hHDataGridViewTextBoxColumn.DataPropertyName = "HH";
-            resources.ApplyResources(this.hHDataGridViewTextBoxColumn, "hHDataGridViewTextBoxColumn");
-            this.hHDataGridViewTextBoxColumn.Name = "hHDataGridViewTextBoxColumn";
-            this.hHDataGridViewTextBoxColumn.ReadOnly = true;
-            this.hHDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.hHDataGridViewTextBoxColumn.TrueValue = "R";
-            // 
-            // uDMInputDataGridViewTextBoxColumn
-            // 
-            this.uDMInputDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.uDMInputDataGridViewTextBoxColumn.DataPropertyName = "UDM_Input";
-            resources.ApplyResources(this.uDMInputDataGridViewTextBoxColumn, "uDMInputDataGridViewTextBoxColumn");
-            this.uDMInputDataGridViewTextBoxColumn.Name = "uDMInputDataGridViewTextBoxColumn";
-            this.uDMInputDataGridViewTextBoxColumn.ReadOnly = true;
-            this.uDMInputDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.uDMInputDataGridViewTextBoxColumn.TrueValue = "R";
-            // 
-            // uDMOutputDataGridViewTextBoxColumn
-            // 
-            this.uDMOutputDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.uDMOutputDataGridViewTextBoxColumn.DataPropertyName = "UDM_Output";
-            resources.ApplyResources(this.uDMOutputDataGridViewTextBoxColumn, "uDMOutputDataGridViewTextBoxColumn");
-            this.uDMOutputDataGridViewTextBoxColumn.Name = "uDMOutputDataGridViewTextBoxColumn";
-            this.uDMOutputDataGridViewTextBoxColumn.ReadOnly = true;
-            this.uDMOutputDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.uDMOutputDataGridViewTextBoxColumn.TrueValue = "W";
-            // 
-            // filterDataGridViewTextBoxColumn
-            // 
-            this.filterDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.filterDataGridViewTextBoxColumn.DataPropertyName = "Filter";
-            this.filterDataGridViewTextBoxColumn.DataSource = this.filtresBindingSource;
-            this.filterDataGridViewTextBoxColumn.DisplayMember = "Description";
-            this.filterDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            resources.ApplyResources(this.filterDataGridViewTextBoxColumn, "filterDataGridViewTextBoxColumn");
-            this.filterDataGridViewTextBoxColumn.Name = "filterDataGridViewTextBoxColumn";
-            this.filterDataGridViewTextBoxColumn.ReadOnly = true;
-            this.filterDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.filterDataGridViewTextBoxColumn.ValueMember = "id";
-            // 
-            // descriptionDataGridViewTextBoxColumn4
-            // 
-            this.descriptionDataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.descriptionDataGridViewTextBoxColumn4.DataPropertyName = "Description";
-            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn4, "descriptionDataGridViewTextBoxColumn4");
-            this.descriptionDataGridViewTextBoxColumn4.Name = "descriptionDataGridViewTextBoxColumn4";
-            this.descriptionDataGridViewTextBoxColumn4.ReadOnly = true;
-            this.descriptionDataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.backgroundWorker6.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker6_DoWork);
+            this.backgroundWorker6.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker6_RunWorkerCompleted);
             // 
             // Form2
             // 
@@ -3274,5 +3280,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn uDMOutputDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn filterDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn4;
+        private System.ComponentModel.BackgroundWorker backgroundWorker6;
     }
 }

@@ -321,6 +321,15 @@
   <data name="&gt;&gt;dataGridView1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="nameDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="nameDataGridViewTextBoxColumn1.ToolTipText" xml:space="preserve">
+    <value>Имя корпуса/сооружения</value>
+  </data>
+  <data name="descriptionDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>Description</value>
+  </data>
   <metadata name="corpusBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>227, 56</value>
   </metadata>
@@ -631,12 +640,45 @@
   <data name="&gt;&gt;dataGridView2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="nameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <metadata name="Node.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="oPCBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>675, 173</value>
+  </metadata>
+  <data name="Node.HeaderText" xml:space="preserve">
+    <value>Node</value>
+  </data>
+  <data name="Node.Width" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <metadata name="oPCBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>675, 173</value>
+  </metadata>
+  <metadata name="Corpus.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
   <metadata name="corpusBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>974, 173</value>
   </metadata>
+  <data name="Corpus.HeaderText" xml:space="preserve">
+    <value>Corpus</value>
+  </data>
+  <data name="Corpus.Width" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <metadata name="corpusBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>974, 173</value>
+  </metadata>
+  <data name="descriptionDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="iPAddrDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>IPAddr</value>
+  </data>
   <metadata name="pLCBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>555, 56</value>
   </metadata>
@@ -932,12 +974,60 @@
   <data name="&gt;&gt;dataGridView3.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="nameDataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="nameDataGridViewTextBoxColumn2.Width" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="descriptionDataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="descriptionDataGridViewTextBoxColumn2.Width" type="System.Int32, mscorlib">
+    <value>66</value>
+  </data>
+  <metadata name="RName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="RName.HeaderText" xml:space="preserve">
+    <value>RName</value>
+  </data>
+  <data name="RName.ToolTipText" xml:space="preserve">
+    <value>Необходимо для отображения в SCADA</value>
+  </data>
+  <data name="RName.Width" type="System.Int32, mscorlib">
+    <value>49</value>
+  </data>
+  <metadata name="pLCBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>186, 95</value>
+  </metadata>
+  <data name="pLCDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>PLC</value>
+  </data>
+  <data name="pLCDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
   <metadata name="pLCBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>186, 95</value>
   </metadata>
   <metadata name="systemTypeBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>344, 95</value>
   </metadata>
+  <data name="systemtypeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Systemtype</value>
+  </data>
+  <data name="systemtypeDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>67</value>
+  </data>
+  <metadata name="systemTypeBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>344, 95</value>
+  </metadata>
+  <data name="enablDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Enabl</value>
+  </data>
+  <data name="enablDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
   <metadata name="systemaBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>851, 56</value>
   </metadata>
@@ -1230,12 +1320,90 @@
   <data name="&gt;&gt;dataGridView4.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="nameDataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="nameDataGridViewTextBoxColumn3.Width" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <metadata name="systemaBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 134</value>
+  </metadata>
+  <data name="systemaDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Systema</value>
+  </data>
+  <data name="systemaDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
   <metadata name="systemaBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 134</value>
   </metadata>
   <metadata name="gruptypeBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>198, 134</value>
   </metadata>
+  <data name="grupTypeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>GrupType</value>
+  </data>
+  <data name="grupTypeDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <metadata name="gruptypeBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>198, 134</value>
+  </metadata>
+  <data name="descriptionDataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="descriptionDataGridViewTextBoxColumn3.Width" type="System.Int32, mscorlib">
+    <value>66</value>
+  </data>
+  <data name="areaDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="areaDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="gMPTDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>GMPT</value>
+  </data>
+  <data name="gMPTDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="gMPHmDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>GMPHm</value>
+  </data>
+  <data name="gMPHmDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="gMPCAVDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>GMPCAV</value>
+  </data>
+  <data name="gMPCAVDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="gMPVAVDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>GMPVAV</value>
+  </data>
+  <data name="gMPVAVDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="gMPDPDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>GMPDP</value>
+  </data>
+  <data name="gMPDPDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="enablDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>Enabl</value>
+  </data>
+  <data name="enablDataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="gMPWDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>GMPW</value>
+  </data>
+  <data name="gMPWDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <metadata name="gruppaBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>727, 95</value>
   </metadata>
@@ -1528,15 +1696,72 @@
   <data name="&gt;&gt;dataGridView6.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="nameDataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="nameDataGridViewTextBoxColumn4.Width" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <metadata name="gruptypeBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>842, 134</value>
+  </metadata>
+  <data name="grupTypeDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>GrupType</value>
+  </data>
+  <data name="grupTypeDataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
   <metadata name="gruptypeBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>842, 134</value>
   </metadata>
   <metadata name="tagTypeBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 173</value>
   </metadata>
+  <data name="tagTypeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>TagType</value>
+  </data>
+  <data name="tagTypeDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <metadata name="tagTypeBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 173</value>
+  </metadata>
+  <data name="hHDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>HH</value>
+  </data>
+  <data name="hHDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="uDMInputDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>UDM_Input</value>
+  </data>
+  <data name="uDMInputDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>68</value>
+  </data>
+  <data name="uDMOutputDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>UDM_Output</value>
+  </data>
+  <data name="uDMOutputDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>76</value>
+  </data>
   <metadata name="filtresBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>360, 173</value>
   </metadata>
+  <data name="filterDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="filterDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <metadata name="filtresBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>360, 173</value>
+  </metadata>
+  <data name="descriptionDataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="descriptionDataGridViewTextBoxColumn4.Width" type="System.Int32, mscorlib">
+    <value>66</value>
+  </data>
   <metadata name="tagBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>552, 134</value>
   </metadata>
@@ -7606,24 +7831,6 @@
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>917, 251</value>
   </metadata>
-  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 17</value>
-  </data>
-  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
-    <value>toolStripStatusLabel1</value>
-  </data>
-  <data name="toolStripStatusLabel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 17</value>
-  </data>
-  <data name="toolStripStatusLabel3.Text" xml:space="preserve">
-    <value>toolStripStatusLabel3</value>
-  </data>
-  <data name="toolStripStatusLabel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 17</value>
-  </data>
-  <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 17</value>
-  </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 544</value>
   </data>
@@ -7647,6 +7854,24 @@
   </data>
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 17</value>
+  </data>
+  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
+    <value>toolStripStatusLabel1</value>
+  </data>
+  <data name="toolStripStatusLabel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 17</value>
+  </data>
+  <data name="toolStripStatusLabel3.Text" xml:space="preserve">
+    <value>toolStripStatusLabel3</value>
+  </data>
+  <data name="toolStripStatusLabel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 17</value>
+  </data>
+  <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 17</value>
   </data>
   <metadata name="areaAWXTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>198, 290</value>
@@ -7717,249 +7942,9 @@
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>619, 446</value>
   </metadata>
-  <data name="nameDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="nameDataGridViewTextBoxColumn1.ToolTipText" xml:space="preserve">
-    <value>Имя корпуса/сооружения</value>
-  </data>
-  <data name="descriptionDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="nameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <metadata name="Node.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
+  <metadata name="backgroundWorker6.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>716, 446</value>
   </metadata>
-  <metadata name="oPCBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>675, 173</value>
-  </metadata>
-  <data name="Node.HeaderText" xml:space="preserve">
-    <value>Node</value>
-  </data>
-  <data name="Node.Width" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <metadata name="Corpus.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="corpusBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>974, 173</value>
-  </metadata>
-  <data name="Corpus.HeaderText" xml:space="preserve">
-    <value>Corpus</value>
-  </data>
-  <data name="Corpus.Width" type="System.Int32, mscorlib">
-    <value>46</value>
-  </data>
-  <data name="descriptionDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="iPAddrDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>IPAddr</value>
-  </data>
-  <data name="nameDataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="nameDataGridViewTextBoxColumn2.Width" type="System.Int32, mscorlib">
-    <value>41</value>
-  </data>
-  <data name="descriptionDataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="descriptionDataGridViewTextBoxColumn2.Width" type="System.Int32, mscorlib">
-    <value>66</value>
-  </data>
-  <metadata name="RName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="RName.HeaderText" xml:space="preserve">
-    <value>RName</value>
-  </data>
-  <data name="RName.ToolTipText" xml:space="preserve">
-    <value>Необходимо для отображения в SCADA</value>
-  </data>
-  <data name="RName.Width" type="System.Int32, mscorlib">
-    <value>49</value>
-  </data>
-  <metadata name="pLCBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>186, 95</value>
-  </metadata>
-  <data name="pLCDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>PLC</value>
-  </data>
-  <data name="pLCDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <metadata name="systemTypeBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>344, 95</value>
-  </metadata>
-  <data name="systemtypeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Systemtype</value>
-  </data>
-  <data name="systemtypeDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>67</value>
-  </data>
-  <data name="enablDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Enabl</value>
-  </data>
-  <data name="enablDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="nameDataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="nameDataGridViewTextBoxColumn3.Width" type="System.Int32, mscorlib">
-    <value>41</value>
-  </data>
-  <metadata name="systemaBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 134</value>
-  </metadata>
-  <data name="systemaDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Systema</value>
-  </data>
-  <data name="systemaDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <metadata name="gruptypeBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>198, 134</value>
-  </metadata>
-  <data name="grupTypeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>GrupType</value>
-  </data>
-  <data name="grupTypeDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="descriptionDataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="descriptionDataGridViewTextBoxColumn3.Width" type="System.Int32, mscorlib">
-    <value>66</value>
-  </data>
-  <data name="areaDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Area</value>
-  </data>
-  <data name="areaDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <data name="gMPTDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>GMPT</value>
-  </data>
-  <data name="gMPTDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="gMPTDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>44</value>
-  </data>
-  <data name="gMPHmDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>GMPHm</value>
-  </data>
-  <data name="gMPHmDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="gMPHmDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <data name="gMPCAVDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>GMPCAV</value>
-  </data>
-  <data name="gMPCAVDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="gMPCAVDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>58</value>
-  </data>
-  <data name="gMPVAVDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>GMPVAV</value>
-  </data>
-  <data name="gMPVAVDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="gMPVAVDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>58</value>
-  </data>
-  <data name="gMPDPDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>GMPDP</value>
-  </data>
-  <data name="gMPDPDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="gMPDPDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>52</value>
-  </data>
-  <data name="enablDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>Enabl</value>
-  </data>
-  <data name="enablDataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="gMPWDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>GMPW</value>
-  </data>
-  <data name="gMPWDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="gMPWDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>48</value>
-  </data>
-  <data name="nameDataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="nameDataGridViewTextBoxColumn4.Width" type="System.Int32, mscorlib">
-    <value>41</value>
-  </data>
-  <metadata name="gruptypeBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>842, 134</value>
-  </metadata>
-  <data name="grupTypeDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>GrupType</value>
-  </data>
-  <data name="grupTypeDataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <metadata name="tagTypeBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 173</value>
-  </metadata>
-  <data name="tagTypeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>TagType</value>
-  </data>
-  <data name="tagTypeDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>56</value>
-  </data>
-  <data name="hHDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>HH</value>
-  </data>
-  <data name="hHDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="uDMInputDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>UDM_Input</value>
-  </data>
-  <data name="uDMInputDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>68</value>
-  </data>
-  <data name="uDMOutputDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>UDM_Output</value>
-  </data>
-  <data name="uDMOutputDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>76</value>
-  </data>
-  <metadata name="filtresBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>360, 173</value>
-  </metadata>
-  <data name="filterDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Filter</value>
-  </data>
-  <data name="filterDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <data name="descriptionDataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="descriptionDataGridViewTextBoxColumn4.Width" type="System.Int32, mscorlib">
-    <value>66</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -14150,6 +14135,18 @@
   <data name="$this.Text" xml:space="preserve">
     <value>RPTagst DB Client</value>
   </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>nameDataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>descriptionDataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;corpusBindingSource.Name" xml:space="preserve">
     <value>corpusBindingSource</value>
   </data>
@@ -14166,7 +14163,7 @@
     <value>rPTagsDataSet</value>
   </data>
   <data name="&gt;&gt;rPTagsDataSet.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSet, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSet, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;добавитьToolStripMenuItem.Name" xml:space="preserve">
     <value>добавитьToolStripMenuItem</value>
@@ -14186,17 +14183,47 @@
   <data name="&gt;&gt;сохранитьToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>nameDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Node.Name" xml:space="preserve">
+    <value>Node</value>
+  </data>
+  <data name="&gt;&gt;Node.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;oPCBindingSource.Name" xml:space="preserve">
     <value>oPCBindingSource</value>
   </data>
   <data name="&gt;&gt;oPCBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;Corpus.Name" xml:space="preserve">
+    <value>Corpus</value>
+  </data>
+  <data name="&gt;&gt;Corpus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;corpusBindingSource1.Name" xml:space="preserve">
     <value>corpusBindingSource1</value>
   </data>
   <data name="&gt;&gt;corpusBindingSource1.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>descriptionDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;iPAddrDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>iPAddrDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;iPAddrDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pLCBindingSource.Name" xml:space="preserve">
     <value>pLCBindingSource</value>
@@ -14222,17 +14249,53 @@
   <data name="&gt;&gt;toolStripMenuItem3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn2.Name" xml:space="preserve">
+    <value>nameDataGridViewTextBoxColumn2</value>
+  </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn2.Name" xml:space="preserve">
+    <value>descriptionDataGridViewTextBoxColumn2</value>
+  </data>
+  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RName.Name" xml:space="preserve">
+    <value>RName</value>
+  </data>
+  <data name="&gt;&gt;RName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pLCDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>pLCDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;pLCDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;pLCBindingSource1.Name" xml:space="preserve">
     <value>pLCBindingSource1</value>
   </data>
   <data name="&gt;&gt;pLCBindingSource1.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;systemtypeDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>systemtypeDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;systemtypeDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;systemTypeBindingSource.Name" xml:space="preserve">
     <value>systemTypeBindingSource</value>
   </data>
   <data name="&gt;&gt;systemTypeBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;enablDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>enablDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;enablDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;systemaBindingSource.Name" xml:space="preserve">
     <value>systemaBindingSource</value>
@@ -14258,17 +14321,89 @@
   <data name="&gt;&gt;toolStripMenuItem6.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn3.Name" xml:space="preserve">
+    <value>nameDataGridViewTextBoxColumn3</value>
+  </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;systemaDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>systemaDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;systemaDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;systemaBindingSource1.Name" xml:space="preserve">
     <value>systemaBindingSource1</value>
   </data>
   <data name="&gt;&gt;systemaBindingSource1.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;grupTypeDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>grupTypeDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;grupTypeDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;gruptypeBindingSource.Name" xml:space="preserve">
     <value>gruptypeBindingSource</value>
   </data>
   <data name="&gt;&gt;gruptypeBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn3.Name" xml:space="preserve">
+    <value>descriptionDataGridViewTextBoxColumn3</value>
+  </data>
+  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;areaDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>areaDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;areaDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gMPTDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>gMPTDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;gMPTDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gMPHmDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>gMPHmDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;gMPHmDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gMPCAVDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>gMPCAVDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;gMPCAVDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gMPVAVDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>gMPVAVDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;gMPVAVDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gMPDPDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>gMPDPDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;gMPDPDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;enablDataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>enablDataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;enablDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gMPWDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>gMPWDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;gMPWDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;gruppaBindingSource.Name" xml:space="preserve">
     <value>gruppaBindingSource</value>
@@ -14294,11 +14429,29 @@
   <data name="&gt;&gt;toolStripMenuItem9.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn4.Name" xml:space="preserve">
+    <value>nameDataGridViewTextBoxColumn4</value>
+  </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grupTypeDataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>grupTypeDataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;grupTypeDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;gruptypeBindingSource1.Name" xml:space="preserve">
     <value>gruptypeBindingSource1</value>
   </data>
   <data name="&gt;&gt;gruptypeBindingSource1.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tagTypeDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>tagTypeDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;tagTypeDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tagTypeBindingSource.Name" xml:space="preserve">
     <value>tagTypeBindingSource</value>
@@ -14306,11 +14459,41 @@
   <data name="&gt;&gt;tagTypeBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;hHDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>hHDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;hHDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;uDMInputDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>uDMInputDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;uDMInputDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;uDMOutputDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>uDMOutputDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;uDMOutputDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;filterDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>filterDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;filterDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;filtresBindingSource.Name" xml:space="preserve">
     <value>filtresBindingSource</value>
   </data>
   <data name="&gt;&gt;filtresBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn4.Name" xml:space="preserve">
+    <value>descriptionDataGridViewTextBoxColumn4</value>
+  </data>
+  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tagBindingSource.Name" xml:space="preserve">
     <value>tagBindingSource</value>
@@ -14382,7 +14565,7 @@
     <value>rpTagsDataSet1</value>
   </data>
   <data name="&gt;&gt;rpTagsDataSet1.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSet, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSet, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GMP.Name" xml:space="preserve">
     <value>GMP</value>
@@ -14826,67 +15009,67 @@
     <value>corpusTableAdapter</value>
   </data>
   <data name="&gt;&gt;corpusTableAdapter.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSetTableAdapters.CorpusTableAdapter, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSetTableAdapters.CorpusTableAdapter, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pLCTableAdapter.Name" xml:space="preserve">
     <value>pLCTableAdapter</value>
   </data>
   <data name="&gt;&gt;pLCTableAdapter.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSetTableAdapters.PLCTableAdapter, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSetTableAdapters.PLCTableAdapter, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;systemaTableAdapter.Name" xml:space="preserve">
     <value>systemaTableAdapter</value>
   </data>
   <data name="&gt;&gt;systemaTableAdapter.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSetTableAdapters.SystemaTableAdapter, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSetTableAdapters.SystemaTableAdapter, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;systemTypeTableAdapter.Name" xml:space="preserve">
     <value>systemTypeTableAdapter</value>
   </data>
   <data name="&gt;&gt;systemTypeTableAdapter.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSetTableAdapters.SystemTypeTableAdapter, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSetTableAdapters.SystemTypeTableAdapter, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;gruppaTableAdapter.Name" xml:space="preserve">
     <value>gruppaTableAdapter</value>
   </data>
   <data name="&gt;&gt;gruppaTableAdapter.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSetTableAdapters.GruppaTableAdapter, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSetTableAdapters.GruppaTableAdapter, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;gruptypeTableAdapter.Name" xml:space="preserve">
     <value>gruptypeTableAdapter</value>
   </data>
   <data name="&gt;&gt;gruptypeTableAdapter.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSetTableAdapters.GruptypeTableAdapter, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSetTableAdapters.GruptypeTableAdapter, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tagTableAdapter.Name" xml:space="preserve">
     <value>tagTableAdapter</value>
   </data>
   <data name="&gt;&gt;tagTableAdapter.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSetTableAdapters.TagTableAdapter, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSetTableAdapters.TagTableAdapter, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tagTypeTableAdapter.Name" xml:space="preserve">
     <value>tagTypeTableAdapter</value>
   </data>
   <data name="&gt;&gt;tagTypeTableAdapter.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSetTableAdapters.TagTypeTableAdapter, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSetTableAdapters.TagTypeTableAdapter, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;filtresTableAdapter.Name" xml:space="preserve">
     <value>filtresTableAdapter</value>
   </data>
   <data name="&gt;&gt;filtresTableAdapter.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSetTableAdapters.FiltresTableAdapter, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSetTableAdapters.FiltresTableAdapter, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;oPCTableAdapter.Name" xml:space="preserve">
     <value>oPCTableAdapter</value>
   </data>
   <data name="&gt;&gt;oPCTableAdapter.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSetTableAdapters.OPCTableAdapter, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSetTableAdapters.OPCTableAdapter, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;device_TagTableAdapter.Name" xml:space="preserve">
     <value>device_TagTableAdapter</value>
   </data>
   <data name="&gt;&gt;device_TagTableAdapter.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSetTableAdapters.Device_TagTableAdapter, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSetTableAdapters.Device_TagTableAdapter, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;gruppaBindingSource2.Name" xml:space="preserve">
     <value>gruppaBindingSource2</value>
@@ -14922,31 +15105,31 @@
     <value>areaAWXTableAdapter</value>
   </data>
   <data name="&gt;&gt;areaAWXTableAdapter.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSetTableAdapters.AreaAWXTableAdapter, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSetTableAdapters.AreaAWXTableAdapter, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tagAWXTableAdapter.Name" xml:space="preserve">
     <value>tagAWXTableAdapter</value>
   </data>
   <data name="&gt;&gt;tagAWXTableAdapter.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSetTableAdapters.TagAWXTableAdapter, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSetTableAdapters.TagAWXTableAdapter, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tagHHTableAdapter.Name" xml:space="preserve">
     <value>tagHHTableAdapter</value>
   </data>
   <data name="&gt;&gt;tagHHTableAdapter.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSetTableAdapters.TagHHTableAdapter, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSetTableAdapters.TagHHTableAdapter, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tagUDMTableAdapter.Name" xml:space="preserve">
     <value>tagUDMTableAdapter</value>
   </data>
   <data name="&gt;&gt;tagUDMTableAdapter.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSetTableAdapters.TagUDMTableAdapter, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSetTableAdapters.TagUDMTableAdapter, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tagOPCTableAdapter.Name" xml:space="preserve">
     <value>tagOPCTableAdapter</value>
   </data>
   <data name="&gt;&gt;tagOPCTableAdapter.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSetTableAdapters.TagOPCTableAdapter, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSetTableAdapters.TagOPCTableAdapter, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;sysidDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>sysidDataGridViewTextBoxColumn</value>
@@ -14994,7 +15177,7 @@
     <value>sAIDNullTableAdapter</value>
   </data>
   <data name="&gt;&gt;sAIDNullTableAdapter.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSetTableAdapters.SAIDNullTableAdapter, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSetTableAdapters.SAIDNullTableAdapter, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bindingSource1.Name" xml:space="preserve">
     <value>bindingSource1</value>
@@ -15042,7 +15225,7 @@
     <value>tagIdTagTypeIDTableAdapter</value>
   </data>
   <data name="&gt;&gt;tagIdTagTypeIDTableAdapter.Type" xml:space="preserve">
-    <value>RPTagsTest.RPTagsDataSetTableAdapters.TagIdTagTypeIDTableAdapter, RPTagsDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>RPTagsTest.RPTagsDataSetTableAdapters.TagIdTagTypeIDTableAdapter, RPTagsDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;corpusBindingSource2.Name" xml:space="preserve">
     <value>corpusBindingSource2</value>
@@ -15056,203 +15239,11 @@
   <data name="&gt;&gt;toolTip1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>nameDataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>descriptionDataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>nameDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Node.Name" xml:space="preserve">
-    <value>Node</value>
-  </data>
-  <data name="&gt;&gt;Node.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Corpus.Name" xml:space="preserve">
-    <value>Corpus</value>
-  </data>
-  <data name="&gt;&gt;Corpus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>descriptionDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;iPAddrDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>iPAddrDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;iPAddrDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn2.Name" xml:space="preserve">
-    <value>nameDataGridViewTextBoxColumn2</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn2.Name" xml:space="preserve">
-    <value>descriptionDataGridViewTextBoxColumn2</value>
-  </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RName.Name" xml:space="preserve">
-    <value>RName</value>
-  </data>
-  <data name="&gt;&gt;RName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pLCDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>pLCDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;pLCDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;systemtypeDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>systemtypeDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;systemtypeDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;enablDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>enablDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;enablDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn3.Name" xml:space="preserve">
-    <value>nameDataGridViewTextBoxColumn3</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;systemaDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>systemaDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;systemaDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grupTypeDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>grupTypeDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;grupTypeDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn3.Name" xml:space="preserve">
-    <value>descriptionDataGridViewTextBoxColumn3</value>
-  </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;areaDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>areaDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;areaDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gMPTDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>gMPTDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;gMPTDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gMPHmDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>gMPHmDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;gMPHmDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gMPCAVDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>gMPCAVDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;gMPCAVDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gMPVAVDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>gMPVAVDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;gMPVAVDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gMPDPDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>gMPDPDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;gMPDPDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;enablDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>enablDataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;enablDataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gMPWDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>gMPWDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;gMPWDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn4.Name" xml:space="preserve">
-    <value>nameDataGridViewTextBoxColumn4</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grupTypeDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>grupTypeDataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;grupTypeDataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tagTypeDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>tagTypeDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;tagTypeDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;hHDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>hHDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;hHDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;uDMInputDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>uDMInputDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;uDMInputDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;uDMOutputDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>uDMOutputDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;uDMOutputDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;filterDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>filterDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;filterDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn4.Name" xml:space="preserve">
-    <value>descriptionDataGridViewTextBoxColumn4</value>
-  </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;backgroundWorker6.Name" xml:space="preserve">
+    <value>backgroundWorker6</value>
+  </data>
+  <data name="&gt;&gt;backgroundWorker6.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form2</value>
