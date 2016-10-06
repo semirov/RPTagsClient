@@ -34,12 +34,14 @@ namespace RPTagsTest.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("test")]
-        public string test {
+        public global::System.Configuration.RsaProtectedConfigurationProvider Password {
             get {
-                return ((string)(this["test"]));
+                return ((global::System.Configuration.RsaProtectedConfigurationProvider)(this["Password"]));
+            }
+            set {
+                this["Password"] = value;
             }
         }
     }

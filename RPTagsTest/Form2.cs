@@ -1246,16 +1246,17 @@ namespace RPTagsTest
             tabControl1.Enabled = true;
         }// добавка тегов
         int countcut;
-        int devtagstrcount;
         int devtagstrsum;
+        
+        int  devtagstrcount;
         private void исключитьТегиБезАдресаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             devtagstrsum = dataGridView7.Rows.Count;
             if (backgroundWorker8.IsBusy != true)
             {
-
+                notsaved = true;
                 backgroundWorker8.RunWorkerAsync();
-                tabControl1.Enabled = false;
+                dataGridView7.ReadOnly = true;
             }
 
         }
@@ -1265,19 +1266,22 @@ namespace RPTagsTest
             
             BackgroundWorker worker = sender as BackgroundWorker;
             worker.WorkerReportsProgress = true;
-            
-            foreach (DataGridViewRow row in dataGridView7.Rows)
+
+            devtagstrcount = 0;
+            foreach (RPTagsDataSet.Device_TagRow row in rPTagsDataSet.Device_Tag.Rows)
             {
-                if (row.Cells["AdrPLC"].Value.ToString() == "" || row.Cells["AdrPLC"].Value.ToString() == " ")
+                if (row.IsAdrPLCNull())
                 {
-                    row.Cells["cutDataGridViewTextBoxColumn1"].Value = 1;
+                    row.Cut = 1;
                     countcut++;
                     
                 }
                 else
                 {
-                    row.Cells["cutDataGridViewTextBoxColumn1"].Value = 0;
+                    row.Cut = 0;
                 }
+
+
                 devtagstrcount++;
                 worker.ReportProgress(devtagstrcount);
 
@@ -1290,9 +1294,11 @@ namespace RPTagsTest
         }
         private void backgroundWorker8_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            toolStripStatusLabel4.Text = "Готово! Исключено "+ countcut+ " записей.";
+            dataGridView7.Update();
+            toolStripStatusLabel4.Text = "Готово! Исключено записей: "+ countcut+ " (поставлен чек бокс Cut)";
             change_device_tag();
             tabControl1.Enabled = true;
+            dataGridView7.ReadOnly = false;
         }
         #endregion основные таблицы
 
