@@ -859,39 +859,63 @@ namespace RPTagsTest
             }
         } // удалить
 
-
+        bool notsaved = false;
+        bool canceledit = false;
         //----------------Девайс---------------------------------------------------------------------------------------------------
         private void change_device_tag()
         {
-            bool notsaved = false;
-            
+            bool needaccept = false;
+            canceledit = true;
             if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Added) != null)
             {
                 DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Added));
-                tabPage7.Text = "+Устройство";
+
+                //tabPage7.Text = "+Устройство";
+                if(tabPage7.Text[0].ToString() == "У")
+                    tabPage7.Text = tabPage7.Text.Insert(0, "+");
                 notsaved = true;
+                needaccept = true;
             }
             if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Deleted) != null)
             {
                 DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Deleted));
-                tabPage7.Text = "-Устройство";
+                if (tabPage7.Text[0].ToString() == "У")
+                    tabPage7.Text = tabPage7.Text.Insert(0, "-");
                 notsaved = true;
+                needaccept = true;
             }
             
             if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified) != null)
             {
                 DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified));
-                tabPage7.Text = "*Устройство";
+                if (tabPage7.Text[0].ToString() == "У")
+                    tabPage7.Text = tabPage7.Text.Insert(0, "*");
                 DataGridView dtw = dataGridView7;
 
                 notsaved = true;
+                needaccept = true;
             }
-            if (notsaved)
+            if (needaccept)
             {
                 rPTagsDataSet.Device_Tag.AcceptChanges();
-                notsaved = false;
+                needaccept = false;
             }
 
+        }
+        private void fiilDevice_tag(int systema, int gruppa, int tag)
+        {
+            if(systema != 0 && gruppa != 0 && tag != 0) // по трем параметрам
+            {
+                this.device_TagTableAdapter.FillByTagSysGr(this.rPTagsDataSet.Device_Tag, systema, gruppa, tag);
+            }
+            if(systema != 0 && gruppa != 0 && tag == 0) // по двум
+            {
+                this.device_TagTableAdapter.FillBySystemaGryppa(this.rPTagsDataSet.Device_Tag, systema, gruppa);
+            }
+            if(systema != 0 && gruppa == 0 && tag == 0) // по одному
+            {
+                this.device_TagTableAdapter.FillBySystema(this.rPTagsDataSet.Device_Tag, systema);
+            }
         }
         private void backgroundWorker6_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -948,151 +972,165 @@ namespace RPTagsTest
         {
             try
             {
-
-                if (CheckGruppa && CheckTag) // если выбрана система, группа, тег - покажем только по тегу
+                if (notsaved)
+                {
+                    MessageBox.Show("Данные не могут быть обновлены\n пока не будут сохранены изменения", "Данные не обновлены", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    
+                }
+                    if (!notsaved)
                 {
                     
-                    if (dataGridView3.CurrentRow != null || dataGridView4.CurrentRow != null || dataGridView6.CurrentRow != null)
+
+                    if (CheckGruppa && CheckTag) // если выбрана система, группа, тег - покажем только по тегу
                     {
-                        // выбранная система
-                        int Systema_index = Convert.ToInt16(dataGridView3.CurrentRow.Index);
-                        int Systema_id = Convert.ToInt16(rPTagsDataSet.Systema[Systema_index]["id"]);
-                        // выбранная группа
-                        int Gruppa_index = Convert.ToInt16(dataGridView4.CurrentRow.Index);
-                        int Gruppa_id = Convert.ToInt16(rPTagsDataSet.Gruppa[Gruppa_index]["id"]);
-                        // выбранный тег
-                        int Tag_index = Convert.ToInt16(dataGridView6.CurrentRow.Index);
-                        int Tag_id = Convert.ToInt16(rPTagsDataSet.Tag[Tag_index]["id"]);
-                        // получим выборку по трем переменным
-                        this.device_TagTableAdapter.FillByTagSysGr(this.rPTagsDataSet.Device_Tag, Systema_id, Gruppa_id, Tag_id);
-
-                        // запросим наличие тегов без SAID
-                        rPTagsDataSet.SAIDNull.Clear();
-                        this.sAIDNullTableAdapter.FillBySysGrTag(this.rPTagsDataSet.SAIDNull, Gruppa_id, Systema_id,  Tag_id);
-                        if (rPTagsDataSet.SAIDNull.Rows.Count != 0) // если есть хоть одна строка, предложим их добавить
+                        tabPage7.Text = "Устройство (" + Name_Systema + "\\" + Name_Gryppa + "\\" + Name_TagType + "\\" + Name_Tag + ")";
+                        if (dataGridView3.CurrentRow != null || dataGridView4.CurrentRow != null || dataGridView6.CurrentRow != null)
                         {
-                            // toolStripStatusLabel2.Text = "У нас там есть что добавить";
-                            if (MessageBox.Show("Для Тега: \"" + Name_Corpus + "\\" + Name_Systema + "\\" + Name_Gryppa + "\\" + Name_TagType + "\\" + Name_Tag + "\"\nОтсутствует SAID!\n Добавить его?", "SAID", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                            {
 
-                                foreach (DataRow row in rPTagsDataSet.SAIDNull)
+                            // выбранная система
+                            int Systema_index = Convert.ToInt16(dataGridView3.CurrentRow.Index);
+                            int Systema_id = Convert.ToInt16(rPTagsDataSet.Systema[Systema_index]["id"]);
+                            // выбранная группа
+                            int Gruppa_index = Convert.ToInt16(dataGridView4.CurrentRow.Index);
+                            int Gruppa_id = Convert.ToInt16(rPTagsDataSet.Gruppa[Gruppa_index]["id"]);
+                            // выбранный тег
+                            int Tag_index = Convert.ToInt16(dataGridView6.CurrentRow.Index);
+                            int Tag_id = Convert.ToInt16(rPTagsDataSet.Tag[Tag_index]["id"]);
+                            // получим выборку по трем переменным
+                            this.device_TagTableAdapter.FillByTagSysGr(this.rPTagsDataSet.Device_Tag, Systema_id, Gruppa_id, Tag_id);
+
+                            // запросим наличие тегов без SAID
+                            rPTagsDataSet.SAIDNull.Clear();
+                            //this.sAIDNullTableAdapter.FillBySysGrTag(this.rPTagsDataSet.SAIDNull, Gruppa_id, Systema_id, Tag_id);
+                            fiilDevice_tag(Systema_id, Gruppa_id, Tag_id);
+                            if (rPTagsDataSet.SAIDNull.Rows.Count != 0) // если есть хоть одна строка, предложим их добавить
+                            {
+                                
+                                if (MessageBox.Show("Для Тега: \"" + Name_Corpus + "\\" + Name_Systema + "\\" + Name_Gryppa + "\\" + Name_TagType + "\\" + Name_Tag + "\"\nОтсутствует SAID!\n Добавить его?", "SAID", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                                 {
 
-
-                                    RPTagsDataSet.Device_TagRow newRow = rPTagsDataSet.Device_Tag.NewDevice_TagRow();
-                                    newRow.SAID = Name_Systema;
-                                    newRow.Sys_id = Convert.ToInt16(row["Sys_id"]);
-                                    newRow.Gr_id = Convert.ToInt16(row["Gr_id"]);
-                                    newRow.Tag_id = Convert.ToInt16(row["Tag_id"]);
+                                    foreach (DataRow row in rPTagsDataSet.SAIDNull)
+                                    {
 
 
-                                    rPTagsDataSet.Device_Tag.AddDevice_TagRow(newRow);
-                                    change_device_tag();
+                                        RPTagsDataSet.Device_TagRow newRow = rPTagsDataSet.Device_Tag.NewDevice_TagRow();
+                                        newRow.SAID = Name_Systema;
+                                        newRow.Sys_id = Convert.ToInt16(row["Sys_id"]);
+                                        newRow.Gr_id = Convert.ToInt16(row["Gr_id"]);
+                                        newRow.Tag_id = Convert.ToInt16(row["Tag_id"]);
+
+
+                                        rPTagsDataSet.Device_Tag.AddDevice_TagRow(newRow);
+                                        change_device_tag();
+                                    }
                                 }
                             }
+
                         }
-
-                    }
-                    else
-                    {
-                        this.rPTagsDataSet.Device_Tag.Clear();
-                    }
-                }
-                else if (CheckGruppa && !CheckTag) // если выбрана система, группа,  - покажем только по группе
-                {
-                    if (dataGridView3.CurrentRow != null || dataGridView4.CurrentRow != null)
-                    {
-                        // выбранная группа
-                        int Gruppa_index = Convert.ToInt16(dataGridView4.CurrentRow.Index);
-                        int Gruppa_id = Convert.ToInt16(rPTagsDataSet.Gruppa[Gruppa_index]["id"]);
-                        // выбранная система
-                        int Systema_index = Convert.ToInt16(dataGridView3.CurrentRow.Index);
-                        int Systema_id = Convert.ToInt16(rPTagsDataSet.Systema[Systema_index]["id"]);
-                        //получим выборку по двум переменным
-                        this.device_TagTableAdapter.FillBySystemaGryppa(this.rPTagsDataSet.Device_Tag, Systema_id, Gruppa_id);
-
-                        // запросим наличие тегов без SAID
-                        rPTagsDataSet.SAIDNull.Clear();
-                        this.sAIDNullTableAdapter.FillBySustemGruppa(this.rPTagsDataSet.SAIDNull, Gruppa_id, Systema_id);
-                        if (rPTagsDataSet.SAIDNull.Rows.Count != 0) // если есть хоть одна строка, предложим их добавить
+                        else
                         {
-                            // toolStripStatusLabel2.Text = "У нас там есть что добавить";
-                            if (MessageBox.Show("Для Группы: \"" + Name_Corpus + "\\" + Name_Systema + "\\" + Name_Gryppa + "\"\nЕсть теги без SAID! Количество: " + rPTagsDataSet.SAIDNull.Rows.Count + "\n Добавить их?", "SAID", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                            {
+                            this.rPTagsDataSet.Device_Tag.Clear();
+                        }
+                    }
+                    else if (CheckGruppa && !CheckTag) // если выбрана система, группа,  - покажем только по группе
+                    {
+                        tabPage7.Text = "Устройство (" + Name_Systema + "\\" + Name_Gryppa + ")";
+                        if (dataGridView3.CurrentRow != null || dataGridView4.CurrentRow != null)
+                        {
+                            // выбранная группа
+                            int Gruppa_index = Convert.ToInt16(dataGridView4.CurrentRow.Index);
+                            int Gruppa_id = Convert.ToInt16(rPTagsDataSet.Gruppa[Gruppa_index]["id"]);
+                            // выбранная система
+                            int Systema_index = Convert.ToInt16(dataGridView3.CurrentRow.Index);
+                            int Systema_id = Convert.ToInt16(rPTagsDataSet.Systema[Systema_index]["id"]);
+                            //получим выборку по двум переменным
+                            this.device_TagTableAdapter.FillBySystemaGryppa(this.rPTagsDataSet.Device_Tag, Systema_id, Gruppa_id);
+                            fiilDevice_tag(Systema_id, Gruppa_id, 0);
 
-                                foreach (DataRow row in rPTagsDataSet.SAIDNull)
+                            // запросим наличие тегов без SAID
+                            rPTagsDataSet.SAIDNull.Clear();
+                            this.sAIDNullTableAdapter.FillBySustemGruppa(this.rPTagsDataSet.SAIDNull, Gruppa_id, Systema_id);
+                            if (rPTagsDataSet.SAIDNull.Rows.Count != 0) // если есть хоть одна строка, предложим их добавить
+                            {
+                                
+                                if (MessageBox.Show("Для Группы: \"" + Name_Corpus + "\\" + Name_Systema + "\\" + Name_Gryppa + "\"\nЕсть теги без SAID! Количество: " + rPTagsDataSet.SAIDNull.Rows.Count + "\n Добавить их?", "SAID", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                                 {
 
-
-                                    RPTagsDataSet.Device_TagRow newRow = rPTagsDataSet.Device_Tag.NewDevice_TagRow();
-                                    newRow.SAID = Name_Systema;
-                                    newRow.Sys_id = Convert.ToInt16(row["Sys_id"]);
-                                    newRow.Gr_id = Convert.ToInt16(row["Gr_id"]);
-                                    newRow.Tag_id = Convert.ToInt16(row["Tag_id"]);
+                                    foreach (DataRow row in rPTagsDataSet.SAIDNull)
+                                    {
 
 
-                                    rPTagsDataSet.Device_Tag.AddDevice_TagRow(newRow);
-                                    change_device_tag();
+                                        RPTagsDataSet.Device_TagRow newRow = rPTagsDataSet.Device_Tag.NewDevice_TagRow();
+                                        newRow.SAID = Name_Systema;
+                                        newRow.Sys_id = Convert.ToInt16(row["Sys_id"]);
+                                        newRow.Gr_id = Convert.ToInt16(row["Gr_id"]);
+                                        newRow.Tag_id = Convert.ToInt16(row["Tag_id"]);
+
+
+                                        rPTagsDataSet.Device_Tag.AddDevice_TagRow(newRow);
+                                        change_device_tag();
+                                    }
                                 }
                             }
+
+
                         }
-
-
-                    }
-                    else
-                    {
-                        this.rPTagsDataSet.Device_Tag.Clear();
-                    }
-                }
-                else if (!CheckGruppa && !CheckTag) // если выбранна только система
-                {
-                    if (dataGridView3.CurrentRow != null)
-                    {
-
-                        // выбранная система
-                        int Systema_index = Convert.ToInt16(dataGridView3.CurrentRow.Index);
-                        int Systema_id = Convert.ToInt16(rPTagsDataSet.Systema[Systema_index]["id"]);
-
-
-                        //получим выборку по системе
-                        this.device_TagTableAdapter.FillBySystema(this.rPTagsDataSet.Device_Tag, Systema_id);
-
-                        // запросим наличие тегов без SAID
-                        rPTagsDataSet.SAIDNull.Clear();
-                        this.sAIDNullTableAdapter.FillBySystema(this.rPTagsDataSet.SAIDNull, Systema_id);
-                        if (rPTagsDataSet.SAIDNull.Rows.Count != 0) // если есть хоть одна строка, предложим их добавить
+                        else
                         {
-                            // toolStripStatusLabel2.Text = "У нас там есть что добавить";
-                            if (MessageBox.Show("Для Системы: \"" + Name_Corpus + "\\" + Name_Systema + "\"\nЕсть теги без SAID! Количество: " + rPTagsDataSet.SAIDNull.Rows.Count + "\n Добавить их?", "SAID", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                            {
+                            this.rPTagsDataSet.Device_Tag.Clear();
+                        }
+                    }
+                    else if (!CheckGruppa && !CheckTag) // если выбранна только система
+                    {
+                        tabPage7.Text = "Устройство (" + Name_Systema +  ")";
+                        if (dataGridView3.CurrentRow != null)
+                        {
 
-                                foreach (DataRow row in rPTagsDataSet.SAIDNull)
+                            // выбранная система
+                            int Systema_index = Convert.ToInt16(dataGridView3.CurrentRow.Index);
+                            int Systema_id = Convert.ToInt16(rPTagsDataSet.Systema[Systema_index]["id"]);
+
+
+                            //получим выборку по системе
+                            this.device_TagTableAdapter.FillBySystema(this.rPTagsDataSet.Device_Tag, Systema_id);
+
+                            // запросим наличие тегов без SAID
+                            rPTagsDataSet.SAIDNull.Clear();
+                            this.sAIDNullTableAdapter.FillBySystema(this.rPTagsDataSet.SAIDNull, Systema_id);
+                            if (rPTagsDataSet.SAIDNull.Rows.Count != 0) // если есть хоть одна строка, предложим их добавить
+                            {
+                                // toolStripStatusLabel2.Text = "У нас там есть что добавить";
+                                if (MessageBox.Show("Для Системы: \"" + Name_Corpus + "\\" + Name_Systema + "\"\nЕсть теги без SAID! Количество: " + rPTagsDataSet.SAIDNull.Rows.Count + "\n Добавить их?", "SAID", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                                 {
 
+                                    foreach (DataRow row in rPTagsDataSet.SAIDNull)
+                                    {
 
-                                    RPTagsDataSet.Device_TagRow newRow = rPTagsDataSet.Device_Tag.NewDevice_TagRow();
-                                    newRow.SAID = Name_Systema;
-                                    newRow.Sys_id = Convert.ToInt16(row["Sys_id"]);
-                                    newRow.Gr_id = Convert.ToInt16(row["Gr_id"]);
-                                    newRow.Tag_id = Convert.ToInt16(row["Tag_id"]);
-                                    rPTagsDataSet.Device_Tag.AddDevice_TagRow(newRow);
-                                    change_device_tag();
+
+                                        RPTagsDataSet.Device_TagRow newRow = rPTagsDataSet.Device_Tag.NewDevice_TagRow();
+                                        newRow.SAID = Name_Systema;
+                                        newRow.Sys_id = Convert.ToInt16(row["Sys_id"]);
+                                        newRow.Gr_id = Convert.ToInt16(row["Gr_id"]);
+                                        newRow.Tag_id = Convert.ToInt16(row["Tag_id"]);
+                                        rPTagsDataSet.Device_Tag.AddDevice_TagRow(newRow);
+                                        change_device_tag();
+                                    }
                                 }
                             }
+
+
                         }
+                        else
+                        {
+                            this.rPTagsDataSet.Device_Tag.Clear();
+                        }
+                    }
 
 
-                    }
-                    else
-                    {
-                        this.rPTagsDataSet.Device_Tag.Clear();
-                    }
+
+
                 }
-                
-               
-               
             }
-
 
 
 
@@ -1107,13 +1145,22 @@ namespace RPTagsTest
         {
             if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified) != null)
             {
-                DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified));
-                tabPage7.Text = "*Устройство";
+                if (tabPage7.Text[0].ToString() == "У")
+                    tabPage7.Text = tabPage7.Text.Insert(0, "*");
+                canceledit = true;
             }
         }
         private void tabPage7_Leave(object sender, EventArgs e)
         {
-            change_device_tag();
+            if (canceledit)
+            {
+                DataGridView dtw = dataGridView7;
+                Validate();
+                dtw.Update();
+                dtw.EndEdit();
+                change_device_tag();
+            }
+            
         }       
         private void toolStripMenuItem26_Click(object sender, EventArgs e) // удалить
         {
@@ -1132,18 +1179,18 @@ namespace RPTagsTest
         {
             try
             {
-                
-
-                // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
-                // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
-
                 DataGridView dtw = dataGridView7;
-                
-
+                Validate();
+                dtw.Update();
+                dtw.EndEdit();
+                change_device_tag();
                 device_TagTableAdapter.Update(DeviceTag_temp_DT);
-                tabPage7.Text = "Устройство";
+                notsaved = false;
+                if (tabPage7.Text[0].ToString() != "У")
+                    tabPage7.Text = tabPage7.Text.Remove(0, 1);
                 dtw.DataSource = null;
                 dtw.DataSource = rPTagsDataSet.Device_Tag;
+                
             }
             catch (DBConcurrencyException)
             {
@@ -1165,6 +1212,21 @@ namespace RPTagsTest
                 toolStripStatusLabel4.Text = "Идет проверка ошибок в таблице Устройства...";
             }
 
+        }
+        private void отменитьИзменнеияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeviceTag_temp_DT.Clear();
+            tabPage7.Text = "Устройство";
+            notsaved = false;
+            canceledit = true;
+            
+        }
+        
+        private void button15_Click(object sender, EventArgs e) // импорт тегов из csv
+        {
+            importOPC newForm = new importOPC();
+            newForm.Owner = this;
+            newForm.Show();
         }
 
         #endregion основные таблицы

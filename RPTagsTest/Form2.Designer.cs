@@ -130,6 +130,7 @@
             this.toolStripMenuItem26 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem27 = new System.Windows.Forms.ToolStripMenuItem();
             this.проверитьОшибкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отменитьИзменнеияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage14 = new System.Windows.Forms.TabPage();
@@ -335,6 +336,8 @@
             this.corpusBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.backgroundWorker6 = new System.ComponentModel.BackgroundWorker();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.button15 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -434,6 +437,7 @@
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.corpusBindingSource2)).BeginInit();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -479,17 +483,17 @@
             // 
             // nameDataGridViewTextBoxColumn1
             // 
+            this.nameDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
             resources.ApplyResources(this.nameDataGridViewTextBoxColumn1, "nameDataGridViewTextBoxColumn1");
             this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
-            this.nameDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // descriptionDataGridViewTextBoxColumn1
             // 
+            this.descriptionDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
             resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn1, "descriptionDataGridViewTextBoxColumn1");
             this.descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
-            this.descriptionDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // corpusBindingSource
             // 
@@ -565,10 +569,10 @@
             // 
             // nameDataGridViewTextBoxColumn
             // 
+            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             resources.ApplyResources(this.nameDataGridViewTextBoxColumn, "nameDataGridViewTextBoxColumn");
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Node
             // 
@@ -606,17 +610,17 @@
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
             resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn, "descriptionDataGridViewTextBoxColumn");
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // iPAddrDataGridViewTextBoxColumn
             // 
+            this.iPAddrDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.iPAddrDataGridViewTextBoxColumn.DataPropertyName = "IPAddr";
             resources.ApplyResources(this.iPAddrDataGridViewTextBoxColumn, "iPAddrDataGridViewTextBoxColumn");
             this.iPAddrDataGridViewTextBoxColumn.Name = "iPAddrDataGridViewTextBoxColumn";
-            this.iPAddrDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // pLCBindingSource
             // 
@@ -1136,11 +1140,11 @@
             // 
             // tabPage7
             // 
+            this.tabPage7.BackColor = System.Drawing.Color.Transparent;
             this.tabPage7.Controls.Add(this.dataGridView7);
             this.tabPage7.Controls.Add(this.menuStrip10);
             resources.ApplyResources(this.tabPage7, "tabPage7");
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.UseVisualStyleBackColor = true;
             this.tabPage7.Enter += new System.EventHandler(this.tabPage7_Enter);
             this.tabPage7.Leave += new System.EventHandler(this.tabPage7_Leave);
             // 
@@ -1294,7 +1298,8 @@
             this.menuStrip10.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem26,
             this.toolStripMenuItem27,
-            this.проверитьОшибкиToolStripMenuItem});
+            this.проверитьОшибкиToolStripMenuItem,
+            this.отменитьИзменнеияToolStripMenuItem});
             resources.ApplyResources(this.menuStrip10, "menuStrip10");
             this.menuStrip10.Name = "menuStrip10";
             // 
@@ -1315,6 +1320,12 @@
             resources.ApplyResources(this.проверитьОшибкиToolStripMenuItem, "проверитьОшибкиToolStripMenuItem");
             this.проверитьОшибкиToolStripMenuItem.Name = "проверитьОшибкиToolStripMenuItem";
             this.проверитьОшибкиToolStripMenuItem.Click += new System.EventHandler(this.проверитьОшибкиToolStripMenuItem_Click);
+            // 
+            // отменитьИзменнеияToolStripMenuItem
+            // 
+            resources.ApplyResources(this.отменитьИзменнеияToolStripMenuItem, "отменитьИзменнеияToolStripMenuItem");
+            this.отменитьИзменнеияToolStripMenuItem.Name = "отменитьИзменнеияToolStripMenuItem";
+            this.отменитьИзменнеияToolStripMenuItem.Click += new System.EventHandler(this.отменитьИзменнеияToolStripMenuItem_Click);
             // 
             // tabPage5
             // 
@@ -2446,6 +2457,7 @@
             // 
             // tabPage13
             // 
+            this.tabPage13.Controls.Add(this.groupBox9);
             this.tabPage13.Controls.Add(this.label10);
             this.tabPage13.Controls.Add(this.textBox10);
             this.tabPage13.Controls.Add(this.button12);
@@ -2823,6 +2835,20 @@
             this.backgroundWorker6.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker6_DoWork);
             this.backgroundWorker6.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker6_RunWorkerCompleted);
             // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.button15);
+            resources.ApplyResources(this.groupBox9, "groupBox9");
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.TabStop = false;
+            // 
+            // button15
+            // 
+            resources.ApplyResources(this.button15, "button15");
+            this.button15.Name = "button15";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
             // Form2
             // 
             resources.ApplyResources(this, "$this");
@@ -2968,6 +2994,7 @@
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.corpusBindingSource2)).EndInit();
+            this.groupBox9.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3227,15 +3254,6 @@
         private System.Windows.Forms.CheckBox checkBox7;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.BindingSource corpusBindingSource2;
-        private System.Windows.Forms.DataGridViewComboBoxColumn sysidDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn gridDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Tag_id1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn tagidDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn GMP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AdrPLC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sAIDDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn cutDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Tag_id2;
         private System.Windows.Forms.DataGridView dataGridView17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
@@ -3246,13 +3264,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Node;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Corpus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iPAddrDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn RName;
@@ -3280,5 +3291,24 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn filterDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn4;
         private System.ComponentModel.BackgroundWorker backgroundWorker6;
+        private System.Windows.Forms.ToolStripMenuItem отменитьИзменнеияToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewComboBoxColumn sysidDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn gridDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Tag_id1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn tagidDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn GMP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AdrPLC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sAIDDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn cutDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Tag_id2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Node;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Corpus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iPAddrDataGridViewTextBoxColumn;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Button button15;
     }
 }
