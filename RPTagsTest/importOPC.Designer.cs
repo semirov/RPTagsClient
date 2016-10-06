@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -38,8 +39,19 @@
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.label2 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.rpTagsDataSet1 = new RPTagsTest.RPTagsDataSet();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.getDevTagFromFullPathBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.getDevTagFromFullPathTableAdapter = new RPTagsTest.RPTagsDataSetTableAdapters.GetDevTagFromFullPathTableAdapter();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rpTagsDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.getDevTagFromFullPathBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -78,7 +90,7 @@
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Location = new System.Drawing.Point(38, 36);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(786, 329);
+            this.groupBox1.Size = new System.Drawing.Size(793, 182);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Предварительный просмотр";
@@ -98,7 +110,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(47, 371);
+            this.button2.Location = new System.Drawing.Point(47, 224);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(199, 23);
             this.button2.TabIndex = 5;
@@ -126,11 +138,70 @@
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
+            // rpTagsDataSet1
+            // 
+            this.rpTagsDataSet1.DataSetName = "RPTagsDataSet";
+            this.rpTagsDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = this.rpTagsDataSet1;
+            this.bindingSource1.Position = 0;
+            // 
+            // getDevTagFromFullPathBindingSource
+            // 
+            this.getDevTagFromFullPathBindingSource.DataMember = "GetDevTagFromFullPath";
+            this.getDevTagFromFullPathBindingSource.DataSource = this.rpTagsDataSet1;
+            // 
+            // getDevTagFromFullPathTableAdapter
+            // 
+            this.getDevTagFromFullPathTableAdapter.ClearBeforeFill = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(256, 230);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Строк обработано: хххх";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(435, 252);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(287, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Не потребовали обновления: хххх (помечены зеленым)";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(435, 230);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(253, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "ОТСУТСТВУЮТ В БД: хххх (помечены красным)";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(435, 274);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(259, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Добавлены/Обновлены: хххх (помечены желтым)";
+            // 
             // importOPC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(872, 413);
+            this.ClientSize = new System.Drawing.Size(934, 299);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);
@@ -142,6 +213,9 @@
             this.Load += new System.EventHandler(this.importOPC_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rpTagsDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.getDevTagFromFullPathBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,5 +233,13 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.Label label2;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private RPTagsDataSet rpTagsDataSet1;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.BindingSource getDevTagFromFullPathBindingSource;
+        private RPTagsDataSetTableAdapters.GetDevTagFromFullPathTableAdapter getDevTagFromFullPathTableAdapter;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

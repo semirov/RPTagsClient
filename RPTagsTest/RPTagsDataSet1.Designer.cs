@@ -52,8 +52,6 @@ namespace RPTagsTest {
         
         private AreaAWXDataTable tableAreaAWX;
         
-        private GetTagFromFullPathDataTable tableGetTagFromFullPath;
-        
         private TagAWXDataTable tableTagAWX;
         
         private TagHHDataTable tableTagHH;
@@ -65,6 +63,8 @@ namespace RPTagsTest {
         private SAIDNullDataTable tableSAIDNull;
         
         private TagIdTagTypeIDDataTable tableTagIdTagTypeID;
+        
+        private GetDevTagFromFullPathDataTable tableGetDevTagFromFullPath;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -136,9 +136,6 @@ namespace RPTagsTest {
                 if ((ds.Tables["AreaAWX"] != null)) {
                     base.Tables.Add(new AreaAWXDataTable(ds.Tables["AreaAWX"]));
                 }
-                if ((ds.Tables["GetTagFromFullPath"] != null)) {
-                    base.Tables.Add(new GetTagFromFullPathDataTable(ds.Tables["GetTagFromFullPath"]));
-                }
                 if ((ds.Tables["TagAWX"] != null)) {
                     base.Tables.Add(new TagAWXDataTable(ds.Tables["TagAWX"]));
                 }
@@ -156,6 +153,9 @@ namespace RPTagsTest {
                 }
                 if ((ds.Tables["TagIdTagTypeID"] != null)) {
                     base.Tables.Add(new TagIdTagTypeIDDataTable(ds.Tables["TagIdTagTypeID"]));
+                }
+                if ((ds.Tables["GetDevTagFromFullPath"] != null)) {
+                    base.Tables.Add(new GetDevTagFromFullPathDataTable(ds.Tables["GetDevTagFromFullPath"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -319,16 +319,6 @@ namespace RPTagsTest {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public GetTagFromFullPathDataTable GetTagFromFullPath {
-            get {
-                return this.tableGetTagFromFullPath;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public TagAWXDataTable TagAWX {
             get {
                 return this.tableTagAWX;
@@ -382,6 +372,16 @@ namespace RPTagsTest {
         public TagIdTagTypeIDDataTable TagIdTagTypeID {
             get {
                 return this.tableTagIdTagTypeID;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public GetDevTagFromFullPathDataTable GetDevTagFromFullPath {
+            get {
+                return this.tableGetDevTagFromFullPath;
             }
         }
         
@@ -494,9 +494,6 @@ namespace RPTagsTest {
                 if ((ds.Tables["AreaAWX"] != null)) {
                     base.Tables.Add(new AreaAWXDataTable(ds.Tables["AreaAWX"]));
                 }
-                if ((ds.Tables["GetTagFromFullPath"] != null)) {
-                    base.Tables.Add(new GetTagFromFullPathDataTable(ds.Tables["GetTagFromFullPath"]));
-                }
                 if ((ds.Tables["TagAWX"] != null)) {
                     base.Tables.Add(new TagAWXDataTable(ds.Tables["TagAWX"]));
                 }
@@ -514,6 +511,9 @@ namespace RPTagsTest {
                 }
                 if ((ds.Tables["TagIdTagTypeID"] != null)) {
                     base.Tables.Add(new TagIdTagTypeIDDataTable(ds.Tables["TagIdTagTypeID"]));
+                }
+                if ((ds.Tables["GetDevTagFromFullPath"] != null)) {
+                    base.Tables.Add(new GetDevTagFromFullPathDataTable(ds.Tables["GetDevTagFromFullPath"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -632,12 +632,6 @@ namespace RPTagsTest {
                     this.tableAreaAWX.InitVars();
                 }
             }
-            this.tableGetTagFromFullPath = ((GetTagFromFullPathDataTable)(base.Tables["GetTagFromFullPath"]));
-            if ((initTable == true)) {
-                if ((this.tableGetTagFromFullPath != null)) {
-                    this.tableGetTagFromFullPath.InitVars();
-                }
-            }
             this.tableTagAWX = ((TagAWXDataTable)(base.Tables["TagAWX"]));
             if ((initTable == true)) {
                 if ((this.tableTagAWX != null)) {
@@ -672,6 +666,12 @@ namespace RPTagsTest {
             if ((initTable == true)) {
                 if ((this.tableTagIdTagTypeID != null)) {
                     this.tableTagIdTagTypeID.InitVars();
+                }
+            }
+            this.tableGetDevTagFromFullPath = ((GetDevTagFromFullPathDataTable)(base.Tables["GetDevTagFromFullPath"]));
+            if ((initTable == true)) {
+                if ((this.tableGetDevTagFromFullPath != null)) {
+                    this.tableGetDevTagFromFullPath.InitVars();
                 }
             }
         }
@@ -712,8 +712,6 @@ namespace RPTagsTest {
             base.Tables.Add(this.tableFT1);
             this.tableAreaAWX = new AreaAWXDataTable();
             base.Tables.Add(this.tableAreaAWX);
-            this.tableGetTagFromFullPath = new GetTagFromFullPathDataTable();
-            base.Tables.Add(this.tableGetTagFromFullPath);
             this.tableTagAWX = new TagAWXDataTable();
             base.Tables.Add(this.tableTagAWX);
             this.tableTagHH = new TagHHDataTable();
@@ -726,6 +724,8 @@ namespace RPTagsTest {
             base.Tables.Add(this.tableSAIDNull);
             this.tableTagIdTagTypeID = new TagIdTagTypeIDDataTable();
             base.Tables.Add(this.tableTagIdTagTypeID);
+            this.tableGetDevTagFromFullPath = new GetDevTagFromFullPathDataTable();
+            base.Tables.Add(this.tableGetDevTagFromFullPath);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -814,12 +814,6 @@ namespace RPTagsTest {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeGetTagFromFullPath() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeTagAWX() {
             return false;
         }
@@ -851,6 +845,12 @@ namespace RPTagsTest {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeTagIdTagTypeID() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeGetDevTagFromFullPath() {
             return false;
         }
         
@@ -952,9 +952,6 @@ namespace RPTagsTest {
         public delegate void AreaAWXRowChangeEventHandler(object sender, AreaAWXRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void GetTagFromFullPathRowChangeEventHandler(object sender, GetTagFromFullPathRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void TagAWXRowChangeEventHandler(object sender, TagAWXRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -971,6 +968,9 @@ namespace RPTagsTest {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void TagIdTagTypeIDRowChangeEventHandler(object sender, TagIdTagTypeIDRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void GetDevTagFromFullPathRowChangeEventHandler(object sender, GetDevTagFromFullPathRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -6656,984 +6656,6 @@ namespace RPTagsTest {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class GetTagFromFullPathDataTable : global::System.Data.TypedTableBase<GetTagFromFullPathRow> {
-            
-            private global::System.Data.DataColumn columnCorpus;
-            
-            private global::System.Data.DataColumn columnPLC;
-            
-            private global::System.Data.DataColumn columnSysType;
-            
-            private global::System.Data.DataColumn columnSystema;
-            
-            private global::System.Data.DataColumn columnRName;
-            
-            private global::System.Data.DataColumn columnGruppa;
-            
-            private global::System.Data.DataColumn columnTagType;
-            
-            private global::System.Data.DataColumn columnTag;
-            
-            private global::System.Data.DataColumn columnDescription;
-            
-            private global::System.Data.DataColumn columnHH;
-            
-            private global::System.Data.DataColumn columnUDM_Input;
-            
-            private global::System.Data.DataColumn columnUDM_Output;
-            
-            private global::System.Data.DataColumn columnUDM_Path;
-            
-            private global::System.Data.DataColumn columnHH_Path;
-            
-            private global::System.Data.DataColumn columnAlarm_Path;
-            
-            private global::System.Data.DataColumn columnBaseText;
-            
-            private global::System.Data.DataColumn columnAlarmMSG;
-            
-            private global::System.Data.DataColumn columnNormalMSG;
-            
-            private global::System.Data.DataColumn columnRelatedValue1;
-            
-            private global::System.Data.DataColumn columnRelatedValue2;
-            
-            private global::System.Data.DataColumn columnRelatedValue3;
-            
-            private global::System.Data.DataColumn columnTLA_MSG;
-            
-            private global::System.Data.DataColumn columnGr_id;
-            
-            private global::System.Data.DataColumn columnOPC_id;
-            
-            private global::System.Data.DataColumn columnCorp_id;
-            
-            private global::System.Data.DataColumn columnPLC_id;
-            
-            private global::System.Data.DataColumn columnSys_id;
-            
-            private global::System.Data.DataColumn columnOPC;
-            
-            private global::System.Data.DataColumn columnFull_OPC;
-            
-            private global::System.Data.DataColumn columnFull_HH;
-            
-            private global::System.Data.DataColumn columnGMP;
-            
-            private global::System.Data.DataColumn columnGr_Des;
-            
-            private global::System.Data.DataColumn columnST;
-            
-            private global::System.Data.DataColumn columnSys_Enabl;
-            
-            private global::System.Data.DataColumn columnGr_Enabl;
-            
-            private global::System.Data.DataColumn columnFilterType;
-            
-            private global::System.Data.DataColumn columnTHold;
-            
-            private global::System.Data.DataColumn columnFilterValue;
-            
-            private global::System.Data.DataColumn columnFilterMinPer;
-            
-            private global::System.Data.DataColumn columnFilterMaxPer;
-            
-            private global::System.Data.DataColumn columnLRange;
-            
-            private global::System.Data.DataColumn columnHRange;
-            
-            private global::System.Data.DataColumn columnTag_id;
-            
-            private global::System.Data.DataColumn columnGT_id;
-            
-            private global::System.Data.DataColumn columnTT_id;
-            
-            private global::System.Data.DataColumn columnHH_PP;
-            
-            private global::System.Data.DataColumn columnSAID;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GetTagFromFullPathDataTable() {
-                this.TableName = "GetTagFromFullPath";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal GetTagFromFullPathDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected GetTagFromFullPathDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CorpusColumn {
-                get {
-                    return this.columnCorpus;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PLCColumn {
-                get {
-                    return this.columnPLC;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SysTypeColumn {
-                get {
-                    return this.columnSysType;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SystemaColumn {
-                get {
-                    return this.columnSystema;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RNameColumn {
-                get {
-                    return this.columnRName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn GruppaColumn {
-                get {
-                    return this.columnGruppa;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TagTypeColumn {
-                get {
-                    return this.columnTagType;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TagColumn {
-                get {
-                    return this.columnTag;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DescriptionColumn {
-                get {
-                    return this.columnDescription;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn HHColumn {
-                get {
-                    return this.columnHH;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UDM_InputColumn {
-                get {
-                    return this.columnUDM_Input;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UDM_OutputColumn {
-                get {
-                    return this.columnUDM_Output;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UDM_PathColumn {
-                get {
-                    return this.columnUDM_Path;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn HH_PathColumn {
-                get {
-                    return this.columnHH_Path;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Alarm_PathColumn {
-                get {
-                    return this.columnAlarm_Path;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn BaseTextColumn {
-                get {
-                    return this.columnBaseText;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn AlarmMSGColumn {
-                get {
-                    return this.columnAlarmMSG;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NormalMSGColumn {
-                get {
-                    return this.columnNormalMSG;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RelatedValue1Column {
-                get {
-                    return this.columnRelatedValue1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RelatedValue2Column {
-                get {
-                    return this.columnRelatedValue2;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RelatedValue3Column {
-                get {
-                    return this.columnRelatedValue3;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TLA_MSGColumn {
-                get {
-                    return this.columnTLA_MSG;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Gr_idColumn {
-                get {
-                    return this.columnGr_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn OPC_idColumn {
-                get {
-                    return this.columnOPC_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Corp_idColumn {
-                get {
-                    return this.columnCorp_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PLC_idColumn {
-                get {
-                    return this.columnPLC_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Sys_idColumn {
-                get {
-                    return this.columnSys_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn OPCColumn {
-                get {
-                    return this.columnOPC;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Full_OPCColumn {
-                get {
-                    return this.columnFull_OPC;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Full_HHColumn {
-                get {
-                    return this.columnFull_HH;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn GMPColumn {
-                get {
-                    return this.columnGMP;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Gr_DesColumn {
-                get {
-                    return this.columnGr_Des;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn STColumn {
-                get {
-                    return this.columnST;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Sys_EnablColumn {
-                get {
-                    return this.columnSys_Enabl;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Gr_EnablColumn {
-                get {
-                    return this.columnGr_Enabl;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FilterTypeColumn {
-                get {
-                    return this.columnFilterType;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn THoldColumn {
-                get {
-                    return this.columnTHold;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FilterValueColumn {
-                get {
-                    return this.columnFilterValue;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FilterMinPerColumn {
-                get {
-                    return this.columnFilterMinPer;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FilterMaxPerColumn {
-                get {
-                    return this.columnFilterMaxPer;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LRangeColumn {
-                get {
-                    return this.columnLRange;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn HRangeColumn {
-                get {
-                    return this.columnHRange;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Tag_idColumn {
-                get {
-                    return this.columnTag_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn GT_idColumn {
-                get {
-                    return this.columnGT_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TT_idColumn {
-                get {
-                    return this.columnTT_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn HH_PPColumn {
-                get {
-                    return this.columnHH_PP;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SAIDColumn {
-                get {
-                    return this.columnSAID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GetTagFromFullPathRow this[int index] {
-                get {
-                    return ((GetTagFromFullPathRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event GetTagFromFullPathRowChangeEventHandler GetTagFromFullPathRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event GetTagFromFullPathRowChangeEventHandler GetTagFromFullPathRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event GetTagFromFullPathRowChangeEventHandler GetTagFromFullPathRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event GetTagFromFullPathRowChangeEventHandler GetTagFromFullPathRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddGetTagFromFullPathRow(GetTagFromFullPathRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GetTagFromFullPathRow AddGetTagFromFullPathRow(
-                        string Corpus, 
-                        string PLC, 
-                        string SysType, 
-                        string Systema, 
-                        string RName, 
-                        string Gruppa, 
-                        string TagType, 
-                        string Tag, 
-                        string Description, 
-                        string HH, 
-                        string UDM_Input, 
-                        string UDM_Output, 
-                        string UDM_Path, 
-                        string HH_Path, 
-                        string Alarm_Path, 
-                        string BaseText, 
-                        string AlarmMSG, 
-                        string NormalMSG, 
-                        string RelatedValue1, 
-                        string RelatedValue2, 
-                        string RelatedValue3, 
-                        string TLA_MSG, 
-                        int Gr_id, 
-                        int OPC_id, 
-                        int Corp_id, 
-                        int PLC_id, 
-                        int Sys_id, 
-                        string OPC, 
-                        string Full_OPC, 
-                        string Full_HH, 
-                        short GMP, 
-                        string Gr_Des, 
-                        string ST, 
-                        short Sys_Enabl, 
-                        short Gr_Enabl, 
-                        int FilterType, 
-                        int THold, 
-                        int FilterValue, 
-                        int FilterMinPer, 
-                        int FilterMaxPer, 
-                        int LRange, 
-                        int HRange, 
-                        int Tag_id, 
-                        int GT_id, 
-                        int TT_id, 
-                        string HH_PP, 
-                        string SAID) {
-                GetTagFromFullPathRow rowGetTagFromFullPathRow = ((GetTagFromFullPathRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        Corpus,
-                        PLC,
-                        SysType,
-                        Systema,
-                        RName,
-                        Gruppa,
-                        TagType,
-                        Tag,
-                        Description,
-                        HH,
-                        UDM_Input,
-                        UDM_Output,
-                        UDM_Path,
-                        HH_Path,
-                        Alarm_Path,
-                        BaseText,
-                        AlarmMSG,
-                        NormalMSG,
-                        RelatedValue1,
-                        RelatedValue2,
-                        RelatedValue3,
-                        TLA_MSG,
-                        Gr_id,
-                        OPC_id,
-                        Corp_id,
-                        PLC_id,
-                        Sys_id,
-                        OPC,
-                        Full_OPC,
-                        Full_HH,
-                        GMP,
-                        Gr_Des,
-                        ST,
-                        Sys_Enabl,
-                        Gr_Enabl,
-                        FilterType,
-                        THold,
-                        FilterValue,
-                        FilterMinPer,
-                        FilterMaxPer,
-                        LRange,
-                        HRange,
-                        Tag_id,
-                        GT_id,
-                        TT_id,
-                        HH_PP,
-                        SAID};
-                rowGetTagFromFullPathRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowGetTagFromFullPathRow);
-                return rowGetTagFromFullPathRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                GetTagFromFullPathDataTable cln = ((GetTagFromFullPathDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new GetTagFromFullPathDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnCorpus = base.Columns["Corpus"];
-                this.columnPLC = base.Columns["PLC"];
-                this.columnSysType = base.Columns["SysType"];
-                this.columnSystema = base.Columns["Systema"];
-                this.columnRName = base.Columns["RName"];
-                this.columnGruppa = base.Columns["Gruppa"];
-                this.columnTagType = base.Columns["TagType"];
-                this.columnTag = base.Columns["Tag"];
-                this.columnDescription = base.Columns["Description"];
-                this.columnHH = base.Columns["HH"];
-                this.columnUDM_Input = base.Columns["UDM_Input"];
-                this.columnUDM_Output = base.Columns["UDM_Output"];
-                this.columnUDM_Path = base.Columns["UDM_Path"];
-                this.columnHH_Path = base.Columns["HH_Path"];
-                this.columnAlarm_Path = base.Columns["Alarm_Path"];
-                this.columnBaseText = base.Columns["BaseText"];
-                this.columnAlarmMSG = base.Columns["AlarmMSG"];
-                this.columnNormalMSG = base.Columns["NormalMSG"];
-                this.columnRelatedValue1 = base.Columns["RelatedValue1"];
-                this.columnRelatedValue2 = base.Columns["RelatedValue2"];
-                this.columnRelatedValue3 = base.Columns["RelatedValue3"];
-                this.columnTLA_MSG = base.Columns["TLA_MSG"];
-                this.columnGr_id = base.Columns["Gr_id"];
-                this.columnOPC_id = base.Columns["OPC_id"];
-                this.columnCorp_id = base.Columns["Corp_id"];
-                this.columnPLC_id = base.Columns["PLC_id"];
-                this.columnSys_id = base.Columns["Sys_id"];
-                this.columnOPC = base.Columns["OPC"];
-                this.columnFull_OPC = base.Columns["Full_OPC"];
-                this.columnFull_HH = base.Columns["Full_HH"];
-                this.columnGMP = base.Columns["GMP"];
-                this.columnGr_Des = base.Columns["Gr_Des"];
-                this.columnST = base.Columns["ST"];
-                this.columnSys_Enabl = base.Columns["Sys_Enabl"];
-                this.columnGr_Enabl = base.Columns["Gr_Enabl"];
-                this.columnFilterType = base.Columns["FilterType"];
-                this.columnTHold = base.Columns["THold"];
-                this.columnFilterValue = base.Columns["FilterValue"];
-                this.columnFilterMinPer = base.Columns["FilterMinPer"];
-                this.columnFilterMaxPer = base.Columns["FilterMaxPer"];
-                this.columnLRange = base.Columns["LRange"];
-                this.columnHRange = base.Columns["HRange"];
-                this.columnTag_id = base.Columns["Tag_id"];
-                this.columnGT_id = base.Columns["GT_id"];
-                this.columnTT_id = base.Columns["TT_id"];
-                this.columnHH_PP = base.Columns["HH_PP"];
-                this.columnSAID = base.Columns["SAID"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnCorpus = new global::System.Data.DataColumn("Corpus", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCorpus);
-                this.columnPLC = new global::System.Data.DataColumn("PLC", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPLC);
-                this.columnSysType = new global::System.Data.DataColumn("SysType", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSysType);
-                this.columnSystema = new global::System.Data.DataColumn("Systema", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSystema);
-                this.columnRName = new global::System.Data.DataColumn("RName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRName);
-                this.columnGruppa = new global::System.Data.DataColumn("Gruppa", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGruppa);
-                this.columnTagType = new global::System.Data.DataColumn("TagType", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTagType);
-                this.columnTag = new global::System.Data.DataColumn("Tag", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTag);
-                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDescription);
-                this.columnHH = new global::System.Data.DataColumn("HH", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnHH);
-                this.columnUDM_Input = new global::System.Data.DataColumn("UDM_Input", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUDM_Input);
-                this.columnUDM_Output = new global::System.Data.DataColumn("UDM_Output", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUDM_Output);
-                this.columnUDM_Path = new global::System.Data.DataColumn("UDM_Path", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUDM_Path);
-                this.columnHH_Path = new global::System.Data.DataColumn("HH_Path", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnHH_Path);
-                this.columnAlarm_Path = new global::System.Data.DataColumn("Alarm_Path", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAlarm_Path);
-                this.columnBaseText = new global::System.Data.DataColumn("BaseText", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBaseText);
-                this.columnAlarmMSG = new global::System.Data.DataColumn("AlarmMSG", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAlarmMSG);
-                this.columnNormalMSG = new global::System.Data.DataColumn("NormalMSG", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNormalMSG);
-                this.columnRelatedValue1 = new global::System.Data.DataColumn("RelatedValue1", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRelatedValue1);
-                this.columnRelatedValue2 = new global::System.Data.DataColumn("RelatedValue2", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRelatedValue2);
-                this.columnRelatedValue3 = new global::System.Data.DataColumn("RelatedValue3", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRelatedValue3);
-                this.columnTLA_MSG = new global::System.Data.DataColumn("TLA_MSG", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTLA_MSG);
-                this.columnGr_id = new global::System.Data.DataColumn("Gr_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGr_id);
-                this.columnOPC_id = new global::System.Data.DataColumn("OPC_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOPC_id);
-                this.columnCorp_id = new global::System.Data.DataColumn("Corp_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCorp_id);
-                this.columnPLC_id = new global::System.Data.DataColumn("PLC_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPLC_id);
-                this.columnSys_id = new global::System.Data.DataColumn("Sys_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSys_id);
-                this.columnOPC = new global::System.Data.DataColumn("OPC", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOPC);
-                this.columnFull_OPC = new global::System.Data.DataColumn("Full_OPC", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFull_OPC);
-                this.columnFull_HH = new global::System.Data.DataColumn("Full_HH", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFull_HH);
-                this.columnGMP = new global::System.Data.DataColumn("GMP", typeof(short), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGMP);
-                this.columnGr_Des = new global::System.Data.DataColumn("Gr_Des", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGr_Des);
-                this.columnST = new global::System.Data.DataColumn("ST", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnST);
-                this.columnSys_Enabl = new global::System.Data.DataColumn("Sys_Enabl", typeof(short), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSys_Enabl);
-                this.columnGr_Enabl = new global::System.Data.DataColumn("Gr_Enabl", typeof(short), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGr_Enabl);
-                this.columnFilterType = new global::System.Data.DataColumn("FilterType", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFilterType);
-                this.columnTHold = new global::System.Data.DataColumn("THold", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTHold);
-                this.columnFilterValue = new global::System.Data.DataColumn("FilterValue", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFilterValue);
-                this.columnFilterMinPer = new global::System.Data.DataColumn("FilterMinPer", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFilterMinPer);
-                this.columnFilterMaxPer = new global::System.Data.DataColumn("FilterMaxPer", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFilterMaxPer);
-                this.columnLRange = new global::System.Data.DataColumn("LRange", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLRange);
-                this.columnHRange = new global::System.Data.DataColumn("HRange", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnHRange);
-                this.columnTag_id = new global::System.Data.DataColumn("Tag_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTag_id);
-                this.columnGT_id = new global::System.Data.DataColumn("GT_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGT_id);
-                this.columnTT_id = new global::System.Data.DataColumn("TT_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTT_id);
-                this.columnHH_PP = new global::System.Data.DataColumn("HH_PP", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnHH_PP);
-                this.columnSAID = new global::System.Data.DataColumn("SAID", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSAID);
-                this.columnCorpus.MaxLength = 50;
-                this.columnPLC.MaxLength = 50;
-                this.columnSysType.MaxLength = 50;
-                this.columnSystema.MaxLength = 50;
-                this.columnRName.MaxLength = 50;
-                this.columnGruppa.MaxLength = 50;
-                this.columnTagType.MaxLength = 50;
-                this.columnTag.MaxLength = 50;
-                this.columnDescription.MaxLength = 100;
-                this.columnHH.MaxLength = 1;
-                this.columnUDM_Input.MaxLength = 2;
-                this.columnUDM_Output.MaxLength = 1;
-                this.columnUDM_Path.MaxLength = 100;
-                this.columnHH_Path.MaxLength = 100;
-                this.columnAlarm_Path.MaxLength = 100;
-                this.columnBaseText.MaxLength = 100;
-                this.columnAlarmMSG.MaxLength = 100;
-                this.columnNormalMSG.MaxLength = 100;
-                this.columnRelatedValue1.MaxLength = 100;
-                this.columnRelatedValue2.MaxLength = 100;
-                this.columnRelatedValue3.MaxLength = 100;
-                this.columnTLA_MSG.MaxLength = 100;
-                this.columnGr_id.AllowDBNull = false;
-                this.columnOPC_id.AllowDBNull = false;
-                this.columnCorp_id.AllowDBNull = false;
-                this.columnPLC_id.AllowDBNull = false;
-                this.columnSys_id.AllowDBNull = false;
-                this.columnOPC.MaxLength = 50;
-                this.columnFull_OPC.ReadOnly = true;
-                this.columnFull_OPC.MaxLength = 355;
-                this.columnFull_HH.ReadOnly = true;
-                this.columnFull_HH.MaxLength = 355;
-                this.columnGMP.ReadOnly = true;
-                this.columnGr_Des.MaxLength = 100;
-                this.columnST.MaxLength = 50;
-                this.columnTag_id.AllowDBNull = false;
-                this.columnGT_id.AllowDBNull = false;
-                this.columnHH_PP.ReadOnly = true;
-                this.columnHH_PP.MaxLength = 360;
-                this.columnSAID.MaxLength = 50;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GetTagFromFullPathRow NewGetTagFromFullPathRow() {
-                return ((GetTagFromFullPathRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new GetTagFromFullPathRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(GetTagFromFullPathRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.GetTagFromFullPathRowChanged != null)) {
-                    this.GetTagFromFullPathRowChanged(this, new GetTagFromFullPathRowChangeEvent(((GetTagFromFullPathRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.GetTagFromFullPathRowChanging != null)) {
-                    this.GetTagFromFullPathRowChanging(this, new GetTagFromFullPathRowChangeEvent(((GetTagFromFullPathRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.GetTagFromFullPathRowDeleted != null)) {
-                    this.GetTagFromFullPathRowDeleted(this, new GetTagFromFullPathRowChangeEvent(((GetTagFromFullPathRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.GetTagFromFullPathRowDeleting != null)) {
-                    this.GetTagFromFullPathRowDeleting(this, new GetTagFromFullPathRowChangeEvent(((GetTagFromFullPathRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveGetTagFromFullPathRow(GetTagFromFullPathRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                RPTagsDataSet ds = new RPTagsDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "GetTagFromFullPathDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class TagAWXDataTable : global::System.Data.TypedTableBase<TagAWXRow> {
             
             private global::System.Data.DataColumn columnA;
@@ -12279,6 +11301,312 @@ namespace RPTagsTest {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class GetDevTagFromFullPathDataTable : global::System.Data.TypedTableBase<GetDevTagFromFullPathRow> {
+            
+            private global::System.Data.DataColumn columnSys_id;
+            
+            private global::System.Data.DataColumn columnGr_id;
+            
+            private global::System.Data.DataColumn columnTag_id;
+            
+            private global::System.Data.DataColumn columnAdrPLC;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public GetDevTagFromFullPathDataTable() {
+                this.TableName = "GetDevTagFromFullPath";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal GetDevTagFromFullPathDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected GetDevTagFromFullPathDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Sys_idColumn {
+                get {
+                    return this.columnSys_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Gr_idColumn {
+                get {
+                    return this.columnGr_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Tag_idColumn {
+                get {
+                    return this.columnTag_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AdrPLCColumn {
+                get {
+                    return this.columnAdrPLC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public GetDevTagFromFullPathRow this[int index] {
+                get {
+                    return ((GetDevTagFromFullPathRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event GetDevTagFromFullPathRowChangeEventHandler GetDevTagFromFullPathRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event GetDevTagFromFullPathRowChangeEventHandler GetDevTagFromFullPathRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event GetDevTagFromFullPathRowChangeEventHandler GetDevTagFromFullPathRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event GetDevTagFromFullPathRowChangeEventHandler GetDevTagFromFullPathRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddGetDevTagFromFullPathRow(GetDevTagFromFullPathRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public GetDevTagFromFullPathRow AddGetDevTagFromFullPathRow(int Sys_id, int Gr_id, int Tag_id, string AdrPLC) {
+                GetDevTagFromFullPathRow rowGetDevTagFromFullPathRow = ((GetDevTagFromFullPathRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Sys_id,
+                        Gr_id,
+                        Tag_id,
+                        AdrPLC};
+                rowGetDevTagFromFullPathRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowGetDevTagFromFullPathRow);
+                return rowGetDevTagFromFullPathRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public GetDevTagFromFullPathRow FindBySys_idGr_idTag_id(int Sys_id, int Gr_id, int Tag_id) {
+                return ((GetDevTagFromFullPathRow)(this.Rows.Find(new object[] {
+                            Sys_id,
+                            Gr_id,
+                            Tag_id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                GetDevTagFromFullPathDataTable cln = ((GetDevTagFromFullPathDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new GetDevTagFromFullPathDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnSys_id = base.Columns["Sys_id"];
+                this.columnGr_id = base.Columns["Gr_id"];
+                this.columnTag_id = base.Columns["Tag_id"];
+                this.columnAdrPLC = base.Columns["AdrPLC"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnSys_id = new global::System.Data.DataColumn("Sys_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSys_id);
+                this.columnGr_id = new global::System.Data.DataColumn("Gr_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGr_id);
+                this.columnTag_id = new global::System.Data.DataColumn("Tag_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTag_id);
+                this.columnAdrPLC = new global::System.Data.DataColumn("AdrPLC", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAdrPLC);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnSys_id,
+                                this.columnGr_id,
+                                this.columnTag_id}, true));
+                this.columnSys_id.AllowDBNull = false;
+                this.columnGr_id.AllowDBNull = false;
+                this.columnTag_id.AllowDBNull = false;
+                this.columnAdrPLC.MaxLength = 50;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public GetDevTagFromFullPathRow NewGetDevTagFromFullPathRow() {
+                return ((GetDevTagFromFullPathRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new GetDevTagFromFullPathRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(GetDevTagFromFullPathRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.GetDevTagFromFullPathRowChanged != null)) {
+                    this.GetDevTagFromFullPathRowChanged(this, new GetDevTagFromFullPathRowChangeEvent(((GetDevTagFromFullPathRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.GetDevTagFromFullPathRowChanging != null)) {
+                    this.GetDevTagFromFullPathRowChanging(this, new GetDevTagFromFullPathRowChangeEvent(((GetDevTagFromFullPathRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.GetDevTagFromFullPathRowDeleted != null)) {
+                    this.GetDevTagFromFullPathRowDeleted(this, new GetDevTagFromFullPathRowChangeEvent(((GetDevTagFromFullPathRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.GetDevTagFromFullPathRowDeleting != null)) {
+                    this.GetDevTagFromFullPathRowDeleting(this, new GetDevTagFromFullPathRowChangeEvent(((GetDevTagFromFullPathRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveGetDevTagFromFullPathRow(GetDevTagFromFullPathRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                RPTagsDataSet ds = new RPTagsDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "GetDevTagFromFullPathDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class CorpusRow : global::System.Data.DataRow {
@@ -16249,1221 +15577,6 @@ namespace RPTagsTest {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetENull() {
                 this[this.tableAreaAWX.EColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class GetTagFromFullPathRow : global::System.Data.DataRow {
-            
-            private GetTagFromFullPathDataTable tableGetTagFromFullPath;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal GetTagFromFullPathRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableGetTagFromFullPath = ((GetTagFromFullPathDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Corpus {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.CorpusColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Corpus\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.CorpusColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string PLC {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.PLCColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'PLC\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.PLCColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string SysType {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.SysTypeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'SysType\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.SysTypeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Systema {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.SystemaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Systema\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.SystemaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string RName {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.RNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'RName\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.RNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Gruppa {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.GruppaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Gruppa\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.GruppaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TagType {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.TagTypeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'TagType\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.TagTypeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Tag {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.TagColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Tag\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.TagColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Description {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.DescriptionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Description\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.DescriptionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string HH {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.HHColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'HH\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.HHColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string UDM_Input {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.UDM_InputColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'UDM_Input\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.UDM_InputColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string UDM_Output {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.UDM_OutputColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'UDM_Output\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.UDM_OutputColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string UDM_Path {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.UDM_PathColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'UDM_Path\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.UDM_PathColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string HH_Path {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.HH_PathColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'HH_Path\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.HH_PathColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Alarm_Path {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.Alarm_PathColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Alarm_Path\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.Alarm_PathColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string BaseText {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.BaseTextColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'BaseText\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.BaseTextColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string AlarmMSG {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.AlarmMSGColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'AlarmMSG\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.AlarmMSGColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NormalMSG {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.NormalMSGColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NormalMSG\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.NormalMSGColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string RelatedValue1 {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.RelatedValue1Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'RelatedValue1\' в таблице \'GetTagFromFullPath\' равно DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.RelatedValue1Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string RelatedValue2 {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.RelatedValue2Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'RelatedValue2\' в таблице \'GetTagFromFullPath\' равно DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.RelatedValue2Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string RelatedValue3 {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.RelatedValue3Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'RelatedValue3\' в таблице \'GetTagFromFullPath\' равно DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.RelatedValue3Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TLA_MSG {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.TLA_MSGColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'TLA_MSG\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.TLA_MSGColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Gr_id {
-                get {
-                    return ((int)(this[this.tableGetTagFromFullPath.Gr_idColumn]));
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.Gr_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int OPC_id {
-                get {
-                    return ((int)(this[this.tableGetTagFromFullPath.OPC_idColumn]));
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.OPC_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Corp_id {
-                get {
-                    return ((int)(this[this.tableGetTagFromFullPath.Corp_idColumn]));
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.Corp_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int PLC_id {
-                get {
-                    return ((int)(this[this.tableGetTagFromFullPath.PLC_idColumn]));
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.PLC_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Sys_id {
-                get {
-                    return ((int)(this[this.tableGetTagFromFullPath.Sys_idColumn]));
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.Sys_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string OPC {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.OPCColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'OPC\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.OPCColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Full_OPC {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.Full_OPCColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Full_OPC\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.Full_OPCColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Full_HH {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.Full_HHColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Full_HH\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.Full_HHColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public short GMP {
-                get {
-                    try {
-                        return ((short)(this[this.tableGetTagFromFullPath.GMPColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'GMP\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.GMPColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Gr_Des {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.Gr_DesColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Gr_Des\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.Gr_DesColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ST {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.STColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ST\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.STColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public short Sys_Enabl {
-                get {
-                    try {
-                        return ((short)(this[this.tableGetTagFromFullPath.Sys_EnablColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Sys_Enabl\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.Sys_EnablColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public short Gr_Enabl {
-                get {
-                    try {
-                        return ((short)(this[this.tableGetTagFromFullPath.Gr_EnablColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Gr_Enabl\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.Gr_EnablColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int FilterType {
-                get {
-                    try {
-                        return ((int)(this[this.tableGetTagFromFullPath.FilterTypeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FilterType\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.FilterTypeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int THold {
-                get {
-                    try {
-                        return ((int)(this[this.tableGetTagFromFullPath.THoldColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'THold\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.THoldColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int FilterValue {
-                get {
-                    try {
-                        return ((int)(this[this.tableGetTagFromFullPath.FilterValueColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FilterValue\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.FilterValueColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int FilterMinPer {
-                get {
-                    try {
-                        return ((int)(this[this.tableGetTagFromFullPath.FilterMinPerColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FilterMinPer\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.FilterMinPerColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int FilterMaxPer {
-                get {
-                    try {
-                        return ((int)(this[this.tableGetTagFromFullPath.FilterMaxPerColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FilterMaxPer\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.FilterMaxPerColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int LRange {
-                get {
-                    try {
-                        return ((int)(this[this.tableGetTagFromFullPath.LRangeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'LRange\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.LRangeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int HRange {
-                get {
-                    try {
-                        return ((int)(this[this.tableGetTagFromFullPath.HRangeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'HRange\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.HRangeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Tag_id {
-                get {
-                    return ((int)(this[this.tableGetTagFromFullPath.Tag_idColumn]));
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.Tag_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int GT_id {
-                get {
-                    return ((int)(this[this.tableGetTagFromFullPath.GT_idColumn]));
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.GT_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int TT_id {
-                get {
-                    try {
-                        return ((int)(this[this.tableGetTagFromFullPath.TT_idColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'TT_id\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.TT_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string HH_PP {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.HH_PPColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'HH_PP\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.HH_PPColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string SAID {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetTagFromFullPath.SAIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'SAID\' в таблице \'GetTagFromFullPath\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetTagFromFullPath.SAIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCorpusNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.CorpusColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCorpusNull() {
-                this[this.tableGetTagFromFullPath.CorpusColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPLCNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.PLCColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPLCNull() {
-                this[this.tableGetTagFromFullPath.PLCColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSysTypeNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.SysTypeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSysTypeNull() {
-                this[this.tableGetTagFromFullPath.SysTypeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSystemaNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.SystemaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSystemaNull() {
-                this[this.tableGetTagFromFullPath.SystemaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsRNameNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.RNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetRNameNull() {
-                this[this.tableGetTagFromFullPath.RNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsGruppaNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.GruppaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetGruppaNull() {
-                this[this.tableGetTagFromFullPath.GruppaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTagTypeNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.TagTypeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTagTypeNull() {
-                this[this.tableGetTagFromFullPath.TagTypeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTagNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.TagColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTagNull() {
-                this[this.tableGetTagFromFullPath.TagColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDescriptionNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.DescriptionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDescriptionNull() {
-                this[this.tableGetTagFromFullPath.DescriptionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsHHNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.HHColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetHHNull() {
-                this[this.tableGetTagFromFullPath.HHColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsUDM_InputNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.UDM_InputColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetUDM_InputNull() {
-                this[this.tableGetTagFromFullPath.UDM_InputColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsUDM_OutputNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.UDM_OutputColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetUDM_OutputNull() {
-                this[this.tableGetTagFromFullPath.UDM_OutputColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsUDM_PathNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.UDM_PathColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetUDM_PathNull() {
-                this[this.tableGetTagFromFullPath.UDM_PathColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsHH_PathNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.HH_PathColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetHH_PathNull() {
-                this[this.tableGetTagFromFullPath.HH_PathColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsAlarm_PathNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.Alarm_PathColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetAlarm_PathNull() {
-                this[this.tableGetTagFromFullPath.Alarm_PathColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsBaseTextNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.BaseTextColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetBaseTextNull() {
-                this[this.tableGetTagFromFullPath.BaseTextColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsAlarmMSGNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.AlarmMSGColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetAlarmMSGNull() {
-                this[this.tableGetTagFromFullPath.AlarmMSGColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNormalMSGNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.NormalMSGColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNormalMSGNull() {
-                this[this.tableGetTagFromFullPath.NormalMSGColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsRelatedValue1Null() {
-                return this.IsNull(this.tableGetTagFromFullPath.RelatedValue1Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetRelatedValue1Null() {
-                this[this.tableGetTagFromFullPath.RelatedValue1Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsRelatedValue2Null() {
-                return this.IsNull(this.tableGetTagFromFullPath.RelatedValue2Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetRelatedValue2Null() {
-                this[this.tableGetTagFromFullPath.RelatedValue2Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsRelatedValue3Null() {
-                return this.IsNull(this.tableGetTagFromFullPath.RelatedValue3Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetRelatedValue3Null() {
-                this[this.tableGetTagFromFullPath.RelatedValue3Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTLA_MSGNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.TLA_MSGColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTLA_MSGNull() {
-                this[this.tableGetTagFromFullPath.TLA_MSGColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsOPCNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.OPCColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetOPCNull() {
-                this[this.tableGetTagFromFullPath.OPCColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFull_OPCNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.Full_OPCColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFull_OPCNull() {
-                this[this.tableGetTagFromFullPath.Full_OPCColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFull_HHNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.Full_HHColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFull_HHNull() {
-                this[this.tableGetTagFromFullPath.Full_HHColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsGMPNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.GMPColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetGMPNull() {
-                this[this.tableGetTagFromFullPath.GMPColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsGr_DesNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.Gr_DesColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetGr_DesNull() {
-                this[this.tableGetTagFromFullPath.Gr_DesColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSTNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.STColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSTNull() {
-                this[this.tableGetTagFromFullPath.STColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSys_EnablNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.Sys_EnablColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSys_EnablNull() {
-                this[this.tableGetTagFromFullPath.Sys_EnablColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsGr_EnablNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.Gr_EnablColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetGr_EnablNull() {
-                this[this.tableGetTagFromFullPath.Gr_EnablColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFilterTypeNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.FilterTypeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFilterTypeNull() {
-                this[this.tableGetTagFromFullPath.FilterTypeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTHoldNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.THoldColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTHoldNull() {
-                this[this.tableGetTagFromFullPath.THoldColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFilterValueNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.FilterValueColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFilterValueNull() {
-                this[this.tableGetTagFromFullPath.FilterValueColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFilterMinPerNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.FilterMinPerColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFilterMinPerNull() {
-                this[this.tableGetTagFromFullPath.FilterMinPerColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFilterMaxPerNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.FilterMaxPerColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFilterMaxPerNull() {
-                this[this.tableGetTagFromFullPath.FilterMaxPerColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLRangeNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.LRangeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLRangeNull() {
-                this[this.tableGetTagFromFullPath.LRangeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsHRangeNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.HRangeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetHRangeNull() {
-                this[this.tableGetTagFromFullPath.HRangeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTT_idNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.TT_idColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTT_idNull() {
-                this[this.tableGetTagFromFullPath.TT_idColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsHH_PPNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.HH_PPColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetHH_PPNull() {
-                this[this.tableGetTagFromFullPath.HH_PPColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSAIDNull() {
-                return this.IsNull(this.tableGetTagFromFullPath.SAIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSAIDNull() {
-                this[this.tableGetTagFromFullPath.SAIDColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -23062,6 +21175,82 @@ namespace RPTagsTest {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class GetDevTagFromFullPathRow : global::System.Data.DataRow {
+            
+            private GetDevTagFromFullPathDataTable tableGetDevTagFromFullPath;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal GetDevTagFromFullPathRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableGetDevTagFromFullPath = ((GetDevTagFromFullPathDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Sys_id {
+                get {
+                    return ((int)(this[this.tableGetDevTagFromFullPath.Sys_idColumn]));
+                }
+                set {
+                    this[this.tableGetDevTagFromFullPath.Sys_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Gr_id {
+                get {
+                    return ((int)(this[this.tableGetDevTagFromFullPath.Gr_idColumn]));
+                }
+                set {
+                    this[this.tableGetDevTagFromFullPath.Gr_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Tag_id {
+                get {
+                    return ((int)(this[this.tableGetDevTagFromFullPath.Tag_idColumn]));
+                }
+                set {
+                    this[this.tableGetDevTagFromFullPath.Tag_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string AdrPLC {
+                get {
+                    try {
+                        return ((string)(this[this.tableGetDevTagFromFullPath.AdrPLCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'AdrPLC\' в таблице \'GetDevTagFromFullPath\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGetDevTagFromFullPath.AdrPLCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAdrPLCNull() {
+                return this.IsNull(this.tableGetDevTagFromFullPath.AdrPLCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAdrPLCNull() {
+                this[this.tableGetDevTagFromFullPath.AdrPLCColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -23541,40 +21730,6 @@ namespace RPTagsTest {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class GetTagFromFullPathRowChangeEvent : global::System.EventArgs {
-            
-            private GetTagFromFullPathRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GetTagFromFullPathRowChangeEvent(GetTagFromFullPathRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GetTagFromFullPathRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public class TagAWXRowChangeEvent : global::System.EventArgs {
             
             private TagAWXRow eventRow;
@@ -23761,6 +21916,40 @@ namespace RPTagsTest {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TagIdTagTypeIDRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class GetDevTagFromFullPathRowChangeEvent : global::System.EventArgs {
+            
+            private GetDevTagFromFullPathRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public GetDevTagFromFullPathRowChangeEvent(GetDevTagFromFullPathRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public GetDevTagFromFullPathRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -30232,233 +28421,6 @@ SELECT id, Name, Description, UDM_Path, HH_Path, Alarm_Path FROM TagType WHERE (
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class GetTagFromFullPathTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public GetTagFromFullPathTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "GetTagFromFullPath";
-            tableMapping.ColumnMappings.Add("Corpus", "Corpus");
-            tableMapping.ColumnMappings.Add("PLC", "PLC");
-            tableMapping.ColumnMappings.Add("SysType", "SysType");
-            tableMapping.ColumnMappings.Add("Systema", "Systema");
-            tableMapping.ColumnMappings.Add("RName", "RName");
-            tableMapping.ColumnMappings.Add("Gruppa", "Gruppa");
-            tableMapping.ColumnMappings.Add("TagType", "TagType");
-            tableMapping.ColumnMappings.Add("Tag", "Tag");
-            tableMapping.ColumnMappings.Add("Description", "Description");
-            tableMapping.ColumnMappings.Add("HH", "HH");
-            tableMapping.ColumnMappings.Add("UDM_Input", "UDM_Input");
-            tableMapping.ColumnMappings.Add("UDM_Output", "UDM_Output");
-            tableMapping.ColumnMappings.Add("UDM_Path", "UDM_Path");
-            tableMapping.ColumnMappings.Add("HH_Path", "HH_Path");
-            tableMapping.ColumnMappings.Add("Alarm_Path", "Alarm_Path");
-            tableMapping.ColumnMappings.Add("BaseText", "BaseText");
-            tableMapping.ColumnMappings.Add("AlarmMSG", "AlarmMSG");
-            tableMapping.ColumnMappings.Add("NormalMSG", "NormalMSG");
-            tableMapping.ColumnMappings.Add("RelatedValue1", "RelatedValue1");
-            tableMapping.ColumnMappings.Add("RelatedValue2", "RelatedValue2");
-            tableMapping.ColumnMappings.Add("RelatedValue3", "RelatedValue3");
-            tableMapping.ColumnMappings.Add("TLA_MSG", "TLA_MSG");
-            tableMapping.ColumnMappings.Add("Gr_id", "Gr_id");
-            tableMapping.ColumnMappings.Add("OPC_id", "OPC_id");
-            tableMapping.ColumnMappings.Add("Corp_id", "Corp_id");
-            tableMapping.ColumnMappings.Add("PLC_id", "PLC_id");
-            tableMapping.ColumnMappings.Add("Sys_id", "Sys_id");
-            tableMapping.ColumnMappings.Add("OPC", "OPC");
-            tableMapping.ColumnMappings.Add("Full_OPC", "Full_OPC");
-            tableMapping.ColumnMappings.Add("Full_HH", "Full_HH");
-            tableMapping.ColumnMappings.Add("GMP", "GMP");
-            tableMapping.ColumnMappings.Add("Gr_Des", "Gr_Des");
-            tableMapping.ColumnMappings.Add("ST", "ST");
-            tableMapping.ColumnMappings.Add("Sys_Enabl", "Sys_Enabl");
-            tableMapping.ColumnMappings.Add("Gr_Enabl", "Gr_Enabl");
-            tableMapping.ColumnMappings.Add("FilterType", "FilterType");
-            tableMapping.ColumnMappings.Add("THold", "THold");
-            tableMapping.ColumnMappings.Add("FilterValue", "FilterValue");
-            tableMapping.ColumnMappings.Add("FilterMinPer", "FilterMinPer");
-            tableMapping.ColumnMappings.Add("FilterMaxPer", "FilterMaxPer");
-            tableMapping.ColumnMappings.Add("LRange", "LRange");
-            tableMapping.ColumnMappings.Add("HRange", "HRange");
-            tableMapping.ColumnMappings.Add("Tag_id", "Tag_id");
-            tableMapping.ColumnMappings.Add("GT_id", "GT_id");
-            tableMapping.ColumnMappings.Add("TT_id", "TT_id");
-            tableMapping.ColumnMappings.Add("HH_PP", "HH_PP");
-            tableMapping.ColumnMappings.Add("SAID", "SAID");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::RPTagsTest.Properties.Settings.Default.RPTagsConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "dbo.GetTagFromFullPath";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@str", global::System.Data.SqlDbType.VarChar, 1000, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(RPTagsDataSet.GetTagFromFullPathDataTable dataTable, string str) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((str == null)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(str));
-            }
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual RPTagsDataSet.GetTagFromFullPathDataTable GetData(string str) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((str == null)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(str));
-            }
-            RPTagsDataSet.GetTagFromFullPathDataTable dataTable = new RPTagsDataSet.GetTagFromFullPathDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class TagAWXTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
@@ -31877,13 +29839,92 @@ WHERE        (Systema.id = @Sys_id)";
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class QueriesTableAdapter : global::System.ComponentModel.Component {
+    public partial class GetDevTagFromFullPathTableAdapter : global::System.ComponentModel.Component {
         
-        private global::System.Data.IDbCommand[] _commandCollection;
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.IDbCommand[] CommandCollection {
+        public GetDevTagFromFullPathTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
             get {
                 if ((this._commandCollection == null)) {
                     this.InitCommandCollection();
@@ -31894,97 +29935,121 @@ WHERE        (Systema.id = @Sys_id)";
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "GetDevTagFromFullPath";
+            tableMapping.ColumnMappings.Add("Sys_id", "Sys_id");
+            tableMapping.ColumnMappings.Add("Gr_id", "Gr_id");
+            tableMapping.ColumnMappings.Add("Tag_id", "Tag_id");
+            tableMapping.ColumnMappings.Add("AdrPLC", "AdrPLC");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE       Device_Tag\r\nSET                AdrPLC = @Original_AdrPLC\r\nWHERE     " +
+                "   (Sys_id = @Original_Sys_id) AND (Gr_id = @Original_Gr_id) AND (Tag_id = @Orig" +
+                "inal_Tag_id)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdrPLC", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "AdrPLC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Sys_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Sys_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Gr_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Gr_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Tag_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Tag_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::RPTagsTest.Properties.Settings.Default.RPTagsConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.IDbCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).Connection = new global::System.Data.SqlClient.SqlConnection(global::RPTagsTest.Properties.Settings.Default.RPTagsConnectionString);
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).CommandText = "dbo.TagOPC";
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).CommandType = global::System.Data.CommandType.StoredProcedure;
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PLC", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@On_of", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FT1_FT10", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[1])).Connection = new global::System.Data.SqlClient.SqlConnection(global::RPTagsTest.Properties.Settings.Default.RPTagsConnectionString);
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[1])).CommandText = @"SELECT        Gruppa.id AS Gr_id, Tag.id AS Tag_id, Systema.id AS Sys_id, Device_Tag.SAID, Device_Tag.Cut
-FROM            Systema INNER JOIN
-                         Gruppa ON Systema.id = Gruppa.Systema INNER JOIN
-                         Tag ON Gruppa.GrupType = Tag.GrupType LEFT OUTER JOIN
-                         Device_Tag ON Systema.id = Device_Tag.Sys_id AND Gruppa.id = Device_Tag.Gr_id AND Tag.id = Device_Tag.Tag_id
-WHERE        (Gruppa.id = @Gr_id) AND (Systema.id = @Sys_id) AND (Device_Tag.SAID IS NULL)";
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[1])).CommandType = global::System.Data.CommandType.Text;
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[1])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gr_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Gr_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[1])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sys_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Sys_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "dbo.GetTagFromFullPath";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@str", global::System.Data.SqlDbType.VarChar, 1000, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int TagOPC(string PLC, string On_of, string FT1_FT10) {
-            global::System.Data.SqlClient.SqlCommand command = ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[0]));
-            if ((PLC == null)) {
-                command.Parameters[1].Value = global::System.DBNull.Value;
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(RPTagsDataSet.GetDevTagFromFullPathDataTable dataTable, string str) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((str == null)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[1].Value = ((string)(PLC));
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(str));
             }
-            if ((On_of == null)) {
-                command.Parameters[2].Value = global::System.DBNull.Value;
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
             }
-            else {
-                command.Parameters[2].Value = ((string)(On_of));
-            }
-            if ((FT1_FT10 == null)) {
-                command.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[3].Value = ((string)(FT1_FT10));
-            }
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            int returnValue;
-            try {
-                returnValue = command.ExecuteNonQuery();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
+            int returnValue = this.Adapter.Fill(dataTable);
             return returnValue;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual object RequestSAID_no_in_DEVICE_TAG(int Gr_id, int Sys_id) {
-            global::System.Data.SqlClient.SqlCommand command = ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[1]));
-            command.Parameters[0].Value = ((int)(Gr_id));
-            command.Parameters[1].Value = ((int)(Sys_id));
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            object returnValue;
-            try {
-                returnValue = command.ExecuteScalar();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            if (((returnValue == null) 
-                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
-                return null;
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual RPTagsDataSet.GetDevTagFromFullPathDataTable GetData(string str) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((str == null)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                return ((object)(returnValue));
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(str));
             }
+            RPTagsDataSet.GetDevTagFromFullPathDataTable dataTable = new RPTagsDataSet.GetDevTagFromFullPathDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(RPTagsDataSet.GetDevTagFromFullPathDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(RPTagsDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "GetDevTagFromFullPath");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
         }
     }
     
@@ -32023,6 +30088,8 @@ WHERE        (Gruppa.id = @Gr_id) AND (Systema.id = @Sys_id) AND (Device_Tag.SAI
         private TagTypeTableAdapter _tagTypeTableAdapter;
         
         private SAIDNullTableAdapter _sAIDNullTableAdapter;
+        
+        private GetDevTagFromFullPathTableAdapter _getDevTagFromFullPathTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -32209,6 +30276,20 @@ WHERE        (Gruppa.id = @Gr_id) AND (Systema.id = @Sys_id) AND (Device_Tag.SAI
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public GetDevTagFromFullPathTableAdapter GetDevTagFromFullPathTableAdapter {
+            get {
+                return this._getDevTagFromFullPathTableAdapter;
+            }
+            set {
+                this._getDevTagFromFullPathTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -32274,6 +30355,10 @@ WHERE        (Gruppa.id = @Gr_id) AND (Systema.id = @Sys_id) AND (Device_Tag.SAI
                             && (this._sAIDNullTableAdapter.Connection != null))) {
                     return this._sAIDNullTableAdapter.Connection;
                 }
+                if (((this._getDevTagFromFullPathTableAdapter != null) 
+                            && (this._getDevTagFromFullPathTableAdapter.Connection != null))) {
+                    return this._getDevTagFromFullPathTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -32321,6 +30406,9 @@ WHERE        (Gruppa.id = @Gr_id) AND (Systema.id = @Sys_id) AND (Device_Tag.SAI
                     count = (count + 1);
                 }
                 if ((this._sAIDNullTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._getDevTagFromFullPathTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -32442,6 +30530,15 @@ WHERE        (Gruppa.id = @Gr_id) AND (Systema.id = @Sys_id) AND (Device_Tag.SAI
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._getDevTagFromFullPathTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.GetDevTagFromFullPath.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._getDevTagFromFullPathTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -32548,6 +30645,14 @@ WHERE        (Gruppa.id = @Gr_id) AND (Systema.id = @Sys_id) AND (Device_Tag.SAI
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._getDevTagFromFullPathTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.GetDevTagFromFullPath.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._getDevTagFromFullPathTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -32558,6 +30663,14 @@ WHERE        (Gruppa.id = @Gr_id) AND (Systema.id = @Sys_id) AND (Device_Tag.SAI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(RPTagsDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._getDevTagFromFullPathTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.GetDevTagFromFullPath.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._getDevTagFromFullPathTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._tagTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Tag.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -32753,6 +30866,11 @@ WHERE        (Gruppa.id = @Gr_id) AND (Systema.id = @Sys_id) AND (Device_Tag.SAI
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
+            if (((this._getDevTagFromFullPathTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._getDevTagFromFullPathTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
+                        "r, должны использовать одинаковую строку подключения.");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager не содержит сведений о подключении. Укажите для каждого адапт" +
@@ -32893,6 +31011,15 @@ WHERE        (Gruppa.id = @Gr_id) AND (Systema.id = @Sys_id) AND (Device_Tag.SAI
                         adaptersWithAcceptChangesDuringUpdate.Add(this._sAIDNullTableAdapter.Adapter);
                     }
                 }
+                if ((this._getDevTagFromFullPathTableAdapter != null)) {
+                    revertConnections.Add(this._getDevTagFromFullPathTableAdapter, this._getDevTagFromFullPathTableAdapter.Connection);
+                    this._getDevTagFromFullPathTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._getDevTagFromFullPathTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._getDevTagFromFullPathTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._getDevTagFromFullPathTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._getDevTagFromFullPathTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -32998,6 +31125,10 @@ WHERE        (Gruppa.id = @Gr_id) AND (Systema.id = @Sys_id) AND (Device_Tag.SAI
                 if ((this._sAIDNullTableAdapter != null)) {
                     this._sAIDNullTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._sAIDNullTableAdapter]));
                     this._sAIDNullTableAdapter.Transaction = null;
+                }
+                if ((this._getDevTagFromFullPathTableAdapter != null)) {
+                    this._getDevTagFromFullPathTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._getDevTagFromFullPathTableAdapter]));
+                    this._getDevTagFromFullPathTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

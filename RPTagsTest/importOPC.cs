@@ -79,11 +79,18 @@ namespace RPTagsTest
             dt.Columns.AddRange(new DataColumn[] { TagName, Address, DataType, RespectDataType,
                 ClientAccess, ScanRate, Scaling, RawLow, RawHigh,  ScaledLow, ScaledHigh,
                 ScaledDataType, ClampLow, ClampHigh, EngUnits, Description, NegateValue});
+
+
+            label5.Text = "";
+            label4.Text = "";
+            label6.Text = "";
+            label3.Text = "";
         }
       
 
         private void button1_Click(object sender, EventArgs e)
         {
+            dt.Clear();
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             openFileDialog1.InitialDirectory = "c:\\";
@@ -96,17 +103,19 @@ namespace RPTagsTest
             {
                 filepath = openFileDialog1.FileName;
                 textBox1.Text = filepath;
+                if (backgroundWorker2.IsBusy != true)
+                {
+                    backgroundWorker2.RunWorkerAsync();
+                }
             }
-            if (backgroundWorker2.IsBusy != true)
-            {
-                backgroundWorker2.RunWorkerAsync();
-            }
+            
         }
 
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
             // обьявим воркера
             BackgroundWorker worker = sender as BackgroundWorker;
+            worker.WorkerReportsProgress = true;
             // объявим парсер
             var parser = new CsvParser();
             int linecount = 0; // счетчик линий в файле
@@ -153,39 +162,89 @@ namespace RPTagsTest
         private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             dataGridView1.DataSource = dt;
+            dataGridView1.Update();
             
-            label2.Text = "Обработка завершена!";
+            label2.Text = "Парсинг завершен!";
         }
 
         private void button2_Click(object sender, EventArgs e) // импорт в базу
         {
-            if (backgroundWorker2.IsBusy != true)
+            if (backgroundWorker1.IsBusy != true)
             {
-                backgroundWorker2.RunWorkerAsync();
+                backgroundWorker1.RunWorkerAsync();
             }
         }
-
+        string tagpath;
+        string tagadr;
+        int countErrStr;
+        int countFindStr;
+        int countUpdStr;
+        int countAllStr;
+        //string test;
+        int sys_id, gr_id, tag_id;
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             // обьявим воркера
             BackgroundWorker worker = sender as BackgroundWorker;
-
+            worker.WorkerReportsProgress = true;
+            // нужна темповая таблица
+            countErrStr = 0;
+            countFindStr = 0;
+            countUpdStr = 0;
+            countAllStr = 0;
             foreach (DataGridViewRow dgdr in dataGridView1.Rows)
             {
-                 dgdr.Cells[0];
+          
+                tagpath = dgdr.Cells[0].Value.ToString();
+                tagadr = dgdr.Cells[1].Value.ToString();
+                getDevTagFromFullPathTableAdapter.Fill(rpTagsDataSet1.GetDevTagFromFullPath, tagpath);
+                if(rpTagsDataSet1.GetDevTagFromFullPath.Rows.Count == 0)
+                {
+                    dgdr.DefaultCellStyle.BackColor = Color.Red; // таких строк не найдено
+                    countErrStr += 1;
+                } 
+                else
+                {
+                    if(rpTagsDataSet1.GetDevTagFromFullPath[0]["AdrPLC"].ToString() == tagadr)
+                    {
+                        dgdr.DefaultCellStyle.BackColor = Color.Green; // тег уже есть в базе и он совпадает
+                        countFindStr += 1;
+
+                    }
+                    else
+                    {
+                        sys_id = Convert.ToInt16(rpTagsDataSet1.GetDevTagFromFullPath[0]["Sys_id"]);
+                        gr_id = Convert.ToInt16(rpTagsDataSet1.GetDevTagFromFullPath[0]["Gr_id"]);
+                        tag_id = Convert.ToInt16(rpTagsDataSet1.GetDevTagFromFullPath[0]["Tag_id"]);
+                        rpTagsDataSet1.GetDevTagFromFullPath[0]["AdrPLC"] = tagadr;
+                        getDevTagFromFullPathTableAdapter.Update(rpTagsDataSet1.GetDevTagFromFullPath);
+                        dgdr.DefaultCellStyle.BackColor = Color.Yellow;
+                        countUpdStr += 1;
+                    }
+                }
+
+                countAllStr += 1; // отметим пройдеую строку, передадим её в progchanged
+                
+                worker.ReportProgress(countAllStr);
+               // dgdr.DefaultCellStyle.BackColor = Color.Red;           ----- цвет фона
             }
 
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-
+            label3.Text = "Строк обработано: "+ e.ProgressPercentage.ToString();
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
+            label5.Text = "ОТСУТСТВУЮТ В БД: "+ countErrStr + " (помечены красным)";
+            label4.Text = "Не потребовали обновления: "+ countFindStr + " (помечены зеленым)";
+            label6.Text = "Добавлены/Обновлены: "+ countUpdStr + " (помечены желтым)";
+            label3.Text = "Обработка завершена.";
         }
+
+        
     }
 
     public class CsvParser
