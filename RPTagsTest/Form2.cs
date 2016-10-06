@@ -78,10 +78,16 @@ namespace RPTagsTest
             backgroundWorker5.WorkerReportsProgress = true;
             backgroundWorker5.WorkerSupportsCancellation = true;
 
-           
-            
-            
-            
+            backgroundWorker6.WorkerReportsProgress = true;
+            backgroundWorker6.WorkerSupportsCancellation = true;
+
+            backgroundWorker7.WorkerReportsProgress = true;
+            backgroundWorker7.WorkerSupportsCancellation = true;
+
+
+
+
+
             dataGridView7.CellEndEdit += DataGridView7_CellEndEdit;
            
             
@@ -967,19 +973,21 @@ namespace RPTagsTest
         {
             toolStripStatusLabel4.Text = "";
             change_device_tag();
-        }     
+        }
         private void tabPage7_Enter(object sender, EventArgs e) // устройство
         {
             try
             {
+
+
                 if (notsaved)
                 {
                     MessageBox.Show("Данные не могут быть обновлены\n пока не будут сохранены изменения", "Данные не обновлены", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                    
+
                 }
-                    if (!notsaved)
+                if (!notsaved)
                 {
-                    
+
 
                     if (CheckGruppa && CheckTag) // если выбрана система, группа, тег - покажем только по тегу
                     {
@@ -1005,24 +1013,18 @@ namespace RPTagsTest
                             fiilDevice_tag(Systema_id, Gruppa_id, Tag_id);
                             if (rPTagsDataSet.SAIDNull.Rows.Count != 0) // если есть хоть одна строка, предложим их добавить
                             {
-                                
+
                                 if (MessageBox.Show("Для Тега: \"" + Name_Corpus + "\\" + Name_Systema + "\\" + Name_Gryppa + "\\" + Name_TagType + "\\" + Name_Tag + "\"\nОтсутствует SAID!\n Добавить его?", "SAID", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                                 {
-
-                                    foreach (DataRow row in rPTagsDataSet.SAIDNull)
+                                    if (backgroundWorker7.IsBusy != true)
                                     {
 
-
-                                        RPTagsDataSet.Device_TagRow newRow = rPTagsDataSet.Device_Tag.NewDevice_TagRow();
-                                        newRow.SAID = Name_Systema;
-                                        newRow.Sys_id = Convert.ToInt16(row["Sys_id"]);
-                                        newRow.Gr_id = Convert.ToInt16(row["Gr_id"]);
-                                        newRow.Tag_id = Convert.ToInt16(row["Tag_id"]);
-
-
-                                        rPTagsDataSet.Device_Tag.AddDevice_TagRow(newRow);
-                                        change_device_tag();
+                                        backgroundWorker7.RunWorkerAsync();
+                                        toolStripStatusLabel4.Text = "Добавление записей...";
+                                        tabControl1.Enabled = false;
                                     }
+
+
                                 }
                             }
 
@@ -1052,23 +1054,16 @@ namespace RPTagsTest
                             this.sAIDNullTableAdapter.FillBySustemGruppa(this.rPTagsDataSet.SAIDNull, Gruppa_id, Systema_id);
                             if (rPTagsDataSet.SAIDNull.Rows.Count != 0) // если есть хоть одна строка, предложим их добавить
                             {
-                                
+
                                 if (MessageBox.Show("Для Группы: \"" + Name_Corpus + "\\" + Name_Systema + "\\" + Name_Gryppa + "\"\nЕсть теги без SAID! Количество: " + rPTagsDataSet.SAIDNull.Rows.Count + "\n Добавить их?", "SAID", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                                 {
 
-                                    foreach (DataRow row in rPTagsDataSet.SAIDNull)
+                                    if (backgroundWorker7.IsBusy != true)
                                     {
 
-
-                                        RPTagsDataSet.Device_TagRow newRow = rPTagsDataSet.Device_Tag.NewDevice_TagRow();
-                                        newRow.SAID = Name_Systema;
-                                        newRow.Sys_id = Convert.ToInt16(row["Sys_id"]);
-                                        newRow.Gr_id = Convert.ToInt16(row["Gr_id"]);
-                                        newRow.Tag_id = Convert.ToInt16(row["Tag_id"]);
-
-
-                                        rPTagsDataSet.Device_Tag.AddDevice_TagRow(newRow);
-                                        change_device_tag();
+                                        backgroundWorker7.RunWorkerAsync();
+                                        toolStripStatusLabel4.Text = "Добавление записей...";
+                                        tabControl1.Enabled = false;
                                     }
                                 }
                             }
@@ -1082,7 +1077,7 @@ namespace RPTagsTest
                     }
                     else if (!CheckGruppa && !CheckTag) // если выбранна только система
                     {
-                        tabPage7.Text = "Устройство (" + Name_Systema +  ")";
+                        tabPage7.Text = "Устройство (" + Name_Systema + ")";
                         if (dataGridView3.CurrentRow != null)
                         {
 
@@ -1103,17 +1098,12 @@ namespace RPTagsTest
                                 if (MessageBox.Show("Для Системы: \"" + Name_Corpus + "\\" + Name_Systema + "\"\nЕсть теги без SAID! Количество: " + rPTagsDataSet.SAIDNull.Rows.Count + "\n Добавить их?", "SAID", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                                 {
 
-                                    foreach (DataRow row in rPTagsDataSet.SAIDNull)
+                                    if (backgroundWorker7.IsBusy != true)
                                     {
 
-
-                                        RPTagsDataSet.Device_TagRow newRow = rPTagsDataSet.Device_Tag.NewDevice_TagRow();
-                                        newRow.SAID = Name_Systema;
-                                        newRow.Sys_id = Convert.ToInt16(row["Sys_id"]);
-                                        newRow.Gr_id = Convert.ToInt16(row["Gr_id"]);
-                                        newRow.Tag_id = Convert.ToInt16(row["Tag_id"]);
-                                        rPTagsDataSet.Device_Tag.AddDevice_TagRow(newRow);
-                                        change_device_tag();
+                                        backgroundWorker7.RunWorkerAsync();
+                                        toolStripStatusLabel4.Text = "Добавление записей...";
+                                        tabControl1.Enabled = false;
                                     }
                                 }
                             }
@@ -1125,14 +1115,8 @@ namespace RPTagsTest
                             this.rPTagsDataSet.Device_Tag.Clear();
                         }
                     }
-
-
-
-
                 }
             }
-
-
 
             catch (System.Exception ex)
             {
@@ -1160,7 +1144,8 @@ namespace RPTagsTest
                 dtw.EndEdit();
                 change_device_tag();
             }
-            
+            toolStripStatusLabel4.Text = "";
+
         }       
         private void toolStripMenuItem26_Click(object sender, EventArgs e) // удалить
         {
@@ -1221,14 +1206,94 @@ namespace RPTagsTest
             canceledit = true;
             
         }
-        
         private void button15_Click(object sender, EventArgs e) // импорт тегов из csv
         {
             importOPC newForm = new importOPC();
             newForm.Owner = this;
             newForm.Show();
         }
+        private void backgroundWorker7_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //toolStripStatusLabel4.Text = "Добавляем отсутствующие записи...";
+            BackgroundWorker worker = sender as BackgroundWorker;
+            worker.WorkerReportsProgress = true;
+            int countstr = 0;
+            foreach (DataRow row in rPTagsDataSet.SAIDNull)
+            {
 
+
+                RPTagsDataSet.Device_TagRow newRow = rPTagsDataSet.Device_Tag.NewDevice_TagRow();
+                newRow.SAID = Name_Systema;
+                newRow.Sys_id = Convert.ToInt16(row["Sys_id"]);
+                newRow.Gr_id = Convert.ToInt16(row["Gr_id"]);
+                newRow.Tag_id = Convert.ToInt16(row["Tag_id"]);
+
+
+                rPTagsDataSet.Device_Tag.AddDevice_TagRow(newRow);
+                countstr += 1;
+                worker.ReportProgress(countstr);
+            }
+        } // добавка тегов
+        private void backgroundWorker7_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            toolStripStatusLabel4.Text ="Записей добавлено: "+ e.ProgressPercentage.ToString();
+        }// добавка тегов
+        private void backgroundWorker7_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            
+            toolStripStatusLabel4.Text = "Все записи добавлены!";
+            change_device_tag();
+            tabControl1.Enabled = true;
+        }// добавка тегов
+        int countcut;
+        int devtagstrcount;
+        int devtagstrsum;
+        private void исключитьТегиБезАдресаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            devtagstrsum = dataGridView7.Rows.Count;
+            if (backgroundWorker8.IsBusy != true)
+            {
+
+                backgroundWorker8.RunWorkerAsync();
+                tabControl1.Enabled = false;
+            }
+
+        }
+        private void backgroundWorker8_DoWork(object sender, DoWorkEventArgs e)
+        {
+            countcut = 0;
+            
+            BackgroundWorker worker = sender as BackgroundWorker;
+            worker.WorkerReportsProgress = true;
+            
+            foreach (DataGridViewRow row in dataGridView7.Rows)
+            {
+                if (row.Cells["AdrPLC"].Value.ToString() == "" || row.Cells["AdrPLC"].Value.ToString() == " ")
+                {
+                    row.Cells["cutDataGridViewTextBoxColumn1"].Value = 1;
+                    countcut++;
+                    
+                }
+                else
+                {
+                    row.Cells["cutDataGridViewTextBoxColumn1"].Value = 0;
+                }
+                devtagstrcount++;
+                worker.ReportProgress(devtagstrcount);
+
+            }
+
+        }
+        private void backgroundWorker8_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            toolStripStatusLabel4.Text = "Обработано строк : " + e.ProgressPercentage.ToString() + " из " + devtagstrsum;
+        }
+        private void backgroundWorker8_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            toolStripStatusLabel4.Text = "Готово! Исключено "+ countcut+ " записей.";
+            change_device_tag();
+            tabControl1.Enabled = true;
+        }
         #endregion основные таблицы
 
 

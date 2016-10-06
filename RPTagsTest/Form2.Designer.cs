@@ -129,8 +129,10 @@
             this.menuStrip10 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem26 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem27 = new System.Windows.Forms.ToolStripMenuItem();
-            this.проверитьОшибкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.отменитьИзменнеияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.действияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.проверкаОшибокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отменитьИзмененияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.исключитьТегиБезАдресаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage14 = new System.Windows.Forms.TabPage();
@@ -272,6 +274,8 @@
             this.label20 = new System.Windows.Forms.Label();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.tabPage13 = new System.Windows.Forms.TabPage();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.button15 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.button12 = new System.Windows.Forms.Button();
@@ -336,8 +340,8 @@
             this.corpusBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.backgroundWorker6 = new System.ComponentModel.BackgroundWorker();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.button15 = new System.Windows.Forms.Button();
+            this.backgroundWorker7 = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker8 = new System.ComponentModel.BackgroundWorker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -421,6 +425,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.tabPage13.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemaBindingSource2)).BeginInit();
@@ -437,7 +442,6 @@
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.corpusBindingSource2)).BeginInit();
-            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1298,8 +1302,7 @@
             this.menuStrip10.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem26,
             this.toolStripMenuItem27,
-            this.проверитьОшибкиToolStripMenuItem,
-            this.отменитьИзменнеияToolStripMenuItem});
+            this.действияToolStripMenuItem});
             resources.ApplyResources(this.menuStrip10, "menuStrip10");
             this.menuStrip10.Name = "menuStrip10";
             // 
@@ -1315,17 +1318,32 @@
             this.toolStripMenuItem27.Name = "toolStripMenuItem27";
             this.toolStripMenuItem27.Click += new System.EventHandler(this.toolStripMenuItem27_Click);
             // 
-            // проверитьОшибкиToolStripMenuItem
+            // действияToolStripMenuItem
             // 
-            resources.ApplyResources(this.проверитьОшибкиToolStripMenuItem, "проверитьОшибкиToolStripMenuItem");
-            this.проверитьОшибкиToolStripMenuItem.Name = "проверитьОшибкиToolStripMenuItem";
-            this.проверитьОшибкиToolStripMenuItem.Click += new System.EventHandler(this.проверитьОшибкиToolStripMenuItem_Click);
+            this.действияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.проверкаОшибокToolStripMenuItem,
+            this.отменитьИзмененияToolStripMenuItem,
+            this.исключитьТегиБезАдресаToolStripMenuItem});
+            resources.ApplyResources(this.действияToolStripMenuItem, "действияToolStripMenuItem");
+            this.действияToolStripMenuItem.Name = "действияToolStripMenuItem";
             // 
-            // отменитьИзменнеияToolStripMenuItem
+            // проверкаОшибокToolStripMenuItem
             // 
-            resources.ApplyResources(this.отменитьИзменнеияToolStripMenuItem, "отменитьИзменнеияToolStripMenuItem");
-            this.отменитьИзменнеияToolStripMenuItem.Name = "отменитьИзменнеияToolStripMenuItem";
-            this.отменитьИзменнеияToolStripMenuItem.Click += new System.EventHandler(this.отменитьИзменнеияToolStripMenuItem_Click);
+            resources.ApplyResources(this.проверкаОшибокToolStripMenuItem, "проверкаОшибокToolStripMenuItem");
+            this.проверкаОшибокToolStripMenuItem.Name = "проверкаОшибокToolStripMenuItem";
+            this.проверкаОшибокToolStripMenuItem.Click += new System.EventHandler(this.проверитьОшибкиToolStripMenuItem_Click);
+            // 
+            // отменитьИзмененияToolStripMenuItem
+            // 
+            resources.ApplyResources(this.отменитьИзмененияToolStripMenuItem, "отменитьИзмененияToolStripMenuItem");
+            this.отменитьИзмененияToolStripMenuItem.Name = "отменитьИзмененияToolStripMenuItem";
+            this.отменитьИзмененияToolStripMenuItem.Click += new System.EventHandler(this.отменитьИзменнеияToolStripMenuItem_Click);
+            // 
+            // исключитьТегиБезАдресаToolStripMenuItem
+            // 
+            resources.ApplyResources(this.исключитьТегиБезАдресаToolStripMenuItem, "исключитьТегиБезАдресаToolStripMenuItem");
+            this.исключитьТегиБезАдресаToolStripMenuItem.Name = "исключитьТегиБезАдресаToolStripMenuItem";
+            this.исключитьТегиБезАдресаToolStripMenuItem.Click += new System.EventHandler(this.исключитьТегиБезАдресаToolStripMenuItem_Click);
             // 
             // tabPage5
             // 
@@ -2471,6 +2489,20 @@
             this.tabPage13.Name = "tabPage13";
             this.tabPage13.UseVisualStyleBackColor = true;
             // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.button15);
+            resources.ApplyResources(this.groupBox9, "groupBox9");
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.TabStop = false;
+            // 
+            // button15
+            // 
+            resources.ApplyResources(this.button15, "button15");
+            this.button15.Name = "button15";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
             // label10
             // 
             resources.ApplyResources(this.label10, "label10");
@@ -2835,19 +2867,17 @@
             this.backgroundWorker6.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker6_DoWork);
             this.backgroundWorker6.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker6_RunWorkerCompleted);
             // 
-            // groupBox9
+            // backgroundWorker7
             // 
-            this.groupBox9.Controls.Add(this.button15);
-            resources.ApplyResources(this.groupBox9, "groupBox9");
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.TabStop = false;
+            this.backgroundWorker7.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker7_DoWork);
+            this.backgroundWorker7.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker7_ProgressChanged);
+            this.backgroundWorker7.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker7_RunWorkerCompleted);
             // 
-            // button15
+            // backgroundWorker8
             // 
-            resources.ApplyResources(this.button15, "button15");
-            this.button15.Name = "button15";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
+            this.backgroundWorker8.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker8_DoWork);
+            this.backgroundWorker8.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker8_ProgressChanged);
+            this.backgroundWorker8.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker8_RunWorkerCompleted);
             // 
             // Form2
             // 
@@ -2976,6 +3006,7 @@
             this.groupBox4.PerformLayout();
             this.tabPage13.ResumeLayout(false);
             this.tabPage13.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -2994,7 +3025,6 @@
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.corpusBindingSource2)).EndInit();
-            this.groupBox9.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3204,7 +3234,6 @@
         private System.Windows.Forms.BindingSource bindingSource2;
         private RPTagsDataSet rpTagsDataSet1;
         private System.Windows.Forms.BindingSource tagBindingSource3;
-        private System.Windows.Forms.ToolStripMenuItem проверитьОшибкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.TabPage tabPage18;
         private System.Windows.Forms.DataGridView dataGridView16;
@@ -3291,7 +3320,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn filterDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn4;
         private System.ComponentModel.BackgroundWorker backgroundWorker6;
-        private System.Windows.Forms.ToolStripMenuItem отменитьИзменнеияToolStripMenuItem;
         private System.Windows.Forms.DataGridViewComboBoxColumn sysidDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewComboBoxColumn gridDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewComboBoxColumn Tag_id1;
@@ -3301,6 +3329,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sAIDDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cutDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewComboBoxColumn Tag_id2;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Button button15;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
@@ -3308,7 +3338,11 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn Corpus;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iPAddrDataGridViewTextBoxColumn;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.Button button15;
+        private System.ComponentModel.BackgroundWorker backgroundWorker7;
+        private System.Windows.Forms.ToolStripMenuItem действияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem проверкаОшибокToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отменитьИзмененияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem исключитьТегиБезАдресаToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker backgroundWorker8;
     }
 }

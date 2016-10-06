@@ -231,6 +231,8 @@ namespace RPTagsTest
 
         }
 
+        
+
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             label3.Text = "Строк обработано: "+ e.ProgressPercentage.ToString();
@@ -244,7 +246,14 @@ namespace RPTagsTest
             label3.Text = "Обработка завершена.";
         }
 
-        
+        private void importOPC_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (backgroundWorker1.IsBusy == true)
+            {
+                backgroundWorker1.CancelAsync();
+            }
+
+        }
     }
 
     public class CsvParser
