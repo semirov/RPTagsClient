@@ -105,6 +105,9 @@ namespace RPTagsTest
         private void Form2_Load(object sender, EventArgs e)
         {
 
+            treetest form = new treetest();
+            form.Show();
+
             try
             {
                 SqlConnectionStringBuilder connect = new SqlConnectionStringBuilder();
@@ -755,8 +758,28 @@ namespace RPTagsTest
         {
             try
             {
+
                 int index = Convert.ToInt16(dataGridView4.CurrentRow.Index);
-                dataGridView4.Rows.RemoveAt(index);
+                int id = Convert.ToInt16(rPTagsDataSet.Gruppa[index]["id"]);
+
+                if(device_TagTableAdapter.ScalarQueryGetCountByGg_id(id) > 0)
+                {
+                    if (MessageBox.Show("Для удаления группы " + rPTagsDataSet.Gruppa[index]["Name"].ToString() + " необходимо удалить\n" +
+                       device_TagTableAdapter.ScalarQueryGetCountByGg_id(id).ToString() + " записей из таблицы Устройства\n Выполнить удаление?", "Удаление записей", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        dataGridView4.Rows.RemoveAt(index);
+                        device_TagTableAdapter.DeleteQueryByGr_id(id);
+                    }
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Удаление группы " + rPTagsDataSet.Gruppa[index]["Name"].ToString() + "\n не затронет других таблиц", "Удаление записей", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dataGridView4.Rows.RemoveAt(index);
+                }
+                
+
             }
             catch
             {

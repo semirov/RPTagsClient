@@ -52,10 +52,17 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rpTagsDataSet1 = new RPTagsTest.RPTagsDataSet();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.defectDevice_tagTableAdapter1 = new RPTagsTest.RPTagsDataSetTableAdapters.DefectDevice_tagTableAdapter();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rpTagsDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -74,7 +81,7 @@
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Location = new System.Drawing.Point(342, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(347, 293);
+            this.groupBox1.Size = new System.Drawing.Size(347, 344);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Проверка подключения";
@@ -275,15 +282,71 @@
             this.bindingSource1.DataSource = this.rpTagsDataSet1;
             this.bindingSource1.Position = 0;
             // 
+            // defectDevice_tagTableAdapter1
+            // 
+            this.defectDevice_tagTableAdapter1.ClearBeforeFill = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.button5);
+            this.groupBox3.Controls.Add(this.button4);
+            this.groupBox3.Location = new System.Drawing.Point(12, 217);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(324, 139);
+            this.groupBox3.TabIndex = 9;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Таблица Устройства";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(71, 19);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(172, 23);
+            this.button4.TabIndex = 0;
+            this.button4.Text = "Проверка наличия ошибок";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(71, 85);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(172, 23);
+            this.button5.TabIndex = 1;
+            this.button5.Text = "Удаление ошибок";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(71, 53);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(103, 13);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Ошибочных строк: ";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(71, 115);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(103, 13);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "Ошибочных строк: ";
+            // 
             // SQLConnection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(696, 368);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "SQLConnection";
-            this.Text = "SQLConnection";
+            this.Text = "Административные инструменты";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SQLConnection_FormClosed);
             this.Load += new System.EventHandler(this.SQLConnection_Load);
             this.groupBox1.ResumeLayout(false);
@@ -292,6 +355,8 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rpTagsDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -321,5 +386,11 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private RPTagsDataSet rpTagsDataSet1;
         private System.Windows.Forms.BindingSource bindingSource1;
+        private RPTagsDataSetTableAdapters.DefectDevice_tagTableAdapter defectDevice_tagTableAdapter1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label9;
     }
 }

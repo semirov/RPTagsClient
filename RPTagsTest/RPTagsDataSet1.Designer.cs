@@ -23129,7 +23129,7 @@ SELECT id, Name, Description FROM Corpus WHERE (id = @id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        SAID, Sys_id, Gr_id, Tag_id, Cut, GMP, AdrPLC\r\nFROM            Devi" +
@@ -23137,25 +23137,36 @@ SELECT id, Name, Description FROM Corpus WHERE (id = @id)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT AdrPLC, Cut, GMP, Gr_id, SAID, Sys_id, Tag_id FROM Device_Tag WHERE (Sys_i" +
-                "d = @Systema_id)";
+            this._commandCollection[1].CommandText = "DELETE FROM Device_Tag\r\nWHERE        (Gr_id = @Gr_id)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Systema_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Sys_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gr_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Gr_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "SELECT AdrPLC, Cut, GMP, Gr_id, SAID, Sys_id, Tag_id FROM Device_Tag WHERE (Sys_i" +
-                "d = @Systema_id) AND (Gr_id = @Gruppa_id)";
+                "d = @Systema_id)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Systema_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Sys_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gruppa_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Gr_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "SELECT AdrPLC, Cut, GMP, Gr_id, SAID, Sys_id, Tag_id FROM Device_Tag WHERE (Sys_i" +
-                "d = @Systema_id) AND (Gr_id = @Gruppa_id) AND (Tag_id = @Tag_id)";
+                "d = @Systema_id) AND (Gr_id = @Gruppa_id)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Systema_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Sys_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gruppa_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Gr_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tag_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Tag_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = "SELECT AdrPLC, Cut, GMP, Gr_id, SAID, Sys_id, Tag_id FROM Device_Tag WHERE (Sys_i" +
+                "d = @Systema_id) AND (Gr_id = @Gruppa_id) AND (Tag_id = @Tag_id)";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Systema_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Sys_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gruppa_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Gr_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tag_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Tag_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "SELECT        COUNT(*) AS count\r\nFROM            Device_Tag\r\nGROUP BY Gr_id\r\nHAVI" +
+                "NG        (Gr_id = @Gr_id)";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gr_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Gr_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -23187,7 +23198,7 @@ SELECT id, Name, Description FROM Corpus WHERE (id = @id)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillBySystema(RPTagsDataSet.Device_TagDataTable dataTable, global::System.Nullable<int> Systema_id) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((Systema_id.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Systema_id.Value));
             }
@@ -23206,7 +23217,7 @@ SELECT id, Name, Description FROM Corpus WHERE (id = @id)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillBySystemaGryppa(RPTagsDataSet.Device_TagDataTable dataTable, global::System.Nullable<int> Systema_id, global::System.Nullable<int> Gruppa_id) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((Systema_id.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Systema_id.Value));
             }
@@ -23231,7 +23242,7 @@ SELECT id, Name, Description FROM Corpus WHERE (id = @id)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByTagSysGr(RPTagsDataSet.Device_TagDataTable dataTable, global::System.Nullable<int> Systema_id, global::System.Nullable<int> Gruppa_id, global::System.Nullable<int> Tag_id) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((Systema_id.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Systema_id.Value));
             }
@@ -23448,6 +23459,59 @@ SELECT id, Name, Description FROM Corpus WHERE (id = @id)";
                 if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int DeleteQueryByGr_id(int Gr_id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            command.Parameters[0].Value = ((int)(Gr_id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual global::System.Nullable<int> ScalarQueryGetCountByGg_id(int Gr_id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
+            command.Parameters[0].Value = ((int)(Gr_id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<int>();
+            }
+            else {
+                return new global::System.Nullable<int>(((int)(returnValue)));
             }
         }
     }
@@ -26992,23 +27056,34 @@ SELECT id, GrupType, TagType, Name, HH, UDM_Input, Description, UDM_Output, TTyp
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT id, GrupType, TagType, Name, HH, UDM_Input, Description, UDM_Output, TType, BaseText, AlarmMSG, NormalMSG, RelatedValue1, RelatedValue2, RelatedValue3, RelatedValue4, RelatedValue5, GMPT, GMPHm, GMPCAV, GMPVAV, GMPDP, TLA_MSG, Filter, GMPW FROM dbo.Tag";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT id, GrupType, TagType, Name, HH, UDM_Input, Description, UDM_Output, TType, BaseText, AlarmMSG, NormalMSG, RelatedValue1, RelatedValue2, RelatedValue3, RelatedValue4, RelatedValue5, GMPT, GMPHm, GMPCAV, GMPVAV, GMPDP, TLA_MSG, Filter, GMPW FROM dbo.Tag
-where GrupType = @Gruppa_GrupType";
+            this._commandCollection[1].CommandText = @"SELECT        Tag.id, Tag.GrupType, Tag.TagType, Tag.Name, Tag.HH, Tag.UDM_Input, Tag.Description, Tag.UDM_Output, Tag.TType, Tag.BaseText, Tag.AlarmMSG, Tag.NormalMSG, Tag.RelatedValue1, Tag.RelatedValue2, 
+                         Tag.RelatedValue3, Tag.RelatedValue4, Tag.RelatedValue5, Tag.GMPT, Tag.GMPHm, Tag.GMPCAV, Tag.GMPVAV, Tag.GMPDP, Tag.TLA_MSG, Tag.Filter, Tag.GMPW
+FROM            Tag INNER JOIN
+                         Gruppa ON Tag.GrupType = Gruppa.GrupType INNER JOIN
+                         TagType ON Tag.TagType = TagType.id
+WHERE        (Gruppa.id = @Gruppa_id) AND (TagType.id = @TagType_id)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gruppa_GrupType", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "GrupType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gruppa_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TagType_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = @"SELECT id, GrupType, TagType, Name, HH, UDM_Input, Description, UDM_Output, TType, BaseText, AlarmMSG, NormalMSG, RelatedValue1, RelatedValue2, RelatedValue3, RelatedValue4, RelatedValue5, GMPT, GMPHm, GMPCAV, GMPVAV, GMPDP, TLA_MSG, Filter, GMPW FROM dbo.Tag
-where id = @Tag_id";
+where GrupType = @Gruppa_GrupType";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tag_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gruppa_GrupType", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "GrupType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = @"SELECT id, GrupType, TagType, Name, HH, UDM_Input, Description, UDM_Output, TType, BaseText, AlarmMSG, NormalMSG, RelatedValue1, RelatedValue2, RelatedValue3, RelatedValue4, RelatedValue5, GMPT, GMPHm, GMPCAV, GMPVAV, GMPDP, TLA_MSG, Filter, GMPW FROM dbo.Tag
+where id = @Tag_id";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tag_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -27039,8 +27114,23 @@ where id = @Tag_id";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByGrupType(RPTagsDataSet.TagDataTable dataTable, global::System.Nullable<int> Gruppa_GrupType) {
+        public virtual int FillByGruppaTagType(RPTagsDataSet.TagDataTable dataTable, int Gruppa_id, int TagType_id) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Gruppa_id));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(TagType_id));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByGrupType(RPTagsDataSet.TagDataTable dataTable, global::System.Nullable<int> Gruppa_GrupType) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((Gruppa_GrupType.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Gruppa_GrupType.Value));
             }
@@ -27059,7 +27149,7 @@ where id = @Tag_id";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillById(RPTagsDataSet.TagDataTable dataTable, int Tag_id) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Tag_id));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();

@@ -47,7 +47,12 @@ namespace RPTagsTest
 
             groupBox1.Enabled = false;
 
+            button5.Enabled = false;
 
+            groupBox3.Enabled = false;
+
+            label8.Text = "";
+            label9.Text = "";
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -125,6 +130,13 @@ namespace RPTagsTest
                 button3.Enabled = true;
                 newpass = Properties.Settings.Default.Password;
                 textBox7.Text = newpass;
+
+                groupBox3.Enabled = true;
+            } else
+            {
+                MessageBox.Show("А пароль - то не настоящий...", "Упс!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
             }
         }
         private void button3_Click(object sender, EventArgs e) // принять изменения
@@ -181,6 +193,31 @@ namespace RPTagsTest
             Properties.Settings.Default.Save();
             Properties.Settings.Default.Upgrade();
             Properties.Settings.Default.Save();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            defectDevice_tagTableAdapter1.Fill(rpTagsDataSet1.DefectDevice_tag);
+            label8.Text = "Ошибочных строк: " + rpTagsDataSet1.DefectDevice_tag.Count().ToString();
+
+            if(rpTagsDataSet1.DefectDevice_tag.Count() > 0)
+            {
+                button5.Enabled = true;
+            }else
+            {
+                button5.Enabled = false;
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (rpTagsDataSet1.DefectDevice_tag.Count > 0)
+            {
+                if (MessageBox.Show("Удалить из  таблицы Device_tag\n" + rpTagsDataSet1.DefectDevice_tag.Count().ToString() + " ошибочных записей?", "Удаление ошибок", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                   
+                defectDevice_tagTableAdapter1.DeleteDefectDevice_Tag();
+                label9.Text = "Выполнено!";
+            }
         }
     }
 }
