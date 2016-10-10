@@ -13,7 +13,7 @@ namespace RPTagsTest.Properties {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
@@ -27,7 +27,7 @@ namespace RPTagsTest.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.100.11\\SQLEXPRESS;Initial Catalog=RPTags;Persist Security Inf" +
-            "o=True;User ID=sa;Password=1; Connect Timeout=600")]
+            "o=True;User ID=sa;Password=1; Connect Timeout=15")]
         public string RPTagsConnectionString {
             get {
                 return ((string)(this["RPTagsConnectionString"]));
@@ -36,9 +36,10 @@ namespace RPTagsTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Configuration.RsaProtectedConfigurationProvider Password {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Password {
             get {
-                return ((global::System.Configuration.RsaProtectedConfigurationProvider)(this["Password"]));
+                return ((string)(this["Password"]));
             }
             set {
                 this["Password"] = value;

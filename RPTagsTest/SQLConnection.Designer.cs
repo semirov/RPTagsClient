@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -40,22 +42,20 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rpTagsDataSet1 = new RPTagsTest.RPTagsDataSet();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rpTagsDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -72,12 +72,12 @@
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Location = new System.Drawing.Point(14, 6);
+            this.groupBox1.Location = new System.Drawing.Point(342, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(365, 293);
+            this.groupBox1.Size = new System.Drawing.Size(347, 293);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Параметры подключения";
+            this.groupBox1.Text = "Проверка подключения";
             // 
             // label5
             // 
@@ -86,6 +86,14 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(0, 13);
             this.label5.TabIndex = 3;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(14, 189);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(318, 91);
+            this.textBox5.TabIndex = 14;
             // 
             // button2
             // 
@@ -173,85 +181,37 @@
             this.textBox1.Size = new System.Drawing.Size(231, 20);
             this.textBox1.TabIndex = 3;
             // 
-            // textBox5
+            // button3
             // 
-            this.textBox5.Location = new System.Drawing.Point(14, 189);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(318, 91);
-            this.textBox5.TabIndex = 14;
+            this.button3.Location = new System.Drawing.Point(144, 160);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(122, 23);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "Принять изменения";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // tabControl1
+            // textBox7
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(365, 263);
-            this.tabControl1.TabIndex = 15;
+            this.textBox7.Location = new System.Drawing.Point(144, 92);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.PasswordChar = '*';
+            this.textBox7.Size = new System.Drawing.Size(164, 20);
+            this.textBox7.TabIndex = 6;
+            this.textBox7.UseSystemPasswordChar = true;
             // 
-            // tabPage1
+            // label7
             // 
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(357, 311);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Тест подключения";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.button3);
-            this.tabPage2.Controls.Add(this.textBox7);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.checkBox3);
-            this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Controls.Add(this.checkBox2);
-            this.tabPage2.Controls.Add(this.textBox6);
-            this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(357, 237);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Административное";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 32);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(135, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Пароль администратора:";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(146, 29);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(164, 20);
-            this.textBox6.TabIndex = 1;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox2.Location = new System.Drawing.Point(56, 145);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(171, 17);
-            this.checkBox2.TabIndex = 2;
-            this.checkBox2.Text = "Разрешить удаление полей?";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 95);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(120, 13);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Задать новый пароль:";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(146, 62);
+            this.button1.Location = new System.Drawing.Point(144, 52);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(122, 23);
             this.button1.TabIndex = 3;
@@ -259,58 +219,79 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // checkBox3
+            // checkBox2
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox3.Location = new System.Drawing.Point(11, 168);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(216, 17);
-            this.checkBox3.TabIndex = 4;
-            this.checkBox3.Text = "Включить диагностическую вкладку?";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox2.Location = new System.Drawing.Point(54, 135);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(171, 17);
+            this.checkBox2.TabIndex = 2;
+            this.checkBox2.Text = "Разрешить удаление полей?";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
-            // textBox7
+            // textBox6
             // 
-            this.textBox7.Location = new System.Drawing.Point(146, 102);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(164, 20);
-            this.textBox7.TabIndex = 6;
+            this.textBox6.Location = new System.Drawing.Point(144, 19);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.PasswordChar = '*';
+            this.textBox6.Size = new System.Drawing.Size(164, 20);
+            this.textBox6.TabIndex = 1;
+            this.textBox6.UseSystemPasswordChar = true;
             // 
-            // label7
+            // label6
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 105);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(120, 13);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Задать новый пароль:";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(135, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Пароль администратора:";
             // 
-            // button3
+            // groupBox2
             // 
-            this.button3.Location = new System.Drawing.Point(146, 201);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(122, 23);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Принять изменения";
-            this.button3.UseVisualStyleBackColor = true;
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.checkBox2);
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.textBox7);
+            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(324, 199);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Аутентификация";
+            // 
+            // rpTagsDataSet1
+            // 
+            this.rpTagsDataSet1.DataSetName = "RPTagsDataSet";
+            this.rpTagsDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = this.rpTagsDataSet1;
+            this.bindingSource1.Position = 0;
             // 
             // SQLConnection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(365, 263);
-            this.Controls.Add(this.tabControl1);
+            this.ClientSize = new System.Drawing.Size(696, 368);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Name = "SQLConnection";
             this.Text = "SQLConnection";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SQLConnection_FormClosed);
             this.Load += new System.EventHandler(this.SQLConnection_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rpTagsDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -330,10 +311,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.TextBox textBox6;
@@ -341,5 +318,8 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private RPTagsDataSet rpTagsDataSet1;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }

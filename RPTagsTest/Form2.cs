@@ -17,6 +17,7 @@ namespace RPTagsTest
 
     public partial class Form2 : Form
     {
+        
         int tabIndexCurr = 0;
 
         #region переменные формы
@@ -29,6 +30,9 @@ namespace RPTagsTest
         bool CheckGruppa = false;
         bool CheckTag = false;
         int TAG_ID;
+        public bool passtrue; // пароль введен
+        public bool deleteEnable; // разрешено удаление
+        public bool diagnosticEnable; // разрешен показ админской вкладки
 
         DataTable temp_Modifed_KorpusDataTable = new DataTable("temp_Modifed_KorpusDataTable");
         DataTable temp_Modifed_PLCDataTable = new DataTable("temp_Modifed_PLCDataTable");
@@ -97,8 +101,34 @@ namespace RPTagsTest
         #region основные таблицы
 
         //-----------------------------------------------------------------------------
+        
         private void Form2_Load(object sender, EventArgs e)
         {
+
+            try
+            {
+                SqlConnectionStringBuilder connect = new SqlConnectionStringBuilder();
+                connect.ConnectionString = Properties.Settings.Default["RPTagsConnectionString"].ToString();
+                
+                SqlConnection connection = new SqlConnection(connect.ConnectionString);
+
+                // Открываем подключение
+               
+                connection.Open();
+               
+                
+                toolStripStatusLabel2.Text = "Тест подключения: OK";
+                connection.Close();
+                
+            }
+            catch (SqlException ex)
+            {
+                if (MessageBox.Show("Отсутствует связь с базой данных \n " + tagTableAdapter.Connection.DataSource.ToString() + " (" + tagTableAdapter.Connection.Database.ToString() + ") \n Приложение будет закрыто!", "Ошибка связи", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK)
+                    this.Close();
+            }
+
+            
+
             // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.TagIdTagTypeID". При необходимости она может быть перемещена или удалена.
             this.tagIdTagTypeIDTableAdapter.Fill(this.rPTagsDataSet.TagIdTagTypeID);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.TagUDM". При необходимости она может быть перемещена или удалена.
@@ -151,13 +181,16 @@ namespace RPTagsTest
             dataGridView15.AllowUserToAddRows = false;
             dataGridView16.AllowUserToAddRows = false;
 
-            
+
+
+            passtrue = false; // пароль введен
+            deleteEnable = false; // разрешено удаление
+            diagnosticEnable = false;
 
 
 
-           
 
-            TagChange newForm = new TagChange();
+        TagChange newForm = new TagChange();
             newForm.Owner = this;
 
             toolStripStatusLabel3.Text = tagTableAdapter.Connection.DataSource.ToString() +" ("+ tagTableAdapter.Connection.Database.ToString() + ")";
@@ -169,12 +202,14 @@ namespace RPTagsTest
 
 
         }
+
         
-        
+
         private void toolStripStatusLabel3_Click(object sender, EventArgs e) // настройка параметров подключения
         {
             // Application.Restart();
             SQLConnection form = new SQLConnection();
+            form.Tag = this;
             form.Show();
         }
 
@@ -281,6 +316,7 @@ namespace RPTagsTest
         private void tabControl1_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel2.Text = "";
+            deleteenable(deleteEnable);
         }
       
 
@@ -786,7 +822,8 @@ namespace RPTagsTest
         private void dataGridView6_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = Convert.ToInt16(dataGridView6.CurrentRow.Index);
-            Name_Tag = Convert.ToString(rPTagsDataSet.Tag[index]["Name"]);
+            if (rPTagsDataSet.Tag[index]["Name"] != null)
+                Name_Tag = Convert.ToString(rPTagsDataSet.Tag[index]["Name"]);
             Name_TagType = Convert.ToString(rPTagsDataSet.Tag[index]["TType"]);
             DGW_reloader();
             tag_path_changer();
@@ -1009,7 +1046,7 @@ namespace RPTagsTest
 
                             // запросим наличие тегов без SAID
                             rPTagsDataSet.SAIDNull.Clear();
-                            //this.sAIDNullTableAdapter.FillBySysGrTag(this.rPTagsDataSet.SAIDNull, Gruppa_id, Systema_id, Tag_id);
+                            this.sAIDNullTableAdapter.FillBySysGrTag(this.rPTagsDataSet.SAIDNull, Gruppa_id, Systema_id, Tag_id);
                             fiilDevice_tag(Systema_id, Gruppa_id, Tag_id);
                             if (rPTagsDataSet.SAIDNull.Rows.Count != 0) // если есть хоть одна строка, предложим их добавить
                             {
@@ -1186,8 +1223,9 @@ namespace RPTagsTest
         private void проверитьОшибкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // затычка для работы при смене груптайпов
-            rPTagsDataSet.TagIdTagTypeID.Clear();
+           
             tagIdTagTypeIDTableAdapter.Fill(rPTagsDataSet.TagIdTagTypeID);
+            this.tagTableAdapter.Fill(this.rpTagsDataSet1.Tag);
 
 
             if (backgroundWorker6.IsBusy != true)
@@ -1247,7 +1285,6 @@ namespace RPTagsTest
         }// добавка тегов
         int countcut;
         int devtagstrsum;
-        
         int  devtagstrcount;
         private void исключитьТегиБезАдресаToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1485,6 +1522,7 @@ namespace RPTagsTest
 
 
         //--------------Тип группы---------------------------------------------------------------------------------------
+        bool beginedit;
         private void GrupType_changed()
         {
             if (rPTagsDataSet.Gruptype.GetChanges(DataRowState.Modified) != null)
@@ -1573,7 +1611,7 @@ namespace RPTagsTest
             
             try
             {
-                if (dataGridView14.CurrentRow != null)
+                if (dataGridView14.CurrentRow != null || beginedit)
                 {
                     int index = Convert.ToInt16(dataGridView14.CurrentRow.Index);
                     int id = Convert.ToInt16(rPTagsDataSet.Gruptype[index]["id"]);
@@ -1593,7 +1631,14 @@ namespace RPTagsTest
             }
 
         }
-
+        private void dataGridView14_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            beginedit = true;
+        }
+        private void dataGridView14_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            beginedit = false;
+        }
         //--------------Тип тега---------------------------------------------------------------------------------------
 
         private void TagType_changed()
@@ -2247,6 +2292,11 @@ namespace RPTagsTest
 
         
 
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void button12_Click(object sender, EventArgs e) // save file
         {
             SaveDGVToCSVfile(textBox10.Text, textBox11.Text, dataGridView12, false, "");
@@ -2264,9 +2314,11 @@ namespace RPTagsTest
 
         #endregion
 
-        private void Form2_MouseDoubleClick(object sender, MouseEventArgs e)
+
+
+        private void deleteenable(bool enable)
         {
-            if (toolStripMenuItem11.Enabled)
+            if (!enable)
             {
                 toolStripMenuItem11.Enabled = false;
                 удалитьToolStripMenuItem.Enabled = false;
@@ -2294,13 +2346,8 @@ namespace RPTagsTest
                 toolStripMenuItem23.Enabled = true;
                 toolStripMenuItem25.Enabled = true;
             }
-
-
         }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
         private void dataGridView6_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             toolStripStatusLabel2.Text = "     Какие то проблемы с датагридом";

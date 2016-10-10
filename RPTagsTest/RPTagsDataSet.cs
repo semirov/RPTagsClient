@@ -21,6 +21,10 @@ namespace RPTagsTest
 
     public partial class RPTagsDataSet
     {
+        partial class DefectDevice_tagDataTable
+        {
+        }
+
         partial class GetDevTagFromFullPathDataTable
         {
         }

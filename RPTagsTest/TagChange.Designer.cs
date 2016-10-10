@@ -228,11 +228,12 @@
             this.tableAdapterManager.CorpusTableAdapter = null;
             this.tableAdapterManager.Device_TagTableAdapter = null;
             this.tableAdapterManager.FiltresTableAdapter = null;
+            this.tableAdapterManager.GetDevTagFromFullPathTableAdapter = null;
             this.tableAdapterManager.GruppaTableAdapter = null;
             this.tableAdapterManager.GruptypeTableAdapter = this.gruptypeTableAdapter;
             this.tableAdapterManager.OPCTableAdapter = null;
             this.tableAdapterManager.PLCTableAdapter = null;
-          //  this.tableAdapterManager.SAIDNullTableAdapter = null;
+            this.tableAdapterManager.SAIDNullTableAdapter = null;
             this.tableAdapterManager.SystemaTableAdapter = null;
             this.tableAdapterManager.SystemTypeTableAdapter = null;
             this.tableAdapterManager.TagTableAdapter = null;
@@ -309,6 +310,7 @@
             this.comboBox2.Size = new System.Drawing.Size(230, 21);
             this.comboBox2.TabIndex = 7;
             this.comboBox2.ValueMember = "id";
+            
             this.comboBox2.MouseEnter += new System.EventHandler(this.comboBox2_MouseEnter);
             // 
             // checkBox1

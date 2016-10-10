@@ -176,10 +176,10 @@ namespace RPTagsTest
         }
         string tagpath;
         string tagadr;
-        int countErrStr;
-        int countFindStr;
-        int countUpdStr;
-        int countAllStr;
+        int countErrStr = 0;
+        int countFindStr = 0;
+        int countUpdStr = 0;
+        int countAllStr = 0;
         //string test;
         int sys_id, gr_id, tag_id;
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)

@@ -192,7 +192,7 @@ namespace RPTagsTest
             } 
             
         }
-
+        
         private void button1_Click(object sender, EventArgs e) // сохранить
         {
             if (TAG_ID != 0) // если изменяем уже существующий тег
@@ -387,5 +387,7 @@ namespace RPTagsTest
         {
             richTextBox1.Text = "Опция определяет попадание тега в UDM, и формирование выходного тега";
         }
+
+        
     }
 }

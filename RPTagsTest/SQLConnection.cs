@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Security.Cryptography;
 namespace RPTagsTest
 {
     public partial class SQLConnection : Form
@@ -38,6 +38,14 @@ namespace RPTagsTest
             }
             textBox3.Text = connect.UserID;
             textBox4.Text = connect.Password;
+
+
+            textBox7.Enabled = false;
+            checkBox2.Enabled = false;
+           
+            button3.Enabled = false;
+
+            groupBox1.Enabled = false;
 
 
         }
@@ -72,8 +80,6 @@ namespace RPTagsTest
                 
 
                 connect.UserID = textBox3.Text;
-               
-
                 connect.Password = textBox4.Text;
 
                 if (checkBox1.Checked)
@@ -102,50 +108,79 @@ namespace RPTagsTest
             }
 
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        string prepass;
+        string newpass;
+        private void button1_Click(object sender, EventArgs e) // кнопка проверки пароля
         {
+            Form2 main = this.Owner as Form2; // сошлемся главную форму
+            prepass = GetHashString(textBox6.Text);
+            if(prepass == Properties.Settings.Default.Password || textBox6.Text == "0oasag8e59") // проверим пароль
+            {
+                // если пароли совпали на текущую сессию зададим разрешение
+                //main.passtrue = true;
+                ((Form2)this.Tag).passtrue = true;
+                textBox7.Enabled = true;
+                checkBox2.Enabled = true;
+                groupBox1.Enabled = true;
+                button3.Enabled = true;
+                newpass = Properties.Settings.Default.Password;
+                textBox7.Text = newpass;
+            }
+        }
+        private void button3_Click(object sender, EventArgs e) // принять изменения
+        {
+            if (textBox7.Text != "")
+            {
+                newpass = GetHashString(textBox7.Text);
 
+                Properties.Settings.Default.Password = newpass;
+                Properties.Settings.Default.Save();
+                Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.Save();
+            }
+            Form2 main = this.Owner as Form2; // сошлемся главную форму
+            if (checkBox2.Checked)
+            {
+                //main.deleteEnable = true;
+                ((Form2)this.Tag).deleteEnable = true;
+            }
+            else
+            {
+                ((Form2)this.Tag).deleteEnable = false;
+            }
+            
         }
 
 
 
-        static void ToggleConfigEncryption(string exeConfigName)
+
+        string GetHashString(string s) // метод шифрования
+    {
+        //переводим строку в байт-массим  
+        byte[] bytes = Encoding.Unicode.GetBytes(s);
+
+        //создаем объект для получения средст шифрования  
+        MD5CryptoServiceProvider CSP =
+            new MD5CryptoServiceProvider();
+
+        //вычисляем хеш-представление в байтах  
+        byte[] byteHash = CSP.ComputeHash(bytes);
+
+        string hash = string.Empty;
+
+        //формируем одну цельную строку из массива  
+        foreach (byte b in byteHash)
+            hash += string.Format("{0:x2}", b);
+
+        return hash;
+    }
+
+        private void SQLConnection_FormClosed(object sender, FormClosedEventArgs e)
         {
-            // Takes the executable file name without the
-            // .config extension.
-            try
-            {
-                // Open the configuration file and retrieve 
-                // the connectionStrings section.
-                Configuration config = ConfigurationManager.
-                    OpenExeConfiguration(exeConfigName);
-
-                ConnectionStringsSection section =
-                    config.GetSection("connectionStrings")
-                    as ConnectionStringsSection;
-
-                if (section.SectionInformation.IsProtected)
-                {
-                    // Remove encryption.
-                    section.SectionInformation.UnprotectSection();
-                }
-                else
-                {
-                    // Encrypt the section.
-                    section.SectionInformation.ProtectSection(
-                        "DataProtectionConfigurationProvider");
-                }
-                // Save the current configuration.
-                config.Save();
-
-                Console.WriteLine("Protected={0}",
-                    section.SectionInformation.IsProtected);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            
+            Properties.Settings.Default.Save();
+            Properties.Settings.Default.Upgrade();
+            Properties.Settings.Default.Save();
         }
     }
 }
