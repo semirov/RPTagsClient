@@ -29,10 +29,6 @@ namespace RPTagsTest
         public bool deleteEnable; // разрешено удаление
         public bool diagnosticEnable; // разрешен показ админской вкладки
 
-
-
-
-
         DataTable temp_Modifed_FilterDataTable = new DataTable("temp_Modifed_FilterDataTable");
         DataTable temp_Modifed_OPCDataTable = new DataTable("temp_Modifed_FilterDataTable");
         DataTable temp_Modifed_SystemTypeDataTable = new DataTable("temp_Modifed_SystemTypeDataTable");
@@ -80,15 +76,17 @@ namespace RPTagsTest
             backgroundWorker7.WorkerReportsProgress = true;
             backgroundWorker7.WorkerSupportsCancellation = true;
 
-
-
-
-
             dataGridView7.CellEndEdit += DataGridView7_CellEndEdit;
 
+            toolStripMenuAdd.Click += ToolStripMenuAdd_Click;
+            toolStripMenuEdit.Click += ToolStripMenuEdit_Click;
+            toolStripMenuDelete.Click += ToolStripMenuDelete_Click;
+            
 
 
         }
+
+       
 
 
 
@@ -96,13 +94,7 @@ namespace RPTagsTest
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTags_questiondata.PLC". При необходимости она может быть перемещена или удалена.
-            this.pLCTableAdapter1.Fill(this.rPTags_questiondata.PLC);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTags_questiondata.Corpus". При необходимости она может быть перемещена или удалена.
-
-
-
-
+            
             try
             {
                 SqlConnectionStringBuilder connect = new SqlConnectionStringBuilder();
@@ -134,6 +126,8 @@ namespace RPTagsTest
             this.gruptypeTableAdapter.Fill(this.rPTagsDataSet.Gruptype);
             this.systemTypeTableAdapter.Fill(this.rPTagsDataSet.SystemType);
 
+            tagIdTagTypeIDTableAdapter.Fill(rPTagsDataSet.TagIdTagTypeID);
+            tagTableAdapter.Fill(this.rPTagsDataSet.Tag);
 
 
             dataGridView5.AllowUserToAddRows = false;
@@ -165,10 +159,9 @@ namespace RPTagsTest
             prename = DateTime.Today.Day.ToString() + DateTime.Today.Month.ToString() + DateTime.Today.Year.ToString(); //нужно для имени файла конфигурации
                                                                                                                         //toolStripStatusLabel3.Text = prename;
 
-
+            // инициализатор дерева
             foreach (RPTagsDataSet.CorpusRow row_corpus in rPTagsDataSet.Corpus)
             {
-
                 TreeNode node_corpus = new TreeNode(row_corpus.Name);
                 node_corpus.Text = row_corpus.Name;
                 node_corpus.Tag = row_corpus.id;
@@ -177,11 +170,6 @@ namespace RPTagsTest
             }
 
         }
-
-
-
-
-
 
         private void tag_path_changer(TreeNode node)
         {
@@ -194,10 +182,6 @@ namespace RPTagsTest
             toolStripStatusLabel2.Text = "";
             deleteenable(deleteEnable);
         }
-
-
-
-
 
         bool notsaved = false;
         bool canceledit = false;
@@ -242,20 +226,28 @@ namespace RPTagsTest
             }
 
         }
+        private void fiilDevice_tag(int systema)
+        {
+            if (systema != 0) // по одному
+            {
+                this.device_TagTableAdapter.FillBySystema(this.rPTagsDataSet.Device_Tag, systema);
+            }
+        }
+        private void fiilDevice_tag(int systema, int gruppa)
+        {
+            if (systema != 0 && gruppa != 0) // по двум
+            {
+                this.device_TagTableAdapter.FillBySystemaGryppa(this.rPTagsDataSet.Device_Tag, systema, gruppa);
+            }
+        }
         private void fiilDevice_tag(int systema, int gruppa, int tag)
         {
             if (systema != 0 && gruppa != 0 && tag != 0) // по трем параметрам
             {
                 this.device_TagTableAdapter.FillByTagSysGr(this.rPTagsDataSet.Device_Tag, systema, gruppa, tag);
             }
-            if (systema != 0 && gruppa != 0 && tag == 0) // по двум
-            {
-                this.device_TagTableAdapter.FillBySystemaGryppa(this.rPTagsDataSet.Device_Tag, systema, gruppa);
-            }
-            if (systema != 0 && gruppa == 0 && tag == 0) // по одному
-            {
-                this.device_TagTableAdapter.FillBySystema(this.rPTagsDataSet.Device_Tag, systema);
-            }
+            
+            
         }
         private void backgroundWorker6_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -307,161 +299,7 @@ namespace RPTagsTest
         {
             toolStripStatusLabel4.Text = "";
             change_device_tag();
-        }
-        /*
-
-        private void tabPage7_Enter(object sender, EventArgs e) // устройство
-        {
-            try
-            {
-
-
-                if (notsaved)
-                {
-                    MessageBox.Show("Данные не могут быть обновлены\n пока не будут сохранены изменения", "Данные не обновлены", MessageBoxButtons.OK, MessageBoxIcon.Question);
-
-                }
-                if (!notsaved)
-                {
-
-
-                    if (CheckGruppa && CheckTag) // если выбрана система, группа, тег - покажем только по тегу
-                    {
-                        tabPage7.Text = "Устройство (" + Name_Systema + "\\" + Name_Gryppa + "\\" + Name_TagType + "\\" + Name_Tag + ")";
-                        if (dataGridView3.CurrentRow != null || dataGridView4.CurrentRow != null || dataGridView6.CurrentRow != null)
-                        {
-
-                            // выбранная система
-                            int Systema_index = Convert.ToInt16(dataGridView3.CurrentRow.Index);
-                            int Systema_id = Convert.ToInt16(rPTagsDataSet.Systema[Systema_index]["id"]);
-                            // выбранная группа
-                            int Gruppa_index = Convert.ToInt16(dataGridView4.CurrentRow.Index);
-                            int Gruppa_id = Convert.ToInt16(rPTagsDataSet.Gruppa[Gruppa_index]["id"]);
-                            // выбранный тег
-                            int Tag_index = Convert.ToInt16(dataGridView6.CurrentRow.Index);
-                            int Tag_id = Convert.ToInt16(rPTagsDataSet.Tag[Tag_index]["id"]);
-                            // получим выборку по трем переменным
-                            this.device_TagTableAdapter.FillByTagSysGr(this.rPTagsDataSet.Device_Tag, Systema_id, Gruppa_id, Tag_id);
-
-                            // запросим наличие тегов без SAID
-                            rPTagsDataSet.SAIDNull.Clear();
-                            this.sAIDNullTableAdapter.FillBySysGrTag(this.rPTagsDataSet.SAIDNull, Gruppa_id, Systema_id, Tag_id);
-                            fiilDevice_tag(Systema_id, Gruppa_id, Tag_id);
-                            if (rPTagsDataSet.SAIDNull.Rows.Count != 0) // если есть хоть одна строка, предложим их добавить
-                            {
-
-                                if (MessageBox.Show("Для Тега: \"" + Name_Corpus + "\\" + Name_Systema + "\\" + Name_Gryppa + "\\" + Name_TagType + "\\" + Name_Tag + "\"\nОтсутствует SAID!\n Добавить его?", "SAID", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                                {
-                                    if (backgroundWorker7.IsBusy != true)
-                                    {
-
-                                        backgroundWorker7.RunWorkerAsync();
-                                        toolStripStatusLabel4.Text = "Добавление записей...";
-                                        tabControl1.Enabled = false;
-                                    }
-
-
-                                }
-                            }
-
-                        }
-                        else
-                        {
-                            this.rPTagsDataSet.Device_Tag.Clear();
-                        }
-                    }
-                    else if (CheckGruppa && !CheckTag) // если выбрана система, группа,  - покажем только по группе
-                    {
-                        tabPage7.Text = "Устройство (" + Name_Systema + "\\" + Name_Gryppa + ")";
-                        if (dataGridView3.CurrentRow != null || dataGridView4.CurrentRow != null)
-                        {
-                            // выбранная группа
-                            int Gruppa_index = Convert.ToInt16(dataGridView4.CurrentRow.Index);
-                            int Gruppa_id = Convert.ToInt16(rPTagsDataSet.Gruppa[Gruppa_index]["id"]);
-                            // выбранная система
-                            int Systema_index = Convert.ToInt16(dataGridView3.CurrentRow.Index);
-                            int Systema_id = Convert.ToInt16(rPTagsDataSet.Systema[Systema_index]["id"]);
-                            //получим выборку по двум переменным
-                            this.device_TagTableAdapter.FillBySystemaGryppa(this.rPTagsDataSet.Device_Tag, Systema_id, Gruppa_id);
-                            fiilDevice_tag(Systema_id, Gruppa_id, 0);
-
-                            // запросим наличие тегов без SAID
-                            rPTagsDataSet.SAIDNull.Clear();
-                            this.sAIDNullTableAdapter.FillBySustemGruppa(this.rPTagsDataSet.SAIDNull, Gruppa_id, Systema_id);
-                            if (rPTagsDataSet.SAIDNull.Rows.Count != 0) // если есть хоть одна строка, предложим их добавить
-                            {
-
-                                if (MessageBox.Show("Для Группы: \"" + Name_Corpus + "\\" + Name_Systema + "\\" + Name_Gryppa + "\"\nЕсть теги без SAID! Количество: " + rPTagsDataSet.SAIDNull.Rows.Count + "\n Добавить их?", "SAID", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                                {
-
-                                    if (backgroundWorker7.IsBusy != true)
-                                    {
-
-                                        backgroundWorker7.RunWorkerAsync();
-                                        toolStripStatusLabel4.Text = "Добавление записей...";
-                                        tabControl1.Enabled = false;
-                                    }
-                                }
-                            }
-
-
-                        }
-                        else
-                        {
-                            this.rPTagsDataSet.Device_Tag.Clear();
-                        }
-                    }
-                    else if (!CheckGruppa && !CheckTag) // если выбранна только система
-                    {
-                        tabPage7.Text = "Устройство (" + Name_Systema + ")";
-                        if (dataGridView3.CurrentRow != null)
-                        {
-
-                            // выбранная система
-                            int Systema_index = Convert.ToInt16(dataGridView3.CurrentRow.Index);
-                            int Systema_id = Convert.ToInt16(rPTagsDataSet.Systema[Systema_index]["id"]);
-
-
-                            //получим выборку по системе
-                            this.device_TagTableAdapter.FillBySystema(this.rPTagsDataSet.Device_Tag, Systema_id);
-
-                            // запросим наличие тегов без SAID
-                            rPTagsDataSet.SAIDNull.Clear();
-                            this.sAIDNullTableAdapter.FillBySystema(this.rPTagsDataSet.SAIDNull, Systema_id);
-                            if (rPTagsDataSet.SAIDNull.Rows.Count != 0) // если есть хоть одна строка, предложим их добавить
-                            {
-                                // toolStripStatusLabel2.Text = "У нас там есть что добавить";
-                                if (MessageBox.Show("Для Системы: \"" + Name_Corpus + "\\" + Name_Systema + "\"\nЕсть теги без SAID! Количество: " + rPTagsDataSet.SAIDNull.Rows.Count + "\n Добавить их?", "SAID", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                                {
-
-                                    if (backgroundWorker7.IsBusy != true)
-                                    {
-
-                                        backgroundWorker7.RunWorkerAsync();
-                                        toolStripStatusLabel4.Text = "Добавление записей...";
-                                        tabControl1.Enabled = false;
-                                    }
-                                }
-                            }
-
-
-                        }
-                        else
-                        {
-                            this.rPTagsDataSet.Device_Tag.Clear();
-                        }
-                    }
-                }
-            }
-
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Исключение :-(");
-
-            }
-
-        }
-        */
+        }   
         private void DataGridView7_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified) != null)
@@ -525,7 +363,7 @@ namespace RPTagsTest
             // затычка для работы при смене груптайпов
 
             tagIdTagTypeIDTableAdapter.Fill(rPTagsDataSet.TagIdTagTypeID);
-            this.tagTableAdapter.Fill(this.rPTagsDataSet.Tag);
+            tagTableAdapter.Fill(this.rPTagsDataSet.Tag);
 
 
             if (backgroundWorker6.IsBusy != true)
@@ -1586,11 +1424,6 @@ namespace RPTagsTest
 
 
 
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button12_Click(object sender, EventArgs e) // save file
         {
             SaveDGVToCSVfile(textBox10.Text, textBox11.Text, dataGridView12, false, "");
@@ -1641,18 +1474,152 @@ namespace RPTagsTest
 
 
         #region дерево
+        int systema_id;
+        int gruppa_id;
+        int tag_id;
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            
+            if (current_node != e.Node && current_node != null) // если при выборе нода изменилась, то отменим редактирование
+            {
+                selectcontrol(current_node.Level, false);
+            }
+
+
+            if (e.Node.Level == 2)
+            {
+                tag_id = 0;
+                gruppa_id = 0;
+                systema_id = Convert.ToInt16(e.Node.Tag); // родитель на уровне системы
+            }
+            else
+            {
+                if (e.Node.Level == 3)
+                {
+                    tag_id = 0;
+                    gruppa_id = Convert.ToInt16(e.Node.Tag); // родитель на уровне группы
+                    systema_id = Convert.ToInt16(e.Node.Parent.Tag); // родитель на уровне системы
+                }
+                else
+                {
+                    if (e.Node.Level == 5)
+                    {
+                        tag_id = Convert.ToInt16(e.Node.Tag); // уровень тега
+                        gruppa_id = Convert.ToInt16(e.Node.Parent.Parent.Tag); // родитель на уровне группы
+                        systema_id = Convert.ToInt16(e.Node.Parent.Parent.Parent.Tag); // родитель на уровне системы
+                    }
+                    else
+                    {
+                        tag_id = 0;
+                        gruppa_id = 0;
+                        systema_id = 0; 
+                    }
+                }
+            }
+            try
+            {
+                if (notsaved)
+                {
+                    MessageBox.Show("Данные не могут быть обновлены\n пока не будут сохранены изменения", "Данные не обновлены", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                }
+                if (!notsaved)
+                {
+
+
+                    if (systema_id != 0 && gruppa_id != 0 && tag_id != 0) // если выбрана система, группа, тег - покажем только по тегу
+                    {
+
+                        // зальем таблицу
+                        fiilDevice_tag(systema_id, gruppa_id, tag_id);
+                        if (tabControl1.SelectedTab == tabPage7)
+                        {
+                            // запросим наличие тегов без SAID
+                            this.sAIDNullTableAdapter.FillBySysGrTag(this.rPTagsDataSet.SAIDNull, gruppa_id, systema_id, tag_id);
+                            if (rPTagsDataSet.SAIDNull.Rows.Count != 0) // если есть хоть одна строка, предложим их добавить
+                            {
+                                if (MessageBox.Show("Для Тега: \"" + tabPage1.Text + "\"\nОтсутствует SAID!\n Добавить его?", "SAID", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                                {
+                                    if (backgroundWorker7.IsBusy != true)
+                                    {
+
+                                        backgroundWorker7.RunWorkerAsync();
+                                        toolStripStatusLabel4.Text = "Добавление записей...";
+                                        tabControl1.Enabled = false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if (systema_id != 0 && gruppa_id != 0 && tag_id == 0) // если выбрана система, группа,  - покажем только по группе
+                    {
+                        //получим выборку по двум переменным
+                        fiilDevice_tag(systema_id, gruppa_id);
+
+                        // запросим наличие тегов без SAID
+                        if (tabControl1.SelectedTab == tabPage7)
+                        {
+                            this.sAIDNullTableAdapter.FillBySustemGruppa(this.rPTagsDataSet.SAIDNull, gruppa_id, systema_id);
+                            if (rPTagsDataSet.SAIDNull.Rows.Count != 0) // если есть хоть одна строка, предложим их добавить
+                            {
+                                if (MessageBox.Show("Для Группы: \"" + tabPage1.Text + "\"\nЕсть теги без SAID! Количество: " + rPTagsDataSet.SAIDNull.Rows.Count + "\n Добавить их?", "SAID", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                                {
+                                    if (backgroundWorker7.IsBusy != true)
+                                    {
+
+                                        backgroundWorker7.RunWorkerAsync();
+                                        toolStripStatusLabel4.Text = "Добавление записей...";
+                                        tabControl1.Enabled = false;
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                    else if (systema_id != 0 && gruppa_id == 0 && tag_id == 0) // если выбранна только система
+                    {
+                        //получим выборку по системе
+                        fiilDevice_tag(systema_id);
+                        // запросим наличие тегов без SAID
+                        if (tabControl1.SelectedTab == tabPage7)
+                        {
+                            this.sAIDNullTableAdapter.FillBySystema(this.rPTagsDataSet.SAIDNull, systema_id);
+                            if (rPTagsDataSet.SAIDNull.Rows.Count != 0) // если есть хоть одна строка, предложим их добавить
+                            {
+                                // toolStripStatusLabel2.Text = "У нас там есть что добавить";
+                                if (MessageBox.Show("Для Системы: \"" + tabPage1.Text + "\"\nЕсть теги без SAID! Количество: " + rPTagsDataSet.SAIDNull.Rows.Count + "\n Добавить их?", "SAID", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                                {
+
+                                    if (backgroundWorker7.IsBusy != true)
+                                    {
+
+                                        backgroundWorker7.RunWorkerAsync();
+                                        toolStripStatusLabel4.Text = "Добавление записей...";
+                                        tabControl1.Enabled = false;
+                                    }
+                                }
 
 
 
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Исключение :-(");
+
+            }
         }
 
         private void treeView1_BeforeSelect(object sender, TreeViewCancelEventArgs e)
         {
             fiilnode(e.Node);
+            
+            
         }
-
         private void fiilnode(TreeNode node)
         {
             tag_path_changer(node);
@@ -1663,7 +1630,6 @@ namespace RPTagsTest
             if (level > 0)
                 parent_id = Convert.ToInt16(node.Parent.Tag);
             selectcontrol(level); // покажем нужный контрол
-
             switch (level) // выделенный объект
             {
                 case 0: //выделен корпус
@@ -1678,8 +1644,6 @@ namespace RPTagsTest
                         node.Nodes.Add(plc_node);
                     }
                     this.corpusTableAdapter1.FillById(this.rPTags_questiondata.Corpus, id); // зальем выбранный корпус
-                    
-
                     break;
                 case 1: //выделен ПЛК
                     node.Nodes.Clear();
@@ -1692,6 +1656,7 @@ namespace RPTagsTest
                         systema_node.Tag = row_Systema.id;
                         node.Nodes.Add(systema_node);
                     }
+                    this.pLCTableAdapter1.FillById(this.rPTags_questiondata.PLC, id);
                     break;
 
                 case 2: //выделена система
@@ -1705,6 +1670,7 @@ namespace RPTagsTest
                         gruppa_node.Tag = row_Gruppa.id;
                         node.Nodes.Add(gruppa_node);
                     }
+                    this.systemaTableAdapter1.FillById(this.rPTags_questiondata.Systema, id);
                     break;
 
                 case 3: //выделена группа
@@ -1717,25 +1683,30 @@ namespace RPTagsTest
                         TreeNode tagType_node = new TreeNode(row_TagType.Name);
                         tagType_node.Text = row_TagType.Name;
                         tagType_node.Tag = row_TagType.id;
+                        
+
+                        // получим теги в подкаталоги
+                        this.tagTableAdapter.FillByGruppaTagType(this.rPTagsDataSet.Tag, id, row_TagType.id);
+                        foreach (RPTagsDataSet.TagRow row_Tag in rPTagsDataSet.Tag)
+                        {
+                            TreeNode Tag_node = new TreeNode(row_Tag.Name);
+                            Tag_node.Text = row_Tag.Name;
+                            Tag_node.Tag = row_Tag.id;
+                            tagType_node.Nodes.Add(Tag_node);
+                        }
                         node.Nodes.Add(tagType_node);
                     }
+                    this.gruppaTableAdapter1.FillById(this.rPTags_questiondata.Gruppa,id);
                     break;
 
                 case 4: //выделен груптайп
-                    node.Nodes.Clear();
-                    this.tagTableAdapter.FillByGruppaTagType(this.rPTagsDataSet.Tag, parent_id, id);
+                    
 
-                    foreach (RPTagsDataSet.TagRow row_Tag in rPTagsDataSet.Tag)
-                    {
-                        TreeNode Tag_node = new TreeNode(row_Tag.Name);
-                        Tag_node.Text = row_Tag.Name;
-                        Tag_node.Tag = row_Tag.id;
-                        node.Nodes.Add(Tag_node);
-                    }
+                   
                     break;
 
                 case 5: //выделен тег
-
+                        this.tagTableAdapter1.FillById(this.rPTags_questiondata.Tag,id);
                     break;
 
                     ;
@@ -1745,23 +1716,39 @@ namespace RPTagsTest
         private void selectcontrol(int level)
         {
             // отключим видимость всех панелей, и включим только нужные
-            panel_corpus.Visible = false;
+            
 
             switch (level)
             {
                 case 0: //выделен корпус
                     panel_corpus.Visible = true;
+                    panel_PLC.Visible = false;
+                    panel_Systema.Visible = false;
+                    panel_gruppa.Visible = false;
+                    panel_tag.Visible = false;
                     break;
                 case 1: //выделен ПЛК
-
+                    panel_corpus.Visible = false;
+                    panel_PLC.Visible = true;
+                    panel_Systema.Visible = false;
+                    panel_gruppa.Visible = false;
+                    panel_tag.Visible = false;
                     break;
 
                 case 2: //выделена система
-
+                    panel_corpus.Visible = false;
+                    panel_PLC.Visible = false;
+                    panel_Systema.Visible = true;
+                    panel_gruppa.Visible = false;
+                    panel_tag.Visible = false;
                     break;
 
                 case 3: //выделена группа
-
+                    panel_corpus.Visible = false;
+                    panel_PLC.Visible = false;
+                    panel_Systema.Visible = false;
+                    panel_gruppa.Visible = true;
+                    panel_tag.Visible = false;
                     break;
 
                 case 4: //выделен груптайп
@@ -1769,17 +1756,67 @@ namespace RPTagsTest
                     break;
 
                 case 5: //выделен тег
-
+                    panel_corpus.Visible = false;
+                    panel_PLC.Visible = false;
+                    panel_Systema.Visible = false;
+                    panel_gruppa.Visible = false;
+                    panel_tag.Visible = true;
                     break;
                 
             }
         }
-        private void selectcontrol(int level, bool edit) // перегрузка метода
+        private void selectcontrol(int level, bool edit) // управление контролом при редактировании
         {
-            selectcontrol(level);
+            selectcontrol(level); // вызовем неперегруженный метод
 
+            switch (level)
+            {
+                case 0: //выделен корпус
+                    if (edit)
+                    {
+                        buttonCorpCancel.Visible = true;
+                        buttonCorpSave.Visible = true;
+                    } else
+                    {
+                        buttonCorpCancel.Visible = false;
+                        buttonCorpSave.Visible = false;
+                    }
+                    break;
+                case 1: //выделен ПЛК
+                   
+                    break;
+                case 2: //выделена система
+                    
+                    break;
+                case 3: //выделена группа
+                    
+                    break;
+                case 4: //выделен груптайп
+
+                    break;
+                case 5: //выделен тег
+                    
+                    break;
+
+            }
+        }
+
+        private void ToolStripMenuDelete_Click(object sender, EventArgs e)
+        {
 
         }
+        TreeNode current_node = null;
+        private void ToolStripMenuEdit_Click(object sender, EventArgs e)
+        {
+            current_node = treeView1.SelectedNode;
+            selectcontrol(treeView1.SelectedNode.Level,true);
+        }
+
+        private void ToolStripMenuAdd_Click(object sender, EventArgs e)
+        {
+            
+        }
+
         #endregion
 
     }

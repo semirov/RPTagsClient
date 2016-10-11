@@ -310,7 +310,6 @@
             this.comboBox2.Size = new System.Drawing.Size(230, 21);
             this.comboBox2.TabIndex = 7;
             this.comboBox2.ValueMember = "id";
-            
             this.comboBox2.MouseEnter += new System.EventHandler(this.comboBox2_MouseEnter);
             // 
             // checkBox1
@@ -499,7 +498,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(657, 401);
+            this.ClientSize = new System.Drawing.Size(696, 538);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(filterLabel);

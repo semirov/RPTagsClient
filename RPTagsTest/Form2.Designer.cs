@@ -32,11 +32,34 @@
             System.Windows.Forms.Label nameLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             System.Windows.Forms.Label descriptionLabel;
-            System.Windows.Forms.Label nodeLabel;
             System.Windows.Forms.Label nameLabel1;
-            System.Windows.Forms.Label corpusLabel;
             System.Windows.Forms.Label descriptionLabel1;
             System.Windows.Forms.Label iPAddrLabel;
+            System.Windows.Forms.Label nameLabel2;
+            System.Windows.Forms.Label rNameLabel;
+            System.Windows.Forms.Label enablLabel;
+            System.Windows.Forms.Label descriptionLabel2;
+            System.Windows.Forms.Label nameLabel3;
+            System.Windows.Forms.Label rNameLabel1;
+            System.Windows.Forms.Label descriptionLabel3;
+            System.Windows.Forms.Label areaLabel;
+            System.Windows.Forms.Label enablLabel1;
+            System.Windows.Forms.Label filterLabel;
+            System.Windows.Forms.Label relatedValue5Label;
+            System.Windows.Forms.Label tLA_MSGLabel;
+            System.Windows.Forms.Label relatedValue4Label;
+            System.Windows.Forms.Label relatedValue3Label;
+            System.Windows.Forms.Label relatedValue2Label;
+            System.Windows.Forms.Label relatedValue1Label;
+            System.Windows.Forms.Label normalMSGLabel;
+            System.Windows.Forms.Label alarmMSGLabel;
+            System.Windows.Forms.Label baseTextLabel;
+            System.Windows.Forms.Label systemtypeLabel;
+            System.Windows.Forms.Label pLCLabel;
+            System.Windows.Forms.Label corpusLabel;
+            System.Windows.Forms.Label nodeLabel;
+            System.Windows.Forms.Label grupTypeLabel;
+            System.Windows.Forms.Label systemaLabel;
             this.corpusBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.rPTagsDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.rPTagsDataSet = new RPTagsTest.RPTagsDataSet();
@@ -243,28 +266,114 @@
             this.исключитьТегиБезАдресаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel_corpus = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.corpusBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.rPTags_questiondata = new RPTagsTest.RPTags_questiondata();
             this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.panel_Systema = new System.Windows.Forms.Panel();
+            this.pLCComboBox = new System.Windows.Forms.ComboBox();
+            this.systemaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.systemtypeComboBox = new System.Windows.Forms.ComboBox();
+            this.descriptionTextBox2 = new System.Windows.Forms.TextBox();
+            this.enablTextBox = new System.Windows.Forms.TextBox();
+            this.rNameTextBox = new System.Windows.Forms.TextBox();
+            this.nameTextBox2 = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.panel_PLC = new System.Windows.Forms.Panel();
+            this.nodeComboBox = new System.Windows.Forms.ComboBox();
+            this.pLCBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.corpusComboBox = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.iPAddrTextBox = new System.Windows.Forms.TextBox();
+            this.descriptionTextBox1 = new System.Windows.Forms.TextBox();
+            this.nameTextBox1 = new System.Windows.Forms.TextBox();
+            this.panel_gruppa = new System.Windows.Forms.Panel();
+            this.systemaComboBox = new System.Windows.Forms.ComboBox();
+            this.gruppaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.grupTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.enablTextBox1 = new System.Windows.Forms.TextBox();
+            this.areaTextBox = new System.Windows.Forms.TextBox();
+            this.descriptionTextBox3 = new System.Windows.Forms.TextBox();
+            this.rNameTextBox1 = new System.Windows.Forms.TextBox();
+            this.nameTextBox3 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.panel_tag = new System.Windows.Forms.Panel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.tagBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.relatedValue5TextBox = new System.Windows.Forms.TextBox();
+            this.tLA_MSGTextBox = new System.Windows.Forms.TextBox();
+            this.relatedValue4TextBox = new System.Windows.Forms.TextBox();
+            this.relatedValue3TextBox = new System.Windows.Forms.TextBox();
+            this.relatedValue2TextBox = new System.Windows.Forms.TextBox();
+            this.relatedValue1TextBox = new System.Windows.Forms.TextBox();
+            this.normalMSGTextBox = new System.Windows.Forms.TextBox();
+            this.alarmMSGTextBox = new System.Windows.Forms.TextBox();
+            this.baseTextTextBox = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.corpusTableAdapter1 = new RPTagsTest.RPTags_questiondataTableAdapters.CorpusTableAdapter();
             this.tableAdapterManager = new RPTagsTest.RPTags_questiondataTableAdapters.TableAdapterManager();
-            this.panel_PLC = new System.Windows.Forms.Panel();
-            this.pLCBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.pLCTableAdapter1 = new RPTagsTest.RPTags_questiondataTableAdapters.PLCTableAdapter();
-            this.nodeTextBox = new System.Windows.Forms.TextBox();
-            this.nameTextBox1 = new System.Windows.Forms.TextBox();
-            this.corpusTextBox = new System.Windows.Forms.TextBox();
-            this.descriptionTextBox1 = new System.Windows.Forms.TextBox();
-            this.iPAddrTextBox = new System.Windows.Forms.TextBox();
+            this.systemaTableAdapter1 = new RPTagsTest.RPTags_questiondataTableAdapters.SystemaTableAdapter();
+            this.gruppaTableAdapter1 = new RPTagsTest.RPTags_questiondataTableAdapters.GruppaTableAdapter();
+            this.tagTableAdapter1 = new RPTagsTest.RPTags_questiondataTableAdapters.TagTableAdapter();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonCorpSave = new System.Windows.Forms.Button();
+            this.buttonCorpCancel = new System.Windows.Forms.Button();
+            this.buttonSystemaCancel = new System.Windows.Forms.Button();
+            this.buttonSystemaSave = new System.Windows.Forms.Button();
+            this.buttonPLCCalcel = new System.Windows.Forms.Button();
+            this.buttonPLCSave = new System.Windows.Forms.Button();
+            this.buttonGruppaCancel = new System.Windows.Forms.Button();
+            this.buttonGruppaSave = new System.Windows.Forms.Button();
+            this.buttonTagCancel = new System.Windows.Forms.Button();
+            this.buttonTagSave = new System.Windows.Forms.Button();
             nameLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
-            nodeLabel = new System.Windows.Forms.Label();
             nameLabel1 = new System.Windows.Forms.Label();
-            corpusLabel = new System.Windows.Forms.Label();
             descriptionLabel1 = new System.Windows.Forms.Label();
             iPAddrLabel = new System.Windows.Forms.Label();
+            nameLabel2 = new System.Windows.Forms.Label();
+            rNameLabel = new System.Windows.Forms.Label();
+            enablLabel = new System.Windows.Forms.Label();
+            descriptionLabel2 = new System.Windows.Forms.Label();
+            nameLabel3 = new System.Windows.Forms.Label();
+            rNameLabel1 = new System.Windows.Forms.Label();
+            descriptionLabel3 = new System.Windows.Forms.Label();
+            areaLabel = new System.Windows.Forms.Label();
+            enablLabel1 = new System.Windows.Forms.Label();
+            filterLabel = new System.Windows.Forms.Label();
+            relatedValue5Label = new System.Windows.Forms.Label();
+            tLA_MSGLabel = new System.Windows.Forms.Label();
+            relatedValue4Label = new System.Windows.Forms.Label();
+            relatedValue3Label = new System.Windows.Forms.Label();
+            relatedValue2Label = new System.Windows.Forms.Label();
+            relatedValue1Label = new System.Windows.Forms.Label();
+            normalMSGLabel = new System.Windows.Forms.Label();
+            alarmMSGLabel = new System.Windows.Forms.Label();
+            baseTextLabel = new System.Windows.Forms.Label();
+            systemtypeLabel = new System.Windows.Forms.Label();
+            pLCLabel = new System.Windows.Forms.Label();
+            corpusLabel = new System.Windows.Forms.Label();
+            nodeLabel = new System.Windows.Forms.Label();
+            grupTypeLabel = new System.Windows.Forms.Label();
+            systemaLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.corpusBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rPTagsDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rPTagsDataSet)).BeginInit();
@@ -333,9 +442,16 @@
             this.panel_corpus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.corpusBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rPTags_questiondata)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.panel_Systema.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.systemaBindingSource1)).BeginInit();
             this.panel_PLC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pLCBindingSource1)).BeginInit();
+            this.panel_gruppa.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gruppaBindingSource1)).BeginInit();
+            this.panel_tag.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tagBindingSource1)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // nameLabel
@@ -347,6 +463,146 @@
             // 
             resources.ApplyResources(descriptionLabel, "descriptionLabel");
             descriptionLabel.Name = "descriptionLabel";
+            // 
+            // nameLabel1
+            // 
+            resources.ApplyResources(nameLabel1, "nameLabel1");
+            nameLabel1.Name = "nameLabel1";
+            // 
+            // descriptionLabel1
+            // 
+            resources.ApplyResources(descriptionLabel1, "descriptionLabel1");
+            descriptionLabel1.Name = "descriptionLabel1";
+            // 
+            // iPAddrLabel
+            // 
+            resources.ApplyResources(iPAddrLabel, "iPAddrLabel");
+            iPAddrLabel.Name = "iPAddrLabel";
+            // 
+            // nameLabel2
+            // 
+            resources.ApplyResources(nameLabel2, "nameLabel2");
+            nameLabel2.Name = "nameLabel2";
+            // 
+            // rNameLabel
+            // 
+            resources.ApplyResources(rNameLabel, "rNameLabel");
+            rNameLabel.Name = "rNameLabel";
+            // 
+            // enablLabel
+            // 
+            resources.ApplyResources(enablLabel, "enablLabel");
+            enablLabel.Name = "enablLabel";
+            // 
+            // descriptionLabel2
+            // 
+            resources.ApplyResources(descriptionLabel2, "descriptionLabel2");
+            descriptionLabel2.Name = "descriptionLabel2";
+            // 
+            // nameLabel3
+            // 
+            resources.ApplyResources(nameLabel3, "nameLabel3");
+            nameLabel3.Name = "nameLabel3";
+            // 
+            // rNameLabel1
+            // 
+            resources.ApplyResources(rNameLabel1, "rNameLabel1");
+            rNameLabel1.Name = "rNameLabel1";
+            // 
+            // descriptionLabel3
+            // 
+            resources.ApplyResources(descriptionLabel3, "descriptionLabel3");
+            descriptionLabel3.Name = "descriptionLabel3";
+            // 
+            // areaLabel
+            // 
+            resources.ApplyResources(areaLabel, "areaLabel");
+            areaLabel.Name = "areaLabel";
+            // 
+            // enablLabel1
+            // 
+            resources.ApplyResources(enablLabel1, "enablLabel1");
+            enablLabel1.Name = "enablLabel1";
+            // 
+            // filterLabel
+            // 
+            resources.ApplyResources(filterLabel, "filterLabel");
+            filterLabel.Name = "filterLabel";
+            // 
+            // relatedValue5Label
+            // 
+            resources.ApplyResources(relatedValue5Label, "relatedValue5Label");
+            relatedValue5Label.Name = "relatedValue5Label";
+            // 
+            // tLA_MSGLabel
+            // 
+            resources.ApplyResources(tLA_MSGLabel, "tLA_MSGLabel");
+            tLA_MSGLabel.Name = "tLA_MSGLabel";
+            // 
+            // relatedValue4Label
+            // 
+            resources.ApplyResources(relatedValue4Label, "relatedValue4Label");
+            relatedValue4Label.Name = "relatedValue4Label";
+            // 
+            // relatedValue3Label
+            // 
+            resources.ApplyResources(relatedValue3Label, "relatedValue3Label");
+            relatedValue3Label.Name = "relatedValue3Label";
+            // 
+            // relatedValue2Label
+            // 
+            resources.ApplyResources(relatedValue2Label, "relatedValue2Label");
+            relatedValue2Label.Name = "relatedValue2Label";
+            // 
+            // relatedValue1Label
+            // 
+            resources.ApplyResources(relatedValue1Label, "relatedValue1Label");
+            relatedValue1Label.Name = "relatedValue1Label";
+            // 
+            // normalMSGLabel
+            // 
+            resources.ApplyResources(normalMSGLabel, "normalMSGLabel");
+            normalMSGLabel.Name = "normalMSGLabel";
+            // 
+            // alarmMSGLabel
+            // 
+            resources.ApplyResources(alarmMSGLabel, "alarmMSGLabel");
+            alarmMSGLabel.Name = "alarmMSGLabel";
+            // 
+            // baseTextLabel
+            // 
+            resources.ApplyResources(baseTextLabel, "baseTextLabel");
+            baseTextLabel.Name = "baseTextLabel";
+            // 
+            // systemtypeLabel
+            // 
+            resources.ApplyResources(systemtypeLabel, "systemtypeLabel");
+            systemtypeLabel.Name = "systemtypeLabel";
+            // 
+            // pLCLabel
+            // 
+            resources.ApplyResources(pLCLabel, "pLCLabel");
+            pLCLabel.Name = "pLCLabel";
+            // 
+            // corpusLabel
+            // 
+            resources.ApplyResources(corpusLabel, "corpusLabel");
+            corpusLabel.Name = "corpusLabel";
+            // 
+            // nodeLabel
+            // 
+            resources.ApplyResources(nodeLabel, "nodeLabel");
+            nodeLabel.Name = "nodeLabel";
+            // 
+            // grupTypeLabel
+            // 
+            resources.ApplyResources(grupTypeLabel, "grupTypeLabel");
+            grupTypeLabel.Name = "grupTypeLabel";
+            // 
+            // systemaLabel
+            // 
+            resources.ApplyResources(systemaLabel, "systemaLabel");
+            systemaLabel.Name = "systemaLabel";
             // 
             // corpusBindingSource
             // 
@@ -691,9 +947,11 @@
             // 
             // treeView1
             // 
+            this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
             resources.ApplyResources(this.treeView1, "treeView1");
             this.treeView1.Name = "treeView1";
             this.treeView1.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeSelect);
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // tabPage8
             // 
@@ -1665,6 +1923,7 @@
             this.dataGridView7.DataSource = this.deviceTagBindingSource;
             resources.ApplyResources(this.dataGridView7, "dataGridView7");
             this.dataGridView7.Name = "dataGridView7";
+            this.dataGridView7.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView7_CellEndEdit);
             this.dataGridView7.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView6_DataError);
             // 
             // sysidDataGridViewTextBoxColumn1
@@ -1713,12 +1972,15 @@
             // 
             this.tagidDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.tagidDataGridViewTextBoxColumn1.DataPropertyName = "Tag_id";
+            this.tagidDataGridViewTextBoxColumn1.DataSource = this.tagBindingSource;
+            this.tagidDataGridViewTextBoxColumn1.DisplayMember = "Name";
             this.tagidDataGridViewTextBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             resources.ApplyResources(this.tagidDataGridViewTextBoxColumn1, "tagidDataGridViewTextBoxColumn1");
             this.tagidDataGridViewTextBoxColumn1.Name = "tagidDataGridViewTextBoxColumn1";
             this.tagidDataGridViewTextBoxColumn1.ReadOnly = true;
             this.tagidDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.tagidDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.tagidDataGridViewTextBoxColumn1.ValueMember = "id";
             // 
             // GMP
             // 
@@ -1814,21 +2076,31 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.panel_PLC);
             this.tabPage1.Controls.Add(this.panel_corpus);
+            this.tabPage1.Controls.Add(this.panel_Systema);
+            this.tabPage1.Controls.Add(this.panel_PLC);
+            this.tabPage1.Controls.Add(this.panel_gruppa);
+            this.tabPage1.Controls.Add(this.panel_tag);
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // panel_corpus
             // 
+            this.panel_corpus.Controls.Add(this.buttonCorpCancel);
+            this.panel_corpus.Controls.Add(this.buttonCorpSave);
+            this.panel_corpus.Controls.Add(this.label22);
             this.panel_corpus.Controls.Add(descriptionLabel);
             this.panel_corpus.Controls.Add(this.descriptionTextBox);
             this.panel_corpus.Controls.Add(nameLabel);
             this.panel_corpus.Controls.Add(this.nameTextBox);
             resources.ApplyResources(this.panel_corpus, "panel_corpus");
             this.panel_corpus.Name = "panel_corpus";
+            // 
+            // label22
+            // 
+            resources.ApplyResources(this.label22, "label22");
+            this.label22.Name = "label22";
             // 
             // descriptionTextBox
             // 
@@ -1851,6 +2123,427 @@
             this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.corpusBindingSource1, "Name", true));
             resources.ApplyResources(this.nameTextBox, "nameTextBox");
             this.nameTextBox.Name = "nameTextBox";
+            // 
+            // panel_Systema
+            // 
+            this.panel_Systema.Controls.Add(this.buttonSystemaCancel);
+            this.panel_Systema.Controls.Add(this.buttonSystemaSave);
+            this.panel_Systema.Controls.Add(pLCLabel);
+            this.panel_Systema.Controls.Add(this.pLCComboBox);
+            this.panel_Systema.Controls.Add(systemtypeLabel);
+            this.panel_Systema.Controls.Add(this.systemtypeComboBox);
+            this.panel_Systema.Controls.Add(descriptionLabel2);
+            this.panel_Systema.Controls.Add(this.descriptionTextBox2);
+            this.panel_Systema.Controls.Add(enablLabel);
+            this.panel_Systema.Controls.Add(this.enablTextBox);
+            this.panel_Systema.Controls.Add(rNameLabel);
+            this.panel_Systema.Controls.Add(this.rNameTextBox);
+            this.panel_Systema.Controls.Add(nameLabel2);
+            this.panel_Systema.Controls.Add(this.nameTextBox2);
+            this.panel_Systema.Controls.Add(this.label23);
+            resources.ApplyResources(this.panel_Systema, "panel_Systema");
+            this.panel_Systema.Name = "panel_Systema";
+            // 
+            // pLCComboBox
+            // 
+            this.pLCComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.systemaBindingSource1, "PLC", true));
+            this.pLCComboBox.DataSource = this.pLCBindingSource;
+            this.pLCComboBox.DisplayMember = "Name";
+            this.pLCComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.pLCComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.pLCComboBox, "pLCComboBox");
+            this.pLCComboBox.Name = "pLCComboBox";
+            this.pLCComboBox.ValueMember = "id";
+            // 
+            // systemaBindingSource1
+            // 
+            this.systemaBindingSource1.DataMember = "Systema";
+            this.systemaBindingSource1.DataSource = this.rPTags_questiondata;
+            // 
+            // systemtypeComboBox
+            // 
+            this.systemtypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.systemaBindingSource1, "Systemtype", true));
+            this.systemtypeComboBox.DataSource = this.systemTypeBindingSource;
+            this.systemtypeComboBox.DisplayMember = "Name";
+            this.systemtypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.systemtypeComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.systemtypeComboBox, "systemtypeComboBox");
+            this.systemtypeComboBox.Name = "systemtypeComboBox";
+            this.systemtypeComboBox.ValueMember = "id";
+            // 
+            // descriptionTextBox2
+            // 
+            this.descriptionTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.systemaBindingSource1, "Description", true));
+            resources.ApplyResources(this.descriptionTextBox2, "descriptionTextBox2");
+            this.descriptionTextBox2.Name = "descriptionTextBox2";
+            // 
+            // enablTextBox
+            // 
+            this.enablTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.systemaBindingSource1, "Enabl", true));
+            resources.ApplyResources(this.enablTextBox, "enablTextBox");
+            this.enablTextBox.Name = "enablTextBox";
+            // 
+            // rNameTextBox
+            // 
+            this.rNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.systemaBindingSource1, "RName", true));
+            resources.ApplyResources(this.rNameTextBox, "rNameTextBox");
+            this.rNameTextBox.Name = "rNameTextBox";
+            // 
+            // nameTextBox2
+            // 
+            this.nameTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.systemaBindingSource1, "Name", true));
+            resources.ApplyResources(this.nameTextBox2, "nameTextBox2");
+            this.nameTextBox2.Name = "nameTextBox2";
+            // 
+            // label23
+            // 
+            resources.ApplyResources(this.label23, "label23");
+            this.label23.Name = "label23";
+            // 
+            // panel_PLC
+            // 
+            this.panel_PLC.Controls.Add(this.buttonPLCCalcel);
+            this.panel_PLC.Controls.Add(this.buttonPLCSave);
+            this.panel_PLC.Controls.Add(nodeLabel);
+            this.panel_PLC.Controls.Add(this.nodeComboBox);
+            this.panel_PLC.Controls.Add(corpusLabel);
+            this.panel_PLC.Controls.Add(this.corpusComboBox);
+            this.panel_PLC.Controls.Add(this.label21);
+            this.panel_PLC.Controls.Add(iPAddrLabel);
+            this.panel_PLC.Controls.Add(this.iPAddrTextBox);
+            this.panel_PLC.Controls.Add(descriptionLabel1);
+            this.panel_PLC.Controls.Add(this.descriptionTextBox1);
+            this.panel_PLC.Controls.Add(nameLabel1);
+            this.panel_PLC.Controls.Add(this.nameTextBox1);
+            resources.ApplyResources(this.panel_PLC, "panel_PLC");
+            this.panel_PLC.Name = "panel_PLC";
+            // 
+            // nodeComboBox
+            // 
+            this.nodeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.pLCBindingSource1, "Node", true));
+            this.nodeComboBox.DataSource = this.oPCBindingSource;
+            this.nodeComboBox.DisplayMember = "Name";
+            this.nodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.nodeComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.nodeComboBox, "nodeComboBox");
+            this.nodeComboBox.Name = "nodeComboBox";
+            this.nodeComboBox.ValueMember = "id";
+            // 
+            // pLCBindingSource1
+            // 
+            this.pLCBindingSource1.DataMember = "PLC";
+            this.pLCBindingSource1.DataSource = this.rPTags_questiondata;
+            // 
+            // corpusComboBox
+            // 
+            this.corpusComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.pLCBindingSource1, "Corpus", true));
+            this.corpusComboBox.DataSource = this.corpusBindingSource;
+            this.corpusComboBox.DisplayMember = "Name";
+            this.corpusComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.corpusComboBox, "corpusComboBox");
+            this.corpusComboBox.Name = "corpusComboBox";
+            this.corpusComboBox.ValueMember = "id";
+            // 
+            // label21
+            // 
+            resources.ApplyResources(this.label21, "label21");
+            this.label21.Name = "label21";
+            // 
+            // iPAddrTextBox
+            // 
+            this.iPAddrTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pLCBindingSource1, "IPAddr", true));
+            resources.ApplyResources(this.iPAddrTextBox, "iPAddrTextBox");
+            this.iPAddrTextBox.Name = "iPAddrTextBox";
+            // 
+            // descriptionTextBox1
+            // 
+            this.descriptionTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pLCBindingSource1, "Description", true));
+            resources.ApplyResources(this.descriptionTextBox1, "descriptionTextBox1");
+            this.descriptionTextBox1.Name = "descriptionTextBox1";
+            // 
+            // nameTextBox1
+            // 
+            this.nameTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pLCBindingSource1, "Name", true));
+            resources.ApplyResources(this.nameTextBox1, "nameTextBox1");
+            this.nameTextBox1.Name = "nameTextBox1";
+            // 
+            // panel_gruppa
+            // 
+            this.panel_gruppa.Controls.Add(this.buttonGruppaCancel);
+            this.panel_gruppa.Controls.Add(this.buttonGruppaSave);
+            this.panel_gruppa.Controls.Add(systemaLabel);
+            this.panel_gruppa.Controls.Add(this.systemaComboBox);
+            this.panel_gruppa.Controls.Add(grupTypeLabel);
+            this.panel_gruppa.Controls.Add(this.grupTypeComboBox);
+            this.panel_gruppa.Controls.Add(enablLabel1);
+            this.panel_gruppa.Controls.Add(this.enablTextBox1);
+            this.panel_gruppa.Controls.Add(areaLabel);
+            this.panel_gruppa.Controls.Add(this.areaTextBox);
+            this.panel_gruppa.Controls.Add(descriptionLabel3);
+            this.panel_gruppa.Controls.Add(this.descriptionTextBox3);
+            this.panel_gruppa.Controls.Add(rNameLabel1);
+            this.panel_gruppa.Controls.Add(this.rNameTextBox1);
+            this.panel_gruppa.Controls.Add(nameLabel3);
+            this.panel_gruppa.Controls.Add(this.nameTextBox3);
+            this.panel_gruppa.Controls.Add(this.label24);
+            resources.ApplyResources(this.panel_gruppa, "panel_gruppa");
+            this.panel_gruppa.Name = "panel_gruppa";
+            // 
+            // systemaComboBox
+            // 
+            this.systemaComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.gruppaBindingSource1, "Systema", true));
+            this.systemaComboBox.DataSource = this.systemaBindingSource;
+            this.systemaComboBox.DisplayMember = "Name";
+            this.systemaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.systemaComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.systemaComboBox, "systemaComboBox");
+            this.systemaComboBox.Name = "systemaComboBox";
+            this.systemaComboBox.ValueMember = "id";
+            // 
+            // gruppaBindingSource1
+            // 
+            this.gruppaBindingSource1.DataMember = "Gruppa";
+            this.gruppaBindingSource1.DataSource = this.rPTags_questiondata;
+            // 
+            // grupTypeComboBox
+            // 
+            this.grupTypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.gruppaBindingSource1, "GrupType", true));
+            this.grupTypeComboBox.DataSource = this.gruptypeBindingSource;
+            this.grupTypeComboBox.DisplayMember = "Name";
+            this.grupTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.grupTypeComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.grupTypeComboBox, "grupTypeComboBox");
+            this.grupTypeComboBox.Name = "grupTypeComboBox";
+            this.grupTypeComboBox.ValueMember = "id";
+            // 
+            // enablTextBox1
+            // 
+            this.enablTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gruppaBindingSource1, "Enabl", true));
+            resources.ApplyResources(this.enablTextBox1, "enablTextBox1");
+            this.enablTextBox1.Name = "enablTextBox1";
+            // 
+            // areaTextBox
+            // 
+            this.areaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gruppaBindingSource1, "Area", true));
+            resources.ApplyResources(this.areaTextBox, "areaTextBox");
+            this.areaTextBox.Name = "areaTextBox";
+            // 
+            // descriptionTextBox3
+            // 
+            this.descriptionTextBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gruppaBindingSource1, "Description", true));
+            resources.ApplyResources(this.descriptionTextBox3, "descriptionTextBox3");
+            this.descriptionTextBox3.Name = "descriptionTextBox3";
+            // 
+            // rNameTextBox1
+            // 
+            this.rNameTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gruppaBindingSource1, "RName", true));
+            resources.ApplyResources(this.rNameTextBox1, "rNameTextBox1");
+            this.rNameTextBox1.Name = "rNameTextBox1";
+            // 
+            // nameTextBox3
+            // 
+            this.nameTextBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gruppaBindingSource1, "Name", true));
+            resources.ApplyResources(this.nameTextBox3, "nameTextBox3");
+            this.nameTextBox3.Name = "nameTextBox3";
+            // 
+            // label24
+            // 
+            resources.ApplyResources(this.label24, "label24");
+            this.label24.Name = "label24";
+            // 
+            // panel_tag
+            // 
+            this.panel_tag.Controls.Add(this.buttonTagCancel);
+            this.panel_tag.Controls.Add(this.buttonTagSave);
+            this.panel_tag.Controls.Add(this.richTextBox1);
+            this.panel_tag.Controls.Add(this.comboBox7);
+            this.panel_tag.Controls.Add(filterLabel);
+            this.panel_tag.Controls.Add(relatedValue5Label);
+            this.panel_tag.Controls.Add(this.relatedValue5TextBox);
+            this.panel_tag.Controls.Add(tLA_MSGLabel);
+            this.panel_tag.Controls.Add(this.tLA_MSGTextBox);
+            this.panel_tag.Controls.Add(relatedValue4Label);
+            this.panel_tag.Controls.Add(this.relatedValue4TextBox);
+            this.panel_tag.Controls.Add(relatedValue3Label);
+            this.panel_tag.Controls.Add(this.relatedValue3TextBox);
+            this.panel_tag.Controls.Add(relatedValue2Label);
+            this.panel_tag.Controls.Add(this.relatedValue2TextBox);
+            this.panel_tag.Controls.Add(relatedValue1Label);
+            this.panel_tag.Controls.Add(this.relatedValue1TextBox);
+            this.panel_tag.Controls.Add(normalMSGLabel);
+            this.panel_tag.Controls.Add(this.normalMSGTextBox);
+            this.panel_tag.Controls.Add(alarmMSGLabel);
+            this.panel_tag.Controls.Add(this.alarmMSGTextBox);
+            this.panel_tag.Controls.Add(baseTextLabel);
+            this.panel_tag.Controls.Add(this.baseTextTextBox);
+            this.panel_tag.Controls.Add(this.label26);
+            this.panel_tag.Controls.Add(this.textBox15);
+            this.panel_tag.Controls.Add(this.checkBox8);
+            this.panel_tag.Controls.Add(this.checkBox9);
+            this.panel_tag.Controls.Add(this.checkBox10);
+            this.panel_tag.Controls.Add(this.comboBox8);
+            this.panel_tag.Controls.Add(this.label27);
+            this.panel_tag.Controls.Add(this.comboBox9);
+            this.panel_tag.Controls.Add(this.label28);
+            this.panel_tag.Controls.Add(this.label29);
+            this.panel_tag.Controls.Add(this.textBox16);
+            this.panel_tag.Controls.Add(this.label25);
+            resources.ApplyResources(this.panel_tag, "panel_tag");
+            this.panel_tag.Name = "panel_tag";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.richTextBox1, "richTextBox1");
+            this.richTextBox1.Name = "richTextBox1";
+            // 
+            // comboBox7
+            // 
+            this.comboBox7.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tagBindingSource1, "Filter", true));
+            this.comboBox7.DataSource = this.filtresBindingSource;
+            this.comboBox7.DisplayMember = "Description";
+            this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.comboBox7.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox7, "comboBox7");
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.ValueMember = "id";
+            // 
+            // tagBindingSource1
+            // 
+            this.tagBindingSource1.DataMember = "Tag";
+            this.tagBindingSource1.DataSource = this.rPTags_questiondata;
+            // 
+            // relatedValue5TextBox
+            // 
+            this.relatedValue5TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "RelatedValue5", true));
+            resources.ApplyResources(this.relatedValue5TextBox, "relatedValue5TextBox");
+            this.relatedValue5TextBox.Name = "relatedValue5TextBox";
+            // 
+            // tLA_MSGTextBox
+            // 
+            this.tLA_MSGTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "TLA_MSG", true));
+            resources.ApplyResources(this.tLA_MSGTextBox, "tLA_MSGTextBox");
+            this.tLA_MSGTextBox.Name = "tLA_MSGTextBox";
+            // 
+            // relatedValue4TextBox
+            // 
+            this.relatedValue4TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "RelatedValue4", true));
+            resources.ApplyResources(this.relatedValue4TextBox, "relatedValue4TextBox");
+            this.relatedValue4TextBox.Name = "relatedValue4TextBox";
+            // 
+            // relatedValue3TextBox
+            // 
+            this.relatedValue3TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "RelatedValue3", true));
+            resources.ApplyResources(this.relatedValue3TextBox, "relatedValue3TextBox");
+            this.relatedValue3TextBox.Name = "relatedValue3TextBox";
+            // 
+            // relatedValue2TextBox
+            // 
+            this.relatedValue2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "RelatedValue2", true));
+            resources.ApplyResources(this.relatedValue2TextBox, "relatedValue2TextBox");
+            this.relatedValue2TextBox.Name = "relatedValue2TextBox";
+            // 
+            // relatedValue1TextBox
+            // 
+            this.relatedValue1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "RelatedValue1", true));
+            resources.ApplyResources(this.relatedValue1TextBox, "relatedValue1TextBox");
+            this.relatedValue1TextBox.Name = "relatedValue1TextBox";
+            // 
+            // normalMSGTextBox
+            // 
+            this.normalMSGTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "NormalMSG", true));
+            resources.ApplyResources(this.normalMSGTextBox, "normalMSGTextBox");
+            this.normalMSGTextBox.Name = "normalMSGTextBox";
+            // 
+            // alarmMSGTextBox
+            // 
+            this.alarmMSGTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "AlarmMSG", true));
+            resources.ApplyResources(this.alarmMSGTextBox, "alarmMSGTextBox");
+            this.alarmMSGTextBox.Name = "alarmMSGTextBox";
+            // 
+            // baseTextTextBox
+            // 
+            this.baseTextTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "BaseText", true));
+            resources.ApplyResources(this.baseTextTextBox, "baseTextTextBox");
+            this.baseTextTextBox.Name = "baseTextTextBox";
+            // 
+            // label26
+            // 
+            resources.ApplyResources(this.label26, "label26");
+            this.label26.Name = "label26";
+            // 
+            // textBox15
+            // 
+            this.textBox15.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "Description", true));
+            resources.ApplyResources(this.textBox15, "textBox15");
+            this.textBox15.Name = "textBox15";
+            // 
+            // checkBox8
+            // 
+            resources.ApplyResources(this.checkBox8, "checkBox8");
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            // 
+            // checkBox9
+            // 
+            resources.ApplyResources(this.checkBox9, "checkBox9");
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.UseVisualStyleBackColor = true;
+            // 
+            // checkBox10
+            // 
+            resources.ApplyResources(this.checkBox10, "checkBox10");
+            this.checkBox10.Name = "checkBox10";
+            this.checkBox10.UseVisualStyleBackColor = true;
+            // 
+            // comboBox8
+            // 
+            this.comboBox8.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tagBindingSource1, "GrupType", true));
+            this.comboBox8.DataSource = this.gruptypeBindingSource;
+            this.comboBox8.DisplayMember = "Name";
+            this.comboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.comboBox8.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox8, "comboBox8");
+            this.comboBox8.Name = "comboBox8";
+            this.comboBox8.ValueMember = "id";
+            // 
+            // label27
+            // 
+            resources.ApplyResources(this.label27, "label27");
+            this.label27.Name = "label27";
+            // 
+            // comboBox9
+            // 
+            this.comboBox9.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tagBindingSource1, "TagType", true));
+            this.comboBox9.DataSource = this.tagTypeBindingSource;
+            this.comboBox9.DisplayMember = "Name";
+            this.comboBox9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.comboBox9.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox9, "comboBox9");
+            this.comboBox9.Name = "comboBox9";
+            this.comboBox9.ValueMember = "id";
+            // 
+            // label28
+            // 
+            resources.ApplyResources(this.label28, "label28");
+            this.label28.Name = "label28";
+            // 
+            // label29
+            // 
+            resources.ApplyResources(this.label29, "label29");
+            this.label29.Name = "label29";
+            // 
+            // textBox16
+            // 
+            this.textBox16.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "Name", true));
+            resources.ApplyResources(this.textBox16, "textBox16");
+            this.textBox16.Name = "textBox16";
+            // 
+            // label25
+            // 
+            resources.ApplyResources(this.label25, "label25");
+            this.label25.Name = "label25";
             // 
             // tabControl1
             // 
@@ -1885,84 +2578,105 @@
             this.tableAdapterManager.TagTypeTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = RPTagsTest.RPTags_questiondataTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // panel_PLC
-            // 
-            this.panel_PLC.Controls.Add(iPAddrLabel);
-            this.panel_PLC.Controls.Add(this.iPAddrTextBox);
-            this.panel_PLC.Controls.Add(descriptionLabel1);
-            this.panel_PLC.Controls.Add(this.descriptionTextBox1);
-            this.panel_PLC.Controls.Add(corpusLabel);
-            this.panel_PLC.Controls.Add(this.corpusTextBox);
-            this.panel_PLC.Controls.Add(nameLabel1);
-            this.panel_PLC.Controls.Add(this.nameTextBox1);
-            this.panel_PLC.Controls.Add(nodeLabel);
-            this.panel_PLC.Controls.Add(this.nodeTextBox);
-            resources.ApplyResources(this.panel_PLC, "panel_PLC");
-            this.panel_PLC.Name = "panel_PLC";
-            // 
-            // pLCBindingSource1
-            // 
-            this.pLCBindingSource1.DataMember = "PLC";
-            this.pLCBindingSource1.DataSource = this.rPTags_questiondata;
-            // 
             // pLCTableAdapter1
             // 
             this.pLCTableAdapter1.ClearBeforeFill = true;
             // 
-            // nodeLabel
+            // systemaTableAdapter1
             // 
-            resources.ApplyResources(nodeLabel, "nodeLabel");
-            nodeLabel.Name = "nodeLabel";
+            this.systemaTableAdapter1.ClearBeforeFill = true;
             // 
-            // nodeTextBox
+            // gruppaTableAdapter1
             // 
-            this.nodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pLCBindingSource1, "Node", true));
-            resources.ApplyResources(this.nodeTextBox, "nodeTextBox");
-            this.nodeTextBox.Name = "nodeTextBox";
+            this.gruppaTableAdapter1.ClearBeforeFill = true;
             // 
-            // nameLabel1
+            // tagTableAdapter1
             // 
-            resources.ApplyResources(nameLabel1, "nameLabel1");
-            nameLabel1.Name = "nameLabel1";
+            this.tagTableAdapter1.ClearBeforeFill = true;
             // 
-            // nameTextBox1
+            // contextMenuStrip1
             // 
-            this.nameTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pLCBindingSource1, "Name", true));
-            resources.ApplyResources(this.nameTextBox1, "nameTextBox1");
-            this.nameTextBox1.Name = "nameTextBox1";
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuEdit,
+            this.toolStripMenuAdd,
+            this.toolStripMenuDelete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             // 
-            // corpusLabel
+            // toolStripMenuEdit
             // 
-            resources.ApplyResources(corpusLabel, "corpusLabel");
-            corpusLabel.Name = "corpusLabel";
+            this.toolStripMenuEdit.Name = "toolStripMenuEdit";
+            resources.ApplyResources(this.toolStripMenuEdit, "toolStripMenuEdit");
             // 
-            // corpusTextBox
+            // toolStripMenuAdd
             // 
-            this.corpusTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pLCBindingSource1, "Corpus", true));
-            resources.ApplyResources(this.corpusTextBox, "corpusTextBox");
-            this.corpusTextBox.Name = "corpusTextBox";
+            this.toolStripMenuAdd.Name = "toolStripMenuAdd";
+            resources.ApplyResources(this.toolStripMenuAdd, "toolStripMenuAdd");
             // 
-            // descriptionLabel1
+            // toolStripMenuDelete
             // 
-            resources.ApplyResources(descriptionLabel1, "descriptionLabel1");
-            descriptionLabel1.Name = "descriptionLabel1";
+            this.toolStripMenuDelete.Name = "toolStripMenuDelete";
+            resources.ApplyResources(this.toolStripMenuDelete, "toolStripMenuDelete");
             // 
-            // descriptionTextBox1
+            // buttonCorpSave
             // 
-            this.descriptionTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pLCBindingSource1, "Description", true));
-            resources.ApplyResources(this.descriptionTextBox1, "descriptionTextBox1");
-            this.descriptionTextBox1.Name = "descriptionTextBox1";
+            resources.ApplyResources(this.buttonCorpSave, "buttonCorpSave");
+            this.buttonCorpSave.Name = "buttonCorpSave";
+            this.buttonCorpSave.UseVisualStyleBackColor = true;
             // 
-            // iPAddrLabel
+            // buttonCorpCancel
             // 
-            resources.ApplyResources(iPAddrLabel, "iPAddrLabel");
-            iPAddrLabel.Name = "iPAddrLabel";
+            resources.ApplyResources(this.buttonCorpCancel, "buttonCorpCancel");
+            this.buttonCorpCancel.Name = "buttonCorpCancel";
+            this.buttonCorpCancel.UseVisualStyleBackColor = true;
             // 
-            // iPAddrTextBox
+            // buttonSystemaCancel
             // 
-            this.iPAddrTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pLCBindingSource1, "IPAddr", true));
-            resources.ApplyResources(this.iPAddrTextBox, "iPAddrTextBox");
-            this.iPAddrTextBox.Name = "iPAddrTextBox";
+            resources.ApplyResources(this.buttonSystemaCancel, "buttonSystemaCancel");
+            this.buttonSystemaCancel.Name = "buttonSystemaCancel";
+            this.buttonSystemaCancel.UseVisualStyleBackColor = true;
+            // 
+            // buttonSystemaSave
+            // 
+            resources.ApplyResources(this.buttonSystemaSave, "buttonSystemaSave");
+            this.buttonSystemaSave.Name = "buttonSystemaSave";
+            this.buttonSystemaSave.UseVisualStyleBackColor = true;
+            // 
+            // buttonPLCCalcel
+            // 
+            resources.ApplyResources(this.buttonPLCCalcel, "buttonPLCCalcel");
+            this.buttonPLCCalcel.Name = "buttonPLCCalcel";
+            this.buttonPLCCalcel.UseVisualStyleBackColor = true;
+            // 
+            // buttonPLCSave
+            // 
+            resources.ApplyResources(this.buttonPLCSave, "buttonPLCSave");
+            this.buttonPLCSave.Name = "buttonPLCSave";
+            this.buttonPLCSave.UseVisualStyleBackColor = true;
+            // 
+            // buttonGruppaCancel
+            // 
+            resources.ApplyResources(this.buttonGruppaCancel, "buttonGruppaCancel");
+            this.buttonGruppaCancel.Name = "buttonGruppaCancel";
+            this.buttonGruppaCancel.UseVisualStyleBackColor = true;
+            // 
+            // buttonGruppaSave
+            // 
+            resources.ApplyResources(this.buttonGruppaSave, "buttonGruppaSave");
+            this.buttonGruppaSave.Name = "buttonGruppaSave";
+            this.buttonGruppaSave.UseVisualStyleBackColor = true;
+            // 
+            // buttonTagCancel
+            // 
+            resources.ApplyResources(this.buttonTagCancel, "buttonTagCancel");
+            this.buttonTagCancel.Name = "buttonTagCancel";
+            this.buttonTagCancel.UseVisualStyleBackColor = true;
+            // 
+            // buttonTagSave
+            // 
+            resources.ApplyResources(this.buttonTagSave, "buttonTagSave");
+            this.buttonTagSave.Name = "buttonTagSave";
+            this.buttonTagSave.UseVisualStyleBackColor = true;
             // 
             // Form2
             // 
@@ -2069,10 +2783,20 @@
             this.panel_corpus.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.corpusBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rPTags_questiondata)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.panel_Systema.ResumeLayout(false);
+            this.panel_Systema.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.systemaBindingSource1)).EndInit();
             this.panel_PLC.ResumeLayout(false);
             this.panel_PLC.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pLCBindingSource1)).EndInit();
+            this.panel_gruppa.ResumeLayout(false);
+            this.panel_gruppa.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gruppaBindingSource1)).EndInit();
+            this.panel_tag.ResumeLayout(false);
+            this.panel_tag.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tagBindingSource1)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2267,15 +2991,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem28;
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.DataGridView dataGridView7;
-        private System.Windows.Forms.DataGridViewComboBoxColumn sysidDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn gridDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Tag_id1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn tagidDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn GMP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AdrPLC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sAIDDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn cutDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Tag_id2;
         private System.Windows.Forms.MenuStrip menuStrip10;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem26;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem27;
@@ -2297,8 +3012,80 @@
         private RPTags_questiondataTableAdapters.PLCTableAdapter pLCTableAdapter1;
         private System.Windows.Forms.TextBox iPAddrTextBox;
         private System.Windows.Forms.TextBox descriptionTextBox1;
-        private System.Windows.Forms.TextBox corpusTextBox;
         private System.Windows.Forms.TextBox nameTextBox1;
-        private System.Windows.Forms.TextBox nodeTextBox;
+        private System.Windows.Forms.Panel panel_Systema;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.BindingSource systemaBindingSource1;
+        private RPTags_questiondataTableAdapters.SystemaTableAdapter systemaTableAdapter1;
+        private System.Windows.Forms.TextBox descriptionTextBox2;
+        private System.Windows.Forms.TextBox enablTextBox;
+        private System.Windows.Forms.TextBox rNameTextBox;
+        private System.Windows.Forms.TextBox nameTextBox2;
+        private System.Windows.Forms.Panel panel_gruppa;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Panel panel_tag;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.BindingSource gruppaBindingSource1;
+        private RPTags_questiondataTableAdapters.GruppaTableAdapter gruppaTableAdapter1;
+        private System.Windows.Forms.TextBox enablTextBox1;
+        private System.Windows.Forms.TextBox areaTextBox;
+        private System.Windows.Forms.TextBox descriptionTextBox3;
+        private System.Windows.Forms.TextBox rNameTextBox1;
+        private System.Windows.Forms.TextBox nameTextBox3;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.TextBox relatedValue5TextBox;
+        private System.Windows.Forms.TextBox tLA_MSGTextBox;
+        private System.Windows.Forms.TextBox relatedValue4TextBox;
+        private System.Windows.Forms.TextBox relatedValue3TextBox;
+        private System.Windows.Forms.TextBox relatedValue2TextBox;
+        private System.Windows.Forms.TextBox relatedValue1TextBox;
+        private System.Windows.Forms.TextBox normalMSGTextBox;
+        private System.Windows.Forms.TextBox alarmMSGTextBox;
+        private System.Windows.Forms.TextBox baseTextTextBox;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.CheckBox checkBox8;
+        private System.Windows.Forms.CheckBox checkBox9;
+        private System.Windows.Forms.CheckBox checkBox10;
+        private System.Windows.Forms.ComboBox comboBox8;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.ComboBox comboBox9;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.BindingSource tagBindingSource1;
+        private RPTags_questiondataTableAdapters.TagTableAdapter tagTableAdapter1;
+        private System.Windows.Forms.ComboBox pLCComboBox;
+        private System.Windows.Forms.ComboBox systemtypeComboBox;
+        private System.Windows.Forms.ComboBox nodeComboBox;
+        private System.Windows.Forms.ComboBox corpusComboBox;
+        private System.Windows.Forms.ComboBox systemaComboBox;
+        private System.Windows.Forms.ComboBox grupTypeComboBox;
+        private System.Windows.Forms.DataGridViewComboBoxColumn sysidDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn gridDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Tag_id1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn tagidDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn GMP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AdrPLC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sAIDDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn cutDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Tag_id2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuEdit;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuAdd;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuDelete;
+        private System.Windows.Forms.Button buttonTagCancel;
+        private System.Windows.Forms.Button buttonTagSave;
+        private System.Windows.Forms.Button buttonCorpCancel;
+        private System.Windows.Forms.Button buttonCorpSave;
+        private System.Windows.Forms.Button buttonSystemaCancel;
+        private System.Windows.Forms.Button buttonSystemaSave;
+        private System.Windows.Forms.Button buttonPLCCalcel;
+        private System.Windows.Forms.Button buttonPLCSave;
+        private System.Windows.Forms.Button buttonGruppaCancel;
+        private System.Windows.Forms.Button buttonGruppaSave;
     }
 }
