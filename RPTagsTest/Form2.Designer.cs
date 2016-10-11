@@ -42,7 +42,6 @@
             System.Windows.Forms.Label rNameLabel1;
             System.Windows.Forms.Label descriptionLabel3;
             System.Windows.Forms.Label areaLabel;
-            System.Windows.Forms.Label enablLabel1;
             System.Windows.Forms.Label filterLabel;
             System.Windows.Forms.Label relatedValue5Label;
             System.Windows.Forms.Label tLA_MSGLabel;
@@ -268,19 +267,13 @@
             this.отменитьИзмененияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.исключитьТегиБезАдресаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panel_corpus = new System.Windows.Forms.Panel();
-            this.buttonCorpCancel = new System.Windows.Forms.Button();
-            this.buttonCorpSave = new System.Windows.Forms.Button();
-            this.label22 = new System.Windows.Forms.Label();
-            this.descriptionTextBox = new System.Windows.Forms.TextBox();
-            this.corpusBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.rPTags_questiondata = new RPTagsTest.RPTags_questiondata();
-            this.nameTextBox = new System.Windows.Forms.TextBox();
             this.panel_Systema = new System.Windows.Forms.Panel();
+            this.checkBoxSystemaEnabled = new System.Windows.Forms.CheckBox();
             this.buttonSystemaCancel = new System.Windows.Forms.Button();
             this.buttonSystemaSave = new System.Windows.Forms.Button();
             this.pLCComboBox = new System.Windows.Forms.ComboBox();
             this.systemaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.rPTags_questiondata = new RPTagsTest.RPTags_questiondata();
             this.systemtypeComboBox = new System.Windows.Forms.ComboBox();
             this.descriptionTextBox2 = new System.Windows.Forms.TextBox();
             this.rNameTextBox = new System.Windows.Forms.TextBox();
@@ -302,7 +295,6 @@
             this.systemaComboBox = new System.Windows.Forms.ComboBox();
             this.gruppaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.grupTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.enablTextBox1 = new System.Windows.Forms.TextBox();
             this.areaTextBox = new System.Windows.Forms.TextBox();
             this.descriptionTextBox3 = new System.Windows.Forms.TextBox();
             this.rNameTextBox1 = new System.Windows.Forms.TextBox();
@@ -335,6 +327,13 @@
             this.label29 = new System.Windows.Forms.Label();
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
+            this.panel_corpus = new System.Windows.Forms.Panel();
+            this.buttonCorpCancel = new System.Windows.Forms.Button();
+            this.buttonCorpSave = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.descriptionTextBox = new System.Windows.Forms.TextBox();
+            this.corpusBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.nameTextBox = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.corpusTableAdapter1 = new RPTagsTest.RPTags_questiondataTableAdapters.CorpusTableAdapter();
             this.tableAdapterManager = new RPTagsTest.RPTags_questiondataTableAdapters.TableAdapterManager();
@@ -342,7 +341,7 @@
             this.systemaTableAdapter1 = new RPTagsTest.RPTags_questiondataTableAdapters.SystemaTableAdapter();
             this.gruppaTableAdapter1 = new RPTagsTest.RPTags_questiondataTableAdapters.GruppaTableAdapter();
             this.tagTableAdapter1 = new RPTagsTest.RPTags_questiondataTableAdapters.TagTableAdapter();
-            this.checkBoxSystemaEnabled = new System.Windows.Forms.CheckBox();
+            this.checkBoxGrupEnabled = new System.Windows.Forms.CheckBox();
             nameLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
             nameLabel1 = new System.Windows.Forms.Label();
@@ -355,7 +354,6 @@
             rNameLabel1 = new System.Windows.Forms.Label();
             descriptionLabel3 = new System.Windows.Forms.Label();
             areaLabel = new System.Windows.Forms.Label();
-            enablLabel1 = new System.Windows.Forms.Label();
             filterLabel = new System.Windows.Forms.Label();
             relatedValue5Label = new System.Windows.Forms.Label();
             tLA_MSGLabel = new System.Windows.Forms.Label();
@@ -438,17 +436,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
             this.menuStrip10.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.panel_corpus.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.corpusBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rPTags_questiondata)).BeginInit();
             this.panel_Systema.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemaBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rPTags_questiondata)).BeginInit();
             this.panel_PLC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pLCBindingSource1)).BeginInit();
             this.panel_gruppa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gruppaBindingSource1)).BeginInit();
             this.panel_tag.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tagBindingSource1)).BeginInit();
+            this.panel_corpus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.corpusBindingSource1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -511,11 +509,6 @@
             // 
             resources.ApplyResources(areaLabel, "areaLabel");
             areaLabel.Name = "areaLabel";
-            // 
-            // enablLabel1
-            // 
-            resources.ApplyResources(enablLabel1, "enablLabel1");
-            enablLabel1.Name = "enablLabel1";
             // 
             // filterLabel
             // 
@@ -943,7 +936,7 @@
             this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
             resources.ApplyResources(this.treeView1, "treeView1");
             this.treeView1.Name = "treeView1";
-            this.treeView1.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeSelect);
+            
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // contextMenuStrip1
@@ -2093,65 +2086,14 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.panel_Systema);
-            this.tabPage1.Controls.Add(this.panel_PLC);
             this.tabPage1.Controls.Add(this.panel_gruppa);
             this.tabPage1.Controls.Add(this.panel_tag);
             this.tabPage1.Controls.Add(this.panel_corpus);
+            this.tabPage1.Controls.Add(this.panel_Systema);
+            this.tabPage1.Controls.Add(this.panel_PLC);
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // panel_corpus
-            // 
-            this.panel_corpus.Controls.Add(this.buttonCorpCancel);
-            this.panel_corpus.Controls.Add(this.buttonCorpSave);
-            this.panel_corpus.Controls.Add(this.label22);
-            this.panel_corpus.Controls.Add(descriptionLabel);
-            this.panel_corpus.Controls.Add(this.descriptionTextBox);
-            this.panel_corpus.Controls.Add(nameLabel);
-            this.panel_corpus.Controls.Add(this.nameTextBox);
-            resources.ApplyResources(this.panel_corpus, "panel_corpus");
-            this.panel_corpus.Name = "panel_corpus";
-            // 
-            // buttonCorpCancel
-            // 
-            resources.ApplyResources(this.buttonCorpCancel, "buttonCorpCancel");
-            this.buttonCorpCancel.Name = "buttonCorpCancel";
-            this.buttonCorpCancel.UseVisualStyleBackColor = true;
-            // 
-            // buttonCorpSave
-            // 
-            resources.ApplyResources(this.buttonCorpSave, "buttonCorpSave");
-            this.buttonCorpSave.Name = "buttonCorpSave";
-            this.buttonCorpSave.UseVisualStyleBackColor = true;
-            // 
-            // label22
-            // 
-            resources.ApplyResources(this.label22, "label22");
-            this.label22.Name = "label22";
-            // 
-            // descriptionTextBox
-            // 
-            this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.corpusBindingSource1, "Description", true));
-            resources.ApplyResources(this.descriptionTextBox, "descriptionTextBox");
-            this.descriptionTextBox.Name = "descriptionTextBox";
-            // 
-            // corpusBindingSource1
-            // 
-            this.corpusBindingSource1.DataMember = "Corpus";
-            this.corpusBindingSource1.DataSource = this.rPTags_questiondata;
-            // 
-            // rPTags_questiondata
-            // 
-            this.rPTags_questiondata.DataSetName = "RPTags_questiondata";
-            this.rPTags_questiondata.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // nameTextBox
-            // 
-            this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.corpusBindingSource1, "Name", true));
-            resources.ApplyResources(this.nameTextBox, "nameTextBox");
-            this.nameTextBox.Name = "nameTextBox";
             // 
             // panel_Systema
             // 
@@ -2171,6 +2113,12 @@
             this.panel_Systema.Controls.Add(this.label23);
             resources.ApplyResources(this.panel_Systema, "panel_Systema");
             this.panel_Systema.Name = "panel_Systema";
+            // 
+            // checkBoxSystemaEnabled
+            // 
+            resources.ApplyResources(this.checkBoxSystemaEnabled, "checkBoxSystemaEnabled");
+            this.checkBoxSystemaEnabled.Name = "checkBoxSystemaEnabled";
+            this.checkBoxSystemaEnabled.UseVisualStyleBackColor = true;
             // 
             // buttonSystemaCancel
             // 
@@ -2199,6 +2147,11 @@
             // 
             this.systemaBindingSource1.DataMember = "Systema";
             this.systemaBindingSource1.DataSource = this.rPTags_questiondata;
+            // 
+            // rPTags_questiondata
+            // 
+            this.rPTags_questiondata.DataSetName = "RPTags_questiondata";
+            this.rPTags_questiondata.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // systemtypeComboBox
             // 
@@ -2315,14 +2268,13 @@
             // 
             // panel_gruppa
             // 
+            this.panel_gruppa.Controls.Add(this.checkBoxGrupEnabled);
             this.panel_gruppa.Controls.Add(this.buttonGruppaCancel);
             this.panel_gruppa.Controls.Add(this.buttonGruppaSave);
             this.panel_gruppa.Controls.Add(systemaLabel);
             this.panel_gruppa.Controls.Add(this.systemaComboBox);
             this.panel_gruppa.Controls.Add(grupTypeLabel);
             this.panel_gruppa.Controls.Add(this.grupTypeComboBox);
-            this.panel_gruppa.Controls.Add(enablLabel1);
-            this.panel_gruppa.Controls.Add(this.enablTextBox1);
             this.panel_gruppa.Controls.Add(areaLabel);
             this.panel_gruppa.Controls.Add(this.areaTextBox);
             this.panel_gruppa.Controls.Add(descriptionLabel3);
@@ -2373,12 +2325,6 @@
             resources.ApplyResources(this.grupTypeComboBox, "grupTypeComboBox");
             this.grupTypeComboBox.Name = "grupTypeComboBox";
             this.grupTypeComboBox.ValueMember = "id";
-            // 
-            // enablTextBox1
-            // 
-            this.enablTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gruppaBindingSource1, "Enabl", true));
-            resources.ApplyResources(this.enablTextBox1, "enablTextBox1");
-            this.enablTextBox1.Name = "enablTextBox1";
             // 
             // areaTextBox
             // 
@@ -2615,6 +2561,52 @@
             resources.ApplyResources(this.label25, "label25");
             this.label25.Name = "label25";
             // 
+            // panel_corpus
+            // 
+            this.panel_corpus.Controls.Add(this.buttonCorpCancel);
+            this.panel_corpus.Controls.Add(this.buttonCorpSave);
+            this.panel_corpus.Controls.Add(this.label22);
+            this.panel_corpus.Controls.Add(descriptionLabel);
+            this.panel_corpus.Controls.Add(this.descriptionTextBox);
+            this.panel_corpus.Controls.Add(nameLabel);
+            this.panel_corpus.Controls.Add(this.nameTextBox);
+            resources.ApplyResources(this.panel_corpus, "panel_corpus");
+            this.panel_corpus.Name = "panel_corpus";
+            // 
+            // buttonCorpCancel
+            // 
+            resources.ApplyResources(this.buttonCorpCancel, "buttonCorpCancel");
+            this.buttonCorpCancel.Name = "buttonCorpCancel";
+            this.buttonCorpCancel.UseVisualStyleBackColor = true;
+            // 
+            // buttonCorpSave
+            // 
+            resources.ApplyResources(this.buttonCorpSave, "buttonCorpSave");
+            this.buttonCorpSave.Name = "buttonCorpSave";
+            this.buttonCorpSave.UseVisualStyleBackColor = true;
+            // 
+            // label22
+            // 
+            resources.ApplyResources(this.label22, "label22");
+            this.label22.Name = "label22";
+            // 
+            // descriptionTextBox
+            // 
+            this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.corpusBindingSource1, "Description", true));
+            resources.ApplyResources(this.descriptionTextBox, "descriptionTextBox");
+            this.descriptionTextBox.Name = "descriptionTextBox";
+            // 
+            // corpusBindingSource1
+            // 
+            this.corpusBindingSource1.DataMember = "Corpus";
+            this.corpusBindingSource1.DataSource = this.rPTags_questiondata;
+            // 
+            // nameTextBox
+            // 
+            this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.corpusBindingSource1, "Name", true));
+            resources.ApplyResources(this.nameTextBox, "nameTextBox");
+            this.nameTextBox.Name = "nameTextBox";
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -2664,11 +2656,11 @@
             // 
             this.tagTableAdapter1.ClearBeforeFill = true;
             // 
-            // checkBoxSystemaEnabled
+            // checkBoxGrupEnabled
             // 
-            resources.ApplyResources(this.checkBoxSystemaEnabled, "checkBoxSystemaEnabled");
-            this.checkBoxSystemaEnabled.Name = "checkBoxSystemaEnabled";
-            this.checkBoxSystemaEnabled.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkBoxGrupEnabled, "checkBoxGrupEnabled");
+            this.checkBoxGrupEnabled.Name = "checkBoxGrupEnabled";
+            this.checkBoxGrupEnabled.UseVisualStyleBackColor = true;
             // 
             // Form2
             // 
@@ -2772,13 +2764,10 @@
             this.menuStrip10.ResumeLayout(false);
             this.menuStrip10.PerformLayout();
             this.tabPage1.ResumeLayout(false);
-            this.panel_corpus.ResumeLayout(false);
-            this.panel_corpus.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.corpusBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rPTags_questiondata)).EndInit();
             this.panel_Systema.ResumeLayout(false);
             this.panel_Systema.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemaBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rPTags_questiondata)).EndInit();
             this.panel_PLC.ResumeLayout(false);
             this.panel_PLC.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pLCBindingSource1)).EndInit();
@@ -2788,6 +2777,9 @@
             this.panel_tag.ResumeLayout(false);
             this.panel_tag.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tagBindingSource1)).EndInit();
+            this.panel_corpus.ResumeLayout(false);
+            this.panel_corpus.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.corpusBindingSource1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -3020,7 +3012,6 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.BindingSource gruppaBindingSource1;
         private RPTags_questiondataTableAdapters.GruppaTableAdapter gruppaTableAdapter1;
-        private System.Windows.Forms.TextBox enablTextBox1;
         private System.Windows.Forms.TextBox areaTextBox;
         private System.Windows.Forms.TextBox descriptionTextBox3;
         private System.Windows.Forms.TextBox rNameTextBox1;
@@ -3079,5 +3070,6 @@
         private System.Windows.Forms.Button buttonGruppaCancel;
         private System.Windows.Forms.Button buttonGruppaSave;
         private System.Windows.Forms.CheckBox checkBoxSystemaEnabled;
+        private System.Windows.Forms.CheckBox checkBoxGrupEnabled;
     }
 }

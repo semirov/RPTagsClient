@@ -1479,7 +1479,7 @@ namespace RPTagsTest
         int tag_id;
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            
+            fiilnode(e.Node); // 
             if (current_node != e.Node && current_node != null) // если при выборе нода изменилась, то отменим редактирование
             {
                 selectcontrol(current_node.Level, false);
@@ -1614,12 +1614,6 @@ namespace RPTagsTest
             }
         }
 
-        private void treeView1_BeforeSelect(object sender, TreeViewCancelEventArgs e)
-        {
-            fiilnode(e.Node);
-            
-            
-        }
         private void fiilnode(TreeNode node)
         {
             tag_path_changer(node);
@@ -1629,7 +1623,7 @@ namespace RPTagsTest
             int parent_id = 0;
             if (level > 0)
                 parent_id = Convert.ToInt16(node.Parent.Tag);
-            selectcontrol(level); // покажем нужный контрол
+            
             switch (level) // выделенный объект
             {
                 case 0: //выделен корпус
@@ -1709,14 +1703,16 @@ namespace RPTagsTest
                         this.tagTableAdapter1.FillById(this.rPTags_questiondata.Tag,id);
                     break;
 
-                    ;
+                    
             }
+            selectcontrol(level);
+
         }
 
         private void selectcontrol(int level)
         {
             // отключим видимость всех панелей, и включим только нужные
-            
+
 
             switch (level)
             {
@@ -1742,10 +1738,24 @@ namespace RPTagsTest
                     panel_gruppa.Visible = false;
                     panel_tag.Visible = false;
 
-                    if (rPTagsDataSet.Systema[0].Enabl == 1)
-                        checkBoxSystemaEnabled.Checked = true;
+
+                    // обработка чекбокса enabled
+                    if (!rPTags_questiondata.Systema[0].IsEnablNull())
+                    {
+                        if (rPTags_questiondata.Systema[0].Enabl == 1)
+                        {
+                            checkBoxSystemaEnabled.Checked = true;
+                        }
+                        else
+                        {
+                            checkBoxSystemaEnabled.Checked = false;
+                        }
+                    }
                     else
+                    {
                         checkBoxSystemaEnabled.Checked = false;
+                    }
+                    
                     break;
 
                 case 3: //выделена группа
@@ -1754,6 +1764,30 @@ namespace RPTagsTest
                     panel_Systema.Visible = false;
                     panel_gruppa.Visible = true;
                     panel_tag.Visible = false;
+                    // обработка чекбокса enabled
+                    if (treeView1.SelectedNode.Parent.Text == "THVC")
+                    {
+                        checkBoxGrupEnabled.Visible = true;
+                        if (!rPTags_questiondata.Gruppa[0].IsEnablNull())
+                        {
+                            if (rPTags_questiondata.Gruppa[0].Enabl == 1)
+                            {
+                                checkBoxGrupEnabled.Checked = true;
+                            }
+                            else
+                            {
+                                checkBoxGrupEnabled.Checked = false;
+                            }
+                        }
+                        else
+                        {
+                            checkBoxGrupEnabled.Checked = false;
+                        }
+                    }
+                    else
+                    {
+                        checkBoxGrupEnabled.Visible = false;
+                    }
                     break;
 
                 case 4: //выделен груптайп
