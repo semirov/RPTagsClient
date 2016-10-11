@@ -17,27 +17,22 @@ namespace RPTagsTest
 
     public partial class Form2 : Form
     {
-        
-        int tabIndexCurr = 0;
+
+
 
         #region переменные формы
         // указатели необходимости обновления датагрида - когда идем по вкладкам назад перегружать не нужно
-        bool Need_reload_PLC = true;
-        bool Need_reload_Systema = true;
-        bool Need_reload_Gruppa = true;
-        bool Need_reload_Tag = true;
+
         // обработка выбора системы
-        bool CheckGruppa = false;
-        bool CheckTag = false;
-        int TAG_ID;
+
         public bool passtrue; // пароль введен
         public bool deleteEnable; // разрешено удаление
         public bool diagnosticEnable; // разрешен показ админской вкладки
 
-        DataTable temp_Modifed_KorpusDataTable = new DataTable("temp_Modifed_KorpusDataTable");
-        DataTable temp_Modifed_PLCDataTable = new DataTable("temp_Modifed_PLCDataTable");
-        DataTable temp_Modifed_SystemaDataTable = new DataTable("temp_Modifed_SystemaDataTable");
-        DataTable temp_Modifed_GruppaDataTable = new DataTable("temp_Modifed_GruppaDataTable");
+
+
+
+
         DataTable temp_Modifed_FilterDataTable = new DataTable("temp_Modifed_FilterDataTable");
         DataTable temp_Modifed_OPCDataTable = new DataTable("temp_Modifed_FilterDataTable");
         DataTable temp_Modifed_SystemTypeDataTable = new DataTable("temp_Modifed_SystemTypeDataTable");
@@ -45,28 +40,25 @@ namespace RPTagsTest
         DataTable temp_Modifed_TagTypeDataTable = new DataTable("temp_Modifed_TagTypeDataTable");
         RPTagsDataSet.Device_TagDataTable DeviceTag_temp_DT = new RPTagsDataSet.Device_TagDataTable();
 
-        bool changed_Modifed_KorpusDataTable;
-        bool changed_Modifed_PLCDataTable;
-        bool changed_Modifed_SystemaDataTable;
-        bool changed_Modifed_GruppaDataTable;
+
         bool changed_Modifed_FilterDataTable;
         bool changed_Modifed_OPCDataTable;
         bool changed_Modifed_SystemTypeDataTable;
         bool changed_Modifed_GrupTypeDataTable;
         bool changed_Modifed_TagTypeDataTable;
 
-       
 
-        string Name_Corpus, Name_PLC, Name_Systema, Name_Gryppa, Name_TagType, Name_Tag = "";
+
+
 
         string Get_corpus = "ALL";
 
         #endregion переменные формы
-
+        #region основные таблицы
         public Form2()
         {
             InitializeComponent();
-            
+
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.WorkerSupportsCancellation = true;
 
@@ -93,36 +85,39 @@ namespace RPTagsTest
 
 
             dataGridView7.CellEndEdit += DataGridView7_CellEndEdit;
-           
-            
-           
+
+
+
         }
 
-        #region основные таблицы
+
 
         //-----------------------------------------------------------------------------
-        
+
         private void Form2_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTags_questiondata.PLC". При необходимости она может быть перемещена или удалена.
+            this.pLCTableAdapter1.Fill(this.rPTags_questiondata.PLC);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTags_questiondata.Corpus". При необходимости она может быть перемещена или удалена.
 
-            treetest form = new treetest();
-            form.Show();
+
+
 
             try
             {
                 SqlConnectionStringBuilder connect = new SqlConnectionStringBuilder();
                 connect.ConnectionString = Properties.Settings.Default["RPTagsConnectionString"].ToString();
-                
+
                 SqlConnection connection = new SqlConnection(connect.ConnectionString);
 
                 // Открываем подключение
-               
+
                 connection.Open();
-               
-                
+
+
                 toolStripStatusLabel2.Text = "Тест подключения: OK";
                 connection.Close();
-                
+
             }
             catch (SqlException ex)
             {
@@ -130,49 +125,18 @@ namespace RPTagsTest
                     this.Close();
             }
 
-            
 
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.TagIdTagTypeID". При необходимости она может быть перемещена или удалена.
-            this.tagIdTagTypeIDTableAdapter.Fill(this.rPTagsDataSet.TagIdTagTypeID);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.TagUDM". При необходимости она может быть перемещена или удалена.
-            //  this.tagUDMTableAdapter.Fill(this.rPTagsDataSet.TagUDM);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.TagHH". При необходимости она может быть перемещена или удалена.
-            //   this.tagHHTableAdapter.Fill(this.rPTagsDataSet.TagHH);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.TagAWX". При необходимости она может быть перемещена или удалена.
-            //  this.tagAWXTableAdapter.Fill(this.rPTagsDataSet.TagAWX);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.Device_Tag". При необходимости она может быть перемещена или удалена.
-            //this.tagAWXTableAdapter.Adapter.SelectCommand.CommandTimeout = 300;
-           // this.device_TagTableAdapter.Fill(this.rPTagsDataSet.Device_Tag);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.Corpus". При необходимости она может быть перемещена или удалена.
+
             this.corpusTableAdapter.Fill(this.rPTagsDataSet.Corpus);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.OPC". При необходимости она может быть перемещена или удалена.
             this.oPCTableAdapter.Fill(this.rPTagsDataSet.OPC);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.Filtres". При необходимости она может быть перемещена или удалена.
             this.filtresTableAdapter.Fill(this.rPTagsDataSet.Filtres);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.TagType". При необходимости она может быть перемещена или удалена.
             this.tagTypeTableAdapter.Fill(this.rPTagsDataSet.TagType);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.Tag". При необходимости она может быть перемещена или удалена.
-            this.tagTableAdapter.Fill(this.rPTagsDataSet.Tag);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.Gruptype". При необходимости она может быть перемещена или удалена.
             this.gruptypeTableAdapter.Fill(this.rPTagsDataSet.Gruptype);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.Gruppa". При необходимости она может быть перемещена или удалена.
-            this.gruppaTableAdapter.Fill(this.rPTagsDataSet.Gruppa);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.SystemType". При необходимости она может быть перемещена или удалена.
             this.systemTypeTableAdapter.Fill(this.rPTagsDataSet.SystemType);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.PLC". При необходимости она может быть перемещена или удалена.
-            this.systemaTableAdapter.Fill(this.rPTagsDataSet.Systema);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTagsDataSet.PLC". При необходимости она может быть перемещена или удалена.
-            this.pLCTableAdapter.Fill(this.rPTagsDataSet.PLC);
-            this.tagTableAdapter.Fill(this.rpTagsDataSet1.Tag);
 
 
 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView2.AllowUserToAddRows = false;
-            dataGridView3.AllowUserToAddRows = false;
-            dataGridView4.AllowUserToAddRows = false;
             dataGridView5.AllowUserToAddRows = false;
-            dataGridView6.AllowUserToAddRows = false;
             dataGridView7.AllowUserToAddRows = false;
             dataGridView8.AllowUserToAddRows = false;
             dataGridView9.AllowUserToAddRows = false;
@@ -193,737 +157,47 @@ namespace RPTagsTest
 
 
 
-        TagChange newForm = new TagChange();
+            TagChange newForm = new TagChange();
             newForm.Owner = this;
 
-            toolStripStatusLabel3.Text = tagTableAdapter.Connection.DataSource.ToString() +" ("+ tagTableAdapter.Connection.Database.ToString() + ")";
+            toolStripStatusLabel3.Text = tagTableAdapter.Connection.DataSource.ToString() + " (" + tagTableAdapter.Connection.Database.ToString() + ")";
 
             prename = DateTime.Today.Day.ToString() + DateTime.Today.Month.ToString() + DateTime.Today.Year.ToString(); //нужно для имени файла конфигурации
                                                                                                                         //toolStripStatusLabel3.Text = prename;
-            tooltiptext();
 
 
+            foreach (RPTagsDataSet.CorpusRow row_corpus in rPTagsDataSet.Corpus)
+            {
+
+                TreeNode node_corpus = new TreeNode(row_corpus.Name);
+                node_corpus.Text = row_corpus.Name;
+                node_corpus.Tag = row_corpus.id;
+
+                treeView1.Nodes.Add(node_corpus);
+            }
 
         }
 
-        
 
-        private void toolStripStatusLabel3_Click(object sender, EventArgs e) // настройка параметров подключения
-        {
-            // Application.Restart();
-            SQLConnection form = new SQLConnection();
-            form.Tag = this;
-            form.Show();
-        }
 
-        public int Send_tag_id()
+
+
+
+        private void tag_path_changer(TreeNode node)
         {
-            return TAG_ID;
-        } // передаем id тега на форму тега
-        public string tag_path()
-        {
-            return "ПЛК: " + Name_PLC + " Путь: " + Name_Corpus + "\\" + Name_Systema + "\\" + Name_Gryppa + "\\" + Name_TagType + "\\" + Name_Tag + "";
-        } // формируем путь тега
-        public string new_tag_path()
-        {
-            return "ПЛК: " + Name_PLC + " Путь: " + Name_Corpus + "\\" + Name_Systema + "\\" + Name_Gryppa + "\\_*NEW_TAG";
-        } // путь тега для создания
-        private void tag_path_changer()
-        {
-            toolStripStatusLabel1.Text = "ПЛК: " + Name_PLC + " Путь: " + Name_Corpus + "\\" + Name_Systema + "\\" + Name_Gryppa + "\\" + Name_TagType + "\\" + Name_Tag + "";
+            toolStripStatusLabel1.Text = node.FullPath;
+            tabPage1.Text = node.FullPath;
         } // путь тега для главной формы
-        public void DGW_reloader()
-        {
-            try
-            {
-                tabIndexCurr = tabControl1.TabIndex;
 
-                //----------------------------------------------------------------------------
-                if (Need_reload_PLC) // поднят флаг
-                {
-                    if (dataGridView1.CurrentRow != null)
-                    {
-                        int index = Convert.ToInt16(dataGridView1.CurrentRow.Index);
-                        int id = Convert.ToInt16(rPTagsDataSet.Corpus[index]["id"]);
-                        Name_Corpus = Convert.ToString(rPTagsDataSet.Corpus[index]["Name"]);
-                        this.pLCTableAdapter.FillByKorpus(this.rPTagsDataSet.PLC, id);
-                    }
-                    else
-                    {
-                        this.rPTagsDataSet.PLC.Clear();
-                    }
-
-
-                }
-                if (Need_reload_Systema)
-                {
-                    if (dataGridView2.CurrentRow != null)
-                    {
-                        int index = Convert.ToInt16(dataGridView2.CurrentRow.Index);
-                        Name_PLC = Convert.ToString(rPTagsDataSet.PLC[index]["Name"]);
-                        int id = Convert.ToInt16(rPTagsDataSet.PLC[index]["id"]);
-                        this.systemaTableAdapter.FillByPLC(this.rPTagsDataSet.Systema, id);
-                    }
-                    else
-                    {
-                        this.rPTagsDataSet.Systema.Clear();
-                    }
-                }
-
-                if (Need_reload_Gruppa)
-                {
-                    if (dataGridView3.CurrentRow != null)
-                    {
-
-                        int index = Convert.ToInt16(dataGridView3.CurrentRow.Index);
-                        int id = Convert.ToInt16(rPTagsDataSet.Systema[index]["id"]);
-                        Name_Systema = Convert.ToString(rPTagsDataSet.Systema[index]["Name"]);
-                        this.gruppaTableAdapter.FillBySystema(this.rPTagsDataSet.Gruppa, id);
-                    }
-                    else
-                    {
-                        this.rPTagsDataSet.Gruppa.Clear();
-
-                    }
-
-                }
-                if (Need_reload_Tag)
-                {
-                    if (dataGridView4.CurrentRow != null)
-                    {
-                        int index = Convert.ToInt16(dataGridView4.CurrentRow.Index);
-                        int id = Convert.ToInt16(rPTagsDataSet.Gruppa[index]["GrupType"]);
-                        Name_Gryppa = Convert.ToString(rPTagsDataSet.Gruppa[index]["Name"]);
-                        this.tagTableAdapter.FillByGrupType(this.rPTagsDataSet.Tag, id);
-                        Name_Tag = Convert.ToString(rPTagsDataSet.Tag[0]["Name"]);
-                        Name_TagType = Convert.ToString(rPTagsDataSet.Tag[0]["TType"]);
-                    }
-                    else
-                    {
-                        this.rPTagsDataSet.Tag.Clear();
-                    }
-                }
-
-                // построим путь в строке состояния
-                tag_path_changer();
-
-
-
-            }
-
-            catch (System.Exception ex)
-            {
-                toolStripStatusLabel2.Text = ex.Message.ToString();
-            }
-        } // метод обновления гридов
         private void tabControl1_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel2.Text = "";
             deleteenable(deleteEnable);
         }
-      
-
-        //----------------Корпус---------------------------------------------------------------------------------------------------
-        private void tabPage1_Enter(object sender, EventArgs e) // Корпус
-        {
-            try
-            {
-                // флаги необходимости перезагрузки гридин
-                Need_reload_PLC = true;
-                Need_reload_Systema = true;
-                Need_reload_Gruppa = true;
-                Need_reload_Tag = true;
-                // перезальем гриды
-                DGW_reloader();
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-        }
-        private void tabPage1_Leave(object sender, EventArgs e)
-        {
-            Corpus_changed();
-            if(dataGridView1.AllowUserToAddRows)
-            dataGridView1.AllowUserToAddRows = false;
-        }
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-            Corpus_changed();
-            if (dataGridView1.AllowUserToAddRows == false)
-            {
-                DGW_reloader();
-            }
-
-
-        } // обработка изменений
-        private void Corpus_changed()
-        {
-            if (rPTagsDataSet.Corpus.GetChanges(DataRowState.Modified) != null)
-            {
-
-                temp_Modifed_KorpusDataTable.Merge(rPTagsDataSet.Corpus.GetChanges(DataRowState.Modified), true);
-                tabPage1.Text = "*Корпус";
-                changed_Modifed_KorpusDataTable = true;
-            }
-            if (rPTagsDataSet.Corpus.GetChanges(DataRowState.Added) != null)
-            {
-                temp_Modifed_KorpusDataTable.Merge(rPTagsDataSet.Corpus.GetChanges(DataRowState.Added), true);
-                tabPage1.Text = "*Корпус";
-                changed_Modifed_KorpusDataTable = true;
-            }
-            if (rPTagsDataSet.Corpus.GetChanges(DataRowState.Deleted) != null)
-            {
-                temp_Modifed_KorpusDataTable.Merge(rPTagsDataSet.Corpus.GetChanges(DataRowState.Deleted), true);
-                tabPage1.Text = "*Корпус";
-                changed_Modifed_KorpusDataTable = true;
-            }
-
-
-        } // ловим изменения
-        private void добавитьToolStripMenuItem_Click(object sender, EventArgs e) // добавить
-        {
-            try
-            {
-                dataGridView1.AllowUserToAddRows = true;
-                dataGridView1.CurrentCell = dataGridView1[0, dataGridView1.RowCount - 1];
-            }
-            catch (System.Exception)
-            {
-
-            }
-        }
-        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int index = Convert.ToInt16(dataGridView1.CurrentRow.Index);
-                dataGridView1.Rows.RemoveAt(index);
-            }
-            catch
-            {
-
-            }
-        } // удалить
-        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)// сохранить
-        {
-            // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
-            // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
-            DataGridView dtw = dataGridView1;
-            if (dtw.Rows.Count > 1)
-            {
-                int x = dtw.CurrentCell.RowIndex;
-                int y = dtw.CurrentCell.ColumnIndex;
-                if (x > 0)
-                {
-                    x--;
-                    dtw.CurrentCell = dtw[y, x];
-                    x++;
-                    dtw.CurrentCell = dtw[y, x];
-
-                }
-                else
-                {
-                    x++;
-                    dtw.CurrentCell = dtw[y, x];
-                    x--;
-                    dtw.CurrentCell = dtw[y, x];
-                }
-            }
-            if (changed_Modifed_KorpusDataTable)
-            {
-                rPTagsDataSet.Corpus.Merge(temp_Modifed_KorpusDataTable);
-                corpusTableAdapter.Update(rPTagsDataSet.Corpus);
-                tabPage1.Text = "Корпус";
-                temp_Modifed_KorpusDataTable.Clear();
-                dataGridView1.AllowUserToAddRows = false;
-
-            }
-
-        }
-
-        //----------------ПЛК---------------------------------------------------------------------------------------------------
-        private void tabPage2_Enter(object sender, EventArgs e) // ПЛК
-        {
-            try
-            {
-                // сбросим флаг необходимости перезагрузки датагрида
-                Need_reload_PLC = false;
-                // флаги необходимости перезагрузки датагрида
-                Need_reload_Systema = true;
-                Need_reload_Gruppa = true;
-                Need_reload_Tag = true;
-                // перезальем гриды
-                DGW_reloader();
-            }
-
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
-        private void tabPage2_Leave(object sender, EventArgs e)
-        {
-            PLC_changed();
-            if(dataGridView2.AllowUserToAddRows)
-                dataGridView2.AllowUserToAddRows = false;
-        }
-        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            PLC_changed();
-            if (dataGridView2.AllowUserToAddRows == false)
-            {
-                DGW_reloader();
-            }
-
-        }
-        private void PLC_changed()
-        {
-            if (rPTagsDataSet.PLC.GetChanges(DataRowState.Modified) != null)
-            {
-
-                temp_Modifed_PLCDataTable.Merge(rPTagsDataSet.PLC.GetChanges(DataRowState.Modified));
-                tabPage2.Text = "*ПЛК";
-                changed_Modifed_PLCDataTable = true;
-            }
-            if (rPTagsDataSet.PLC.GetChanges(DataRowState.Added) != null)
-            {
-                temp_Modifed_PLCDataTable.Merge(rPTagsDataSet.PLC.GetChanges(DataRowState.Added));
-                tabPage2.Text = "*ПЛК";
-                changed_Modifed_PLCDataTable = true;
-            }
-            if (rPTagsDataSet.PLC.GetChanges(DataRowState.Deleted) != null)
-            {
-                temp_Modifed_PLCDataTable.Merge(rPTagsDataSet.PLC.GetChanges(DataRowState.Deleted));
-                tabPage2.Text = "*ПЛК";
-                changed_Modifed_PLCDataTable = true;
-            }
-
-
-        } // ловим изменения
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)// добавить
-        {
-            try
-            {
-                dataGridView2.AllowUserToAddRows = true;
-                dataGridView2.CurrentCell = dataGridView2[0, dataGridView2.RowCount - 1];
-            }
-            catch (System.Exception)
-            {
-
-            }
-        }
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)// удалить
-        {
-            try
-            {
-                int index = Convert.ToInt16(dataGridView2.CurrentRow.Index);
-                dataGridView2.Rows.RemoveAt(index);
-            }
-            catch
-            {
-
-            }
-        }
-        private void toolStripMenuItem3_Click(object sender, EventArgs e)// сохранить
-        {
-            // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
-            // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
-            DataGridView dtw = dataGridView2;
-            if (dtw.Rows.Count > 1)
-            {
-                int x = dtw.CurrentCell.RowIndex;
-                int y = dtw.CurrentCell.ColumnIndex;
-                if (x > 0)
-                {
-                    x--;
-                    dtw.CurrentCell = dtw[y, x];
-                    x++;
-                    dtw.CurrentCell = dtw[y, x];
-
-                }
-                else
-                {
-                    x++;
-                    dtw.CurrentCell = dtw[y, x];
-                    x--;
-                    dtw.CurrentCell = dtw[y, x];
-                }
-            }
-            if (changed_Modifed_PLCDataTable)
-            {
-                rPTagsDataSet.PLC.Merge(temp_Modifed_PLCDataTable);
-                pLCTableAdapter.Update(rPTagsDataSet.PLC);
-                tabPage2.Text = "ПЛК";
-                temp_Modifed_PLCDataTable.Clear();
-                dataGridView2.AllowUserToAddRows = false;
-            }
-        }
-
-        //----------------Система---------------------------------------------------------------------------------------------------
-        private void tabPage3_Enter(object sender, EventArgs e) // СИСТЕМА
-        {
-            try
-            {
-                // сбросиим флаг необходимости перезагрузки датагрида
-                Need_reload_Systema = false;
-                // флаги необходимости перезагрузки датагрида
-                Need_reload_Gruppa = true;
-                Need_reload_Tag = true;
-                // перезальем гриды
-                DGW_reloader();
-                // метка выбора для устройсва
-                CheckGruppa = false;
-                CheckTag = false;
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-        }
-        private void dataGridView3_Leave(object sender, EventArgs e)
-        {
-            Systema_changed();
-            if(dataGridView3.AllowUserToAddRows)
-            dataGridView3.AllowUserToAddRows = false;
-        }
-        private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-            Systema_changed();
-            if (dataGridView3.AllowUserToAddRows == false)
-            {
-                DGW_reloader();
-            }
-        }
-        private void Systema_changed()
-        {
-            if (rPTagsDataSet.Systema.GetChanges(DataRowState.Modified) != null)
-            {
-
-                temp_Modifed_SystemaDataTable.Merge(rPTagsDataSet.Systema.GetChanges(DataRowState.Modified));
-                tabPage3.Text = "*Система";
-                changed_Modifed_SystemaDataTable = true;
-            }
-            if (rPTagsDataSet.Systema.GetChanges(DataRowState.Added) != null)
-            {
-                temp_Modifed_SystemaDataTable.Merge(rPTagsDataSet.Systema.GetChanges(DataRowState.Added));
-                tabPage3.Text = "*Система";
-                changed_Modifed_SystemaDataTable = true;
-            }
-            if (rPTagsDataSet.Systema.GetChanges(DataRowState.Deleted) != null)
-            {
-                temp_Modifed_SystemaDataTable.Merge(rPTagsDataSet.Systema.GetChanges(DataRowState.Deleted));
-                tabPage3.Text = "*Система";
-                changed_Modifed_SystemaDataTable = true;
-            }
-
-
-        } // ловим изменения
-        private void toolStripMenuItem4_Click(object sender, EventArgs e) // добавить
-        {
-            try
-            {
-                dataGridView3.AllowUserToAddRows = true;
-                dataGridView3.CurrentCell = dataGridView3[0, dataGridView3.RowCount - 1];
-            }
-            catch (System.Exception)
-            {
-
-            }
-        }
-        private void toolStripMenuItem5_Click(object sender, EventArgs e)// удалить
-        {
-            try
-            {
-                int index = Convert.ToInt16(dataGridView3.CurrentRow.Index);
-                dataGridView3.Rows.RemoveAt(index);
-            }
-            catch
-            {
-
-            }
-        }
-        private void toolStripMenuItem6_Click(object sender, EventArgs e)// сохранить
-        {
-            // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
-            // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
-            DataGridView dtw = dataGridView3;
-            if (dtw.Rows.Count > 1)
-            {
-                int x = dtw.CurrentCell.RowIndex;
-                int y = dtw.CurrentCell.ColumnIndex;
-                if (x > 0)
-                {
-                    x--;
-                    dtw.CurrentCell = dtw[y, x];
-                    x++;
-                    dtw.CurrentCell = dtw[y, x];
-
-                }
-                else
-                {
-                    x++;
-                    dtw.CurrentCell = dtw[y, x];
-                    x--;
-                    dtw.CurrentCell = dtw[y, x];
-                }
-            }
-            if (changed_Modifed_SystemaDataTable)
-            {
-                rPTagsDataSet.Systema.Merge(temp_Modifed_SystemaDataTable);
-                systemaTableAdapter.Update(rPTagsDataSet.Systema);
-                tabPage3.Text = "Система";
-                temp_Modifed_SystemaDataTable.Clear();
-                dataGridView3.AllowUserToAddRows = false;
-            }
-        }
-
-        //----------------Группа---------------------------------------------------------------------------------------------------
-        private void tabPage4_Enter(object sender, EventArgs e) // ГРУППА
-        {
-            try
-            {
-                //сбросим флаг
-                Need_reload_Gruppa = false;
-                //установим флаг
-                Need_reload_Tag = true;
-
-                //флаги выбора вкладки для устройства
-                CheckGruppa = true;
-                CheckTag = false;
-                // перезальем гриды
-                DGW_reloader();
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
-        private void tabPage4_Leave(object sender, EventArgs e)
-        {
-            Gruppa_changed();
-            if(dataGridView4.AllowUserToAddRows)
-                dataGridView4.AllowUserToAddRows = false;
-        }
-        private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView4.AllowUserToAddRows == false)
-            {
-                DGW_reloader();
-            }
-            Gruppa_changed();
-
-        }
-        private void Gruppa_changed()
-        {
-            if (rPTagsDataSet.Gruppa.GetChanges(DataRowState.Modified) != null)
-            {
-
-                temp_Modifed_GruppaDataTable.Merge(rPTagsDataSet.Gruppa.GetChanges(DataRowState.Modified));
-                tabPage4.Text = "*Группа";
-                changed_Modifed_GruppaDataTable = true;
-            }
-            if (rPTagsDataSet.Gruppa.GetChanges(DataRowState.Added) != null)
-            {
-                temp_Modifed_GruppaDataTable.Merge(rPTagsDataSet.Gruppa.GetChanges(DataRowState.Added));
-                tabPage4.Text = "*Группа";
-                changed_Modifed_GruppaDataTable = true;
-            }
-            if (rPTagsDataSet.Gruppa.GetChanges(DataRowState.Deleted) != null)
-            {
-                temp_Modifed_GruppaDataTable.Merge(rPTagsDataSet.Gruppa.GetChanges(DataRowState.Deleted));
-                tabPage4.Text = "*Группа";
-                changed_Modifed_GruppaDataTable = true;
-            }
-
-
-        } // ловим изменения
-        private void toolStripMenuItem7_Click(object sender, EventArgs e)//добавить
-        {
-            try
-            {
-                dataGridView4.AllowUserToAddRows = true;
-                dataGridView4.CurrentCell = dataGridView4[0, dataGridView4.RowCount - 1];
-            }
-            catch (System.Exception)
-            {
-
-            }
-        }
-        private void toolStripMenuItem8_Click(object sender, EventArgs e)// удалить
-        {
-            try
-            {
-
-                int index = Convert.ToInt16(dataGridView4.CurrentRow.Index);
-                int id = Convert.ToInt16(rPTagsDataSet.Gruppa[index]["id"]);
-
-                if(device_TagTableAdapter.ScalarQueryGetCountByGg_id(id) > 0)
-                {
-                    if (MessageBox.Show("Для удаления группы " + rPTagsDataSet.Gruppa[index]["Name"].ToString() + " необходимо удалить\n" +
-                       device_TagTableAdapter.ScalarQueryGetCountByGg_id(id).ToString() + " записей из таблицы Устройства\n Выполнить удаление?", "Удаление записей", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    {
-                        dataGridView4.Rows.RemoveAt(index);
-                        device_TagTableAdapter.DeleteQueryByGr_id(id);
-                    }
-
-
-                }
-                else
-                {
-                    MessageBox.Show("Удаление группы " + rPTagsDataSet.Gruppa[index]["Name"].ToString() + "\n не затронет других таблиц", "Удаление записей", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dataGridView4.Rows.RemoveAt(index);
-                }
-                
-
-            }
-            catch
-            {
-
-            }
-        }
-        private void toolStripMenuItem9_Click(object sender, EventArgs e)// сохранить
-        {
-            // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
-            // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
-            DataGridView dtw = dataGridView4;
-            if (dtw.Rows.Count > 1)
-            {
-                int x = dtw.CurrentCell.RowIndex;
-                int y = dtw.CurrentCell.ColumnIndex;
-                if (x > 0)
-                {
-                    x--;
-                    dtw.CurrentCell = dtw[y, x];
-                    x++;
-                    dtw.CurrentCell = dtw[y, x];
-
-                }
-                else
-                {
-                    x++;
-                    dtw.CurrentCell = dtw[y, x];
-                    x--;
-                    dtw.CurrentCell = dtw[y, x];
-                }
-            }
-            if (changed_Modifed_GruppaDataTable)
-            {
-                rPTagsDataSet.Gruppa.Merge(temp_Modifed_GruppaDataTable);
-                gruppaTableAdapter.Update(rPTagsDataSet.Gruppa);
-                tabPage4.Text = "Группа";
-                temp_Modifed_GruppaDataTable.Clear();
-                dataGridView4.AllowUserToAddRows = false;
-            }
-        }
-
-        //----------------Тег---------------------------------------------------------------------------------------------------
-        private void tabPage6_Enter(object sender, EventArgs e) // ТЕГ
-        {
-            try
-            {
-                DGW_reloader();
-                // сбросим флаг
-                Need_reload_Tag = false;
-
-                //флаги выбора вкладки для устройства
-                CheckTag = true;
-                // перезальем гриды
 
 
 
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-        }
-        private void dataGridView6_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int index = Convert.ToInt16(dataGridView6.CurrentRow.Index);
-            if (rPTagsDataSet.Tag[index]["Name"] != null)
-                Name_Tag = Convert.ToString(rPTagsDataSet.Tag[index]["Name"]);
-            Name_TagType = Convert.ToString(rPTagsDataSet.Tag[index]["TType"]);
-            DGW_reloader();
-            tag_path_changer();
-        }
-        private void tabPage6_Leave(object sender, EventArgs e)
-        {
 
-        }
-        public void изменитьToolStripMenuItem_Click(object sender, EventArgs e) //изменить
-        {
-
-
-
-            if (dataGridView6.CurrentRow != null)
-            {
-                int index = Convert.ToInt16(dataGridView6.CurrentRow.Index);
-                TAG_ID = Convert.ToInt16(rPTagsDataSet.Tag[index]["id"]);
-            }
-
-            TagChange newForm = new TagChange();
-            newForm.Owner = this;
-            newForm.Show();
-
-
-        }
-        private void tabPage6_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void toolStripMenuItem10_Click(object sender, EventArgs e) //добавить
-        {
-            try
-            {
-                // dataGridView6.AllowUserToAddRows = true;
-                TAG_ID = 0;
-                TagChange newForm = new TagChange();
-                newForm.Owner = this;
-                newForm.Show();
-            }
-            catch (System.Exception )
-            {
-
-            }
-        }
-        private void toolStripMenuItem11_Click(object sender, EventArgs e)
-        {
-            // костыль, но нужно кратковременно перекинуть форкус чтобы применить изменения при сохранении
-            // !! обязательно подписака на событие datagridwiev.cellleave методом события cellClick
-            DataGridView dtw = dataGridView6;
-            int x = dtw.CurrentCell.RowIndex;
-            int y = dtw.CurrentCell.ColumnIndex;
-            if (x > 0)
-            {
-                x--;
-                dtw.CurrentCell = dtw[y, x];
-                x++;
-                dtw.CurrentCell = dtw[y, x];
-
-            }
-            else
-            {
-                x++;
-                dtw.CurrentCell = dtw[y, x];
-                x--;
-                dtw.CurrentCell = dtw[y, x];
-            }
-            try
-            {
-                int index = Convert.ToInt16(dataGridView6.CurrentRow.Index);
-                dataGridView6.Rows.RemoveAt(index);
-                tagTableAdapter.Update(rPTagsDataSet.Tag);
-            }
-            catch
-            {
-
-            }
-        } // удалить
 
         bool notsaved = false;
         bool canceledit = false;
@@ -937,7 +211,7 @@ namespace RPTagsTest
                 DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Added));
 
                 //tabPage7.Text = "+Устройство";
-                if(tabPage7.Text[0].ToString() == "У")
+                if (tabPage7.Text[0].ToString() == "У")
                     tabPage7.Text = tabPage7.Text.Insert(0, "+");
                 notsaved = true;
                 needaccept = true;
@@ -950,7 +224,7 @@ namespace RPTagsTest
                 notsaved = true;
                 needaccept = true;
             }
-            
+
             if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified) != null)
             {
                 DeviceTag_temp_DT.Merge(rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified));
@@ -970,15 +244,15 @@ namespace RPTagsTest
         }
         private void fiilDevice_tag(int systema, int gruppa, int tag)
         {
-            if(systema != 0 && gruppa != 0 && tag != 0) // по трем параметрам
+            if (systema != 0 && gruppa != 0 && tag != 0) // по трем параметрам
             {
                 this.device_TagTableAdapter.FillByTagSysGr(this.rPTagsDataSet.Device_Tag, systema, gruppa, tag);
             }
-            if(systema != 0 && gruppa != 0 && tag == 0) // по двум
+            if (systema != 0 && gruppa != 0 && tag == 0) // по двум
             {
                 this.device_TagTableAdapter.FillBySystemaGryppa(this.rPTagsDataSet.Device_Tag, systema, gruppa);
             }
-            if(systema != 0 && gruppa == 0 && tag == 0) // по одному
+            if (systema != 0 && gruppa == 0 && tag == 0) // по одному
             {
                 this.device_TagTableAdapter.FillBySystema(this.rPTagsDataSet.Device_Tag, systema);
             }
@@ -1034,6 +308,8 @@ namespace RPTagsTest
             toolStripStatusLabel4.Text = "";
             change_device_tag();
         }
+        /*
+
         private void tabPage7_Enter(object sender, EventArgs e) // устройство
         {
             try
@@ -1183,8 +459,9 @@ namespace RPTagsTest
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Исключение :-(");
 
             }
-            
+
         }
+        */
         private void DataGridView7_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified) != null)
@@ -1206,7 +483,7 @@ namespace RPTagsTest
             }
             toolStripStatusLabel4.Text = "";
 
-        }       
+        }
         private void toolStripMenuItem26_Click(object sender, EventArgs e) // удалить
         {
             try
@@ -1235,20 +512,20 @@ namespace RPTagsTest
                     tabPage7.Text = tabPage7.Text.Remove(0, 1);
                 dtw.DataSource = null;
                 dtw.DataSource = rPTagsDataSet.Device_Tag;
-                
+
             }
             catch (DBConcurrencyException)
             {
                 toolStripStatusLabel2.Text = "Что - то пошло не так";
-                
+
             }
         }
         private void проверитьОшибкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // затычка для работы при смене груптайпов
-           
+
             tagIdTagTypeIDTableAdapter.Fill(rPTagsDataSet.TagIdTagTypeID);
-            this.tagTableAdapter.Fill(this.rpTagsDataSet1.Tag);
+            this.tagTableAdapter.Fill(this.rPTagsDataSet.Tag);
 
 
             if (backgroundWorker6.IsBusy != true)
@@ -1265,7 +542,7 @@ namespace RPTagsTest
             tabPage7.Text = "Устройство";
             notsaved = false;
             canceledit = true;
-            
+
         }
         private void button15_Click(object sender, EventArgs e) // импорт тегов из csv
         {
@@ -1284,7 +561,7 @@ namespace RPTagsTest
 
 
                 RPTagsDataSet.Device_TagRow newRow = rPTagsDataSet.Device_Tag.NewDevice_TagRow();
-                newRow.SAID = Name_Systema;
+                //newRow.SAID = Name_Systema;
                 newRow.Sys_id = Convert.ToInt16(row["Sys_id"]);
                 newRow.Gr_id = Convert.ToInt16(row["Gr_id"]);
                 newRow.Tag_id = Convert.ToInt16(row["Tag_id"]);
@@ -1297,18 +574,18 @@ namespace RPTagsTest
         } // добавка тегов
         private void backgroundWorker7_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            toolStripStatusLabel4.Text ="Записей добавлено: "+ e.ProgressPercentage.ToString();
+            toolStripStatusLabel4.Text = "Записей добавлено: " + e.ProgressPercentage.ToString();
         }// добавка тегов
         private void backgroundWorker7_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            
+
             toolStripStatusLabel4.Text = "Все записи добавлены!";
             change_device_tag();
             tabControl1.Enabled = true;
         }// добавка тегов
         int countcut;
         int devtagstrsum;
-        int  devtagstrcount;
+        int devtagstrcount;
         private void исключитьТегиБезАдресаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             devtagstrsum = dataGridView7.Rows.Count;
@@ -1323,7 +600,7 @@ namespace RPTagsTest
         private void backgroundWorker8_DoWork(object sender, DoWorkEventArgs e)
         {
             countcut = 0;
-            
+
             BackgroundWorker worker = sender as BackgroundWorker;
             worker.WorkerReportsProgress = true;
 
@@ -1334,7 +611,7 @@ namespace RPTagsTest
                 {
                     row.Cut = 1;
                     countcut++;
-                    
+
                 }
                 else
                 {
@@ -1355,14 +632,12 @@ namespace RPTagsTest
         private void backgroundWorker8_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             dataGridView7.Update();
-            toolStripStatusLabel4.Text = "Готово! Исключено записей: "+ countcut+ " (поставлен чек бокс Cut)";
+            toolStripStatusLabel4.Text = "Готово! Исключено записей: " + countcut + " (поставлен чек бокс Cut)";
             change_device_tag();
             tabControl1.Enabled = true;
             dataGridView7.ReadOnly = false;
         }
         #endregion основные таблицы
-
-
         #region второстепенные таблицы
 
         //-------------------ФИЛЬТР-----------------------------------------------------------------------------------------------
@@ -1396,7 +671,7 @@ namespace RPTagsTest
                 dataGridView5.CurrentCell = dataGridView5[0, dataGridView5.RowCount - 1];
                 Filtres_changed();
             }
-            catch (System.Exception )
+            catch (System.Exception)
             {
 
             }
@@ -1485,7 +760,7 @@ namespace RPTagsTest
                 dataGridView13.CurrentCell = dataGridView13[0, dataGridView13.RowCount - 1];
                 SystemType_changed();
             }
-            catch (System.Exception )
+            catch (System.Exception)
             {
 
             }
@@ -1551,7 +826,7 @@ namespace RPTagsTest
             if (rPTagsDataSet.Gruptype.GetChanges(DataRowState.Modified) != null)
             {
 
-                temp_Modifed_GrupTypeDataTable.Merge(rPTagsDataSet.Gruptype.GetChanges(DataRowState.Modified),false);
+                temp_Modifed_GrupTypeDataTable.Merge(rPTagsDataSet.Gruptype.GetChanges(DataRowState.Modified), false);
                 tabPage16.Text = "*Тип группы";
                 changed_Modifed_GrupTypeDataTable = true;
             }
@@ -1576,7 +851,7 @@ namespace RPTagsTest
                 dataGridView14.CurrentCell = dataGridView14[0, dataGridView14.RowCount - 1];
                 GrupType_changed();
             }
-            catch (System.Exception )
+            catch (System.Exception)
             {
 
             }
@@ -1631,7 +906,7 @@ namespace RPTagsTest
         }
         private void dataGridView14_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             try
             {
                 if (dataGridView14.CurrentRow != null || beginedit)
@@ -1643,10 +918,10 @@ namespace RPTagsTest
                 }
                 else
                 {
-                   
+
                 }
                 GrupType_changed();
-                
+
             }
             catch (System.Exception ex)
             {
@@ -1694,7 +969,7 @@ namespace RPTagsTest
                 dataGridView15.CurrentCell = dataGridView15[0, dataGridView15.RowCount - 1];
                 TagType_changed();
             }
-            catch (System.Exception )
+            catch (System.Exception)
             {
 
             }
@@ -1750,9 +1025,9 @@ namespace RPTagsTest
         private void dataGridView15_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             TagType_changed();
-            
+
         }
-        
+
         //--------------OPC---------------------------------------------------------------------------------------
         private void OPC_changed()
         {
@@ -1789,7 +1064,7 @@ namespace RPTagsTest
                 dataGridView16.CurrentCell = dataGridView16[0, dataGridView16.RowCount - 1];
                 OPC_changed();
             }
-            catch (System.Exception )
+            catch (System.Exception)
             {
 
             }
@@ -1842,29 +1117,24 @@ namespace RPTagsTest
                 dataGridView16.AllowUserToAddRows = false;
                 changed_Modifed_OPCDataTable = false;
             }
-        }    
+        }
         private void dataGridView16_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             OPC_changed();
         }
 
-        #endregion второстепенные таблицы
-        //----------------------------------------------------------------------------------------------------
-
-       
-       
-      
+        #endregion второстепенные таблицы 
         #region конфигурации
 
         string prename;
         string corpus_name = "";
 
-        private bool SaveDGVToCSVfile(string filename, string patch, DataGridView table,bool addStb, string stable)
+        private bool SaveDGVToCSVfile(string filename, string patch, DataGridView table, bool addStb, string stable)
         {
             try
             {
-                   
-                   filename += ".csv";
+
+                filename += ".csv";
                 string fullfilepatch = patch + "\\" + filename;
                 Directory.CreateDirectory(patch);
                 StreamWriter sw = new StreamWriter(fullfilepatch, false, Encoding.UTF8);
@@ -1886,19 +1156,19 @@ namespace RPTagsTest
                     {
 
                         sw.Write(table[col_n[y], i].Value);
-                        if (y < col_n.Count-1)
+                        if (y < col_n.Count - 1)
                         {
                             sw.Write(",");
                         }
                     }
-                                
+
                     sw.Write("\r\n");
                 }
                 if (addStb)
                 {
                     StreamReader fs = new StreamReader(stable);
                     sw.Write("\r\n");
-                    
+
 
                     while (true)
                     {
@@ -1908,28 +1178,28 @@ namespace RPTagsTest
                         // Если достигнут конец файла, прерываем считывание.
                         if (temp == null) break;
                         sw.Write(temp);
-                        sw.Write("\r\n"); 
-                        
-                       
+                        sw.Write("\r\n");
+
+
                     }
                 }
 
                 sw.Close();
-                MessageBox.Show("Конфигурация " + filename + " сохранена!","", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
+                MessageBox.Show("Конфигурация " + filename + " сохранена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return false;
             }
-            
+
             return true;
         }
         private string FileDialog()
         {
             string s = "C:\\";
-        if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 s = folderBrowserDialog1.SelectedPath + "\\config_" + prename;
             }
@@ -1939,11 +1209,11 @@ namespace RPTagsTest
             textBox9.Text = s;
             textBox11.Text = s;
             return s;
-           
+
         }
         private void checkallcheckbox(bool check)
         {
-            if(check)
+            if (check)
             {
                 checkBox4.Checked = true;
                 checkBox5.Checked = true;
@@ -1985,45 +1255,46 @@ namespace RPTagsTest
         {
             if (dataGridView8.RowCount != 0)
             {
-                dataGridView8.DataSource = null;             
+                dataGridView8.DataSource = null;
             }
-            
+
             if (!checkBox4.Checked)
-            {   
+            {
                 Get_corpus = comboBox2.SelectedValue.ToString();
-                corpus_name = "_"+ Get_corpus;
-            } else
+                corpus_name = "_" + Get_corpus;
+            }
+            else
                 corpus_name = "";
             textBox3.Text = "AreaAWX" + corpus_name;
             if (backgroundWorker1.IsBusy != true)
             {
-                
+
                 backgroundWorker1.RunWorkerAsync();
                 toolStripStatusLabel4.Text = "Идет загрузка конфигрураци...";
-            }        
+            }
         }
-                // зальемся ассинхронно
+        // зальемся ассинхронно
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
-            
+
             this.areaAWXTableAdapter.Fill(this.rPTagsDataSet.AreaAWX, textBox2.Text, Get_corpus);
-           
+
         }
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             // возможно сюда засунем прогресс, если сможем его отыскать
-        }     
+        }
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             System.Windows.Forms.MessageBox.Show("Загрузка конфигурации AreaAWX завершена!");
             toolStripStatusLabel4.Text = "";
             dataGridView8.DataSource = rPTagsDataSet.AreaAWX;
-            
+
         }
         private void button1_Click(object sender, EventArgs e) // выбор пути к файлу
         {
-          FileDialog();
+            FileDialog();
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e) // добавка stable
         {
@@ -2039,7 +1310,7 @@ namespace RPTagsTest
         }
         private void checkBox4_CheckedChanged(object sender, EventArgs e) // выбор всех корпусов
         {
-           
+
             if (!checkBox4.Checked)
             {
                 comboBox2.Enabled = true;
@@ -2052,14 +1323,14 @@ namespace RPTagsTest
                 checkallcheckbox(true);
             }
         }
-       
+
 
         //----------------tagAWX----------------------------------------------
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
-            
+
             BackgroundWorker worker = sender as BackgroundWorker;
-            
+
             this.tagAWXTableAdapter.Fill(this.rPTagsDataSet.TagAWX, Get_corpus);
         }
         private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -2067,7 +1338,7 @@ namespace RPTagsTest
             System.Windows.Forms.MessageBox.Show("Загрузка конфигурации TagAWX завершена!");
             toolStripStatusLabel4.Text = "";
             dataGridView9.DataSource = rPTagsDataSet.TagAWX;
-        } 
+        }
         private void button4_Click(object sender, EventArgs e) // сгенерировать
         {
             if (dataGridView9.RowCount != 0)
@@ -2091,15 +1362,15 @@ namespace RPTagsTest
         private void button5_Click(object sender, EventArgs e) // путь сохранения
         {
             FileDialog();
-        }     
+        }
         private void button2_Click(object sender, EventArgs e) // сохранить файл
         {
             SaveDGVToCSVfile(textBox4.Text, textBox5.Text, dataGridView9, false, "");
         }
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
-            
-               
+
+
             if (!checkBox5.Checked)
             {
                 comboBox4.Enabled = true;
@@ -2111,15 +1382,15 @@ namespace RPTagsTest
                 Get_corpus = "ALL";
                 checkallcheckbox(true);
             }
-            
+
         }
-      
-        
+
+
 
         //----------------tagHH----------------------------------------------
         private void backgroundWorker3_DoWork(object sender, DoWorkEventArgs e)
         {
-           
+
             BackgroundWorker worker = sender as BackgroundWorker;
 
             this.tagHHTableAdapter.Fill(this.rPTagsDataSet.TagHH, Get_corpus);
@@ -2129,7 +1400,7 @@ namespace RPTagsTest
             System.Windows.Forms.MessageBox.Show("Загрузка конфигурации TagHH завершена!");
             toolStripStatusLabel4.Text = "";
             dataGridView10.DataSource = rPTagsDataSet.TagHH;
-        }    
+        }
         private void button7_Click(object sender, EventArgs e) // generate
         {
             if (dataGridView10.RowCount != 0)
@@ -2181,12 +1452,12 @@ namespace RPTagsTest
                 checkallcheckbox(true);
             }
         }
-      
+
 
         //----------------tagUDM----------------------------------------------
         private void backgroundWorker4_DoWork(object sender, DoWorkEventArgs e)
         {
-           
+
             BackgroundWorker worker = sender as BackgroundWorker;
 
             this.tagUDMTableAdapter.Fill(this.rPTagsDataSet.TagUDM, Get_corpus);
@@ -2196,7 +1467,7 @@ namespace RPTagsTest
             System.Windows.Forms.MessageBox.Show("Загрузка конфигурации TagUDM завершена!");
             toolStripStatusLabel4.Text = "";
             dataGridView11.DataSource = rPTagsDataSet.TagUDM;
-        }      
+        }
         private void button10_Click(object sender, EventArgs e) // generate
         {
             if (dataGridView11.RowCount != 0)
@@ -2248,30 +1519,30 @@ namespace RPTagsTest
                 checkallcheckbox(true);
             }
         }
-       
+
         //----------------tagOPC----------------------------------------------
         private void backgroundWorker5_DoWork(object sender, DoWorkEventArgs e)
         {
-            
+
             BackgroundWorker worker = sender as BackgroundWorker;
 
             var param = (TagOPCparam)e.Argument; // принимаем параметры в воркер
             this.rPTagsDataSet.TagOPC.Clear();
             this.tagOPCTableAdapter.Fill(this.rPTagsDataSet.TagOPC, param.PLC, param.SetParam);
-        }       
+        }
         private void backgroundWorker5_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             System.Windows.Forms.MessageBox.Show("Загрузка конфигурации TagOPC завершена!");
             toolStripStatusLabel4.Text = "";
-            
-           
+
+
             dataGridView12.DataSource = rPTagsDataSet.TagOPC;
-           
+
         }
         struct TagOPCparam // нужно передать параметры в поток
         {
-           public string PLC;
-           public string SetParam;
+            public string PLC;
+            public string SetParam;
 
         }
 
@@ -2291,20 +1562,20 @@ namespace RPTagsTest
             param.PLC = comboBox1.SelectedValue.ToString();
             param.SetParam = comboBox3.SelectedItem.ToString();
             textBox10.Text = param.PLC;
-            toolStripStatusLabel4.Text = param.PLC + " "+ param.SetParam;
+            toolStripStatusLabel4.Text = param.PLC + " " + param.SetParam;
             if (backgroundWorker5.IsBusy != true)
             {
                 backgroundWorker5.RunWorkerAsync(param); // передаем параметры при запуске воркера
-               // toolStripStatusLabel4.Text ="Параметры: "+ param.PLC + " " + param.SetParam;
+                                                         // toolStripStatusLabel4.Text ="Параметры: "+ param.PLC + " " + param.SetParam;
                 toolStripStatusLabel4.Text = "Идет загрузка конфигрураци...";
-                
+
             }
-            
+
         }
 
         private void fillByGrupTypeToolStripButton_Click(object sender, EventArgs e)
         {
-           
+
 
         }
 
@@ -2313,7 +1584,7 @@ namespace RPTagsTest
             FileDialog();
         }
 
-        
+
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
@@ -2326,28 +1597,21 @@ namespace RPTagsTest
         }
 
         #endregion конфигурации
-
         #region подсказки
 
-        void tooltiptext()
-        {
-            dataGridView1.Columns[0].ToolTipText = "Имя корпуса / строения";
-        }
+
 
 
         #endregion
-
-
-
+        #region системные
         private void deleteenable(bool enable)
         {
             if (!enable)
             {
-                toolStripMenuItem11.Enabled = false;
-                удалитьToolStripMenuItem.Enabled = false;
-                toolStripMenuItem2.Enabled = false;
-                toolStripMenuItem5.Enabled = false;
-                toolStripMenuItem8.Enabled = false;
+
+
+
+
                 toolStripMenuItem26.Enabled = false;
                 toolStripMenuItem14.Enabled = false;
                 toolStripMenuItem17.Enabled = false;
@@ -2357,11 +1621,9 @@ namespace RPTagsTest
             }
             else
             {
-                toolStripMenuItem11.Enabled = true;
-                удалитьToolStripMenuItem.Enabled = true;
-                toolStripMenuItem2.Enabled = true;
-                toolStripMenuItem5.Enabled = true;
-                toolStripMenuItem8.Enabled = true;
+
+
+
                 toolStripMenuItem26.Enabled = true;
                 toolStripMenuItem14.Enabled = true;
                 toolStripMenuItem17.Enabled = true;
@@ -2370,13 +1632,157 @@ namespace RPTagsTest
                 toolStripMenuItem25.Enabled = true;
             }
         }
-        
         private void dataGridView6_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             toolStripStatusLabel2.Text = "     Какие то проблемы с датагридом";
 
         } // обработчик ошибок
+        #endregion
+
+
+        #region дерево
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+
+
+        }
+
+        private void treeView1_BeforeSelect(object sender, TreeViewCancelEventArgs e)
+        {
+            fiilnode(e.Node);
+        }
+
+        private void fiilnode(TreeNode node)
+        {
+            tag_path_changer(node);
+            int index = node.Index;
+            int level = node.Level;
+            int id = Convert.ToInt16(node.Tag);
+            int parent_id = 0;
+            if (level > 0)
+                parent_id = Convert.ToInt16(node.Parent.Tag);
+            selectcontrol(level); // покажем нужный контрол
+
+            switch (level) // выделенный объект
+            {
+                case 0: //выделен корпус
+                    node.Nodes.Clear();
+                    this.pLCTableAdapter.FillByKorpus(this.rPTagsDataSet.PLC, id);
+                    tabControl1.SelectedTab = tabPage1;
+                    foreach (RPTagsDataSet.PLCRow row_PLC in rPTagsDataSet.PLC)
+                    {
+                        TreeNode plc_node = new TreeNode(row_PLC.Name);
+                        plc_node.Text = row_PLC.Name;
+                        plc_node.Tag = row_PLC.id;
+                        node.Nodes.Add(plc_node);
+                    }
+                    this.corpusTableAdapter1.FillById(this.rPTags_questiondata.Corpus, id); // зальем выбранный корпус
+                    
+
+                    break;
+                case 1: //выделен ПЛК
+                    node.Nodes.Clear();
+                    this.systemaTableAdapter.FillByPLC(this.rPTagsDataSet.Systema, id);
+
+                    foreach (RPTagsDataSet.SystemaRow row_Systema in rPTagsDataSet.Systema)
+                    {
+                        TreeNode systema_node = new TreeNode(row_Systema.Name);
+                        systema_node.Text = row_Systema.Name;
+                        systema_node.Tag = row_Systema.id;
+                        node.Nodes.Add(systema_node);
+                    }
+                    break;
+
+                case 2: //выделена система
+                    node.Nodes.Clear();
+                    this.gruppaTableAdapter.FillBySystema(this.rPTagsDataSet.Gruppa, id);
+
+                    foreach (RPTagsDataSet.GruppaRow row_Gruppa in rPTagsDataSet.Gruppa)
+                    {
+                        TreeNode gruppa_node = new TreeNode(row_Gruppa.Name);
+                        gruppa_node.Text = row_Gruppa.Name;
+                        gruppa_node.Tag = row_Gruppa.id;
+                        node.Nodes.Add(gruppa_node);
+                    }
+                    break;
+
+                case 3: //выделена группа
+                    node.Nodes.Clear();
+
+                    this.tagTypeTableAdapter.Fill(this.rPTagsDataSet.TagType);
+
+                    foreach (RPTagsDataSet.TagTypeRow row_TagType in rPTagsDataSet.TagType)
+                    {
+                        TreeNode tagType_node = new TreeNode(row_TagType.Name);
+                        tagType_node.Text = row_TagType.Name;
+                        tagType_node.Tag = row_TagType.id;
+                        node.Nodes.Add(tagType_node);
+                    }
+                    break;
+
+                case 4: //выделен груптайп
+                    node.Nodes.Clear();
+                    this.tagTableAdapter.FillByGruppaTagType(this.rPTagsDataSet.Tag, parent_id, id);
+
+                    foreach (RPTagsDataSet.TagRow row_Tag in rPTagsDataSet.Tag)
+                    {
+                        TreeNode Tag_node = new TreeNode(row_Tag.Name);
+                        Tag_node.Text = row_Tag.Name;
+                        Tag_node.Tag = row_Tag.id;
+                        node.Nodes.Add(Tag_node);
+                    }
+                    break;
+
+                case 5: //выделен тег
+
+                    break;
+
+                    ;
+            }
+        }
+
+        private void selectcontrol(int level)
+        {
+            // отключим видимость всех панелей, и включим только нужные
+            panel_corpus.Visible = false;
+
+            switch (level)
+            {
+                case 0: //выделен корпус
+                    panel_corpus.Visible = true;
+                    break;
+                case 1: //выделен ПЛК
+
+                    break;
+
+                case 2: //выделена система
+
+                    break;
+
+                case 3: //выделена группа
+
+                    break;
+
+                case 4: //выделен груптайп
+
+                    break;
+
+                case 5: //выделен тег
+
+                    break;
+                
+            }
+        }
+        private void selectcontrol(int level, bool edit) // перегрузка метода
+        {
+            selectcontrol(level);
+
+
+        }
+        #endregion
 
     }
 }
+
 

@@ -37,13 +37,13 @@ namespace RPTagsTest
             Form2 main = this.Owner as Form2;
                 if (main != null)
                 {
-                    TAG_ID = main.Send_tag_id();
-                    this.Text = main.tag_path();
+                    //TAG_ID = main.Send_tag_id();
+                    //this.Text = main.tag_path();
                 }
                 if (TAG_ID == 0)
                 {
                     rPTagsDataSet.Tag.Clear();
-                    this.Text = main.new_tag_path();
+                    //this.Text = main.new_tag_path();
                 }
                 else
                 {

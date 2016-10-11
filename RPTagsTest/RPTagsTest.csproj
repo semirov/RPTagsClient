@@ -102,6 +102,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RPTagsDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="RPTags_questiondata.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPTags_questiondata.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="SQLConnection.cs">
       <SubType>Form</SubType>
@@ -114,12 +119,6 @@
     </Compile>
     <Compile Include="TagChange.Designer.cs">
       <DependentUpon>TagChange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="treetest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="treetest.Designer.cs">
-      <DependentUpon>treetest.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form2.asa-TZ.resx">
       <DependentUpon>Form2.cs</DependentUpon>
@@ -157,9 +156,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <EmbeddedResource Include="treetest.resx">
-      <DependentUpon>treetest.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\app.manifest" />
     <None Include="RPTagsDataSet.xsc">
       <DependentUpon>RPTagsDataSet.xsd</DependentUpon>
@@ -171,6 +167,17 @@
     </None>
     <None Include="RPTagsDataSet.xss">
       <DependentUpon>RPTagsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="RPTags_questiondata.xsc">
+      <DependentUpon>RPTags_questiondata.xsd</DependentUpon>
+    </None>
+    <None Include="RPTags_questiondata.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RPTags_questiondata.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="RPTags_questiondata.xss">
+      <DependentUpon>RPTags_questiondata.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
