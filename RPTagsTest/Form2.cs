@@ -1662,7 +1662,7 @@ namespace RPTagsTest
                 case 2: //выделена система
                     node.Nodes.Clear();
                     this.gruppaTableAdapter.FillBySystema(this.rPTagsDataSet.Gruppa, id);
-
+                    
                     foreach (RPTagsDataSet.GruppaRow row_Gruppa in rPTagsDataSet.Gruppa)
                     {
                         TreeNode gruppa_node = new TreeNode(row_Gruppa.Name);
@@ -1741,6 +1741,11 @@ namespace RPTagsTest
                     panel_Systema.Visible = true;
                     panel_gruppa.Visible = false;
                     panel_tag.Visible = false;
+
+                    if (rPTagsDataSet.Systema[0].Enabl == 1)
+                        checkBoxSystemaEnabled.Checked = true;
+                    else
+                        checkBoxSystemaEnabled.Checked = false;
                     break;
 
                 case 3: //выделена группа
