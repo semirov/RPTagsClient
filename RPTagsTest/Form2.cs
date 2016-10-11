@@ -111,7 +111,7 @@ namespace RPTagsTest
                 connection.Close();
 
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
                 if (MessageBox.Show("Отсутствует связь с базой данных \n " + tagTableAdapter.Connection.DataSource.ToString() + " (" + tagTableAdapter.Connection.Database.ToString() + ") \n Приложение будет закрыто!", "Ошибка связи", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK)
                     this.Close();
@@ -1482,10 +1482,8 @@ namespace RPTagsTest
             fiilnode(e.Node); // 
             if (current_node != e.Node && current_node != null) // если при выборе нода изменилась, то отменим редактирование
             {
-                selectcontrol(current_node.Level, false);
+                selectcontrol(e.Node, false);
             }
-
-
             if (e.Node.Level == 2)
             {
                 tag_id = 0;
@@ -1613,7 +1611,6 @@ namespace RPTagsTest
 
             }
         }
-
         private void fiilnode(TreeNode node)
         {
             tag_path_changer(node);
@@ -1705,15 +1702,12 @@ namespace RPTagsTest
 
                     
             }
-            selectcontrol(level);
+            selectcontrol(node);
 
         }
-
-        private void selectcontrol(int level)
+        private void selectcontrol(TreeNode node)
         {
-            // отключим видимость всех панелей, и включим только нужные
-
-
+            int level = node.Level;
             switch (level)
             {
                 case 0: //выделен корпус
@@ -1800,14 +1794,93 @@ namespace RPTagsTest
                     panel_Systema.Visible = false;
                     panel_gruppa.Visible = false;
                     panel_tag.Visible = true;
-                    break;
+
+
+                    // обработка чекбоксов
+                    if (!rPTags_questiondata.Tag[0].IsHHNull()) // HH
+                    {
+                        if (rPTags_questiondata.Tag[0].HH == "R")
+                        {
+                            checkBoxTagHH.Checked = true;
+                        }
+                        else
+                        {
+                            checkBoxTagHH.Checked = false;
+                        }
+                    }
+                    else
+                    {
+                        checkBoxTagHH.Checked = false;
+                    }
+                    if (!rPTags_questiondata.Tag[0].IsUDM_InputNull())  // UDM_Input
+                    {
+                        if (rPTags_questiondata.Tag[0].UDM_Input == "R")
+                        {
+                            checkBoxTagUdmIn.Checked = true;
+                        }
+                        else
+                        {
+                            checkBoxTagUdmIn.Checked = false;
+                        }
+                    }
+                    else
+                    {
+                        checkBoxTagUdmIn.Checked = false;
+                    }
+                    if (!rPTags_questiondata.Tag[0].IsUDM_OutputNull()) // UDM_Output
+                    {
+                        if (rPTags_questiondata.Tag[0].UDM_Output == "W")
+                        {
+                            checkBoxTagUdmOut.Checked = true;
+                        }
+                        else
+                        {
+                            checkBoxTagUdmOut.Checked = false;
+                        }
+                    }
+                    else
+                    {
+                        checkBoxTagUdmOut.Checked = false;
+                    }
+
+                    // доступность полей в зависимости от типа тега
+                    if (node.Parent.Text != "Alarm")
+                    {
+                        baseTextTextBox.Enabled = false;
+                        alarmMSGTextBox.Enabled = false;
+                        normalMSGTextBox.Enabled = false;
+                        tLA_MSGTextBox.Enabled = false;
+                        
+                        relatedValue2TextBox.Enabled = false;
+                        
+                        relatedValue4TextBox.Enabled = false;
+                        relatedValue5TextBox.Enabled = false;
+                    }
+                    else
+                    {
+                        baseTextTextBox.Enabled = true;
+                        alarmMSGTextBox.Enabled = true;
+                        normalMSGTextBox.Enabled = true;
+                        tLA_MSGTextBox.Enabled = true;
+                        
+                        relatedValue2TextBox.Enabled = true;
+                        
+                        relatedValue4TextBox.Enabled = true;
+                        relatedValue5TextBox.Enabled = true;
+                    }
+
+
+
+                    break; /// -------------------------------------------------------------------------------------конец
+
+
                 
             }
-        }
-        private void selectcontrol(int level, bool edit) // управление контролом при редактировании
+        } // управление контролами при выборе в дереве
+        private void selectcontrol(TreeNode node, bool edit) // управление контролом при редактировании
         {
-            selectcontrol(level); // вызовем неперегруженный метод
-
+            selectcontrol(node); // вызовем неперегруженный метод
+            int level = node.Level;
             switch (level)
             {
                 case 0: //выделен корпус
@@ -1815,28 +1888,95 @@ namespace RPTagsTest
                     {
                         buttonCorpCancel.Visible = true;
                         buttonCorpSave.Visible = true;
+                        rPTags_questiondata.Corpus[0].BeginEdit();
                     } else
                     {
                         buttonCorpCancel.Visible = false;
                         buttonCorpSave.Visible = false;
+                        
+                        rPTags_questiondata.Corpus[0].CancelEdit();
                     }
                     break;
                 case 1: //выделен ПЛК
-                   
+                    if (edit)
+                    {
+                        buttonPLCCalcel.Visible = true;
+                        buttonPLCSave.Visible = true;
+                        corpusComboBox.DropDownStyle = ComboBoxStyle.DropDown;
+                        nodeComboBox.DropDownStyle = ComboBoxStyle.DropDown;
+                        rPTags_questiondata.PLC[0].BeginEdit();
+                    }
+                    else
+                    {
+                        buttonPLCCalcel.Visible = false;
+                        buttonPLCSave.Visible = false;
+                        corpusComboBox.DropDownStyle = ComboBoxStyle.Simple;
+                        nodeComboBox.DropDownStyle = ComboBoxStyle.Simple;
+                        rPTags_questiondata.PLC[0].CancelEdit();
+                    }
                     break;
                 case 2: //выделена система
-                    
+                    if (edit)
+                    {
+                        buttonSystemaCancel.Visible = true;
+                        buttonSystemaSave.Visible = true;
+                        systemtypeComboBox.DropDownStyle = ComboBoxStyle.DropDown;
+                        pLCComboBox.DropDownStyle = ComboBoxStyle.DropDown;
+                        rPTags_questiondata.Systema[0].BeginEdit();
+                    }
+                    else
+                    {
+                        buttonSystemaCancel.Visible = false;
+                        buttonSystemaSave.Visible = false;
+                        systemtypeComboBox.DropDownStyle = ComboBoxStyle.Simple;
+                        pLCComboBox.DropDownStyle = ComboBoxStyle.Simple;
+                        rPTags_questiondata.Systema[0].CancelEdit();
+                    }
                     break;
                 case 3: //выделена группа
-                    
+                    if (edit)
+                    {
+                        buttonGruppaCancel.Visible = true;
+                        buttonGruppaSave.Visible = true;
+                        grupTypeComboBox.DropDownStyle = ComboBoxStyle.DropDown;
+                        systemaComboBox.DropDownStyle = ComboBoxStyle.DropDown;
+                        rPTags_questiondata.Gruppa[0].BeginEdit();
+                    }
+                    else
+                    {
+                        buttonGruppaCancel.Visible = false;
+                        buttonGruppaSave.Visible = false;
+                        grupTypeComboBox.DropDownStyle = ComboBoxStyle.Simple;
+                        systemaComboBox.DropDownStyle = ComboBoxStyle.Simple;
+                        rPTags_questiondata.Gruppa[0].CancelEdit();
+                    }
                     break;
                 case 4: //выделен груптайп
 
                     break;
                 case 5: //выделен тег
-                    
-                    break;
+                    if (edit)
+                    {
+                        buttonTagCancel.Visible = true;
+                        buttonTagSave.Visible = true;
+                        comboBox9.DropDownStyle = ComboBoxStyle.DropDown;
+                        comboBox8.DropDownStyle = ComboBoxStyle.DropDown;
+                        comboBox7.DropDownStyle = ComboBoxStyle.DropDown;
+                        rPTags_questiondata.Tag[0].BeginEdit();
 
+
+                    }
+                    else
+                    {
+                        buttonTagCancel.Visible = false;
+                        buttonTagSave.Visible = false;
+
+                        comboBox9.DropDownStyle = ComboBoxStyle.Simple;
+                        comboBox8.DropDownStyle = ComboBoxStyle.Simple;
+                        comboBox7.DropDownStyle = ComboBoxStyle.Simple;
+                        rPTags_questiondata.Tag[0].CancelEdit();
+                    }
+                    break;
             }
         }
 
@@ -1848,9 +1988,8 @@ namespace RPTagsTest
         private void ToolStripMenuEdit_Click(object sender, EventArgs e)
         {
             current_node = treeView1.SelectedNode;
-            selectcontrol(treeView1.SelectedNode.Level,true);
+            selectcontrol(treeView1.SelectedNode,true);
         }
-
         private void ToolStripMenuAdd_Click(object sender, EventArgs e)
         {
             
@@ -1858,6 +1997,91 @@ namespace RPTagsTest
 
         #endregion
 
+        private void buttonCorpSave_Click(object sender, EventArgs e) // корпус сохранить
+        {
+            rPTags_questiondata.Corpus[0].Name = nameTextBox.Text;
+            rPTags_questiondata.Corpus[0].Description = descriptionTextBox.Text;
+            rPTags_questiondata.Corpus[0].EndEdit();
+            corpusTableAdapter1.Update(rPTags_questiondata.Corpus);
+            selectcontrol(treeView1.SelectedNode, false);
+
+        }
+        private void buttonCorpCancel_Click(object sender, EventArgs e) // корпус отменить
+        {
+            selectcontrol(treeView1.SelectedNode, false);
+        }
+
+        private void buttonPLCSave_Click(object sender, EventArgs e) // плк сохранить
+        {
+            rPTags_questiondata.PLC[0].Name = nameTextBox1.Text;
+            rPTags_questiondata.PLC[0].Corpus = Convert.ToInt16(corpusComboBox.SelectedValue);
+            rPTags_questiondata.PLC[0].Node = Convert.ToInt16(nodeComboBox.SelectedValue);
+            rPTags_questiondata.PLC[0].Description = descriptionTextBox1.Text;
+            rPTags_questiondata.PLC[0].IPAddr = iPAddrTextBox.Text;
+            rPTags_questiondata.PLC[0].EndEdit();
+            pLCTableAdapter1.Update(rPTags_questiondata.PLC);
+            selectcontrol(treeView1.SelectedNode, false);
+        }
+        private void buttonPLCCalcel_Click(object sender, EventArgs e) // плк отменить
+        {
+            selectcontrol(treeView1.SelectedNode, false);
+        }
+        private void buttonSystemaSave_Click(object sender, EventArgs e) // система сохранить
+        {
+            rPTags_questiondata.Systema[0].Name = nameTextBox2.Text;
+            rPTags_questiondata.Systema[0].Description = descriptionTextBox2.Text;
+            rPTags_questiondata.Systema[0].Systemtype = Convert.ToInt16(systemtypeComboBox.SelectedValue);
+            rPTags_questiondata.Systema[0].PLC = Convert.ToInt16(pLCComboBox.SelectedValue);
+            if (checkBoxSystemaEnabled.Checked)
+            {
+                rPTags_questiondata.Systema[0].Enabl = 1;
+            }
+            else
+            {
+                rPTags_questiondata.Systema[0].Enabl = 0;
+            }
+            rPTags_questiondata.Systema[0].EndEdit();
+            systemaTableAdapter1.Update(rPTags_questiondata.Systema);
+            selectcontrol(treeView1.SelectedNode, false);
+        }
+        private void buttonSystemaCancel_Click(object sender, EventArgs e) // система отменить
+        {
+            selectcontrol(treeView1.SelectedNode, false);
+        }
+        private void buttonGruppaSave_Click(object sender, EventArgs e) // группа сохранить
+        {
+            rPTags_questiondata.Gruppa[0].Name = nameTextBox3.Text;
+            rPTags_questiondata.Gruppa[0].Area = areaTextBox.Text;
+            rPTags_questiondata.Gruppa[0].GrupType = Convert.ToInt16(grupTypeComboBox.SelectedValue);
+            rPTags_questiondata.Gruppa[0].Systema = Convert.ToInt16(systemaComboBox.SelectedValue);
+            rPTags_questiondata.Gruppa[0].Description = descriptionTextBox3.Text;
+            if (checkBoxGrupEnabled.Checked)
+            {
+                rPTags_questiondata.Gruppa[0].Enabl = 1;
+            }
+            else
+            {
+                rPTags_questiondata.Gruppa[0].Enabl = 0;
+            }
+            rPTags_questiondata.Gruppa[0].EndEdit();
+            gruppaTableAdapter1.Update(rPTags_questiondata.Gruppa);
+            selectcontrol(treeView1.SelectedNode, false);
+
+        }
+        private void buttonGruppaCancel_Click(object sender, EventArgs e) // группа отменить
+        {
+            selectcontrol(treeView1.SelectedNode, false);
+        }
+
+        private void buttonTagSave_Click(object sender, EventArgs e) // тег сохранить
+        {
+
+        }
+
+        private void buttonTagCancel_Click(object sender, EventArgs e) // тег отменить
+        {
+
+        }
     }
 }
 

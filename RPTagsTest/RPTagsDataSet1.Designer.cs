@@ -11071,11 +11071,13 @@ namespace RPTagsTest {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class TagIdTagTypeIDDataTable : global::System.Data.TypedTableBase<TagIdTagTypeIDRow> {
             
-            private global::System.Data.DataColumn columnName;
+            private global::System.Data.DataColumn columnTagType_Name;
             
             private global::System.Data.DataColumn columnid;
             
             private global::System.Data.DataColumn columnDescription;
+            
+            private global::System.Data.DataColumn columnTag_name;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -11112,9 +11114,9 @@ namespace RPTagsTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NameColumn {
+            public global::System.Data.DataColumn TagType_NameColumn {
                 get {
-                    return this.columnName;
+                    return this.columnTagType_Name;
                 }
             }
             
@@ -11131,6 +11133,14 @@ namespace RPTagsTest {
             public global::System.Data.DataColumn DescriptionColumn {
                 get {
                     return this.columnDescription;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Tag_nameColumn {
+                get {
+                    return this.columnTag_name;
                 }
             }
             
@@ -11171,12 +11181,13 @@ namespace RPTagsTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TagIdTagTypeIDRow AddTagIdTagTypeIDRow(string Name, string Description) {
+            public TagIdTagTypeIDRow AddTagIdTagTypeIDRow(string TagType_Name, string Description, string Tag_name) {
                 TagIdTagTypeIDRow rowTagIdTagTypeIDRow = ((TagIdTagTypeIDRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Name,
+                        TagType_Name,
                         null,
-                        Description};
+                        Description,
+                        Tag_name};
                 rowTagIdTagTypeIDRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTagIdTagTypeIDRow);
                 return rowTagIdTagTypeIDRow;
@@ -11206,23 +11217,26 @@ namespace RPTagsTest {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnName = base.Columns["Name"];
+                this.columnTagType_Name = base.Columns["TagType_Name"];
                 this.columnid = base.Columns["id"];
                 this.columnDescription = base.Columns["Description"];
+                this.columnTag_name = base.Columns["Tag_name"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnName);
+                this.columnTagType_Name = new global::System.Data.DataColumn("TagType_Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTagType_Name);
                 this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid);
                 this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescription);
+                this.columnTag_name = new global::System.Data.DataColumn("Tag_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTag_name);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
-                this.columnName.MaxLength = 50;
+                this.columnTagType_Name.MaxLength = 50;
                 this.columnid.AutoIncrement = true;
                 this.columnid.AutoIncrementSeed = -1;
                 this.columnid.AutoIncrementStep = -1;
@@ -11230,6 +11244,7 @@ namespace RPTagsTest {
                 this.columnid.ReadOnly = true;
                 this.columnid.Unique = true;
                 this.columnDescription.MaxLength = 100;
+                this.columnTag_name.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21538,17 +21553,17 @@ namespace RPTagsTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Name {
+            public string TagType_Name {
                 get {
                     try {
-                        return ((string)(this[this.tableTagIdTagTypeID.NameColumn]));
+                        return ((string)(this[this.tableTagIdTagTypeID.TagType_NameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Name\' в таблице \'TagIdTagTypeID\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'TagType_Name\' в таблице \'TagIdTagTypeID\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTagIdTagTypeID.NameColumn] = value;
+                    this[this.tableTagIdTagTypeID.TagType_NameColumn] = value;
                 }
             }
             
@@ -21581,14 +21596,30 @@ namespace RPTagsTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNameNull() {
-                return this.IsNull(this.tableTagIdTagTypeID.NameColumn);
+            public string Tag_name {
+                get {
+                    try {
+                        return ((string)(this[this.tableTagIdTagTypeID.Tag_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Tag_name\' в таблице \'TagIdTagTypeID\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTagIdTagTypeID.Tag_nameColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNameNull() {
-                this[this.tableTagIdTagTypeID.NameColumn] = global::System.Convert.DBNull;
+            public bool IsTagType_NameNull() {
+                return this.IsNull(this.tableTagIdTagTypeID.TagType_NameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTagType_NameNull() {
+                this[this.tableTagIdTagTypeID.TagType_NameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21601,6 +21632,18 @@ namespace RPTagsTest {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDescriptionNull() {
                 this[this.tableTagIdTagTypeID.DescriptionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTag_nameNull() {
+                return this.IsNull(this.tableTagIdTagTypeID.Tag_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTag_nameNull() {
+                this[this.tableTagIdTagTypeID.Tag_nameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -30502,9 +30545,10 @@ WHERE        (Systema.id = @Sys_id)";
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "TagIdTagTypeID";
-            tableMapping.ColumnMappings.Add("Name", "Name");
+            tableMapping.ColumnMappings.Add("Name", "TagType_Name");
             tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("Description", "Description");
+            tableMapping.ColumnMappings.Add("Tag_name", "Tag_name");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -30521,8 +30565,9 @@ WHERE        (Systema.id = @Sys_id)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        TagType.Name, Tag.id, Tag.Description\r\nFROM            Tag INNER JO" +
-                "IN\r\n                         TagType ON Tag.TagType = TagType.id";
+            this._commandCollection[0].CommandText = "SELECT        TagType.Name, Tag.id, Tag.Description, Tag.Name AS Tag_name\r\nFROM  " +
+                "          Tag INNER JOIN\r\n                         TagType ON Tag.TagType = TagT" +
+                "ype.id";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -30537,17 +30582,6 @@ WHERE        (Systema.id = @Sys_id)";
             }
             int returnValue = this.Adapter.Fill(dataTable);
             return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual RPTagsDataSet.TagIdTagTypeIDDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            RPTagsDataSet.TagIdTagTypeIDDataTable dataTable = new RPTagsDataSet.TagIdTagTypeIDDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
         }
     }
     
