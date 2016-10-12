@@ -476,7 +476,7 @@ namespace RPTagsTest
             dataGridView7.ReadOnly = false;
         }
         #endregion основные таблицы
-        #region второстепенные таблицы
+        #region справочные таблицы
 
         //-------------------ФИЛЬТР-----------------------------------------------------------------------------------------------
         private void Filtres_changed()
@@ -1477,12 +1477,19 @@ namespace RPTagsTest
         int systema_id;
         int gruppa_id;
         int tag_id;
+        private void treeView1_BeforeSelect(object sender, TreeViewCancelEventArgs e)
+        {
+            /// не используется пока что
+        }
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            fiilnode(e.Node); // 
-            if (current_node != e.Node && current_node != null) // если при выборе нода изменилась, то отменим редактирование
+            if (!addNodeInProc) // если не проихсодит добавление ноды, то
             {
-                selectcontrol(e.Node, false);
+                fiilnode(e.Node); // наполним датасеты
+            }
+            if (current_node != e.Node && current_node != null) // если при выборе нода изменилась, то 
+            {
+                selectcontrol(e.Node, false, false); // отменим добавление и редактирование
             }
             if (e.Node.Level == 2)
             {
@@ -1879,7 +1886,7 @@ namespace RPTagsTest
         } // управление контролами при выборе в дереве
         private void selectcontrol(TreeNode node, bool edit) // управление контролом при редактировании
         {
-            selectcontrol(node); // вызовем неперегруженный метод
+            
             int level = node.Level;
             switch (level)
             {
@@ -1978,39 +1985,104 @@ namespace RPTagsTest
                     }
                     break;
             }
+            selectcontrol(node); // вызовем неперегруженный метод
         }
+            bool addNodeInProc = false; // если true то проиходит добавление ноды
+       
+        private void selectcontrol(TreeNode node, bool edit, bool add) // перегрузка для редактирования
+        {
+            
+            int level = node.Level;
+            if (add) // если получили разрешение на добавление то поднимем флаг.
+            {
+                addNodeInProc = true;
+            } else
+            {
+                addNodeInProc = false;
+            }
+            
+            
+            switch (level)
+            {
+                case 0: //выделен корпус
+                    if (add)
+                    {
+                        TreeNode nodeNewCorp = new TreeNode("nodenewCorp");
+                        rPTags_questiondata.Corpus.Clear(); // отчистим таблицу
+                        RPTags_questiondata.CorpusRow row = rPTags_questiondata.Corpus.NewCorpusRow(); // создадим пустую запись
+                        rPTags_questiondata.Corpus.AddCorpusRow(row); // добавим её в таблицу
+                       // TreeNode nodeNewCorp = new TreeNode("nodenewCorp");
+                        nodeNewCorp.Text = "Новый элемент";
+                        nodeNewCorp.Tag = 0;
+                        //treeView1.Nodes.Add(nodeNewCorp);
+                        node.TreeView.Nodes.Add(nodeNewCorp); // корневую ноду добавим прям к дереву;
+                        current_node = nodeNewCorp;
+                        treeView1.SelectedNode = nodeNewCorp;
+                        
+                    }
+                    else
+                    {
+                        foreach(TreeNode treenode in treeView1.Nodes)
+                        {
+                            if(treenode.Text == "Новый элемент")
+                            {
+                                treeView1.Nodes.RemoveAt(treenode.Index);
+                            }
 
-        private void ToolStripMenuDelete_Click(object sender, EventArgs e)
+                        }
+                    }
+
+                    break;
+                case 1: //выделен ПЛК
+                    
+                    break;
+                case 2: //выделена система
+                    
+                    break;
+                case 3: //выделена группа
+                    
+                    break;
+                case 4: //выделен груптайп
+
+                    break;
+                case 5: //выделен тег
+                    
+                    break;
+            }
+            selectcontrol(node, edit);
+
+        }
+        private void ToolStripMenuDelete_Click(object sender, EventArgs e)// контекстное меню удалить
         {
 
-        }
+        } 
         TreeNode current_node = null;
-        private void ToolStripMenuEdit_Click(object sender, EventArgs e)
+        private void ToolStripMenuEdit_Click(object sender, EventArgs e)// контекстное меню редактировать
         {
             current_node = treeView1.SelectedNode;
             selectcontrol(treeView1.SelectedNode,true);
-        }
-        private void ToolStripMenuAdd_Click(object sender, EventArgs e)
+        }   
+        private void ToolStripMenuAdd_Click(object sender, EventArgs e)// контекстное меню добавить
         {
-            
+            selectcontrol(treeView1.SelectedNode, true, true);
         }
 
-        #endregion
 
         private void buttonCorpSave_Click(object sender, EventArgs e) // корпус сохранить
         {
+            treeView1.SelectedNode.Text = nameTextBox.Text;
             rPTags_questiondata.Corpus[0].Name = nameTextBox.Text;
             rPTags_questiondata.Corpus[0].Description = descriptionTextBox.Text;
             rPTags_questiondata.Corpus[0].EndEdit();
             corpusTableAdapter1.Update(rPTags_questiondata.Corpus);
+            treeView1.SelectedNode.Tag = rPTags_questiondata.Corpus[0].id;
             selectcontrol(treeView1.SelectedNode, false);
 
         }
         private void buttonCorpCancel_Click(object sender, EventArgs e) // корпус отменить
         {
-            selectcontrol(treeView1.SelectedNode, false);
+            selectcontrol(treeView1.SelectedNode, false, false);
         }
-
         private void buttonPLCSave_Click(object sender, EventArgs e) // плк сохранить
         {
             rPTags_questiondata.PLC[0].Name = nameTextBox1.Text;
@@ -2072,16 +2144,59 @@ namespace RPTagsTest
         {
             selectcontrol(treeView1.SelectedNode, false);
         }
-
         private void buttonTagSave_Click(object sender, EventArgs e) // тег сохранить
         {
+            rPTags_questiondata.Tag[0].Name = textBox16.Text;
+            rPTags_questiondata.Tag[0].TagType = Convert.ToInt16(comboBox9.SelectedValue);
+            rPTags_questiondata.Tag[0].GrupType = Convert.ToInt16(comboBox8.SelectedValue);
+            rPTags_questiondata.Tag[0].Description = textBox15.Text;
+            rPTags_questiondata.Tag[0].BaseText = baseTextTextBox.Text;
+            rPTags_questiondata.Tag[0].Filter = Convert.ToInt16(comboBox7.SelectedValue);
+            rPTags_questiondata.Tag[0].AlarmMSG = alarmMSGTextBox.Text;
+            rPTags_questiondata.Tag[0].NormalMSG = normalMSGTextBox.Text;
+            rPTags_questiondata.Tag[0].TLA_MSG = tLA_MSGTextBox.Text;
+            rPTags_questiondata.Tag[0].RelatedValue1 = relatedValue1TextBox.Text;
+            rPTags_questiondata.Tag[0].RelatedValue2 = relatedValue2TextBox.Text;
+            rPTags_questiondata.Tag[0].RelatedValue3 = relatedValue3TextBox.Text;
+            rPTags_questiondata.Tag[0].RelatedValue4 = relatedValue4TextBox.Text;
+            rPTags_questiondata.Tag[0].RelatedValue5 = relatedValue5TextBox.Text;
+            if (checkBoxTagHH.Checked)
+            {
+                rPTags_questiondata.Tag[0].HH = "R";
+            }
+            else
+            {
+                rPTags_questiondata.Tag[0].HH = "";
+            }
+            if (checkBoxTagUdmIn.Checked)
+            {
+                rPTags_questiondata.Tag[0].UDM_Input = "R";
+            }
+            else
+            {
+                rPTags_questiondata.Tag[0].UDM_Input = "";
+            }
+            if (checkBoxTagUdmOut.Checked)
+            {
+                rPTags_questiondata.Tag[0].UDM_Output = "W";
+            }
+            else
+            {
+                rPTags_questiondata.Tag[0].UDM_Output = "";
+            }
+            rPTags_questiondata.Tag[0].EndEdit();
+            tagTableAdapter1.Update(rPTags_questiondata.Tag);
+            selectcontrol(treeView1.SelectedNode, false);
 
         }
-
         private void buttonTagCancel_Click(object sender, EventArgs e) // тег отменить
         {
-
+            selectcontrol(treeView1.SelectedNode, false);
         }
+
+        #endregion
+
+        
     }
 }
 

@@ -248,6 +248,15 @@
             this.toolStripMenuItem28 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.dataGridView7 = new System.Windows.Forms.DataGridView();
+            this.sysidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.gridDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Tag_id1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.tagidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.GMP = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.AdrPLC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sAIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cutDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Tag_id2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.menuStrip10 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem26 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem27 = new System.Windows.Forms.ToolStripMenuItem();
@@ -259,7 +268,6 @@
             this.panel_tag = new System.Windows.Forms.Panel();
             this.buttonTagCancel = new System.Windows.Forms.Button();
             this.buttonTagSave = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.tagBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.rPTags_questiondata = new RPTagsTest.RPTags_questiondata();
@@ -284,6 +292,17 @@
             this.label29 = new System.Windows.Forms.Label();
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
+            this.panel_gruppa = new System.Windows.Forms.Panel();
+            this.checkBoxGrupEnabled = new System.Windows.Forms.CheckBox();
+            this.buttonGruppaCancel = new System.Windows.Forms.Button();
+            this.buttonGruppaSave = new System.Windows.Forms.Button();
+            this.systemaComboBox = new System.Windows.Forms.ComboBox();
+            this.gruppaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.grupTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.areaTextBox = new System.Windows.Forms.TextBox();
+            this.descriptionTextBox3 = new System.Windows.Forms.TextBox();
+            this.nameTextBox3 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.panel_corpus = new System.Windows.Forms.Panel();
             this.buttonCorpCancel = new System.Windows.Forms.Button();
             this.buttonCorpSave = new System.Windows.Forms.Button();
@@ -311,17 +330,6 @@
             this.iPAddrTextBox = new System.Windows.Forms.TextBox();
             this.descriptionTextBox1 = new System.Windows.Forms.TextBox();
             this.nameTextBox1 = new System.Windows.Forms.TextBox();
-            this.panel_gruppa = new System.Windows.Forms.Panel();
-            this.checkBoxGrupEnabled = new System.Windows.Forms.CheckBox();
-            this.buttonGruppaCancel = new System.Windows.Forms.Button();
-            this.buttonGruppaSave = new System.Windows.Forms.Button();
-            this.systemaComboBox = new System.Windows.Forms.ComboBox();
-            this.gruppaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.grupTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.areaTextBox = new System.Windows.Forms.TextBox();
-            this.descriptionTextBox3 = new System.Windows.Forms.TextBox();
-            this.nameTextBox3 = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.corpusTableAdapter1 = new RPTagsTest.RPTags_questiondataTableAdapters.CorpusTableAdapter();
             this.tableAdapterManager = new RPTagsTest.RPTags_questiondataTableAdapters.TableAdapterManager();
@@ -329,15 +337,32 @@
             this.systemaTableAdapter1 = new RPTagsTest.RPTags_questiondataTableAdapters.SystemaTableAdapter();
             this.gruppaTableAdapter1 = new RPTagsTest.RPTags_questiondataTableAdapters.GruppaTableAdapter();
             this.tagTableAdapter1 = new RPTagsTest.RPTags_questiondataTableAdapters.TagTableAdapter();
-            this.sysidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.gridDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Tag_id1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.tagidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.GMP = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.AdrPLC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sAIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cutDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Tag_id2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.minPeriodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maxPeriodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lowRangeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.highRangeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.thresHoldDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uDMPathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hHPathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.alarmPathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grupTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tagTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hHDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.uDMInputDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.uDMOutputDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             nameLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
             nameLabel1 = new System.Windows.Forms.Label();
@@ -433,14 +458,14 @@
             this.panel_tag.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tagBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rPTags_questiondata)).BeginInit();
+            this.panel_gruppa.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gruppaBindingSource1)).BeginInit();
             this.panel_corpus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.corpusBindingSource1)).BeginInit();
             this.panel_Systema.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemaBindingSource1)).BeginInit();
             this.panel_PLC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pLCBindingSource1)).BeginInit();
-            this.panel_gruppa.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gruppaBindingSource1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -920,6 +945,7 @@
             this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
             resources.ApplyResources(this.treeView1, "treeView1");
             this.treeView1.Name = "treeView1";
+            this.treeView1.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeSelect);
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // contextMenuStrip1
@@ -1120,6 +1146,8 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pLCBindingSource, "Name", true));
+            this.comboBox2.DataSource = this.pLCBindingSource;
             this.comboBox2.DisplayMember = "Name";
             resources.ApplyResources(this.comboBox2, "comboBox2");
             this.comboBox2.FormattingEnabled = true;
@@ -1227,6 +1255,8 @@
             // 
             // comboBox4
             // 
+            this.comboBox4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pLCBindingSource, "Name", true));
+            this.comboBox4.DataSource = this.pLCBindingSource;
             this.comboBox4.DisplayMember = "Name";
             resources.ApplyResources(this.comboBox4, "comboBox4");
             this.comboBox4.FormattingEnabled = true;
@@ -1353,6 +1383,8 @@
             // 
             // comboBox5
             // 
+            this.comboBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pLCBindingSource, "Name", true));
+            this.comboBox5.DataSource = this.pLCBindingSource;
             this.comboBox5.DisplayMember = "Name";
             resources.ApplyResources(this.comboBox5, "comboBox5");
             this.comboBox5.FormattingEnabled = true;
@@ -1476,6 +1508,8 @@
             // 
             // comboBox6
             // 
+            this.comboBox6.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pLCBindingSource, "Name", true));
+            this.comboBox6.DataSource = this.pLCBindingSource;
             this.comboBox6.DisplayMember = "Name";
             resources.ApplyResources(this.comboBox6, "comboBox6");
             this.comboBox6.FormattingEnabled = true;
@@ -1601,6 +1635,7 @@
             // comboBox1
             // 
             this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.pLCBindingSource, "Name", true));
+            this.comboBox1.DataSource = this.pLCBindingSource;
             this.comboBox1.DisplayMember = "Name";
             this.comboBox1.FormattingEnabled = true;
             resources.ApplyResources(this.comboBox1, "comboBox1");
@@ -1646,9 +1681,20 @@
             // dataGridView5
             // 
             this.dataGridView5.AllowUserToOrderColumns = true;
+            this.dataGridView5.AutoGenerateColumns = false;
             this.dataGridView5.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView5.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.typeDataGridViewTextBoxColumn,
+            this.valueDataGridViewTextBoxColumn,
+            this.minPeriodDataGridViewTextBoxColumn,
+            this.maxPeriodDataGridViewTextBoxColumn,
+            this.lowRangeDataGridViewTextBoxColumn,
+            this.highRangeDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn,
+            this.thresHoldDataGridViewTextBoxColumn});
             this.dataGridView5.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.dataGridView5.DataSource = this.filtresBindingSource;
             resources.ApplyResources(this.dataGridView5, "dataGridView5");
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.StandardTab = true;
@@ -1694,9 +1740,14 @@
             // dataGridView13
             // 
             this.dataGridView13.AllowUserToOrderColumns = true;
+            this.dataGridView13.AutoGenerateColumns = false;
             this.dataGridView13.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView13.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView13.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nameDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn1});
             this.dataGridView13.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.dataGridView13.DataSource = this.systemTypeBindingSource;
             resources.ApplyResources(this.dataGridView13, "dataGridView13");
             this.dataGridView13.Name = "dataGridView13";
             this.dataGridView13.StandardTab = true;
@@ -1745,9 +1796,19 @@
             this.dataGridView17.AllowUserToDeleteRows = false;
             this.dataGridView17.AllowUserToOrderColumns = true;
             this.dataGridView17.AllowUserToResizeRows = false;
+            this.dataGridView17.AutoGenerateColumns = false;
             this.dataGridView17.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView17.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView17.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nameDataGridViewTextBoxColumn4,
+            this.grupTypeDataGridViewTextBoxColumn,
+            this.tagTypeDataGridViewTextBoxColumn,
+            this.hHDataGridViewTextBoxColumn,
+            this.uDMInputDataGridViewTextBoxColumn,
+            this.uDMOutputDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn5});
             this.dataGridView17.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.dataGridView17.DataSource = this.tagBindingSource;
             resources.ApplyResources(this.dataGridView17, "dataGridView17");
             this.dataGridView17.Name = "dataGridView17";
             this.dataGridView17.ReadOnly = true;
@@ -1757,9 +1818,14 @@
             // dataGridView14
             // 
             this.dataGridView14.AllowUserToOrderColumns = true;
+            this.dataGridView14.AutoGenerateColumns = false;
             this.dataGridView14.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView14.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView14.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nameDataGridViewTextBoxColumn1,
+            this.descriptionDataGridViewTextBoxColumn2});
             this.dataGridView14.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.dataGridView14.DataSource = this.gruptypeBindingSource;
             resources.ApplyResources(this.dataGridView14, "dataGridView14");
             this.dataGridView14.Name = "dataGridView14";
             this.dataGridView14.StandardTab = true;
@@ -1806,9 +1872,17 @@
             // dataGridView15
             // 
             this.dataGridView15.AllowUserToOrderColumns = true;
+            this.dataGridView15.AutoGenerateColumns = false;
             this.dataGridView15.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView15.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView15.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nameDataGridViewTextBoxColumn2,
+            this.descriptionDataGridViewTextBoxColumn3,
+            this.uDMPathDataGridViewTextBoxColumn,
+            this.hHPathDataGridViewTextBoxColumn,
+            this.alarmPathDataGridViewTextBoxColumn});
             this.dataGridView15.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.dataGridView15.DataSource = this.tagTypeBindingSource;
             resources.ApplyResources(this.dataGridView15, "dataGridView15");
             this.dataGridView15.Name = "dataGridView15";
             this.dataGridView15.StandardTab = true;
@@ -1853,9 +1927,14 @@
             // dataGridView16
             // 
             this.dataGridView16.AllowUserToOrderColumns = true;
+            this.dataGridView16.AutoGenerateColumns = false;
             this.dataGridView16.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView16.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView16.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nameDataGridViewTextBoxColumn3,
+            this.descriptionDataGridViewTextBoxColumn4});
             this.dataGridView16.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.dataGridView16.DataSource = this.oPCBindingSource;
             resources.ApplyResources(this.dataGridView16, "dataGridView16");
             this.dataGridView16.Name = "dataGridView16";
             this.dataGridView16.StandardTab = true;
@@ -1919,6 +1998,106 @@
             this.dataGridView7.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView7_CellEndEdit);
             this.dataGridView7.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView6_DataError);
             // 
+            // sysidDataGridViewTextBoxColumn1
+            // 
+            this.sysidDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.sysidDataGridViewTextBoxColumn1.DataPropertyName = "Sys_id";
+            this.sysidDataGridViewTextBoxColumn1.DataSource = this.systemaBindingSource;
+            this.sysidDataGridViewTextBoxColumn1.DisplayMember = "Name";
+            this.sysidDataGridViewTextBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            resources.ApplyResources(this.sysidDataGridViewTextBoxColumn1, "sysidDataGridViewTextBoxColumn1");
+            this.sysidDataGridViewTextBoxColumn1.Name = "sysidDataGridViewTextBoxColumn1";
+            this.sysidDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.sysidDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.sysidDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.sysidDataGridViewTextBoxColumn1.ValueMember = "id";
+            // 
+            // gridDataGridViewTextBoxColumn1
+            // 
+            this.gridDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.gridDataGridViewTextBoxColumn1.DataPropertyName = "Gr_id";
+            this.gridDataGridViewTextBoxColumn1.DataSource = this.gruppaBindingSource;
+            this.gridDataGridViewTextBoxColumn1.DisplayMember = "Name";
+            this.gridDataGridViewTextBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            resources.ApplyResources(this.gridDataGridViewTextBoxColumn1, "gridDataGridViewTextBoxColumn1");
+            this.gridDataGridViewTextBoxColumn1.Name = "gridDataGridViewTextBoxColumn1";
+            this.gridDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.gridDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.gridDataGridViewTextBoxColumn1.ValueMember = "id";
+            // 
+            // Tag_id1
+            // 
+            this.Tag_id1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Tag_id1.DataPropertyName = "Tag_id";
+            this.Tag_id1.DataSource = this.tagIdTagTypeIDBindingSource;
+            this.Tag_id1.DisplayMember = "TagType_Name";
+            this.Tag_id1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            resources.ApplyResources(this.Tag_id1, "Tag_id1");
+            this.Tag_id1.Name = "Tag_id1";
+            this.Tag_id1.ReadOnly = true;
+            this.Tag_id1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Tag_id1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Tag_id1.ValueMember = "id";
+            // 
+            // tagidDataGridViewTextBoxColumn1
+            // 
+            this.tagidDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.tagidDataGridViewTextBoxColumn1.DataPropertyName = "Tag_id";
+            this.tagidDataGridViewTextBoxColumn1.DataSource = this.tagIdTagTypeIDBindingSource;
+            this.tagidDataGridViewTextBoxColumn1.DisplayMember = "Tag_name";
+            this.tagidDataGridViewTextBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            resources.ApplyResources(this.tagidDataGridViewTextBoxColumn1, "tagidDataGridViewTextBoxColumn1");
+            this.tagidDataGridViewTextBoxColumn1.Name = "tagidDataGridViewTextBoxColumn1";
+            this.tagidDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.tagidDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.tagidDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.tagidDataGridViewTextBoxColumn1.ValueMember = "id";
+            // 
+            // GMP
+            // 
+            this.GMP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GMP.DataPropertyName = "GMP";
+            resources.ApplyResources(this.GMP, "GMP");
+            this.GMP.Name = "GMP";
+            this.GMP.TrueValue = "1";
+            // 
+            // AdrPLC
+            // 
+            this.AdrPLC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.AdrPLC.DataPropertyName = "AdrPLC";
+            resources.ApplyResources(this.AdrPLC, "AdrPLC");
+            this.AdrPLC.Name = "AdrPLC";
+            // 
+            // sAIDDataGridViewTextBoxColumn1
+            // 
+            this.sAIDDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.sAIDDataGridViewTextBoxColumn1.DataPropertyName = "SAID";
+            resources.ApplyResources(this.sAIDDataGridViewTextBoxColumn1, "sAIDDataGridViewTextBoxColumn1");
+            this.sAIDDataGridViewTextBoxColumn1.Name = "sAIDDataGridViewTextBoxColumn1";
+            // 
+            // cutDataGridViewTextBoxColumn1
+            // 
+            this.cutDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cutDataGridViewTextBoxColumn1.DataPropertyName = "Cut";
+            resources.ApplyResources(this.cutDataGridViewTextBoxColumn1, "cutDataGridViewTextBoxColumn1");
+            this.cutDataGridViewTextBoxColumn1.Name = "cutDataGridViewTextBoxColumn1";
+            this.cutDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cutDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.cutDataGridViewTextBoxColumn1.TrueValue = "1";
+            // 
+            // Tag_id2
+            // 
+            this.Tag_id2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Tag_id2.DataPropertyName = "Tag_id";
+            this.Tag_id2.DataSource = this.tagIdTagTypeIDBindingSource;
+            this.Tag_id2.DisplayMember = "Description";
+            this.Tag_id2.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            resources.ApplyResources(this.Tag_id2, "Tag_id2");
+            this.Tag_id2.Name = "Tag_id2";
+            this.Tag_id2.ReadOnly = true;
+            this.Tag_id2.ValueMember = "id";
+            // 
             // menuStrip10
             // 
             this.menuStrip10.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1969,11 +2148,11 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.panel_tag);
-            this.tabPage1.Controls.Add(this.panel_gruppa);
             this.tabPage1.Controls.Add(this.panel_corpus);
             this.tabPage1.Controls.Add(this.panel_Systema);
             this.tabPage1.Controls.Add(this.panel_PLC);
+            this.tabPage1.Controls.Add(this.panel_tag);
+            this.tabPage1.Controls.Add(this.panel_gruppa);
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1982,7 +2161,6 @@
             // 
             this.panel_tag.Controls.Add(this.buttonTagCancel);
             this.panel_tag.Controls.Add(this.buttonTagSave);
-            this.panel_tag.Controls.Add(this.richTextBox1);
             this.panel_tag.Controls.Add(this.comboBox7);
             this.panel_tag.Controls.Add(filterLabel);
             this.panel_tag.Controls.Add(relatedValue5Label);
@@ -2031,13 +2209,6 @@
             this.buttonTagSave.Name = "buttonTagSave";
             this.buttonTagSave.UseVisualStyleBackColor = true;
             this.buttonTagSave.Click += new System.EventHandler(this.buttonTagSave_Click);
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.richTextBox1, "richTextBox1");
-            this.richTextBox1.Name = "richTextBox1";
             // 
             // comboBox7
             // 
@@ -2190,6 +2361,95 @@
             // 
             resources.ApplyResources(this.label25, "label25");
             this.label25.Name = "label25";
+            // 
+            // panel_gruppa
+            // 
+            this.panel_gruppa.Controls.Add(this.checkBoxGrupEnabled);
+            this.panel_gruppa.Controls.Add(this.buttonGruppaCancel);
+            this.panel_gruppa.Controls.Add(this.buttonGruppaSave);
+            this.panel_gruppa.Controls.Add(systemaLabel);
+            this.panel_gruppa.Controls.Add(this.systemaComboBox);
+            this.panel_gruppa.Controls.Add(grupTypeLabel);
+            this.panel_gruppa.Controls.Add(this.grupTypeComboBox);
+            this.panel_gruppa.Controls.Add(areaLabel);
+            this.panel_gruppa.Controls.Add(this.areaTextBox);
+            this.panel_gruppa.Controls.Add(descriptionLabel3);
+            this.panel_gruppa.Controls.Add(this.descriptionTextBox3);
+            this.panel_gruppa.Controls.Add(nameLabel3);
+            this.panel_gruppa.Controls.Add(this.nameTextBox3);
+            this.panel_gruppa.Controls.Add(this.label24);
+            resources.ApplyResources(this.panel_gruppa, "panel_gruppa");
+            this.panel_gruppa.Name = "panel_gruppa";
+            // 
+            // checkBoxGrupEnabled
+            // 
+            resources.ApplyResources(this.checkBoxGrupEnabled, "checkBoxGrupEnabled");
+            this.checkBoxGrupEnabled.Name = "checkBoxGrupEnabled";
+            this.checkBoxGrupEnabled.UseVisualStyleBackColor = true;
+            // 
+            // buttonGruppaCancel
+            // 
+            resources.ApplyResources(this.buttonGruppaCancel, "buttonGruppaCancel");
+            this.buttonGruppaCancel.Name = "buttonGruppaCancel";
+            this.buttonGruppaCancel.UseVisualStyleBackColor = true;
+            this.buttonGruppaCancel.Click += new System.EventHandler(this.buttonGruppaCancel_Click);
+            // 
+            // buttonGruppaSave
+            // 
+            resources.ApplyResources(this.buttonGruppaSave, "buttonGruppaSave");
+            this.buttonGruppaSave.Name = "buttonGruppaSave";
+            this.buttonGruppaSave.UseVisualStyleBackColor = true;
+            this.buttonGruppaSave.Click += new System.EventHandler(this.buttonGruppaSave_Click);
+            // 
+            // systemaComboBox
+            // 
+            this.systemaComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.gruppaBindingSource1, "Systema", true));
+            this.systemaComboBox.DataSource = this.systemaBindingSource;
+            this.systemaComboBox.DisplayMember = "Name";
+            this.systemaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.systemaComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.systemaComboBox, "systemaComboBox");
+            this.systemaComboBox.Name = "systemaComboBox";
+            this.systemaComboBox.ValueMember = "id";
+            // 
+            // gruppaBindingSource1
+            // 
+            this.gruppaBindingSource1.DataMember = "Gruppa";
+            this.gruppaBindingSource1.DataSource = this.rPTags_questiondata;
+            // 
+            // grupTypeComboBox
+            // 
+            this.grupTypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.gruppaBindingSource1, "GrupType", true));
+            this.grupTypeComboBox.DataSource = this.gruptypeBindingSource;
+            this.grupTypeComboBox.DisplayMember = "Name";
+            this.grupTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.grupTypeComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.grupTypeComboBox, "grupTypeComboBox");
+            this.grupTypeComboBox.Name = "grupTypeComboBox";
+            this.grupTypeComboBox.ValueMember = "id";
+            // 
+            // areaTextBox
+            // 
+            this.areaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gruppaBindingSource1, "Area", true));
+            resources.ApplyResources(this.areaTextBox, "areaTextBox");
+            this.areaTextBox.Name = "areaTextBox";
+            // 
+            // descriptionTextBox3
+            // 
+            this.descriptionTextBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gruppaBindingSource1, "Description", true));
+            resources.ApplyResources(this.descriptionTextBox3, "descriptionTextBox3");
+            this.descriptionTextBox3.Name = "descriptionTextBox3";
+            // 
+            // nameTextBox3
+            // 
+            this.nameTextBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gruppaBindingSource1, "Name", true));
+            resources.ApplyResources(this.nameTextBox3, "nameTextBox3");
+            this.nameTextBox3.Name = "nameTextBox3";
+            // 
+            // label24
+            // 
+            resources.ApplyResources(this.label24, "label24");
+            this.label24.Name = "label24";
             // 
             // panel_corpus
             // 
@@ -2402,95 +2662,6 @@
             resources.ApplyResources(this.nameTextBox1, "nameTextBox1");
             this.nameTextBox1.Name = "nameTextBox1";
             // 
-            // panel_gruppa
-            // 
-            this.panel_gruppa.Controls.Add(this.checkBoxGrupEnabled);
-            this.panel_gruppa.Controls.Add(this.buttonGruppaCancel);
-            this.panel_gruppa.Controls.Add(this.buttonGruppaSave);
-            this.panel_gruppa.Controls.Add(systemaLabel);
-            this.panel_gruppa.Controls.Add(this.systemaComboBox);
-            this.panel_gruppa.Controls.Add(grupTypeLabel);
-            this.panel_gruppa.Controls.Add(this.grupTypeComboBox);
-            this.panel_gruppa.Controls.Add(areaLabel);
-            this.panel_gruppa.Controls.Add(this.areaTextBox);
-            this.panel_gruppa.Controls.Add(descriptionLabel3);
-            this.panel_gruppa.Controls.Add(this.descriptionTextBox3);
-            this.panel_gruppa.Controls.Add(nameLabel3);
-            this.panel_gruppa.Controls.Add(this.nameTextBox3);
-            this.panel_gruppa.Controls.Add(this.label24);
-            resources.ApplyResources(this.panel_gruppa, "panel_gruppa");
-            this.panel_gruppa.Name = "panel_gruppa";
-            // 
-            // checkBoxGrupEnabled
-            // 
-            resources.ApplyResources(this.checkBoxGrupEnabled, "checkBoxGrupEnabled");
-            this.checkBoxGrupEnabled.Name = "checkBoxGrupEnabled";
-            this.checkBoxGrupEnabled.UseVisualStyleBackColor = true;
-            // 
-            // buttonGruppaCancel
-            // 
-            resources.ApplyResources(this.buttonGruppaCancel, "buttonGruppaCancel");
-            this.buttonGruppaCancel.Name = "buttonGruppaCancel";
-            this.buttonGruppaCancel.UseVisualStyleBackColor = true;
-            this.buttonGruppaCancel.Click += new System.EventHandler(this.buttonGruppaCancel_Click);
-            // 
-            // buttonGruppaSave
-            // 
-            resources.ApplyResources(this.buttonGruppaSave, "buttonGruppaSave");
-            this.buttonGruppaSave.Name = "buttonGruppaSave";
-            this.buttonGruppaSave.UseVisualStyleBackColor = true;
-            this.buttonGruppaSave.Click += new System.EventHandler(this.buttonGruppaSave_Click);
-            // 
-            // systemaComboBox
-            // 
-            this.systemaComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.gruppaBindingSource1, "Systema", true));
-            this.systemaComboBox.DataSource = this.systemaBindingSource;
-            this.systemaComboBox.DisplayMember = "Name";
-            this.systemaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.systemaComboBox.FormattingEnabled = true;
-            resources.ApplyResources(this.systemaComboBox, "systemaComboBox");
-            this.systemaComboBox.Name = "systemaComboBox";
-            this.systemaComboBox.ValueMember = "id";
-            // 
-            // gruppaBindingSource1
-            // 
-            this.gruppaBindingSource1.DataMember = "Gruppa";
-            this.gruppaBindingSource1.DataSource = this.rPTags_questiondata;
-            // 
-            // grupTypeComboBox
-            // 
-            this.grupTypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.gruppaBindingSource1, "GrupType", true));
-            this.grupTypeComboBox.DataSource = this.gruptypeBindingSource;
-            this.grupTypeComboBox.DisplayMember = "Name";
-            this.grupTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.grupTypeComboBox.FormattingEnabled = true;
-            resources.ApplyResources(this.grupTypeComboBox, "grupTypeComboBox");
-            this.grupTypeComboBox.Name = "grupTypeComboBox";
-            this.grupTypeComboBox.ValueMember = "id";
-            // 
-            // areaTextBox
-            // 
-            this.areaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gruppaBindingSource1, "Area", true));
-            resources.ApplyResources(this.areaTextBox, "areaTextBox");
-            this.areaTextBox.Name = "areaTextBox";
-            // 
-            // descriptionTextBox3
-            // 
-            this.descriptionTextBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gruppaBindingSource1, "Description", true));
-            resources.ApplyResources(this.descriptionTextBox3, "descriptionTextBox3");
-            this.descriptionTextBox3.Name = "descriptionTextBox3";
-            // 
-            // nameTextBox3
-            // 
-            this.nameTextBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gruppaBindingSource1, "Name", true));
-            resources.ApplyResources(this.nameTextBox3, "nameTextBox3");
-            this.nameTextBox3.Name = "nameTextBox3";
-            // 
-            // label24
-            // 
-            resources.ApplyResources(this.label24, "label24");
-            this.label24.Name = "label24";
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -2540,105 +2711,203 @@
             // 
             this.tagTableAdapter1.ClearBeforeFill = true;
             // 
-            // sysidDataGridViewTextBoxColumn1
+            // typeDataGridViewTextBoxColumn
             // 
-            this.sysidDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.sysidDataGridViewTextBoxColumn1.DataPropertyName = "Sys_id";
-            this.sysidDataGridViewTextBoxColumn1.DataSource = this.systemaBindingSource;
-            this.sysidDataGridViewTextBoxColumn1.DisplayMember = "Name";
-            this.sysidDataGridViewTextBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            resources.ApplyResources(this.sysidDataGridViewTextBoxColumn1, "sysidDataGridViewTextBoxColumn1");
-            this.sysidDataGridViewTextBoxColumn1.Name = "sysidDataGridViewTextBoxColumn1";
-            this.sysidDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.sysidDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.sysidDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.sysidDataGridViewTextBoxColumn1.ValueMember = "id";
+            this.typeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
+            resources.ApplyResources(this.typeDataGridViewTextBoxColumn, "typeDataGridViewTextBoxColumn");
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
             // 
-            // gridDataGridViewTextBoxColumn1
+            // valueDataGridViewTextBoxColumn
             // 
-            this.gridDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.gridDataGridViewTextBoxColumn1.DataPropertyName = "Gr_id";
-            this.gridDataGridViewTextBoxColumn1.DataSource = this.gruppaBindingSource;
-            this.gridDataGridViewTextBoxColumn1.DisplayMember = "Name";
-            this.gridDataGridViewTextBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            resources.ApplyResources(this.gridDataGridViewTextBoxColumn1, "gridDataGridViewTextBoxColumn1");
-            this.gridDataGridViewTextBoxColumn1.Name = "gridDataGridViewTextBoxColumn1";
-            this.gridDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.gridDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.gridDataGridViewTextBoxColumn1.ValueMember = "id";
+            this.valueDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.valueDataGridViewTextBoxColumn.DataPropertyName = "Value";
+            resources.ApplyResources(this.valueDataGridViewTextBoxColumn, "valueDataGridViewTextBoxColumn");
+            this.valueDataGridViewTextBoxColumn.Name = "valueDataGridViewTextBoxColumn";
             // 
-            // Tag_id1
+            // minPeriodDataGridViewTextBoxColumn
             // 
-            this.Tag_id1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Tag_id1.DataPropertyName = "Tag_id";
-            this.Tag_id1.DataSource = this.tagIdTagTypeIDBindingSource;
-            this.Tag_id1.DisplayMember = "TagType_Name";
-            this.Tag_id1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            resources.ApplyResources(this.Tag_id1, "Tag_id1");
-            this.Tag_id1.Name = "Tag_id1";
-            this.Tag_id1.ReadOnly = true;
-            this.Tag_id1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Tag_id1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Tag_id1.ValueMember = "id";
+            this.minPeriodDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.minPeriodDataGridViewTextBoxColumn.DataPropertyName = "MinPeriod";
+            resources.ApplyResources(this.minPeriodDataGridViewTextBoxColumn, "minPeriodDataGridViewTextBoxColumn");
+            this.minPeriodDataGridViewTextBoxColumn.Name = "minPeriodDataGridViewTextBoxColumn";
             // 
-            // tagidDataGridViewTextBoxColumn1
+            // maxPeriodDataGridViewTextBoxColumn
             // 
-            this.tagidDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.tagidDataGridViewTextBoxColumn1.DataPropertyName = "Tag_id";
-            this.tagidDataGridViewTextBoxColumn1.DataSource = this.tagIdTagTypeIDBindingSource;
-            this.tagidDataGridViewTextBoxColumn1.DisplayMember = "Tag_name";
-            this.tagidDataGridViewTextBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            resources.ApplyResources(this.tagidDataGridViewTextBoxColumn1, "tagidDataGridViewTextBoxColumn1");
-            this.tagidDataGridViewTextBoxColumn1.Name = "tagidDataGridViewTextBoxColumn1";
-            this.tagidDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.tagidDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.tagidDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.tagidDataGridViewTextBoxColumn1.ValueMember = "id";
+            this.maxPeriodDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.maxPeriodDataGridViewTextBoxColumn.DataPropertyName = "MaxPeriod";
+            resources.ApplyResources(this.maxPeriodDataGridViewTextBoxColumn, "maxPeriodDataGridViewTextBoxColumn");
+            this.maxPeriodDataGridViewTextBoxColumn.Name = "maxPeriodDataGridViewTextBoxColumn";
             // 
-            // GMP
+            // lowRangeDataGridViewTextBoxColumn
             // 
-            this.GMP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GMP.DataPropertyName = "GMP";
-            resources.ApplyResources(this.GMP, "GMP");
-            this.GMP.Name = "GMP";
-            this.GMP.TrueValue = "1";
+            this.lowRangeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.lowRangeDataGridViewTextBoxColumn.DataPropertyName = "LowRange";
+            resources.ApplyResources(this.lowRangeDataGridViewTextBoxColumn, "lowRangeDataGridViewTextBoxColumn");
+            this.lowRangeDataGridViewTextBoxColumn.Name = "lowRangeDataGridViewTextBoxColumn";
             // 
-            // AdrPLC
+            // highRangeDataGridViewTextBoxColumn
             // 
-            this.AdrPLC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.AdrPLC.DataPropertyName = "AdrPLC";
-            resources.ApplyResources(this.AdrPLC, "AdrPLC");
-            this.AdrPLC.Name = "AdrPLC";
+            this.highRangeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.highRangeDataGridViewTextBoxColumn.DataPropertyName = "HighRange";
+            resources.ApplyResources(this.highRangeDataGridViewTextBoxColumn, "highRangeDataGridViewTextBoxColumn");
+            this.highRangeDataGridViewTextBoxColumn.Name = "highRangeDataGridViewTextBoxColumn";
             // 
-            // sAIDDataGridViewTextBoxColumn1
+            // descriptionDataGridViewTextBoxColumn
             // 
-            this.sAIDDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.sAIDDataGridViewTextBoxColumn1.DataPropertyName = "SAID";
-            resources.ApplyResources(this.sAIDDataGridViewTextBoxColumn1, "sAIDDataGridViewTextBoxColumn1");
-            this.sAIDDataGridViewTextBoxColumn1.Name = "sAIDDataGridViewTextBoxColumn1";
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn, "descriptionDataGridViewTextBoxColumn");
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
             // 
-            // cutDataGridViewTextBoxColumn1
+            // thresHoldDataGridViewTextBoxColumn
             // 
-            this.cutDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cutDataGridViewTextBoxColumn1.DataPropertyName = "Cut";
-            resources.ApplyResources(this.cutDataGridViewTextBoxColumn1, "cutDataGridViewTextBoxColumn1");
-            this.cutDataGridViewTextBoxColumn1.Name = "cutDataGridViewTextBoxColumn1";
-            this.cutDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.cutDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.cutDataGridViewTextBoxColumn1.TrueValue = "1";
+            this.thresHoldDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.thresHoldDataGridViewTextBoxColumn.DataPropertyName = "ThresHold";
+            resources.ApplyResources(this.thresHoldDataGridViewTextBoxColumn, "thresHoldDataGridViewTextBoxColumn");
+            this.thresHoldDataGridViewTextBoxColumn.Name = "thresHoldDataGridViewTextBoxColumn";
             // 
-            // Tag_id2
+            // nameDataGridViewTextBoxColumn
             // 
-            this.Tag_id2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Tag_id2.DataPropertyName = "Tag_id";
-            this.Tag_id2.DataSource = this.tagIdTagTypeIDBindingSource;
-            this.Tag_id2.DisplayMember = "Description";
-            this.Tag_id2.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            resources.ApplyResources(this.Tag_id2, "Tag_id2");
-            this.Tag_id2.Name = "Tag_id2";
-            this.Tag_id2.ReadOnly = true;
-            this.Tag_id2.ValueMember = "id";
+            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            resources.ApplyResources(this.nameDataGridViewTextBoxColumn, "nameDataGridViewTextBoxColumn");
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // descriptionDataGridViewTextBoxColumn1
+            // 
+            this.descriptionDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
+            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn1, "descriptionDataGridViewTextBoxColumn1");
+            this.descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            resources.ApplyResources(this.nameDataGridViewTextBoxColumn1, "nameDataGridViewTextBoxColumn1");
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            // 
+            // descriptionDataGridViewTextBoxColumn2
+            // 
+            this.descriptionDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.descriptionDataGridViewTextBoxColumn2.DataPropertyName = "Description";
+            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn2, "descriptionDataGridViewTextBoxColumn2");
+            this.descriptionDataGridViewTextBoxColumn2.Name = "descriptionDataGridViewTextBoxColumn2";
+            // 
+            // nameDataGridViewTextBoxColumn2
+            // 
+            this.nameDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nameDataGridViewTextBoxColumn2.DataPropertyName = "Name";
+            resources.ApplyResources(this.nameDataGridViewTextBoxColumn2, "nameDataGridViewTextBoxColumn2");
+            this.nameDataGridViewTextBoxColumn2.Name = "nameDataGridViewTextBoxColumn2";
+            // 
+            // descriptionDataGridViewTextBoxColumn3
+            // 
+            this.descriptionDataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.descriptionDataGridViewTextBoxColumn3.DataPropertyName = "Description";
+            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn3, "descriptionDataGridViewTextBoxColumn3");
+            this.descriptionDataGridViewTextBoxColumn3.Name = "descriptionDataGridViewTextBoxColumn3";
+            // 
+            // uDMPathDataGridViewTextBoxColumn
+            // 
+            this.uDMPathDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.uDMPathDataGridViewTextBoxColumn.DataPropertyName = "UDM_Path";
+            resources.ApplyResources(this.uDMPathDataGridViewTextBoxColumn, "uDMPathDataGridViewTextBoxColumn");
+            this.uDMPathDataGridViewTextBoxColumn.Name = "uDMPathDataGridViewTextBoxColumn";
+            // 
+            // hHPathDataGridViewTextBoxColumn
+            // 
+            this.hHPathDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.hHPathDataGridViewTextBoxColumn.DataPropertyName = "HH_Path";
+            resources.ApplyResources(this.hHPathDataGridViewTextBoxColumn, "hHPathDataGridViewTextBoxColumn");
+            this.hHPathDataGridViewTextBoxColumn.Name = "hHPathDataGridViewTextBoxColumn";
+            // 
+            // alarmPathDataGridViewTextBoxColumn
+            // 
+            this.alarmPathDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.alarmPathDataGridViewTextBoxColumn.DataPropertyName = "Alarm_Path";
+            resources.ApplyResources(this.alarmPathDataGridViewTextBoxColumn, "alarmPathDataGridViewTextBoxColumn");
+            this.alarmPathDataGridViewTextBoxColumn.Name = "alarmPathDataGridViewTextBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn3
+            // 
+            this.nameDataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nameDataGridViewTextBoxColumn3.DataPropertyName = "Name";
+            resources.ApplyResources(this.nameDataGridViewTextBoxColumn3, "nameDataGridViewTextBoxColumn3");
+            this.nameDataGridViewTextBoxColumn3.Name = "nameDataGridViewTextBoxColumn3";
+            // 
+            // descriptionDataGridViewTextBoxColumn4
+            // 
+            this.descriptionDataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.descriptionDataGridViewTextBoxColumn4.DataPropertyName = "Description";
+            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn4, "descriptionDataGridViewTextBoxColumn4");
+            this.descriptionDataGridViewTextBoxColumn4.Name = "descriptionDataGridViewTextBoxColumn4";
+            // 
+            // nameDataGridViewTextBoxColumn4
+            // 
+            this.nameDataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nameDataGridViewTextBoxColumn4.DataPropertyName = "Name";
+            resources.ApplyResources(this.nameDataGridViewTextBoxColumn4, "nameDataGridViewTextBoxColumn4");
+            this.nameDataGridViewTextBoxColumn4.Name = "nameDataGridViewTextBoxColumn4";
+            this.nameDataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // grupTypeDataGridViewTextBoxColumn
+            // 
+            this.grupTypeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.grupTypeDataGridViewTextBoxColumn.DataPropertyName = "GrupType";
+            resources.ApplyResources(this.grupTypeDataGridViewTextBoxColumn, "grupTypeDataGridViewTextBoxColumn");
+            this.grupTypeDataGridViewTextBoxColumn.Name = "grupTypeDataGridViewTextBoxColumn";
+            this.grupTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tagTypeDataGridViewTextBoxColumn
+            // 
+            this.tagTypeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.tagTypeDataGridViewTextBoxColumn.DataPropertyName = "TagType";
+            resources.ApplyResources(this.tagTypeDataGridViewTextBoxColumn, "tagTypeDataGridViewTextBoxColumn");
+            this.tagTypeDataGridViewTextBoxColumn.Name = "tagTypeDataGridViewTextBoxColumn";
+            this.tagTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hHDataGridViewTextBoxColumn
+            // 
+            this.hHDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.hHDataGridViewTextBoxColumn.DataPropertyName = "HH";
+            resources.ApplyResources(this.hHDataGridViewTextBoxColumn, "hHDataGridViewTextBoxColumn");
+            this.hHDataGridViewTextBoxColumn.Name = "hHDataGridViewTextBoxColumn";
+            this.hHDataGridViewTextBoxColumn.ReadOnly = true;
+            this.hHDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.hHDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.hHDataGridViewTextBoxColumn.TrueValue = "R";
+            // 
+            // uDMInputDataGridViewTextBoxColumn
+            // 
+            this.uDMInputDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.uDMInputDataGridViewTextBoxColumn.DataPropertyName = "UDM_Input";
+            resources.ApplyResources(this.uDMInputDataGridViewTextBoxColumn, "uDMInputDataGridViewTextBoxColumn");
+            this.uDMInputDataGridViewTextBoxColumn.Name = "uDMInputDataGridViewTextBoxColumn";
+            this.uDMInputDataGridViewTextBoxColumn.ReadOnly = true;
+            this.uDMInputDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.uDMInputDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.uDMInputDataGridViewTextBoxColumn.TrueValue = "R";
+            // 
+            // uDMOutputDataGridViewTextBoxColumn
+            // 
+            this.uDMOutputDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.uDMOutputDataGridViewTextBoxColumn.DataPropertyName = "UDM_Output";
+            resources.ApplyResources(this.uDMOutputDataGridViewTextBoxColumn, "uDMOutputDataGridViewTextBoxColumn");
+            this.uDMOutputDataGridViewTextBoxColumn.Name = "uDMOutputDataGridViewTextBoxColumn";
+            this.uDMOutputDataGridViewTextBoxColumn.ReadOnly = true;
+            this.uDMOutputDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.uDMOutputDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.uDMOutputDataGridViewTextBoxColumn.TrueValue = "W";
+            // 
+            // descriptionDataGridViewTextBoxColumn5
+            // 
+            this.descriptionDataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.descriptionDataGridViewTextBoxColumn5.DataPropertyName = "Description";
+            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn5, "descriptionDataGridViewTextBoxColumn5");
+            this.descriptionDataGridViewTextBoxColumn5.Name = "descriptionDataGridViewTextBoxColumn5";
+            this.descriptionDataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // Form2
             // 
@@ -2746,6 +3015,9 @@
             this.panel_tag.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tagBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rPTags_questiondata)).EndInit();
+            this.panel_gruppa.ResumeLayout(false);
+            this.panel_gruppa.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gruppaBindingSource1)).EndInit();
             this.panel_corpus.ResumeLayout(false);
             this.panel_corpus.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.corpusBindingSource1)).EndInit();
@@ -2755,9 +3027,6 @@
             this.panel_PLC.ResumeLayout(false);
             this.panel_PLC.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pLCBindingSource1)).EndInit();
-            this.panel_gruppa.ResumeLayout(false);
-            this.panel_gruppa.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gruppaBindingSource1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -2992,7 +3261,6 @@
         private System.Windows.Forms.TextBox areaTextBox;
         private System.Windows.Forms.TextBox descriptionTextBox3;
         private System.Windows.Forms.TextBox nameTextBox3;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.ComboBox comboBox7;
         private System.Windows.Forms.TextBox relatedValue5TextBox;
         private System.Windows.Forms.TextBox tLA_MSGTextBox;
@@ -3047,5 +3315,31 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sAIDDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cutDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewComboBoxColumn Tag_id2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn minPeriodDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maxPeriodDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lowRangeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn highRangeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn thresHoldDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uDMPathDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hHPathDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn alarmPathDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn grupTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tagTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn hHDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn uDMInputDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn uDMOutputDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn5;
     }
 }
