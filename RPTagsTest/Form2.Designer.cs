@@ -368,6 +368,7 @@
             this.gruppaTableAdapter1 = new RPTagsTest.RPTags_questiondataTableAdapters.GruppaTableAdapter();
             this.tagTableAdapter1 = new RPTagsTest.RPTags_questiondataTableAdapters.TagTableAdapter();
             this.backgroundWorkerTreeLoad = new System.ComponentModel.BackgroundWorker();
+            this.toolStripMenuReload = new System.Windows.Forms.ToolStripMenuItem();
             nameLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
             nameLabel1 = new System.Windows.Forms.Label();
@@ -960,7 +961,8 @@
             this.toolStripSeparator1,
             this.toolStripMenuAdd,
             this.toolStripSeparator2,
-            this.toolStripMenuDelete});
+            this.toolStripMenuDelete,
+            this.toolStripMenuReload});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             // 
@@ -1180,8 +1182,9 @@
             // 
             // comboBox2
             // 
-            this.comboBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pLCBindingSource, "Name", true));
-            this.comboBox2.DataSource = this.pLCBindingSource;
+            this.comboBox2.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.corpusBindingSource, "Name", true));
+            this.comboBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.corpusBindingSource, "Name", true));
+            this.comboBox2.DataSource = this.corpusBindingSource;
             this.comboBox2.DisplayMember = "Name";
             resources.ApplyResources(this.comboBox2, "comboBox2");
             this.comboBox2.FormattingEnabled = true;
@@ -1289,8 +1292,9 @@
             // 
             // comboBox4
             // 
-            this.comboBox4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pLCBindingSource, "Name", true));
-            this.comboBox4.DataSource = this.pLCBindingSource;
+            this.comboBox4.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.corpusBindingSource, "Name", true));
+            this.comboBox4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.corpusBindingSource, "Name", true));
+            this.comboBox4.DataSource = this.corpusBindingSource;
             this.comboBox4.DisplayMember = "Name";
             resources.ApplyResources(this.comboBox4, "comboBox4");
             this.comboBox4.FormattingEnabled = true;
@@ -1417,8 +1421,9 @@
             // 
             // comboBox5
             // 
-            this.comboBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pLCBindingSource, "Name", true));
-            this.comboBox5.DataSource = this.pLCBindingSource;
+            this.comboBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.corpusBindingSource, "Name", true));
+            this.comboBox5.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.corpusBindingSource, "Name", true));
+            this.comboBox5.DataSource = this.corpusBindingSource;
             this.comboBox5.DisplayMember = "Name";
             resources.ApplyResources(this.comboBox5, "comboBox5");
             this.comboBox5.FormattingEnabled = true;
@@ -1542,8 +1547,8 @@
             // 
             // comboBox6
             // 
-            this.comboBox6.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pLCBindingSource, "Name", true));
-            this.comboBox6.DataSource = this.pLCBindingSource;
+            this.comboBox6.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.corpusBindingSource, "Name", true));
+            this.comboBox6.DataSource = this.corpusBindingSource;
             this.comboBox6.DisplayMember = "Name";
             resources.ApplyResources(this.comboBox6, "comboBox6");
             this.comboBox6.FormattingEnabled = true;
@@ -2949,6 +2954,11 @@
             this.backgroundWorkerTreeLoad.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerTreeLoad_ProgressChanged);
             this.backgroundWorkerTreeLoad.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerTreeLoad_RunWorkerCompleted);
             // 
+            // toolStripMenuReload
+            // 
+            this.toolStripMenuReload.Name = "toolStripMenuReload";
+            resources.ApplyResources(this.toolStripMenuReload, "toolStripMenuReload");
+            // 
             // Form2
             // 
             resources.ApplyResources(this, "$this");
@@ -3386,5 +3396,6 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuAddParent;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuAddNode;
         private System.ComponentModel.BackgroundWorker backgroundWorkerTreeLoad;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuReload;
     }
 }

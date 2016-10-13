@@ -113,11 +113,7 @@ namespace RPTagsTest
                     this.Close();
             }
 
-            this.oPCTableAdapter.Fill(this.rPTagsDataSet.OPC);
-            this.filtresTableAdapter.Fill(this.rPTagsDataSet.Filtres);
-            this.tagTypeTableAdapter.Fill(this.rPTagsDataSet.TagType);
-            this.gruptypeTableAdapter.Fill(this.rPTagsDataSet.Gruptype);
-            this.systemTypeTableAdapter.Fill(this.rPTagsDataSet.SystemType);
+            
 
             tagIdTagTypeIDTableAdapter.Fill(rPTagsDataSet.TagIdTagTypeID);
             tagTableAdapter.Fill(this.rPTagsDataSet.Tag);
@@ -145,6 +141,8 @@ namespace RPTagsTest
 
             prename = DateTime.Today.Day.ToString() + DateTime.Today.Month.ToString() + DateTime.Today.Year.ToString(); //нужно для имени файла конфигурации
 
+
+            // инициализатор загрузки дерева
             if (backgroundWorkerTreeLoad.IsBusy != true)
             {
                 backgroundWorkerTreeLoad.RunWorkerAsync();
@@ -1460,6 +1458,7 @@ namespace RPTagsTest
             BackgroundWorker worker = sender as BackgroundWorker;
             worker.WorkerReportsProgress = true;
             // инициализатор дерева
+            int intemcount = 0;
             this.corpusTableAdapter.Fill(this.rPTagsDataSet.Corpus);
             //запросим уровень корпуса
             foreach (RPTagsDataSet.CorpusRow row_corpus in rPTagsDataSet.Corpus)
@@ -1507,39 +1506,58 @@ namespace RPTagsTest
                                     // тэг к типу тега
                                     //tagType_node.Nodes.Add(Tag_node);
                                     this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { Tag_node, tagType_node});
+                                    intemcount++;
+                                    
                                 }
                                 if (tagType_node.Nodes.Count != 0)
                                     // тип тега к группе
                                     //gruppa_node.Nodes.Add(tagType_node);
                                     this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { tagType_node, gruppa_node });
+                                    
                             }
                             // группа к системе
                             //systema_node.Nodes.Add(gruppa_node);
                             this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { gruppa_node, systema_node });
+                            worker.ReportProgress(intemcount);
+
                         }
                         // система к ПЛК
                         //plc_node.Nodes.Add(systema_node);
                         this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { systema_node, plc_node });
+                        
                     }
                     //----------------------------------------------------------------------------------до сюда
                     // ПЛК к корпусу
                     //node_corpus.Nodes.Add(plc_node);
                     this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { plc_node, node_corpus });
+                    
                 }
                 // корпус к дереву
                 //treeView1.Nodes.Add(node_corpus);
                 this.Invoke(new AddNodeToTreeViewDelegate(AddNodeToTree), new object[] {node_corpus, treeView1 });
+                e.Result = intemcount;
+
+
             }
 
         }
         private void backgroundWorkerTreeLoad_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-
+            toolStripStatusLabel2.Text = "Загрузка дерева... тегов загружено: " + e.ProgressPercentage.ToString();
+           
         }
         private void backgroundWorkerTreeLoad_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            toolStripStatusLabel2.Text = "Загрузка дерева завершена!";
+            toolStripStatusLabel2.Text = "Загрузка дерева завершена! Тегов загружено: " + e.Result.ToString();
+            // обновим справочники
+            this.oPCTableAdapter.Fill(this.rPTagsDataSet.OPC);
+            this.filtresTableAdapter.Fill(this.rPTagsDataSet.Filtres);
+            this.tagTypeTableAdapter.Fill(this.rPTagsDataSet.TagType);
+            this.gruptypeTableAdapter.Fill(this.rPTagsDataSet.Gruptype);
+            this.systemTypeTableAdapter.Fill(this.rPTagsDataSet.SystemType);
+            this.pLCTableAdapter.Fill(this.rPTagsDataSet.PLC);
         }
+        //----!!!-- методы используемые делегатами!
         private void AddNodeToNode(TreeNode node, TreeNode parentNode)
         {
             parentNode.Nodes.Add(node);
@@ -1561,8 +1579,6 @@ namespace RPTagsTest
             {
                 cancelorEndEditNode();
             }
-
-
         }
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -2387,6 +2403,8 @@ namespace RPTagsTest
         {
             cancelorEndEditNode();
         }
+
+
         private void ContextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
             int level = treeView1.SelectedNode.Level;
@@ -2398,20 +2416,24 @@ namespace RPTagsTest
                     toolStripMenuDelete.Visible = true;
                     ToolStripMenuAddParent.Visible = true;
                     ToolStripMenuAddNode.Visible = true;
+                    toolStripMenuReload.Visible = true;
                     ToolStripMenuAddParent.Text = "Корпус";
                     ToolStripMenuAddNode.Text = "ПЛК";
                     toolStripMenuEdit.Text = "Изменить " + item;
                     toolStripMenuDelete.Text = "Удалить " + item;
+                    toolStripMenuReload.Text = "Обновить " + item;
                     break;
                 case 1: //выделен ПЛК
                     toolStripMenuEdit.Visible = true;
                     toolStripMenuDelete.Visible = true;
                     ToolStripMenuAddParent.Visible = true;
                     ToolStripMenuAddNode.Visible = true;
+                    toolStripMenuReload.Visible = true;
                     ToolStripMenuAddParent.Text = "ПЛК";
                     ToolStripMenuAddNode.Text = "Система";
                     toolStripMenuEdit.Text = "Изменить " + item;
                     toolStripMenuDelete.Text = "Удалить " + item;
+                    toolStripMenuReload.Text = "Обновить " + item;
                     break;
 
                 case 2: //выделена система
@@ -2419,10 +2441,12 @@ namespace RPTagsTest
                     toolStripMenuDelete.Visible = true;
                     ToolStripMenuAddParent.Visible = true;
                     ToolStripMenuAddNode.Visible = true;
+                    toolStripMenuReload.Visible = true;
                     ToolStripMenuAddParent.Text = "Система";
                     ToolStripMenuAddNode.Text = "Группа";
                     toolStripMenuEdit.Text = "Изменить " + item;
                     toolStripMenuDelete.Text = "Удалить " + item;
+                    toolStripMenuReload.Text = "Обновить " + item;
                     break;
 
                 case 3: //выделена группа
@@ -2430,10 +2454,12 @@ namespace RPTagsTest
                     toolStripMenuDelete.Visible = true;
                     ToolStripMenuAddParent.Visible = true;
                     ToolStripMenuAddNode.Visible = false;
+                    toolStripMenuReload.Visible = true;
                     ToolStripMenuAddParent.Text = "Группа";
                     ToolStripMenuAddNode.Text = "";
                     toolStripMenuEdit.Text = "Изменить " + item;
                     toolStripMenuDelete.Text = "Удалить " + item;
+                    toolStripMenuReload.Text = "Обновить " + item;
                     break;
 
                 case 4: //выделен груптайп
@@ -2441,6 +2467,7 @@ namespace RPTagsTest
                     toolStripMenuDelete.Visible = false;
                     ToolStripMenuAddParent.Visible = false;
                     ToolStripMenuAddNode.Visible = true;
+                    toolStripMenuReload.Visible = false;
                     ToolStripMenuAddParent.Text = "";
                     ToolStripMenuAddNode.Text = "Тег";
                     toolStripMenuEdit.Text = "Изменить " + item;
@@ -2452,6 +2479,7 @@ namespace RPTagsTest
                     toolStripMenuDelete.Visible = true;
                     ToolStripMenuAddParent.Visible = true;
                     ToolStripMenuAddNode.Visible = false;
+                    toolStripMenuReload.Visible = false;
                     ToolStripMenuAddParent.Text = "Тег";
                     ToolStripMenuAddNode.Text = "";
                     toolStripMenuEdit.Text = "Изменить " + item;
@@ -2461,7 +2489,7 @@ namespace RPTagsTest
 
 
             }
-        }
+        } // контекстное меню
 
 
 
