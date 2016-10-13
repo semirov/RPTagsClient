@@ -90,7 +90,16 @@ namespace RPTagsTest
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTags_questiondata.Filtres". При необходимости она может быть перемещена или удалена.
+            this.filtresTableAdapter1.Fill(this.rPTags_questiondata.Filtres);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "rPTags_questiondata.TagType". При необходимости она может быть перемещена или удалена.
+            this.tagTypeTableAdapter1.Fill(this.rPTags_questiondata.TagType);
+
+            tabControl1.Enabled = false;
             
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetCorpus.Corpus". При необходимости она может быть перемещена или удалена.
+            this.corpusTableAdapter2.Fill(this.dataSetCorpus.Corpus);
+
             try
             {
                 SqlConnectionStringBuilder connect = new SqlConnectionStringBuilder();
@@ -1453,6 +1462,7 @@ namespace RPTagsTest
 
 
         #region дерево
+        // загрузка
         private void backgroundWorkerTreeLoad_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
@@ -1518,13 +1528,13 @@ namespace RPTagsTest
                             // группа к системе
                             //systema_node.Nodes.Add(gruppa_node);
                             this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { gruppa_node, systema_node });
-                            worker.ReportProgress(intemcount);
+                            
 
                         }
                         // система к ПЛК
                         //plc_node.Nodes.Add(systema_node);
                         this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { systema_node, plc_node });
-                        
+                        worker.ReportProgress(intemcount);
                     }
                     //----------------------------------------------------------------------------------до сюда
                     // ПЛК к корпусу
@@ -1549,6 +1559,7 @@ namespace RPTagsTest
         private void backgroundWorkerTreeLoad_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             toolStripStatusLabel2.Text = "Загрузка дерева завершена! Тегов загружено: " + e.Result.ToString();
+            treeView1.SelectedNode = treeView1.Nodes[0];
             // обновим справочники
             this.oPCTableAdapter.Fill(this.rPTagsDataSet.OPC);
             this.filtresTableAdapter.Fill(this.rPTagsDataSet.Filtres);
@@ -1556,6 +1567,23 @@ namespace RPTagsTest
             this.gruptypeTableAdapter.Fill(this.rPTagsDataSet.Gruptype);
             this.systemTypeTableAdapter.Fill(this.rPTagsDataSet.SystemType);
             this.pLCTableAdapter.Fill(this.rPTagsDataSet.PLC);
+            this.corpusTableAdapter.Fill(this.rPTagsDataSet.Corpus);
+            
+            tabControl1.Enabled = true;
+        }
+        //обновление
+        private void backgroundWorkerReloadTree_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+            worker.WorkerReportsProgress = true;
+        }
+        private void backgroundWorkerReloadTree_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+        private void backgroundWorkerReloadTree_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
         }
         //----!!!-- методы используемые делегатами!
         private void AddNodeToNode(TreeNode node, TreeNode parentNode)
@@ -1766,6 +1794,8 @@ namespace RPTagsTest
         bool addNodeInProc = false; // если true то проиходит добавление ноды 
         bool editNodeInProc = false;
         bool addedparent = false;
+        bool parent = false;
+        bool doughter = false;
 
         private void selectcontrol(TreeNode node)
         {
@@ -1939,6 +1969,7 @@ namespace RPTagsTest
                 
             }
         } // управление контролами при выборе в дереве
+
         private void editnode(TreeNode node, bool edit) // управление контролом при редактировании
         {
             
@@ -2055,196 +2086,434 @@ namespace RPTagsTest
         }
         private void addparentnode(TreeNode node, bool edit, bool add) // перегрузка для редактирования
         {
-            editnode(node, edit); // отключим кнопки редактирования и сбросим изменения в датасет
+            if (parent && !doughter)
+            {
+                editnode(node, edit);
+                int level = node.Level;
+                if (add) // если получили разрешение на добавление то поднимем флаг.
+                {
+                    addNodeInProc = true;
+                    current_node = treeView1.SelectedNode;
+                }
+                else
+                {
+                    addNodeInProc = false;
+                }
 
-            int level = node.Level;
-            
-            if (add) // если получили разрешение на добавление то поднимем флаг.
-            {
-                addNodeInProc = true;
-                current_node = treeView1.SelectedNode;
-            }
-            else
-            {
-                addNodeInProc = false;
-            }
-            
                 #region добавление родителя
                 switch (level)
                 {
                     case 0: //выделен корпус
-                    if (add)
-                    {
-                        TreeNode nodeNewCorp = new TreeNode("nodenewCorp");
-
-                        RPTags_questiondata.CorpusRow NewCorpusRow = rPTags_questiondata.Corpus.NewCorpusRow(); // создадим пустую запись
-                        rPTags_questiondata.Corpus.AddCorpusRow(NewCorpusRow); // добавим её в таблицу
-                        NewCorpusRow.Name = "New name";
-                        corpusBindingSource1.MoveLast();
-
-                        nodeNewCorp.Text = "Новый элемент";
-                        nodeNewCorp.Tag = 0;
-                        node.TreeView.Nodes.Add(nodeNewCorp); // корневую ноду добавим прям к дереву;
-                        current_node = nodeNewCorp;
-                        treeView1.SelectedNode = nodeNewCorp;
-                    }
-                    else
-                    {
-                        foreach (TreeNode treenode in treeView1.Nodes)
+                        if (add)
                         {
-                            if (treenode.Text == "Новый элемент")
-                            {
-                                treeView1.Nodes.RemoveAt(treenode.Index);
-                            }
+                            TreeNode nodeNewCorp = new TreeNode("nodenewCorp");
 
+                            RPTags_questiondata.CorpusRow NewCorpusRow = rPTags_questiondata.Corpus.NewCorpusRow(); // создадим пустую запись
+                            rPTags_questiondata.Corpus.AddCorpusRow(NewCorpusRow); // добавим её в таблицу
+                            NewCorpusRow.Name = "New name";
+                            corpusBindingSource1.MoveLast();
+
+                            nodeNewCorp.Text = "Новый элемент";
+                            nodeNewCorp.Tag = 0;
+                            node.TreeView.Nodes.Add(nodeNewCorp); // корневую ноду добавим прям к дереву;
+                            current_node = nodeNewCorp;
+                            treeView1.SelectedNode = nodeNewCorp;
                         }
-                    }
+                        else
+                        {
+                            foreach (TreeNode treenode in treeView1.Nodes)
+                            {
+                                if (treenode.Text == "Новый элемент")
+                                {
+                                    treeView1.Nodes.RemoveAt(treenode.Index);
+                                }
+
+                            }
+                        }
 
                         break;
                     case 1: //выделен ПЛК
-                    if (add)
-                    {
-                        TreeNode nodeNewPLC = new TreeNode("nodenewPLC");
-
-                        RPTags_questiondata.PLCRow NewPLCRow = rPTags_questiondata.PLC.NewPLCRow();
-
-                        NewPLCRow.Name = "New name";
-                        NewPLCRow.Node = rPTags_questiondata.PLC[0].Node;
-                        NewPLCRow.Corpus = rPTags_questiondata.PLC[0].Corpus;
-                        rPTags_questiondata.PLC.AddPLCRow(NewPLCRow); // добавим её в таблицу
-                        pLCBindingSource1.MoveLast();
-                        // 
-                        nodeNewPLC.Text = "Новый элемент";
-                        nodeNewPLC.Tag = 0;
-                        //treeView1.Nodes.Add(nodeNewCorp);
-                        node.Parent.Nodes.Add(nodeNewPLC); // корневую ноду добавим прям к дереву;
-                        current_node = nodeNewPLC;
-                        treeView1.SelectedNode = nodeNewPLC;
-                    }
-                    else
-                    {
-                        foreach (TreeNode treenode in treeView1.SelectedNode.Parent.Nodes)
+                        if (add)
                         {
-                            if (treenode.Text == "Новый элемент")
-                            {
-                                node.Parent.Nodes.RemoveAt(treenode.Index);
-                            }
+                            TreeNode nodeNewPLC = new TreeNode("nodenewPLC");
 
+                            RPTags_questiondata.PLCRow NewPLCRow = rPTags_questiondata.PLC.NewPLCRow();
+
+                            NewPLCRow.Name = "New name";
+                            NewPLCRow.Node = rPTags_questiondata.PLC[0].Node;
+                            NewPLCRow.Corpus = rPTags_questiondata.PLC[0].Corpus;
+                            rPTags_questiondata.PLC.AddPLCRow(NewPLCRow); // добавим её в таблицу
+                            pLCBindingSource1.MoveLast();
+                            // 
+                            nodeNewPLC.Text = "Новый элемент";
+                            nodeNewPLC.Tag = 0;
+                            //treeView1.Nodes.Add(nodeNewCorp);
+                            node.Parent.Nodes.Add(nodeNewPLC); // корневую ноду добавим прям к дереву;
+                            current_node = nodeNewPLC;
+                            treeView1.SelectedNode = nodeNewPLC;
                         }
-                    }
+                        else
+                        {
+                            foreach (TreeNode treenode in treeView1.SelectedNode.Parent.Nodes)
+                            {
+                                if (treenode.Text == "Новый элемент")
+                                {
+                                    node.Parent.Nodes.RemoveAt(treenode.Index);
+                                }
+
+                            }
+                        }
                         break;
                     case 2: //выделена система
-                    if (add)
-                    {
-                        TreeNode nodeNewSystema = new TreeNode("nodenewSystema");
-
-                        RPTags_questiondata.SystemaRow NewSystemaRow = rPTags_questiondata.Systema.NewSystemaRow();
-
-                        NewSystemaRow.Name = "New name";
-                        NewSystemaRow.Systemtype = rPTags_questiondata.Systema[0].Systemtype;
-                        NewSystemaRow.PLC = rPTags_questiondata.Systema[0].PLC;
-                        rPTags_questiondata.Systema.AddSystemaRow(NewSystemaRow); // добавим её в таблицу
-                        systemaBindingSource1.MoveLast();
-                        // 
-                        nodeNewSystema.Text = "Новый элемент";
-                        nodeNewSystema.Tag = 0;
-                        //treeView1.Nodes.Add(nodeNewCorp);
-                        node.Parent.Nodes.Add(nodeNewSystema); // корневую ноду добавим прям к дереву;
-                        current_node = nodeNewSystema;
-                        treeView1.SelectedNode = nodeNewSystema;
-                    }
-                    else
-                    {
-                        foreach (TreeNode treenode in treeView1.SelectedNode.Parent.Nodes)
+                        if (add)
                         {
-                            if (treenode.Text == "Новый элемент")
-                            {
-                                node.Parent.Nodes.RemoveAt(treenode.Index);
-                            }
+                            TreeNode nodeNewSystema = new TreeNode("nodenewSystema");
 
+                            RPTags_questiondata.SystemaRow NewSystemaRow = rPTags_questiondata.Systema.NewSystemaRow();
+
+                            NewSystemaRow.Name = "New name";
+                            NewSystemaRow.Systemtype = rPTags_questiondata.Systema[0].Systemtype;
+                            NewSystemaRow.PLC = rPTags_questiondata.Systema[0].PLC;
+                            rPTags_questiondata.Systema.AddSystemaRow(NewSystemaRow); // добавим её в таблицу
+                            systemaBindingSource1.MoveLast();
+                            // 
+                            nodeNewSystema.Text = "Новый элемент";
+                            nodeNewSystema.Tag = 0;
+                            //treeView1.Nodes.Add(nodeNewCorp);
+                            node.Parent.Nodes.Add(nodeNewSystema); // корневую ноду добавим прям к дереву;
+                            current_node = nodeNewSystema;
+                            treeView1.SelectedNode = nodeNewSystema;
                         }
-                    }
-                    break;
+                        else
+                        {
+                            foreach (TreeNode treenode in treeView1.SelectedNode.Parent.Nodes)
+                            {
+                                if (treenode.Text == "Новый элемент")
+                                {
+                                    node.Parent.Nodes.RemoveAt(treenode.Index);
+                                }
+
+                            }
+                        }
+                        break;
                     case 3: //выделена группа
-                    if (add)
-                    {
-                        TreeNode nodeNewGruppa = new TreeNode("nodeNewGruppa");
-
-                        RPTags_questiondata.GruppaRow NewGruppaRow = rPTags_questiondata.Gruppa.NewGruppaRow();
-
-                        NewGruppaRow.Name = "New name";
-                        NewGruppaRow.GrupType = rPTags_questiondata.Gruppa[0].GrupType;
-                        NewGruppaRow.Systema = rPTags_questiondata.Gruppa[0].Systema;
-                        rPTags_questiondata.Gruppa.AddGruppaRow(NewGruppaRow); // добавим её в таблицу
-                        gruppaBindingSource1.MoveLast();
-                        // 
-                        nodeNewGruppa.Text = "Новый элемент";
-                        nodeNewGruppa.Tag = 0;
-                        node.Parent.Nodes.Add(nodeNewGruppa); // корневую ноду добавим прям к дереву;
-                        current_node = nodeNewGruppa;
-                        treeView1.SelectedNode = nodeNewGruppa;
-                    }
-                    else
-                    {
-                        foreach (TreeNode treenode in treeView1.SelectedNode.Parent.Nodes)
+                        if (add)
                         {
-                            if (treenode.Text == "Новый элемент")
-                            {
-                                node.Parent.Nodes.RemoveAt(treenode.Index);
-                            }
+                            TreeNode nodeNewGruppa = new TreeNode("nodeNewGruppa");
 
+                            RPTags_questiondata.GruppaRow NewGruppaRow = rPTags_questiondata.Gruppa.NewGruppaRow();
+
+                            NewGruppaRow.Name = "New name";
+                            NewGruppaRow.GrupType = rPTags_questiondata.Gruppa[0].GrupType;
+                            NewGruppaRow.Systema = rPTags_questiondata.Gruppa[0].Systema;
+                            rPTags_questiondata.Gruppa.AddGruppaRow(NewGruppaRow); // добавим её в таблицу
+                            gruppaBindingSource1.MoveLast();
+                            // 
+                            nodeNewGruppa.Text = "Новый элемент";
+                            nodeNewGruppa.Tag = 0;
+                            node.Parent.Nodes.Add(nodeNewGruppa); // корневую ноду добавим прям к дереву;
+                            current_node = nodeNewGruppa;
+                            treeView1.SelectedNode = nodeNewGruppa;
                         }
-                    }
-                    break;
+                        else
+                        {
+                            foreach (TreeNode treenode in treeView1.SelectedNode.Parent.Nodes)
+                            {
+                                if (treenode.Text == "Новый элемент")
+                                {
+                                    node.Parent.Nodes.RemoveAt(treenode.Index);
+                                }
+
+                            }
+                        }
+                        break;
                     case 4: //выделен груптайп
 
                         break;
                     case 5: //выделен тег
-                    if (add)
-                    {
-                        TreeNode nodeNewTag = new TreeNode("nodeNewTag");
-
-                        RPTags_questiondata.TagRow NewTagRow = rPTags_questiondata.Tag.NewTagRow();
-
-                        NewTagRow.Name = "New name";
-                        NewTagRow.TagType = rPTags_questiondata.Tag[0].TagType;
-                        NewTagRow.GrupType = rPTags_questiondata.Tag[0].GrupType;
-                        NewTagRow.Filter = rPTags_questiondata.Tag[0].Filter;
-                        NewTagRow.NormalMSG = rPTags_questiondata.Tag[0].NormalMSG;
-                        NewTagRow.RelatedValue3 = rPTags_questiondata.Tag[0].RelatedValue3;
-                        rPTags_questiondata.Tag.AddTagRow(NewTagRow); // добавим её в таблицу
-                        tagBindingSource1.MoveLast();
-                        // 
-                        nodeNewTag.Text = "Новый элемент";
-                        nodeNewTag.Tag = 0;
-                        node.Parent.Nodes.Add(nodeNewTag); // корневую ноду добавим прям к дереву;
-                        current_node = nodeNewTag;
-                        treeView1.SelectedNode = nodeNewTag;
-                    }
-                    else
-                    {
-                        foreach (TreeNode treenode in treeView1.SelectedNode.Parent.Nodes)
+                        if (add)
                         {
-                            if (treenode.Text == "Новый элемент")
-                            {
-                                node.Parent.Nodes.RemoveAt(treenode.Index);
-                            }
+                            TreeNode nodeNewTag = new TreeNode("nodeNewTag");
 
+                            RPTags_questiondata.TagRow NewTagRow = rPTags_questiondata.Tag.NewTagRow();
+
+                            NewTagRow.Name = "New name";
+                            NewTagRow.TagType = rPTags_questiondata.Tag[0].TagType;
+                            NewTagRow.GrupType = rPTags_questiondata.Tag[0].GrupType;
+                            NewTagRow.Filter = rPTags_questiondata.Tag[0].Filter;
+                            if(!rPTags_questiondata.Tag[0].IsNormalMSGNull())
+                                NewTagRow.NormalMSG = rPTags_questiondata.Tag[0].NormalMSG;
+                            if (!rPTags_questiondata.Tag[0].IsRelatedValue3Null())
+                                NewTagRow.RelatedValue3 = rPTags_questiondata.Tag[0].RelatedValue3;
+                            rPTags_questiondata.Tag.AddTagRow(NewTagRow); // добавим её в таблицу
+                            tagBindingSource1.MoveLast();
+                            // 
+                            nodeNewTag.Text = "Новый элемент";
+                            nodeNewTag.Tag = 0;
+                            node.Parent.Nodes.Add(nodeNewTag); // корневую ноду добавим прям к дереву;
+                            current_node = nodeNewTag;
+                            treeView1.SelectedNode = nodeNewTag;
                         }
-                    }
-                    break;
-                }
-            #endregion
+                        else
+                        {
+                            foreach (TreeNode treenode in treeView1.SelectedNode.Parent.Nodes)
+                            {
+                                if (treenode.Text == "Новый элемент")
+                                {
+                                    node.Parent.Nodes.RemoveAt(treenode.Index);
+                                }
 
-            
+                            }
+                        }
+                        break;
+                }
+                #endregion
+                
+            }
+            if(!parent && doughter)
+            {
+
+                int level;
+                if (add) // если получили разрешение на добавление то поднимем флаг.
+                {
+                    
+                    if (node.FirstNode == null) // если дочек нет
+                    {
+                        level = node.Level + 1;
+                        addNodeInProc = true;
+                    }
+                    else // если дочки есть
+                    {
+                        treeView1.SelectedNode = node.FirstNode;
+                        node = node.FirstNode;
+                        editnode(node, edit);
+                        level = node.Level;
+                        addNodeInProc = true;
+
+
+                    }
+                    
+                }
+                else
+                {
+                    editnode(node, edit);
+                    level = node.Level;
+                    addNodeInProc = false;
+                }
+                #region добавление потомка
+                switch (level)
+                {
+                    // case 0 неможет быть получен
+                    case 1: //выделен ПЛК
+                        if (add)
+                        {
+                            TreeNode nodeNewPLC = new TreeNode("nodenewPLC");
+
+                            nodeNewPLC.Text = "Новый элемент";
+                            nodeNewPLC.Tag = 0;
+                            if (node.FirstNode == null)
+                            {
+                                node.Nodes.Add(nodeNewPLC);
+                            }
+                            else
+                            {
+                                node.Parent.Nodes.Add(nodeNewPLC); // корневую ноду добавим прям к дереву;
+                            }
+                            current_node = nodeNewPLC;
+                            treeView1.SelectedNode = nodeNewPLC;
+
+                            RPTags_questiondata.PLCRow NewPLCRow = rPTags_questiondata.PLC.NewPLCRow();
+                            NewPLCRow.Name = "New name";
+                            if (node.FirstNode == nodeNewPLC)
+                            {
+                                NewPLCRow.Node = Convert.ToInt16(pLCTableAdapter1.SelectFirstId());
+                                NewPLCRow.Corpus = Convert.ToInt16(current_node.Parent.Tag);
+                            }
+                            else
+                            {
+                                NewPLCRow.Node = rPTags_questiondata.PLC[0].Node;
+                                NewPLCRow.Corpus = rPTags_questiondata.PLC[0].Corpus;
+                            }
+                            rPTags_questiondata.PLC.AddPLCRow(NewPLCRow); // добавим её в таблицу
+                            pLCBindingSource1.MoveLast();
+                        }
+                        else
+                        {
+                            foreach (TreeNode treenode in treeView1.SelectedNode.Parent.Nodes)
+                            {
+                                if (treenode.Text == "Новый элемент")
+                                {
+                                    node.Parent.Nodes.RemoveAt(treenode.Index);
+                                }
+
+                            }
+                        }
+                        break;
+                    case 2: //выделена система
+                        if (add)
+                        {
+                            TreeNode nodeNewSystema = new TreeNode("nodenewSystema");
+                            nodeNewSystema.Text = "Новый элемент";
+                            nodeNewSystema.Tag = 0;
+                            if (node.FirstNode == null)
+                            {
+                                node.Nodes.Add(nodeNewSystema);
+                            }
+                            else
+                            {
+                                node.Parent.Nodes.Add(nodeNewSystema); 
+                            }
+                            current_node = nodeNewSystema;
+                            treeView1.SelectedNode = nodeNewSystema;
+
+                            RPTags_questiondata.SystemaRow NewSystemaRow = rPTags_questiondata.Systema.NewSystemaRow();
+                            NewSystemaRow.Name = "New name";
+                            if (node.FirstNode == nodeNewSystema)
+                            {
+
+                                NewSystemaRow.Systemtype = Convert.ToInt16(systemTypeTableAdapter1.SelectFirstId());
+                                NewSystemaRow.PLC = Convert.ToInt16(current_node.Parent.Tag);
+                            }
+                            else
+                            {
+                                NewSystemaRow.Systemtype = rPTags_questiondata.Systema[0].Systemtype;
+                                NewSystemaRow.PLC = rPTags_questiondata.Systema[0].PLC;
+                            }
+                            rPTags_questiondata.Systema.AddSystemaRow(NewSystemaRow); // добавим её в таблицу
+                            systemaBindingSource1.MoveLast();
+                        }
+                        else
+                        {
+                            foreach (TreeNode treenode in treeView1.SelectedNode.Parent.Nodes)
+                            {
+                                if (treenode.Text == "Новый элемент")
+                                {
+                                    node.Parent.Nodes.RemoveAt(treenode.Index);
+                                }
+
+                            }
+                        }
+                        break;
+                    case 3: //выделена группа
+                        if (add)
+                        {
+                            TreeNode nodeNewGruppa = new TreeNode("nodeNewGruppa");
+
+                           
+                            // 
+                            nodeNewGruppa.Text = "Новый элемент";
+                            nodeNewGruppa.Tag = 0;
+                            if (node.FirstNode == null)
+                            {
+                                node.Nodes.Add(nodeNewGruppa);
+                            }
+                            else
+                            {
+                                node.Parent.Nodes.Add(nodeNewGruppa);
+                            }
+                            current_node = nodeNewGruppa;
+                            treeView1.SelectedNode = nodeNewGruppa;
+
+                            RPTags_questiondata.GruppaRow NewGruppaRow = rPTags_questiondata.Gruppa.NewGruppaRow();
+                            NewGruppaRow.Name = "New name";
+                            if (node.FirstNode == nodeNewGruppa)
+                            {
+                                NewGruppaRow.GrupType = Convert.ToInt16(gruptypeTableAdapter1.SelectFirstId());
+                                NewGruppaRow.Systema = Convert.ToInt16(current_node.Parent.Tag);
+                            }
+                            else
+                            {
+                                NewGruppaRow.GrupType = rPTags_questiondata.Gruppa[0].GrupType;
+                                NewGruppaRow.Systema = rPTags_questiondata.Gruppa[0].Systema;
+                            }
+                            rPTags_questiondata.Gruppa.AddGruppaRow(NewGruppaRow); // добавим её в таблицу
+                            gruppaBindingSource1.MoveLast();
+                        }
+                        else
+                        {
+                            foreach (TreeNode treenode in treeView1.SelectedNode.Parent.Nodes)
+                            {
+                                if (treenode.Text == "Новый элемент")
+                                {
+                                    node.Parent.Nodes.RemoveAt(treenode.Index);
+                                }
+
+                            }
+                        }
+                        break;
+                    case 4: //выделен груптайп
+
+                        break;
+                    case 5: //выделен тег
+                        if (add)
+                        {
+                            TreeNode nodeNewTag = new TreeNode("nodeNewTag");
+                            nodeNewTag.Text = "Новый элемент";
+                            nodeNewTag.Tag = 0;
+                            if (node.FirstNode == null)
+                            {
+                                node.Parent.Nodes.Add(nodeNewTag);
+                            }
+                            else
+                            {
+                                node.Parent.Nodes.Add(nodeNewTag);
+                            }
+                            current_node = nodeNewTag;
+                            treeView1.SelectedNode = nodeNewTag;
+
+                            RPTags_questiondata.TagRow NewTagRow = rPTags_questiondata.Tag.NewTagRow();
+
+                            NewTagRow.Name = "New name";
+                            if (node.FirstNode == nodeNewTag)
+                            {
+                                NewTagRow.GrupType = Convert.ToInt16(gruptypeTableAdapter1.GetIdByGruppaId(Convert.ToInt16(current_node.Parent.Parent.Tag)));
+                                NewTagRow.TagType = Convert.ToInt16(current_node.Parent.Tag);
+                                NewTagRow.Filter = Convert.ToInt16(filtresTableAdapter1.SelectFirstId());
+                            }
+                            else
+                            {
+                                NewTagRow.TagType = rPTags_questiondata.Tag[0].TagType;
+                                NewTagRow.GrupType = rPTags_questiondata.Tag[0].GrupType;
+                                NewTagRow.Filter = rPTags_questiondata.Tag[0].Filter;
+                                if (!rPTags_questiondata.Tag[0].IsNormalMSGNull())
+                                    NewTagRow.NormalMSG = rPTags_questiondata.Tag[0].NormalMSG;
+                                if (!rPTags_questiondata.Tag[0].IsRelatedValue3Null())
+                                    NewTagRow.RelatedValue3 = rPTags_questiondata.Tag[0].RelatedValue3;
+                            }
+                            rPTags_questiondata.Tag.AddTagRow(NewTagRow); // добавим её в таблицу
+                            tagBindingSource1.MoveLast();
+                        }
+                        else
+                        {
+                            foreach (TreeNode treenode in treeView1.SelectedNode.Parent.Nodes)
+                            {
+                                if (treenode.Text == "Новый элемент")
+                                {
+                                    node.Parent.Nodes.RemoveAt(treenode.Index);
+                                }
+
+                            }
+                        }
+                        break;
+                }
+                #endregion
+                if (current_node.Text == "Новый элемент")
+                {
+                    selectcontrol(treeView1.SelectedNode);
+                    editnode(treeView1.SelectedNode, true);
+                }
+
+
+            }
+
         }
         private void cancelorEndEditNode()
         {
             
             if (addNodeInProc)
-                addparentnode(treeView1.SelectedNode, false, false);
+                addparentnode(current_node, false, false);
             if (editNodeInProc)
-                editnode(treeView1.SelectedNode, false);
+                editnode(current_node, false);
         }
 
         private void ToolStripMenuDelete_Click(object sender, EventArgs e)// контекстное меню удалить
@@ -2257,11 +2526,19 @@ namespace RPTagsTest
         }   
         private void ToolStripMenuAdd_Click(object sender, EventArgs e)// контекстное меню добавить родителя
         {
+            parent = true;
+            doughter = false;
             addparentnode(treeView1.SelectedNode, true, true);
         }
         private void ToolStripMenuAddNode_Click(object sender, EventArgs e) // контекстное меню добавить дочку
         {
+            parent = false;
+            doughter = true;
             addparentnode(treeView1.SelectedNode, true, true);
+        }
+        private void toolStripMenuReload_Click(object sender, EventArgs e)
+        {
+
         }
 
 
@@ -2407,94 +2684,105 @@ namespace RPTagsTest
 
         private void ContextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
-            int level = treeView1.SelectedNode.Level;
-            string item = treeView1.SelectedNode.Text;
-            switch (level)
+            if(treeView1.SelectedNode != null)
             {
-                case 0: //выделен корпус
-                    toolStripMenuEdit.Visible = true;
-                    toolStripMenuDelete.Visible = true;
-                    ToolStripMenuAddParent.Visible = true;
-                    ToolStripMenuAddNode.Visible = true;
-                    toolStripMenuReload.Visible = true;
-                    ToolStripMenuAddParent.Text = "Корпус";
-                    ToolStripMenuAddNode.Text = "ПЛК";
-                    toolStripMenuEdit.Text = "Изменить " + item;
-                    toolStripMenuDelete.Text = "Удалить " + item;
-                    toolStripMenuReload.Text = "Обновить " + item;
-                    break;
-                case 1: //выделен ПЛК
-                    toolStripMenuEdit.Visible = true;
-                    toolStripMenuDelete.Visible = true;
-                    ToolStripMenuAddParent.Visible = true;
-                    ToolStripMenuAddNode.Visible = true;
-                    toolStripMenuReload.Visible = true;
-                    ToolStripMenuAddParent.Text = "ПЛК";
-                    ToolStripMenuAddNode.Text = "Система";
-                    toolStripMenuEdit.Text = "Изменить " + item;
-                    toolStripMenuDelete.Text = "Удалить " + item;
-                    toolStripMenuReload.Text = "Обновить " + item;
-                    break;
+                int level = treeView1.SelectedNode.Level;
+                string item = treeView1.SelectedNode.Text;
+                switch (level)
+                {
+                    case 0: //выделен корпус
+                        toolStripMenuEdit.Visible = true;
+                        toolStripMenuDelete.Visible = true;
+                        ToolStripMenuAddParent.Visible = true;
+                        ToolStripMenuAddNode.Visible = true;
+                        toolStripMenuReload.Visible = true;
+                        ToolStripMenuAddParent.Text = "Корпус";
+                        ToolStripMenuAddNode.Text = "ПЛК";
+                        toolStripMenuEdit.Text = "Изменить " + item;
+                        toolStripMenuDelete.Text = "Удалить " + item;
+                        toolStripMenuReload.Text = "Обновить " + item;
+                        break;
+                    case 1: //выделен ПЛК
+                        toolStripMenuEdit.Visible = true;
+                        toolStripMenuDelete.Visible = true;
+                        ToolStripMenuAddParent.Visible = true;
+                        ToolStripMenuAddNode.Visible = true;
+                        toolStripMenuReload.Visible = true;
+                        ToolStripMenuAddParent.Text = "ПЛК";
+                        ToolStripMenuAddNode.Text = "Система";
+                        toolStripMenuEdit.Text = "Изменить " + item;
+                        toolStripMenuDelete.Text = "Удалить " + item;
+                        toolStripMenuReload.Text = "Обновить " + item;
+                        break;
 
-                case 2: //выделена система
-                    toolStripMenuEdit.Visible = true;
-                    toolStripMenuDelete.Visible = true;
-                    ToolStripMenuAddParent.Visible = true;
-                    ToolStripMenuAddNode.Visible = true;
-                    toolStripMenuReload.Visible = true;
-                    ToolStripMenuAddParent.Text = "Система";
-                    ToolStripMenuAddNode.Text = "Группа";
-                    toolStripMenuEdit.Text = "Изменить " + item;
-                    toolStripMenuDelete.Text = "Удалить " + item;
-                    toolStripMenuReload.Text = "Обновить " + item;
-                    break;
+                    case 2: //выделена система
+                        toolStripMenuEdit.Visible = true;
+                        toolStripMenuDelete.Visible = true;
+                        ToolStripMenuAddParent.Visible = true;
+                        ToolStripMenuAddNode.Visible = true;
+                        toolStripMenuReload.Visible = true;
+                        ToolStripMenuAddParent.Text = "Система";
+                        ToolStripMenuAddNode.Text = "Группа";
+                        toolStripMenuEdit.Text = "Изменить " + item;
+                        toolStripMenuDelete.Text = "Удалить " + item;
+                        toolStripMenuReload.Text = "Обновить " + item;
+                        break;
 
-                case 3: //выделена группа
-                    toolStripMenuEdit.Visible = true;
-                    toolStripMenuDelete.Visible = true;
-                    ToolStripMenuAddParent.Visible = true;
-                    ToolStripMenuAddNode.Visible = false;
-                    toolStripMenuReload.Visible = true;
-                    ToolStripMenuAddParent.Text = "Группа";
-                    ToolStripMenuAddNode.Text = "";
-                    toolStripMenuEdit.Text = "Изменить " + item;
-                    toolStripMenuDelete.Text = "Удалить " + item;
-                    toolStripMenuReload.Text = "Обновить " + item;
-                    break;
+                    case 3: //выделена группа
+                        toolStripMenuEdit.Visible = true;
+                        toolStripMenuDelete.Visible = true;
+                        ToolStripMenuAddParent.Visible = true;
+                        ToolStripMenuAddNode.Visible = false;
+                        toolStripMenuReload.Visible = true;
+                        ToolStripMenuAddParent.Text = "Группа";
+                        ToolStripMenuAddNode.Text = "";
+                        toolStripMenuEdit.Text = "Изменить " + item;
+                        toolStripMenuDelete.Text = "Удалить " + item;
+                        toolStripMenuReload.Text = "Обновить " + item;
+                        break;
 
-                case 4: //выделен груптайп
-                    toolStripMenuEdit.Visible = false;
-                    toolStripMenuDelete.Visible = false;
-                    ToolStripMenuAddParent.Visible = false;
-                    ToolStripMenuAddNode.Visible = true;
-                    toolStripMenuReload.Visible = false;
-                    ToolStripMenuAddParent.Text = "";
-                    ToolStripMenuAddNode.Text = "Тег";
-                    toolStripMenuEdit.Text = "Изменить " + item;
-                    toolStripMenuDelete.Text = "Удалить " + item;
-                    break;
+                    case 4: //выделен груптайп
+                        toolStripMenuEdit.Visible = false;
+                        toolStripMenuDelete.Visible = false;
+                        ToolStripMenuAddParent.Visible = false;
+                        ToolStripMenuAddNode.Visible = true;
+                        toolStripMenuReload.Visible = false;
+                        ToolStripMenuAddParent.Text = "";
+                        ToolStripMenuAddNode.Text = "Тег";
+                        toolStripMenuEdit.Text = "Изменить " + item;
+                        toolStripMenuDelete.Text = "Удалить " + item;
+                        break;
 
-                case 5: //выделен тег
-                    toolStripMenuEdit.Visible = true;
-                    toolStripMenuDelete.Visible = true;
-                    ToolStripMenuAddParent.Visible = true;
-                    ToolStripMenuAddNode.Visible = false;
-                    toolStripMenuReload.Visible = false;
-                    ToolStripMenuAddParent.Text = "Тег";
-                    ToolStripMenuAddNode.Text = "";
-                    toolStripMenuEdit.Text = "Изменить " + item;
-                    toolStripMenuDelete.Text = "Удалить " + item;
-                    break; /// -------------------------------------------------------------------------------------конец
-
-
-
+                    case 5: //выделен тег
+                        toolStripMenuEdit.Visible = true;
+                        toolStripMenuDelete.Visible = true;
+                        ToolStripMenuAddParent.Visible = true;
+                        ToolStripMenuAddNode.Visible = false;
+                        toolStripMenuReload.Visible = false;
+                        ToolStripMenuAddParent.Text = "Тег";
+                        ToolStripMenuAddNode.Text = "";
+                        toolStripMenuEdit.Text = "Изменить " + item;
+                        toolStripMenuDelete.Text = "Удалить " + item;
+                        break; /// -------------------------------------------------------------------------------------конец
+                }
             }
+            else
+            {
+                toolStripMenuEdit.Visible = false;
+                toolStripMenuDelete.Visible = false;
+                ToolStripMenuAddParent.Visible = false;
+                ToolStripMenuAddNode.Visible = false;
+                toolStripMenuReload.Visible = false;
+            }
+            
         } // контекстное меню
 
 
 
 
         #endregion
+
+
 
         
     }

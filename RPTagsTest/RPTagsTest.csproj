@@ -80,6 +80,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSetCorpus.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetCorpus.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +161,17 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <None Include="DataSetCorpus.xsc">
+      <DependentUpon>DataSetCorpus.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetCorpus.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCorpus.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetCorpus.xss">
+      <DependentUpon>DataSetCorpus.xsd</DependentUpon>
+    </None>
     <None Include="Properties\app.manifest" />
     <None Include="RPTagsDataSet.xsc">
       <DependentUpon>RPTagsDataSet.xsd</DependentUpon>
