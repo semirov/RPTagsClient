@@ -14170,7 +14170,7 @@ SELECT id, GrupType, TagType, Name, HH, UDM_Input, Description, UDM_Output, TTyp
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT id, GrupType, TagType, Name, HH, UDM_Input, Description, UDM_Output, TType, BaseText, AlarmMSG, NormalMSG, RelatedValue1, RelatedValue2, RelatedValue3, RelatedValue4, RelatedValue5, GMPT, GMPHm, GMPCAV, GMPVAV, GMPDP, TLA_MSG, Filter, GMPW FROM dbo.Tag";
@@ -14183,6 +14183,14 @@ FROM            Tag
 WHERE        (id = @id)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT        COUNT(*) AS Expr1\r\nFROM            Gruptype INNER JOIN\r\n           " +
+                "              Gruppa ON Gruptype.id = Gruppa.GrupType INNER JOIN\r\n              " +
+                "           Tag ON Gruptype.id = Tag.GrupType\r\nGROUP BY Tag.id\r\nHAVING        (Ta" +
+                "g.id = @id)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15144,6 +15152,35 @@ WHERE        (id = @id)";
                     global::System.Nullable<int> Original_Filter, 
                     global::System.Nullable<short> Original_GMPW) {
             return this.Update(GrupType, TagType, Name, HH, UDM_Input, Description, UDM_Output, TType, BaseText, AlarmMSG, NormalMSG, RelatedValue1, RelatedValue2, RelatedValue3, RelatedValue4, RelatedValue5, GMPT, GMPHm, GMPCAV, GMPVAV, GMPDP, TLA_MSG, Filter, GMPW, Original_id, Original_GrupType, Original_TagType, Original_Name, Original_HH, Original_UDM_Input, Original_Description, Original_UDM_Output, Original_TType, Original_BaseText, Original_AlarmMSG, Original_NormalMSG, Original_RelatedValue1, Original_RelatedValue2, Original_RelatedValue3, Original_RelatedValue4, Original_RelatedValue5, Original_GMPT, Original_GMPHm, Original_GMPCAV, Original_GMPVAV, Original_GMPDP, Original_TLA_MSG, Original_Filter, Original_GMPW, Original_id);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual global::System.Nullable<int> GetGrupCountById(int id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            command.Parameters[0].Value = ((int)(id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<int>();
+            }
+            else {
+                return new global::System.Nullable<int>(((int)(returnValue)));
+            }
         }
     }
     

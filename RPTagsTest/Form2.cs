@@ -84,7 +84,7 @@ namespace RPTagsTest
 
            
             toolStripMenuEdit.Click += ToolStripMenuEdit_Click;
-            toolStripMenuDelete.Click += ToolStripMenuDelete_Click;
+            //toolStripMenuDelete.Click += ToolStripMenuDelete_Click;
 
 
             contextMenuStrip1.Opening += ContextMenuStrip1_Opening;
@@ -1529,13 +1529,13 @@ namespace RPTagsTest
                             // группа к системе
                             //systema_node.Nodes.Add(gruppa_node);
                             this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { gruppa_node, systema_node });
-                            
+                            worker.ReportProgress(intemcount);
 
                         }
                         // система к ПЛК
                         //plc_node.Nodes.Add(systema_node);
                         this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { systema_node, plc_node });
-                        worker.ReportProgress(intemcount);
+                        
                     }
                     //----------------------------------------------------------------------------------до сюда
                     // ПЛК к корпусу
@@ -2742,36 +2742,40 @@ namespace RPTagsTest
                 case 0: //выделен корпус
                     if(node.Nodes.Count > 0) // если у ноды есть потомки то непозволим удалить без удаления потомков.
                     {
-                        if (MessageBox.Show("У " + node.Text + " имеются зависимые ПЛК:" + node.Nodes.Count.ToString() + "\nУдаление возможно только после того, как у " + node.Nodes.Count.ToString() + 
-                            "\nне останется дочерних элементов!\nПерейти к ним?" , "Удаление невозможно!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.OK)
+                        if (MessageBox.Show("У " + node.Text + " имеются зависимые ПЛК: " + node.Nodes.Count.ToString() + "\nУдаление возможно только после того, как у " + node.Text + 
+                            "\nне останется дочерних элементов!\nПерейти к ним?" , "Удаление невозможно!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             treeView1.SelectedNode = node.FirstNode;
                         }
                     }
                     else
                     {
-                        if (MessageBox.Show("Элемент "+ node.Text + " будет удален!\n Подтвердить удаление?", "Удаление "+ node.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.OK)
+                        if (MessageBox.Show("Элемент "+ node.Text + " будет удален!\n Подтвердить удаление?", "Удаление "+ node.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                         {
-                            rPTags_questiondata.PLC[0].Delete();
-                            pLCTableAdapter1.Update(rPTags_questiondata.PLC);
+                            
+                            rPTags_questiondata.Corpus[0].Delete();
+                            corpusTableAdapter1.Update(rPTags_questiondata.Corpus);
+                            node.Remove();
                         }  
                     }
                     break;
                 case 1: //выделен ПЛК
                     if (node.Nodes.Count > 0) // если у ноды есть потомки то непозволим удалить без удаления потомков.
                     {
-                        if (MessageBox.Show("У " + node.Text + " имеются зависимые системы:" + node.Nodes.Count.ToString() + "\nУдаление возможно только после того, как у " + node.Nodes.Count.ToString() +
-                            "\nне останется дочерних элементов!\nПерейти к ним?", "Удаление невозможно!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.OK)
+                        if (MessageBox.Show("У " + node.Text + " имеются зависимые системы: " + node.Nodes.Count.ToString() + "\nУдаление возможно только после того, как у " + node.Text +
+                            "\nне останется дочерних элементов!\nПерейти к ним?", "Удаление невозможно!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             treeView1.SelectedNode = node.FirstNode;
                         }
                     }
                     else
                     {
-                        if (MessageBox.Show("Элемент " + node.Text + " будет удален!\n Подтвердить удаление?", "Удаление " + node.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.OK)
+                        if (MessageBox.Show("Элемент " + node.Text + " будет удален!\n Подтвердить удаление?", "Удаление " + node.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                         {
-                            rPTags_questiondata.Systema[0].Delete();
-                            systemaTableAdapter1.Update(rPTags_questiondata.Systema);
+                            rPTags_questiondata.PLC[0].Delete();
+                            pLCTableAdapter1.Update(rPTags_questiondata.PLC);
+                            node.Remove();
+
                         }
                     }
                     break;
@@ -2779,27 +2783,29 @@ namespace RPTagsTest
                 case 2: //выделена система
                     if (node.Nodes.Count > 0) // если у ноды есть потомки то непозволим удалить без удаления потомков.
                     {
-                        if (MessageBox.Show("У " + node.Text + " имеются зависимые группы:" + node.Nodes.Count.ToString() + "\nУдаление возможно только после того, как у " + node.Nodes.Count.ToString() +
-                            "\nне останется дочерних элементов!\nПерейти к ним?", "Удаление невозможно!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.OK)
+                        if (MessageBox.Show("У " + node.Text + " имеются зависимые группы: " + node.Nodes.Count.ToString() + "\nУдаление возможно только после того, как у " + node.Text +
+                            "\nне останется дочерних элементов!\nПерейти к ним?", "Удаление невозможно!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             treeView1.SelectedNode = node.FirstNode;
                         }
                     }
                     else
                     {
-                        if (MessageBox.Show("Элемент " + node.Text + " будет удален!\n Подтвердить удаление?", "Удаление " + node.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.OK)
+                        if (MessageBox.Show("Элемент " + node.Text + " будет удален!\n Подтвердить удаление?", "Удаление " + node.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                         {
                             rPTags_questiondata.Systema[0].Delete();
                             systemaTableAdapter1.Update(rPTags_questiondata.Systema);
+                            node.Remove();
                         }
                     }
                     break;
 
                 case 3: //выделена группа
-                    if (MessageBox.Show("Элемент " + node.Text + " будет удален!\n Подтвердить удаление?", "Удаление " + node.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.OK)
+                    if (MessageBox.Show("Элемент " + node.Text + " будет удален!\n Подтвердить удаление?", "Удаление " + node.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
                         rPTags_questiondata.Gruppa[0].Delete();
                         gruppaTableAdapter1.Update(rPTags_questiondata.Gruppa);
+                        node.Remove();
                     }
                     break;
 
@@ -2809,6 +2815,13 @@ namespace RPTagsTest
 
                 case 5: //выделен тег
                     
+                    int count = Convert.ToInt16(tagTableAdapter1.GetGrupCountById(Convert.ToInt16(node.Tag.ToString())));
+                    if (MessageBox.Show("Тег " + node.Text + " используется следующим количеством групп: " + count.ToString() + "\n Подтвердить удаление?", "Удаление " + node.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    {
+                        rPTags_questiondata.Tag[0].Delete();
+                        tagTableAdapter1.Update(rPTags_questiondata.Tag);
+                        node.Remove();
+                    }
                     break; /// -------------------------------------------------------------------------------------конец
 
 
@@ -2828,13 +2841,27 @@ namespace RPTagsTest
         private void ToolStripMenuDelete_Click(object sender, EventArgs e)// контекстное меню удалить
         {
             tabControl1.SelectedTab = tabPage1;
+            deletenode(treeView1.SelectedNode);
         } 
         private void ToolStripMenuEdit_Click(object sender, EventArgs e)// контекстное меню редактировать
         {
             tabControl1.SelectedTab = tabPage1;
             editnode(treeView1.SelectedNode,true);
 
-        }   
+        }
+        private void ToolStripMenuAdd_Click(object sender, EventArgs e)// контекстное меню добавить родителя
+        {
+            parent = true;
+            doughter = false;
+            addparentnode(treeView1.SelectedNode, true, true);
+        }
+        private void ToolStripMenuAddNode_Click(object sender, EventArgs e) // контекстное меню добавить дочку
+        {
+            parent = false;
+            doughter = true;
+            addparentnode(treeView1.SelectedNode, true, true);
+        }
+
         int reloadlevel = 0;
         TreeNode reloadnode; 
         private void toolStripMenuReload_Click(object sender, EventArgs e)
