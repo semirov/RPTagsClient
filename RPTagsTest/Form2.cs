@@ -44,6 +44,7 @@ namespace RPTagsTest
 
         private delegate void AddNodeToNodeDelegate(TreeNode node, TreeNode parentNode); // делегат для добавления дочерней ноды
         private delegate void AddNodeToTreeViewDelegate(TreeNode node, TreeView tree); // делегат для добавления ноды к дереву
+        private delegate void ClearTreeNodeDelegate(TreeNode node); // делегат для отчистки ноды
 
 
         #endregion переменные формы
@@ -75,6 +76,9 @@ namespace RPTagsTest
 
             backgroundWorkerTreeLoad.WorkerReportsProgress = true;
             backgroundWorkerTreeLoad.WorkerSupportsCancellation = true;
+
+            backgroundWorkerReloadTree.WorkerReportsProgress = true;
+            backgroundWorkerReloadTree.WorkerSupportsCancellation = true;
 
             dataGridView7.CellEndEdit += DataGridView7_CellEndEdit;
 
@@ -1572,18 +1576,241 @@ namespace RPTagsTest
             tabControl1.Enabled = true;
         }
         //обновление
+        
         private void backgroundWorkerReloadTree_DoWork(object sender, DoWorkEventArgs e)
         {
+            
             BackgroundWorker worker = sender as BackgroundWorker;
             worker.WorkerReportsProgress = true;
+
+           
+            switch (reloadlevel)
+            {
+                case 0: //выделен корпус
+
+
+                    TreeNode Node_corpus = reloadnode;
+                    this.Invoke(new ClearTreeNodeDelegate(ClearTreeNode), new object[] { reloadnode });
+                    // запросим уровень ПЛК
+                    this.pLCTableAdapter.FillByKorpus(this.rPTagsDataSet.PLC, Convert.ToInt16(Node_corpus.Tag));
+                    foreach (RPTagsDataSet.PLCRow row_PLC in rPTagsDataSet.PLC)
+                    {
+                        TreeNode plc_node = new TreeNode(row_PLC.Name);
+                        plc_node.Text = row_PLC.Name;
+                        plc_node.Tag = row_PLC.id;
+                        //----------------------------------------------------------------------------------отсюда
+                        // запросим уровень системы
+                        this.systemaTableAdapter.FillByPLC(this.rPTagsDataSet.Systema, row_PLC.id);
+                        foreach (RPTagsDataSet.SystemaRow row_Systema in rPTagsDataSet.Systema)
+                        {
+                            TreeNode systema_node = new TreeNode(row_Systema.Name);
+                            systema_node.Text = row_Systema.Name;
+                            systema_node.Tag = row_Systema.id;
+                            // запросим уровень группы
+                            this.gruppaTableAdapter.FillBySystema(this.rPTagsDataSet.Gruppa, row_Systema.id);
+                            foreach (RPTagsDataSet.GruppaRow row_Gruppa in rPTagsDataSet.Gruppa)
+                            {
+                                TreeNode gruppa_node = new TreeNode(row_Gruppa.Name);
+                                gruppa_node.Text = row_Gruppa.Name;
+                                gruppa_node.Tag = row_Gruppa.id;
+                                // запросим уровень типа тега
+                                this.tagTypeTableAdapter.Fill(this.rPTagsDataSet.TagType);
+                                foreach (RPTagsDataSet.TagTypeRow row_TagType in rPTagsDataSet.TagType)
+                                {
+                                    TreeNode tagType_node = new TreeNode(row_TagType.Name);
+                                    tagType_node.Text = row_TagType.Name;
+                                    tagType_node.Tag = row_TagType.id;
+                                    // уровень тега
+                                    this.tagTableAdapter.FillByGruppaTagType(this.rPTagsDataSet.Tag, row_Gruppa.id, row_TagType.id);
+                                    foreach (RPTagsDataSet.TagRow row_Tag in rPTagsDataSet.Tag)
+                                    {
+                                        TreeNode Tag_node = new TreeNode(row_Tag.Name);
+                                        Tag_node.Text = row_Tag.Name;
+                                        Tag_node.Tag = row_Tag.id;
+                                        // тэг к типу тега
+                                        //tagType_node.Nodes.Add(Tag_node);
+                                        this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { Tag_node, tagType_node });
+                                        
+
+                                    }
+                                    if (tagType_node.Nodes.Count != 0)
+                                        // тип тега к группе
+                                        //gruppa_node.Nodes.Add(tagType_node);
+                                        this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { tagType_node, gruppa_node });
+
+                                }
+                                // группа к системе
+                                //systema_node.Nodes.Add(gruppa_node);
+                                this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { gruppa_node, systema_node });
+
+
+                            }
+                            // система к ПЛК
+                            //plc_node.Nodes.Add(systema_node);
+                            this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { systema_node, plc_node });
+                            
+                        }
+                        //----------------------------------------------------------------------------------до сюда
+                        // ПЛК к корпусу
+                        //node_corpus.Nodes.Add(plc_node);
+                        this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { plc_node, Node_corpus });
+
+                    }
+                    break;
+                case 1: //выделен ПЛК
+                    TreeNode Node_PLC = reloadnode;
+                    this.Invoke(new ClearTreeNodeDelegate(ClearTreeNode), new object[] { reloadnode });
+                    this.systemaTableAdapter.FillByPLC(this.rPTagsDataSet.Systema, Convert.ToInt16(Node_PLC.Tag));
+                    foreach (RPTagsDataSet.SystemaRow row_Systema in rPTagsDataSet.Systema)
+                    {
+                        TreeNode systema_node = new TreeNode(row_Systema.Name);
+                        systema_node.Text = row_Systema.Name;
+                        systema_node.Tag = row_Systema.id;
+                        // запросим уровень группы
+                        this.gruppaTableAdapter.FillBySystema(this.rPTagsDataSet.Gruppa, row_Systema.id);
+                        foreach (RPTagsDataSet.GruppaRow row_Gruppa in rPTagsDataSet.Gruppa)
+                        {
+                            TreeNode gruppa_node = new TreeNode(row_Gruppa.Name);
+                            gruppa_node.Text = row_Gruppa.Name;
+                            gruppa_node.Tag = row_Gruppa.id;
+                            // запросим уровень типа тега
+                            this.tagTypeTableAdapter.Fill(this.rPTagsDataSet.TagType);
+                            foreach (RPTagsDataSet.TagTypeRow row_TagType in rPTagsDataSet.TagType)
+                            {
+                                TreeNode tagType_node = new TreeNode(row_TagType.Name);
+                                tagType_node.Text = row_TagType.Name;
+                                tagType_node.Tag = row_TagType.id;
+                                // уровень тега
+                                this.tagTableAdapter.FillByGruppaTagType(this.rPTagsDataSet.Tag, row_Gruppa.id, row_TagType.id);
+                                foreach (RPTagsDataSet.TagRow row_Tag in rPTagsDataSet.Tag)
+                                {
+                                    TreeNode Tag_node = new TreeNode(row_Tag.Name);
+                                    Tag_node.Text = row_Tag.Name;
+                                    Tag_node.Tag = row_Tag.id;
+                                    // тэг к типу тега
+                                    //tagType_node.Nodes.Add(Tag_node);
+                                    this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { Tag_node, tagType_node });
+
+
+                                }
+                                if (tagType_node.Nodes.Count != 0)
+                                    // тип тега к группе
+                                    //gruppa_node.Nodes.Add(tagType_node);
+                                    this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { tagType_node, gruppa_node });
+
+                            }
+                            // группа к системе
+                            //systema_node.Nodes.Add(gruppa_node);
+                            this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { gruppa_node, systema_node });
+
+
+                        }
+                        // система к ПЛК
+                        //plc_node.Nodes.Add(systema_node);
+                        this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { systema_node, Node_PLC });
+
+                    }
+                    break;
+
+                case 2: //выделена система
+                    TreeNode Node_Systema = reloadnode;
+                    this.Invoke(new ClearTreeNodeDelegate(ClearTreeNode), new object[] { reloadnode });
+
+                    this.gruppaTableAdapter.FillBySystema(this.rPTagsDataSet.Gruppa, Convert.ToInt16(Node_Systema.Tag));
+                    foreach (RPTagsDataSet.GruppaRow row_Gruppa in rPTagsDataSet.Gruppa)
+                    {
+                        TreeNode gruppa_node = new TreeNode(row_Gruppa.Name);
+                        gruppa_node.Text = row_Gruppa.Name;
+                        gruppa_node.Tag = row_Gruppa.id;
+                        // запросим уровень типа тега
+                        this.tagTypeTableAdapter.Fill(this.rPTagsDataSet.TagType);
+                        foreach (RPTagsDataSet.TagTypeRow row_TagType in rPTagsDataSet.TagType)
+                        {
+                            TreeNode tagType_node = new TreeNode(row_TagType.Name);
+                            tagType_node.Text = row_TagType.Name;
+                            tagType_node.Tag = row_TagType.id;
+                            // уровень тега
+                            this.tagTableAdapter.FillByGruppaTagType(this.rPTagsDataSet.Tag, row_Gruppa.id, row_TagType.id);
+                            foreach (RPTagsDataSet.TagRow row_Tag in rPTagsDataSet.Tag)
+                            {
+                                TreeNode Tag_node = new TreeNode(row_Tag.Name);
+                                Tag_node.Text = row_Tag.Name;
+                                Tag_node.Tag = row_Tag.id;
+                                // тэг к типу тега
+                                //tagType_node.Nodes.Add(Tag_node);
+                                this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { Tag_node, tagType_node });
+
+
+                            }
+                            if (tagType_node.Nodes.Count != 0)
+                                // тип тега к группе
+                                //gruppa_node.Nodes.Add(tagType_node);
+                                this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { tagType_node, gruppa_node });
+
+                        }
+                        // группа к системе
+                        //systema_node.Nodes.Add(gruppa_node);
+                        this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { gruppa_node, Node_Systema });
+
+
+                    }
+                    break;
+
+                case 3: //выделена группа
+                    TreeNode Node_Gruppa = reloadnode;
+                    this.Invoke(new ClearTreeNodeDelegate(ClearTreeNode), new object[] { reloadnode });
+
+                    this.tagTypeTableAdapter.Fill(this.rPTagsDataSet.TagType);
+                    foreach (RPTagsDataSet.TagTypeRow row_TagType in rPTagsDataSet.TagType)
+                    {
+                        TreeNode tagType_node = new TreeNode(row_TagType.Name);
+                        tagType_node.Text = row_TagType.Name;
+                        tagType_node.Tag = row_TagType.id;
+                        // уровень тега
+                        this.tagTableAdapter.FillByGruppaTagType(this.rPTagsDataSet.Tag, Convert.ToInt16(Node_Gruppa.Tag), row_TagType.id);
+                        foreach (RPTagsDataSet.TagRow row_Tag in rPTagsDataSet.Tag)
+                        {
+                            TreeNode Tag_node = new TreeNode(row_Tag.Name);
+                            Tag_node.Text = row_Tag.Name;
+                            Tag_node.Tag = row_Tag.id;
+                            // тэг к типу тега
+                            //tagType_node.Nodes.Add(Tag_node);
+                            this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { Tag_node, tagType_node });
+
+
+                        }
+                        if (tagType_node.Nodes.Count != 0)
+                            // тип тега к группе
+                            //gruppa_node.Nodes.Add(tagType_node);
+                            this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { tagType_node, Node_Gruppa });
+
+                    }
+                    break;
+
+                case 4: //выделен груптайп
+                    // тут никого не будет
+                    break;
+
+                case 5: //выделен тег
+                    // никого тут не будет
+                    break; /// -------------------------------------------------------------------------------------конец
+
+
+
+            }
+
+
         }
         private void backgroundWorkerReloadTree_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            
 
         }
         private void backgroundWorkerReloadTree_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
+            toolStripStatusLabel2.Text = "Обновление дерева завершено";
+            tabControl1.Enabled = true;
+            treeView1.Enabled = true;
         }
         //----!!!-- методы используемые делегатами!
         private void AddNodeToNode(TreeNode node, TreeNode parentNode)
@@ -1594,7 +1821,10 @@ namespace RPTagsTest
         {
             Tree.Nodes.Add(node);
         } // метод добавления ноды к дереву (у уже должны быть дочки)
-
+        private void ClearTreeNode(TreeNode node)
+        {
+            node.Nodes.Clear();
+        }
 
         int systema_id;
         int gruppa_id;
@@ -1607,6 +1837,7 @@ namespace RPTagsTest
             {
                 cancelorEndEditNode();
             }
+            toolStripStatusLabel2.Text = "";
         }
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -1969,7 +2200,6 @@ namespace RPTagsTest
                 
             }
         } // управление контролами при выборе в дереве
-
         private void editnode(TreeNode node, bool edit) // управление контролом при редактировании
         {
             
@@ -2507,6 +2737,47 @@ namespace RPTagsTest
             }
 
         }
+        private void deletenode(TreeNode node)
+        {
+            int level = node.Level;
+            switch (level)
+            {
+                case 0: //выделен корпус
+                    if(node.Nodes.Count > 0) // если у ноды есть потомки то непозволим удалить без удаления потомков.
+                    {
+                        if (MessageBox.Show("У корпуса " + node.Text +" имеется " + node.Nodes.Count.ToString() + " зависимых ПЛК \nУдаление" , "Удаление невозможно", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK)
+                        {
+
+                        }
+
+                    }
+                    
+                    break;
+                case 1: //выделен ПЛК
+                    
+                    break;
+
+                case 2: //выделена система
+                    
+                    break;
+
+                case 3: //выделена группа
+                    
+                    break;
+
+                case 4: //выделен груптайп
+
+                    break;
+
+                case 5: //выделен тег
+                    
+                    break; /// -------------------------------------------------------------------------------------конец
+
+
+
+            }
+
+        }
         private void cancelorEndEditNode()
         {
             
@@ -2518,7 +2789,7 @@ namespace RPTagsTest
 
         private void ToolStripMenuDelete_Click(object sender, EventArgs e)// контекстное меню удалить
         {
-
+            
         } 
         private void ToolStripMenuEdit_Click(object sender, EventArgs e)// контекстное меню редактировать
         {
@@ -2536,8 +2807,19 @@ namespace RPTagsTest
             doughter = true;
             addparentnode(treeView1.SelectedNode, true, true);
         }
+        int reloadlevel = 0;
+        TreeNode reloadnode; 
         private void toolStripMenuReload_Click(object sender, EventArgs e)
         {
+            if (backgroundWorkerTreeLoad.IsBusy != true)
+            {
+                reloadlevel = treeView1.SelectedNode.Level;
+                reloadnode = treeView1.SelectedNode;
+                backgroundWorkerReloadTree.RunWorkerAsync();
+                toolStripStatusLabel2.Text = "Обновление дерева...";
+                tabControl1.Enabled = false;
+                treeView1.Enabled = false;
+            }
 
         }
 
