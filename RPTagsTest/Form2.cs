@@ -380,6 +380,7 @@ namespace RPTagsTest
             newForm.Owner = this;
             newForm.Show();
         }
+        
         private void backgroundWorker7_DoWork(object sender, DoWorkEventArgs e)
         {
             //toolStripStatusLabel4.Text = "Добавляем отсутствующие записи...";
@@ -391,7 +392,7 @@ namespace RPTagsTest
 
 
                 RPTagsDataSet.Device_TagRow newRow = rPTagsDataSet.Device_Tag.NewDevice_TagRow();
-                //newRow.SAID = Name_Systema;
+                newRow.SAID = "SAID";
                 newRow.Sys_id = Convert.ToInt16(row["Sys_id"]);
                 newRow.Gr_id = Convert.ToInt16(row["Gr_id"]);
                 newRow.Tag_id = Convert.ToInt16(row["Tag_id"]);
@@ -1408,14 +1409,10 @@ namespace RPTagsTest
 
 
         }
-
         private void button14_Click(object sender, EventArgs e) // setfile path
         {
             FileDialog();
         }
-
-
-
         private void button12_Click(object sender, EventArgs e) // save file
         {
             SaveDGVToCSVfile(textBox10.Text, textBox11.Text, dataGridView12, false, "");
@@ -2024,7 +2021,7 @@ namespace RPTagsTest
         TreeNode current_node = null;
         bool addNodeInProc = false; // если true то проиходит добавление ноды 
         bool editNodeInProc = false;
-        bool addedparent = false;
+        
         bool parent = false;
         bool doughter = false;
 
@@ -2745,24 +2742,65 @@ namespace RPTagsTest
                 case 0: //выделен корпус
                     if(node.Nodes.Count > 0) // если у ноды есть потомки то непозволим удалить без удаления потомков.
                     {
-                        if (MessageBox.Show("У корпуса " + node.Text +" имеется " + node.Nodes.Count.ToString() + " зависимых ПЛК \nУдаление" , "Удаление невозможно", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK)
+                        if (MessageBox.Show("У " + node.Text + " имеются зависимые ПЛК:" + node.Nodes.Count.ToString() + "\nУдаление возможно только после того, как у " + node.Nodes.Count.ToString() + 
+                            "\nне останется дочерних элементов!\nПерейти к ним?" , "Удаление невозможно!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.OK)
                         {
-
+                            treeView1.SelectedNode = node.FirstNode;
                         }
-
                     }
-                    
+                    else
+                    {
+                        if (MessageBox.Show("Элемент "+ node.Text + " будет удален!\n Подтвердить удаление?", "Удаление "+ node.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.OK)
+                        {
+                            rPTags_questiondata.PLC[0].Delete();
+                            pLCTableAdapter1.Update(rPTags_questiondata.PLC);
+                        }  
+                    }
                     break;
                 case 1: //выделен ПЛК
-                    
+                    if (node.Nodes.Count > 0) // если у ноды есть потомки то непозволим удалить без удаления потомков.
+                    {
+                        if (MessageBox.Show("У " + node.Text + " имеются зависимые системы:" + node.Nodes.Count.ToString() + "\nУдаление возможно только после того, как у " + node.Nodes.Count.ToString() +
+                            "\nне останется дочерних элементов!\nПерейти к ним?", "Удаление невозможно!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.OK)
+                        {
+                            treeView1.SelectedNode = node.FirstNode;
+                        }
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("Элемент " + node.Text + " будет удален!\n Подтвердить удаление?", "Удаление " + node.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.OK)
+                        {
+                            rPTags_questiondata.Systema[0].Delete();
+                            systemaTableAdapter1.Update(rPTags_questiondata.Systema);
+                        }
+                    }
                     break;
 
                 case 2: //выделена система
-                    
+                    if (node.Nodes.Count > 0) // если у ноды есть потомки то непозволим удалить без удаления потомков.
+                    {
+                        if (MessageBox.Show("У " + node.Text + " имеются зависимые группы:" + node.Nodes.Count.ToString() + "\nУдаление возможно только после того, как у " + node.Nodes.Count.ToString() +
+                            "\nне останется дочерних элементов!\nПерейти к ним?", "Удаление невозможно!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.OK)
+                        {
+                            treeView1.SelectedNode = node.FirstNode;
+                        }
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("Элемент " + node.Text + " будет удален!\n Подтвердить удаление?", "Удаление " + node.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.OK)
+                        {
+                            rPTags_questiondata.Systema[0].Delete();
+                            systemaTableAdapter1.Update(rPTags_questiondata.Systema);
+                        }
+                    }
                     break;
 
                 case 3: //выделена группа
-                    
+                    if (MessageBox.Show("Элемент " + node.Text + " будет удален!\n Подтвердить удаление?", "Удаление " + node.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.OK)
+                    {
+                        rPTags_questiondata.Gruppa[0].Delete();
+                        gruppaTableAdapter1.Update(rPTags_questiondata.Gruppa);
+                    }
                     break;
 
                 case 4: //выделен груптайп
@@ -2789,28 +2827,19 @@ namespace RPTagsTest
 
         private void ToolStripMenuDelete_Click(object sender, EventArgs e)// контекстное меню удалить
         {
-            
+            tabControl1.SelectedTab = tabPage1;
         } 
         private void ToolStripMenuEdit_Click(object sender, EventArgs e)// контекстное меню редактировать
         {
+            tabControl1.SelectedTab = tabPage1;
             editnode(treeView1.SelectedNode,true);
+
         }   
-        private void ToolStripMenuAdd_Click(object sender, EventArgs e)// контекстное меню добавить родителя
-        {
-            parent = true;
-            doughter = false;
-            addparentnode(treeView1.SelectedNode, true, true);
-        }
-        private void ToolStripMenuAddNode_Click(object sender, EventArgs e) // контекстное меню добавить дочку
-        {
-            parent = false;
-            doughter = true;
-            addparentnode(treeView1.SelectedNode, true, true);
-        }
         int reloadlevel = 0;
         TreeNode reloadnode; 
         private void toolStripMenuReload_Click(object sender, EventArgs e)
         {
+            tabControl1.SelectedTab = tabPage1;
             if (backgroundWorkerTreeLoad.IsBusy != true)
             {
                 reloadlevel = treeView1.SelectedNode.Level;
