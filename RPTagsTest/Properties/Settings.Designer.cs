@@ -23,17 +23,6 @@ namespace RPTagsTest.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.100.11\\SQLEXPRESS;Initial Catalog=RPTags;Persist Security Inf" +
-            "o=True;User ID=sa;Password=1; Connect Timeout=15")]
-        public string RPTagsConnectionString {
-            get {
-                return ((string)(this["RPTagsConnectionString"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
@@ -43,6 +32,17 @@ namespace RPTagsTest.Properties {
             }
             set {
                 this["Password"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SEMIROV-F\\SQLEXPRESS;Initial Catalog=RPTags;Persist Security Info=Tru" +
+            "e;User ID=sa;Password=1; Connect Timeout=15")]
+        public string RPTagsConnectionString {
+            get {
+                return ((string)(this["RPTagsConnectionString"]));
             }
         }
     }
