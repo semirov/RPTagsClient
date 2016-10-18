@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("RPTagsTest")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("RPTagsClient")]
+[assembly: AssemblyDescription("Клиент доступа к базе данных")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("НОРВИКС-ТЕХНОЛОДЖИ")]
 [assembly: AssemblyProduct("RPTagsTest")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]

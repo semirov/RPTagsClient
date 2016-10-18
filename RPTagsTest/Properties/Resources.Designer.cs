@@ -59,5 +59,80 @@ namespace RPTagsTest.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на #Ico.AwxServer.BusinessEntities.AwxSvrArea,,,,
+        ///{LocationPath},Name,DisplayName,Description,
+        ///,ABLK,,,
+        ///ABLK,HeatBeat,,,
+        ///ABLK\HeatBeat,HVAC,,,
+        ///ABLK,K,,,
+        ///ABLK\K,S_PV,,,
+        ///ABLK\K,WARNG,,,
+        ///ABLK,P,,,
+        ///ABLK\P,S_PV,,,
+        ///ABLK\P,WARNG,,,
+        ///ABLK,PV,,,
+        ///ABLK\PV,S_PV,,,
+        ///ABLK\PV,WARNG,,,
+        ///ABLK,V,,,
+        ///ABLK\V,S_PV,,,
+        ///ABLK\V,WARNG,,,
+        ///,KPP,,,
+        ///KPP,HeatBeat,,,
+        ///KPP\HeatBeat,HVAC,,,
+        ///KPP,K,,,
+        ///KPP\K,S_PV,,,
+        ///KPP\K,WARNG,,,
+        ///KPP,P,,,
+        ///KPP\P,S_PV,,,
+        ///KPP\P,WARNG,,,
+        ///KPP,PV,,,
+        ///KPP\PV,S_PV,,,
+        ///KPP\PV,WARNG,,,
+        ///KPP,V,,,
+        ///KPP\ [остаток строки не уместился]&quot;;.
+        /// </summary>
+        public static string Areas_AWX_stable {
+            get {
+                return ResourceManager.GetString("Areas_AWX_stable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на #Ico.HH.BusinessEntities.HHFolder,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        ///{LocationPath},Name,DisplayName,Description,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        ///,PK,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        ///PK,Electricity ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        ///PK\Electricity,Counter_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        ///PK\Electricity\Counter_1,State,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        ///PK\Electricity,Counter_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, [остаток строки не уместился]&quot;;.
+        /// </summary>
+        public static string HH_stable {
+            get {
+                return ResourceManager.GetString("HH_stable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на #Ico.Udm.BusinessEntities.RegisterFolder,,,,,,,,,,,,,,,,,,,,
+        ///{LocationPath},Name,DisplayName,Description,Sequence,,,,,,,,,,,,,,,,
+        ///,PK,,,0,,,,,,,,,,,,,,,,
+        ///PK,BOX,,,0,,,,,,,,,,,,,,,,
+        ///PK\BOX,AnalityX,,,0,,,,,,,,,,,,,,,,
+        ///PK\BOX\AnalityX,Alarm,,,0,,,,,,,,,,,,,,,,
+        ///PK\BOX,HyperV,,,0,,,,,,,,,,,,,,,,
+        ///PK\BOX\HyperV,Alarm,,,0,,,,,,,,,,,,,,,,
+        ///PK\BOX,BWX,,,0,,,,,,,,,,,,,,,,
+        ///PK\BOX\BWX,Alarm,,,0,,,,,,,,,,,,,,,,
+        ///PK\BOX,COL1,,,0,,,,,,,,,,,,,,,,
+        ///PK\BOX\COL1,Alarm,,,0,,,,,,,,,,,,,,,,
+        ///PK\BOX,COL2,,,0,,,,,,,,,,,,,, [остаток строки не уместился]&quot;;.
+        /// </summary>
+        public static string UDM_register_stable {
+            get {
+                return ResourceManager.GetString("UDM_register_stable", resourceCulture);
+            }
+        }
     }
 }

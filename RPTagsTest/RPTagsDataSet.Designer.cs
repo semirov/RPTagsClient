@@ -22666,7 +22666,7 @@ namespace RPTagsTest.RPTagsDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public CorpusTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22815,11 +22815,24 @@ SELECT id, Name, Description FROM Corpus WHERE (id = @id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT id, Name, Description FROM dbo.Corpus";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT        COUNT_BIG(*) AS Count
+FROM            Tag INNER JOIN
+                         Corpus INNER JOIN
+                         PLC ON Corpus.id = PLC.Corpus INNER JOIN
+                         Systema ON PLC.id = Systema.PLC INNER JOIN
+                         Gruppa ON Systema.id = Gruppa.Systema INNER JOIN
+                         Gruptype ON Gruppa.GrupType = Gruptype.id ON Tag.GrupType = Gruptype.id
+GROUP BY Corpus.id
+HAVING        (Corpus.id = @Corpus_id)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Corpus_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22996,6 +23009,35 @@ SELECT id, Name, Description FROM Corpus WHERE (id = @id)";
                 }
             }
         }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual object getAllTagCountById(int Corpus_id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            command.Parameters[0].Value = ((int)(Corpus_id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return null;
+            }
+            else {
+                return ((object)(returnValue));
+            }
+        }
     }
     
     /// <summary>
@@ -23022,7 +23064,7 @@ SELECT id, Name, Description FROM Corpus WHERE (id = @id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public Device_TagTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -23583,7 +23625,7 @@ SELECT id, Name, Description FROM Corpus WHERE (id = @id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public FiltresTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -23984,7 +24026,7 @@ SELECT id, Name, Description FROM Corpus WHERE (id = @id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public GruppaTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -24199,7 +24241,7 @@ SELECT id, Systema, GrupType, Name, Description, Area, RName, GMPT, GMPHm, GMPCA
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT id, Systema, GrupType, Name, Description, Area, RName, GMPT, GMPHm, GMPCAV" +
@@ -24227,6 +24269,19 @@ FROM            Gruppa INNER JOIN
 WHERE        (Systema.id = @Systema_id)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Systema_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = @"SELECT        COUNT_BIG(*) AS Count
+FROM            Tag INNER JOIN
+                         Corpus INNER JOIN
+                         PLC ON Corpus.id = PLC.Corpus INNER JOIN
+                         Systema ON PLC.id = Systema.PLC INNER JOIN
+                         Gruppa ON Systema.id = Gruppa.Systema INNER JOIN
+                         Gruptype ON Gruppa.GrupType = Gruptype.id ON Tag.GrupType = Gruptype.id
+GROUP BY Gruppa.id
+HAVING        (Gruppa.id = @Gruppa_id)";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gruppa_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -24780,6 +24835,35 @@ WHERE        (Systema.id = @Systema_id)";
                     global::System.Nullable<short> Original_GMPW) {
             return this.Update(Systema, GrupType, Name, Description, Area, RName, GMPT, GMPHm, GMPCAV, GMPVAV, GMPDP, Enabl, GMPW, Original_id, Original_Systema, Original_GrupType, Original_Name, Original_Description, Original_Area, Original_RName, Original_GMPT, Original_GMPHm, Original_GMPCAV, Original_GMPVAV, Original_GMPDP, Original_Enabl, Original_GMPW, Original_id);
         }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual global::System.Nullable<long> getTagCountByGruppaId(int Gruppa_id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+            command.Parameters[0].Value = ((int)(Gruppa_id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<long>();
+            }
+            else {
+                return new global::System.Nullable<long>(((long)(returnValue)));
+            }
+        }
     }
     
     /// <summary>
@@ -24806,7 +24890,7 @@ WHERE        (Systema.id = @Systema_id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public GruptypeTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -25165,7 +25249,7 @@ SELECT id, Name, Description FROM Gruptype WHERE (id = @id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public OPCTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -25524,7 +25608,7 @@ SELECT id, Name, Description FROM OPC WHERE (id = @id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public PLCTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -25709,7 +25793,7 @@ SELECT id, Name, Description FROM OPC WHERE (id = @id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT id, Node, Corpus, Name, Description, IPAddr FROM dbo.PLC";
@@ -25720,6 +25804,19 @@ SELECT id, Name, Description FROM OPC WHERE (id = @id)";
                 "orpus_id";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Corpus_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Corpus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = @"SELECT        COUNT_BIG(*) AS Count
+FROM            Tag INNER JOIN
+                         Corpus INNER JOIN
+                         PLC ON Corpus.id = PLC.Corpus INNER JOIN
+                         Systema ON PLC.id = Systema.PLC INNER JOIN
+                         Gruppa ON Systema.id = Gruppa.Systema INNER JOIN
+                         Gruptype ON Gruppa.GrupType = Gruptype.id ON Tag.GrupType = Gruptype.id
+GROUP BY PLC.id
+HAVING        (PLC.id = @PLC_id)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PLC_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -25946,6 +26043,35 @@ SELECT id, Name, Description FROM OPC WHERE (id = @id)";
                 }
             }
         }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual global::System.Nullable<long> getTagCountByPLCid(int PLC_id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            command.Parameters[0].Value = ((int)(PLC_id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<long>();
+            }
+            else {
+                return new global::System.Nullable<long>(((long)(returnValue)));
+            }
+        }
     }
     
     /// <summary>
@@ -25972,7 +26098,7 @@ SELECT id, Name, Description FROM OPC WHERE (id = @id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public SystemaTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -26138,7 +26264,7 @@ SELECT id, PLC, Systemtype, Name, Description, RName, Enabl FROM Systema WHERE (
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT id, PLC, Systemtype, Name, Description, RName, Enabl FROM dbo.Systema";
@@ -26155,6 +26281,19 @@ SELECT id, PLC, Systemtype, Name, Description, RName, Enabl FROM Systema WHERE (
                 "e PLC = @PLC_id";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PLC_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "PLC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = @"SELECT        COUNT_BIG(*) AS Count
+FROM            Tag INNER JOIN
+                         Corpus INNER JOIN
+                         PLC ON Corpus.id = PLC.Corpus INNER JOIN
+                         Systema ON PLC.id = Systema.PLC INNER JOIN
+                         Gruppa ON Systema.id = Gruppa.Systema INNER JOIN
+                         Gruptype ON Gruppa.GrupType = Gruptype.id ON Tag.GrupType = Gruptype.id
+GROUP BY Systema.id
+HAVING        (Systema.id = @Systema_id)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Systema_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -26443,6 +26582,35 @@ SELECT id, PLC, Systemtype, Name, Description, RName, Enabl FROM Systema WHERE (
         public virtual int Update(int PLC, int Systemtype, string Name, string Description, string RName, global::System.Nullable<short> Enabl, int Original_id, int Original_PLC, int Original_Systemtype, string Original_Name, string Original_Description, string Original_RName, global::System.Nullable<short> Original_Enabl) {
             return this.Update(PLC, Systemtype, Name, Description, RName, Enabl, Original_id, Original_PLC, Original_Systemtype, Original_Name, Original_Description, Original_RName, Original_Enabl, Original_id);
         }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual global::System.Nullable<long> getTagCountBySystemaId(int Systema_id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            command.Parameters[0].Value = ((int)(Systema_id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<long>();
+            }
+            else {
+                return new global::System.Nullable<long>(((long)(returnValue)));
+            }
+        }
     }
     
     /// <summary>
@@ -26469,7 +26637,7 @@ SELECT id, PLC, Systemtype, Name, Description, RName, Enabl FROM Systema WHERE (
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public SystemTypeTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -26828,7 +26996,7 @@ SELECT id, Name, Description FROM SystemType WHERE (id = @id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public TagTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -27187,7 +27355,7 @@ SELECT id, GrupType, TagType, Name, HH, UDM_Input, Description, UDM_Output, TTyp
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT id, GrupType, TagType, Name, HH, UDM_Input, Description, UDM_Output, TType, BaseText, AlarmMSG, NormalMSG, RelatedValue1, RelatedValue2, RelatedValue3, RelatedValue4, RelatedValue5, GMPT, GMPHm, GMPCAV, GMPVAV, GMPDP, TLA_MSG, Filter, GMPW FROM dbo.Tag";
@@ -27215,6 +27383,16 @@ where GrupType = @Gruppa_GrupType";
 where id = @Tag_id";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tag_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = @"SELECT        COUNT_BIG(*) AS Count
+FROM            Tag INNER JOIN
+                         Corpus INNER JOIN
+                         PLC ON Corpus.id = PLC.Corpus INNER JOIN
+                         Systema ON PLC.id = Systema.PLC INNER JOIN
+                         Gruppa ON Systema.id = Gruppa.Systema INNER JOIN
+                         Gruptype ON Gruppa.GrupType = Gruptype.id ON Tag.GrupType = Gruptype.id";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -28211,6 +28389,34 @@ where id = @Tag_id";
                     global::System.Nullable<short> Original_GMPW) {
             return this.Update(GrupType, TagType, Name, HH, UDM_Input, Description, UDM_Output, TType, BaseText, AlarmMSG, NormalMSG, RelatedValue1, RelatedValue2, RelatedValue3, RelatedValue4, RelatedValue5, GMPT, GMPHm, GMPCAV, GMPVAV, GMPDP, TLA_MSG, Filter, GMPW, Original_id, Original_GrupType, Original_TagType, Original_Name, Original_HH, Original_UDM_Input, Original_Description, Original_UDM_Output, Original_TType, Original_BaseText, Original_AlarmMSG, Original_NormalMSG, Original_RelatedValue1, Original_RelatedValue2, Original_RelatedValue3, Original_RelatedValue4, Original_RelatedValue5, Original_GMPT, Original_GMPHm, Original_GMPCAV, Original_GMPVAV, Original_GMPDP, Original_TLA_MSG, Original_Filter, Original_GMPW, Original_id);
         }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual object GetAllTagCount() {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return null;
+            }
+            else {
+                return ((object)(returnValue));
+            }
+        }
     }
     
     /// <summary>
@@ -28237,7 +28443,7 @@ where id = @Tag_id";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public TagTypeTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -28699,7 +28905,7 @@ SELECT id, Name, Description, UDM_Path, HH_Path, Alarm_Path FROM TagType WHERE (
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public DTVTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -28877,7 +29083,7 @@ SELECT id, Name, Description, UDM_Path, HH_Path, Alarm_Path FROM TagType WHERE (
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public FT1TableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -29090,7 +29296,7 @@ SELECT id, Name, Description, UDM_Path, HH_Path, Alarm_Path FROM TagType WHERE (
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public AreaAWXTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -29288,7 +29494,7 @@ SELECT id, Name, Description, UDM_Path, HH_Path, Alarm_Path FROM TagType WHERE (
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public TagAWXTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -29588,7 +29794,7 @@ SELECT id, Name, Description, UDM_Path, HH_Path, Alarm_Path FROM TagType WHERE (
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public TagHHTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -29818,7 +30024,7 @@ SELECT id, Name, Description, UDM_Path, HH_Path, Alarm_Path FROM TagType WHERE (
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public TagUDMTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -30019,7 +30225,7 @@ SELECT id, Name, Description, UDM_Path, HH_Path, Alarm_Path FROM TagType WHERE (
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public TagOPCTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -30208,7 +30414,7 @@ SELECT id, Name, Description, UDM_Path, HH_Path, Alarm_Path FROM TagType WHERE (
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public SAIDNullTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -30536,7 +30742,7 @@ WHERE        (Systema.id = @Sys_id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public TagIdTagTypeIDTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -30697,7 +30903,7 @@ WHERE        (Systema.id = @Sys_id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public GetDevTagFromFullPathTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -30920,7 +31126,7 @@ WHERE        (Systema.id = @Sys_id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public DefectDevice_tagTableAdapter() {
-            this.ClearBeforeFill = true; this.CommandCollection[0].CommandTimeout = 0;
+            this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

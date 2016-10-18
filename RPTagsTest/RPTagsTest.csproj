@@ -8,24 +8,29 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RPTagsTest</RootNamespace>
-    <AssemblyName>RPTagsTest</AssemblyName>
+    <AssemblyName>RPTagsClient</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>C:\RPTagsClient\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
+    <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <InstallUrl>\\SEMIROV-F\RPTagsClient\</InstallUrl>
+    <ProductName>RPTags Client</ProductName>
+    <PublisherName>Norvix-Technology</PublisherName>
+    <MinimumRequiredVersion>0.9.21.12</MinimumRequiredVersion>
+    <ApplicationRevision>12</ApplicationRevision>
+    <ApplicationVersion>0.9.21.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -63,6 +68,12 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>DD3FC1274C37504043EB904E27A06B156E69661D</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>RPTagsTest_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -102,7 +113,7 @@
     <Compile Include="RPTagsDataSet.cs">
       <DependentUpon>RPTagsDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="RPTagsDataSet1.Designer.cs">
+    <Compile Include="RPTagsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RPTagsDataSet.xsd</DependentUpon>
@@ -112,22 +123,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RPTags_questiondata.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs" />
-    <Compile Include="SQLConnection.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SQLConnection.Designer.cs">
-      <DependentUpon>SQLConnection.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TagChange.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TagChange.Designer.cs">
-      <DependentUpon>TagChange.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Form2.asa-TZ.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Properties\Settings.cs" />
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,12 +140,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SQLConnection.resx">
-      <DependentUpon>SQLConnection.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TagChange.resx">
-      <DependentUpon>TagChange.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -173,17 +163,21 @@
       <DependentUpon>DataSetCorpus.xsd</DependentUpon>
     </None>
     <None Include="Properties\app.manifest" />
+    <None Include="Resources\Areas_AWX_stable.csv" />
+    <None Include="Resources\HH_stable.csv" />
+    <None Include="Resources\UDM_register_stable.csv" />
     <None Include="RPTagsDataSet.xsc">
       <DependentUpon>RPTagsDataSet.xsd</DependentUpon>
     </None>
     <None Include="RPTagsDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <SubType>Designer</SubType>
-      <LastGenOutput>RPTagsDataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>RPTagsDataSet.Designer.cs</LastGenOutput>
     </None>
     <None Include="RPTagsDataSet.xss">
       <DependentUpon>RPTagsDataSet.xsd</DependentUpon>
     </None>
+    <None Include="RPTagsTest_TemporaryKey.pfx" />
     <None Include="RPTags_questiondata.xsc">
       <DependentUpon>RPTags_questiondata.xsd</DependentUpon>
     </None>
@@ -215,6 +209,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="w512h5121339253474Database1512x512.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="asa-TZ\RPTagsTest.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
