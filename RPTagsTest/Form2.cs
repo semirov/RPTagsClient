@@ -131,8 +131,7 @@ namespace RPTagsTest
                 this.Text += " (Отладка)";
             }
 
-            panel_TreeSearch.Enabled = false;
-            treeView1.Enabled = false;
+            
 
 
             startprogConfigValid(); /// проверка насроек
@@ -182,6 +181,8 @@ namespace RPTagsTest
                 toolStripProgressBar1.Visible = true;
                 toolStripProgressBar1.Minimum = 0;
                 toolStripProgressBar1.Maximum = Convert.ToInt16(tagTableAdapter.GetAllTagCount());
+                panel_TreeSearch.Enabled = false;
+                treeView1.Enabled = false;
             }
             richTextBoxCorpus.ReadOnly = true;
             richTextBoxGruppa.ReadOnly = true;
@@ -1822,6 +1823,7 @@ namespace RPTagsTest
             treeView1.Enabled = true;
             toolStripProgressBar1.Visible = false;
             treeView1.Sort();
+            treeView1.Enabled = true;
         }
         //----!!!-- методы используемые делегатами!
         private void AddNodeToNode(TreeNode node, TreeNode parentNode)
@@ -2933,7 +2935,7 @@ namespace RPTagsTest
         TreeNode reloadnode;
         private void toolStripMenuReload_Click(object sender, EventArgs e)
         {
-
+            treeView1.Enabled = false;
             tabControl1.SelectedTab = tabPage1;
             if (backgroundWorkerTreeLoad.IsBusy != true)
             {
