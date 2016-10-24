@@ -2425,12 +2425,12 @@
             // tabPage1
             // 
             resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Controls.Add(this.panel_Systema);
+            this.tabPage1.Controls.Add(this.panel_PLC);
             this.tabPage1.Controls.Add(this.panel_tag);
             this.tabPage1.Controls.Add(this.panel_TagType);
             this.tabPage1.Controls.Add(this.panel_gruppa);
             this.tabPage1.Controls.Add(this.panel_corpus);
-            this.tabPage1.Controls.Add(this.panel_Systema);
-            this.tabPage1.Controls.Add(this.panel_PLC);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 

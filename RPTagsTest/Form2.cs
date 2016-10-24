@@ -92,7 +92,11 @@ namespace RPTagsTest
         }
 
         //-----------------------------------------------------------------------------
+        private void PrenameDate()
+        {
+            prename = DateTime.Today.Day.ToString() + DateTime.Today.Month.ToString() + DateTime.Today.Year.ToString(); //нужно для имени файла конфигурации
 
+        }
         private void Form2_Load(object sender, EventArgs e)
         {
             this.corpusTableAdapter2.Fill(this.dataSetCorpus.Corpus);
@@ -166,7 +170,7 @@ namespace RPTagsTest
 
             toolStripStatusLabel3.Text = tagTableAdapter.Connection.DataSource.ToString() + " (" + tagTableAdapter.Connection.Database.ToString() + ")";
 
-            prename = DateTime.Today.Day.ToString() + DateTime.Today.Month.ToString() + DateTime.Today.Year.ToString(); //нужно для имени файла конфигурации
+            
 
 
             // инициализатор загрузки дерева
@@ -1059,6 +1063,7 @@ namespace RPTagsTest
         {
             string s = "C:\\";
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                PrenameDate();
             {
                 s = folderBrowserDialog1.SelectedPath + "\\config_" + prename;
             }
@@ -2959,7 +2964,7 @@ namespace RPTagsTest
 
 
         }
-        string regExpPathPatern = "^[a-zA-Z0-9_]{2,18}$";
+        string regExpPathPatern = "^[a-zA-Z0-9_]{1,18}$";
         private void buttonCorpSave_Click(object sender, EventArgs e) // корпус сохранить
         {
             if (Regex.IsMatch(nameTextBox.Text, regExpPathPatern, RegexOptions.IgnoreCase))
@@ -3706,7 +3711,7 @@ namespace RPTagsTest
 
         private void descriptionTextBox2_MouseEnter(object sender, EventArgs e)
         {
-            richTextBoxSystema.Text = "Description - содержит описание системы.";
+            richTextBoxSystema.Text = "Description - содержит описание системы. Используется в конфигурациях";
         }
 
         private void pLCComboBox_MouseEnter(object sender, EventArgs e)
