@@ -294,6 +294,34 @@
             this.label36 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panel_tag = new System.Windows.Forms.Panel();
+            this.richTextBoxTag = new System.Windows.Forms.RichTextBox();
+            this.buttonTagCancel = new System.Windows.Forms.Button();
+            this.buttonTagSave = new System.Windows.Forms.Button();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.tagBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.rPTags_questiondata = new RPTagsTest.RPTags_questiondata();
+            this.relatedValue5TextBox = new System.Windows.Forms.TextBox();
+            this.tLA_MSGTextBox = new System.Windows.Forms.TextBox();
+            this.relatedValue4TextBox = new System.Windows.Forms.TextBox();
+            this.relatedValue3TextBox = new System.Windows.Forms.TextBox();
+            this.relatedValue2TextBox = new System.Windows.Forms.TextBox();
+            this.relatedValue1TextBox = new System.Windows.Forms.TextBox();
+            this.normalMSGTextBox = new System.Windows.Forms.TextBox();
+            this.alarmMSGTextBox = new System.Windows.Forms.TextBox();
+            this.baseTextTextBox = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.checkBoxTagUdmOut = new System.Windows.Forms.CheckBox();
+            this.checkBoxTagUdmIn = new System.Windows.Forms.CheckBox();
+            this.checkBoxTagHH = new System.Windows.Forms.CheckBox();
+            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
             this.panel_TagType = new System.Windows.Forms.Panel();
             this.label42 = new System.Windows.Forms.Label();
             this.panel_gruppa = new System.Windows.Forms.Panel();
@@ -303,7 +331,6 @@
             this.buttonGruppaSave = new System.Windows.Forms.Button();
             this.systemaComboBox = new System.Windows.Forms.ComboBox();
             this.gruppaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.rPTags_questiondata = new RPTagsTest.RPTags_questiondata();
             this.grupTypeComboBox = new System.Windows.Forms.ComboBox();
             this.areaTextBox = new System.Windows.Forms.TextBox();
             this.descriptionTextBox3 = new System.Windows.Forms.TextBox();
@@ -339,33 +366,6 @@
             this.iPAddrTextBox = new System.Windows.Forms.TextBox();
             this.descriptionTextBox1 = new System.Windows.Forms.TextBox();
             this.nameTextBox1 = new System.Windows.Forms.TextBox();
-            this.panel_tag = new System.Windows.Forms.Panel();
-            this.richTextBoxTag = new System.Windows.Forms.RichTextBox();
-            this.buttonTagCancel = new System.Windows.Forms.Button();
-            this.buttonTagSave = new System.Windows.Forms.Button();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.tagBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.relatedValue5TextBox = new System.Windows.Forms.TextBox();
-            this.tLA_MSGTextBox = new System.Windows.Forms.TextBox();
-            this.relatedValue4TextBox = new System.Windows.Forms.TextBox();
-            this.relatedValue3TextBox = new System.Windows.Forms.TextBox();
-            this.relatedValue2TextBox = new System.Windows.Forms.TextBox();
-            this.relatedValue1TextBox = new System.Windows.Forms.TextBox();
-            this.normalMSGTextBox = new System.Windows.Forms.TextBox();
-            this.alarmMSGTextBox = new System.Windows.Forms.TextBox();
-            this.baseTextTextBox = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.checkBoxTagUdmOut = new System.Windows.Forms.CheckBox();
-            this.checkBoxTagUdmIn = new System.Windows.Forms.CheckBox();
-            this.checkBoxTagHH = new System.Windows.Forms.CheckBox();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
@@ -407,6 +407,10 @@
             this.backgroundWorkerReloadTree = new System.ComponentModel.BackgroundWorker();
             this.defectDevice_tagBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.defectDevice_tagTableAdapter = new RPTagsTest.RPTagsDataSetTableAdapters.DefectDevice_tagTableAdapter();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.button18 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.panel_TreeSearch = new System.Windows.Forms.Panel();
             nameLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
             nameLabel1 = new System.Windows.Forms.Label();
@@ -502,18 +506,18 @@
             this.menuStrip10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
             this.tabPage1.SuspendLayout();
+            this.panel_tag.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tagBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rPTags_questiondata)).BeginInit();
             this.panel_TagType.SuspendLayout();
             this.panel_gruppa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gruppaBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rPTags_questiondata)).BeginInit();
             this.panel_corpus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.corpusBindingSource1)).BeginInit();
             this.panel_Systema.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemaBindingSource1)).BeginInit();
             this.panel_PLC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pLCBindingSource1)).BeginInit();
-            this.panel_tag.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tagBindingSource1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox13.SuspendLayout();
@@ -526,6 +530,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tagTypeBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filtresBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.defectDevice_tagBindingSource)).BeginInit();
+            this.panel_TreeSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // nameLabel
@@ -1695,7 +1700,6 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.pLCBindingSource, "Name", true));
             this.comboBox1.DataSource = this.pLCBindingSource;
             this.comboBox1.DisplayMember = "Name";
             this.comboBox1.FormattingEnabled = true;
@@ -2421,14 +2425,242 @@
             // tabPage1
             // 
             resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Controls.Add(this.panel_tag);
             this.tabPage1.Controls.Add(this.panel_TagType);
             this.tabPage1.Controls.Add(this.panel_gruppa);
             this.tabPage1.Controls.Add(this.panel_corpus);
             this.tabPage1.Controls.Add(this.panel_Systema);
             this.tabPage1.Controls.Add(this.panel_PLC);
-            this.tabPage1.Controls.Add(this.panel_tag);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // panel_tag
+            // 
+            this.panel_tag.Controls.Add(this.richTextBoxTag);
+            this.panel_tag.Controls.Add(this.buttonTagCancel);
+            this.panel_tag.Controls.Add(this.buttonTagSave);
+            this.panel_tag.Controls.Add(this.comboBox7);
+            this.panel_tag.Controls.Add(filterLabel);
+            this.panel_tag.Controls.Add(relatedValue5Label);
+            this.panel_tag.Controls.Add(this.relatedValue5TextBox);
+            this.panel_tag.Controls.Add(tLA_MSGLabel);
+            this.panel_tag.Controls.Add(this.tLA_MSGTextBox);
+            this.panel_tag.Controls.Add(relatedValue4Label);
+            this.panel_tag.Controls.Add(this.relatedValue4TextBox);
+            this.panel_tag.Controls.Add(relatedValue3Label);
+            this.panel_tag.Controls.Add(this.relatedValue3TextBox);
+            this.panel_tag.Controls.Add(relatedValue2Label);
+            this.panel_tag.Controls.Add(this.relatedValue2TextBox);
+            this.panel_tag.Controls.Add(relatedValue1Label);
+            this.panel_tag.Controls.Add(this.relatedValue1TextBox);
+            this.panel_tag.Controls.Add(normalMSGLabel);
+            this.panel_tag.Controls.Add(this.normalMSGTextBox);
+            this.panel_tag.Controls.Add(alarmMSGLabel);
+            this.panel_tag.Controls.Add(this.alarmMSGTextBox);
+            this.panel_tag.Controls.Add(baseTextLabel);
+            this.panel_tag.Controls.Add(this.baseTextTextBox);
+            this.panel_tag.Controls.Add(this.label26);
+            this.panel_tag.Controls.Add(this.textBox15);
+            this.panel_tag.Controls.Add(this.checkBoxTagUdmOut);
+            this.panel_tag.Controls.Add(this.checkBoxTagUdmIn);
+            this.panel_tag.Controls.Add(this.checkBoxTagHH);
+            this.panel_tag.Controls.Add(this.comboBox8);
+            this.panel_tag.Controls.Add(this.label27);
+            this.panel_tag.Controls.Add(this.comboBox9);
+            this.panel_tag.Controls.Add(this.label28);
+            this.panel_tag.Controls.Add(this.label29);
+            this.panel_tag.Controls.Add(this.textBox16);
+            this.panel_tag.Controls.Add(this.label25);
+            resources.ApplyResources(this.panel_tag, "panel_tag");
+            this.panel_tag.Name = "panel_tag";
+            this.panel_tag.MouseEnter += new System.EventHandler(this.panel_tag_MouseEnter);
+            // 
+            // richTextBoxTag
+            // 
+            this.richTextBoxTag.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.richTextBoxTag.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.richTextBoxTag, "richTextBoxTag");
+            this.richTextBoxTag.Name = "richTextBoxTag";
+            // 
+            // buttonTagCancel
+            // 
+            resources.ApplyResources(this.buttonTagCancel, "buttonTagCancel");
+            this.buttonTagCancel.Name = "buttonTagCancel";
+            this.buttonTagCancel.UseVisualStyleBackColor = true;
+            this.buttonTagCancel.Click += new System.EventHandler(this.buttonTagCancel_Click);
+            // 
+            // buttonTagSave
+            // 
+            resources.ApplyResources(this.buttonTagSave, "buttonTagSave");
+            this.buttonTagSave.Name = "buttonTagSave";
+            this.buttonTagSave.UseVisualStyleBackColor = true;
+            this.buttonTagSave.Click += new System.EventHandler(this.buttonTagSave_Click);
+            // 
+            // comboBox7
+            // 
+            this.comboBox7.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tagBindingSource1, "Filter", true));
+            this.comboBox7.DataSource = this.filtresBindingSource;
+            this.comboBox7.DisplayMember = "Description";
+            this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.comboBox7.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox7, "comboBox7");
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.ValueMember = "id";
+            this.comboBox7.MouseEnter += new System.EventHandler(this.Tag_Filter_MouseEnter);
+            // 
+            // tagBindingSource1
+            // 
+            this.tagBindingSource1.DataMember = "Tag";
+            this.tagBindingSource1.DataSource = this.rPTags_questiondata;
+            // 
+            // rPTags_questiondata
+            // 
+            this.rPTags_questiondata.DataSetName = "RPTags_questiondata";
+            this.rPTags_questiondata.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // relatedValue5TextBox
+            // 
+            this.relatedValue5TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "RelatedValue5", true));
+            resources.ApplyResources(this.relatedValue5TextBox, "relatedValue5TextBox");
+            this.relatedValue5TextBox.Name = "relatedValue5TextBox";
+            // 
+            // tLA_MSGTextBox
+            // 
+            this.tLA_MSGTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "TLA_MSG", true));
+            resources.ApplyResources(this.tLA_MSGTextBox, "tLA_MSGTextBox");
+            this.tLA_MSGTextBox.Name = "tLA_MSGTextBox";
+            this.tLA_MSGTextBox.MouseEnter += new System.EventHandler(this.Tag_tLA_MSGTextBox_MouseEnter);
+            // 
+            // relatedValue4TextBox
+            // 
+            this.relatedValue4TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "RelatedValue4", true));
+            resources.ApplyResources(this.relatedValue4TextBox, "relatedValue4TextBox");
+            this.relatedValue4TextBox.Name = "relatedValue4TextBox";
+            // 
+            // relatedValue3TextBox
+            // 
+            this.relatedValue3TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "RelatedValue3", true));
+            resources.ApplyResources(this.relatedValue3TextBox, "relatedValue3TextBox");
+            this.relatedValue3TextBox.Name = "relatedValue3TextBox";
+            this.relatedValue3TextBox.MouseEnter += new System.EventHandler(this.Tag_relatedValue3TextBox_MouseEnter);
+            // 
+            // relatedValue2TextBox
+            // 
+            this.relatedValue2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "RelatedValue2", true));
+            resources.ApplyResources(this.relatedValue2TextBox, "relatedValue2TextBox");
+            this.relatedValue2TextBox.Name = "relatedValue2TextBox";
+            // 
+            // relatedValue1TextBox
+            // 
+            this.relatedValue1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "RelatedValue1", true));
+            resources.ApplyResources(this.relatedValue1TextBox, "relatedValue1TextBox");
+            this.relatedValue1TextBox.Name = "relatedValue1TextBox";
+            this.relatedValue1TextBox.MouseEnter += new System.EventHandler(this.Tag_relatedValue1TextBox_MouseEnter);
+            // 
+            // normalMSGTextBox
+            // 
+            this.normalMSGTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "NormalMSG", true));
+            resources.ApplyResources(this.normalMSGTextBox, "normalMSGTextBox");
+            this.normalMSGTextBox.Name = "normalMSGTextBox";
+            this.normalMSGTextBox.MouseEnter += new System.EventHandler(this.Tag_normalMSGTextBox_MouseEnter);
+            // 
+            // alarmMSGTextBox
+            // 
+            this.alarmMSGTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "AlarmMSG", true));
+            resources.ApplyResources(this.alarmMSGTextBox, "alarmMSGTextBox");
+            this.alarmMSGTextBox.Name = "alarmMSGTextBox";
+            this.alarmMSGTextBox.MouseEnter += new System.EventHandler(this.Tag_alarmMSGTextBox_MouseEnter);
+            // 
+            // baseTextTextBox
+            // 
+            this.baseTextTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "BaseText", true));
+            resources.ApplyResources(this.baseTextTextBox, "baseTextTextBox");
+            this.baseTextTextBox.Name = "baseTextTextBox";
+            this.baseTextTextBox.MouseEnter += new System.EventHandler(this.Tag_baseTextTextBox_MouseEnter);
+            // 
+            // label26
+            // 
+            resources.ApplyResources(this.label26, "label26");
+            this.label26.Name = "label26";
+            // 
+            // textBox15
+            // 
+            this.textBox15.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "Description", true));
+            resources.ApplyResources(this.textBox15, "textBox15");
+            this.textBox15.Name = "textBox15";
+            this.textBox15.MouseEnter += new System.EventHandler(this.Tag_Descriptiom_MouseEnter);
+            // 
+            // checkBoxTagUdmOut
+            // 
+            resources.ApplyResources(this.checkBoxTagUdmOut, "checkBoxTagUdmOut");
+            this.checkBoxTagUdmOut.Name = "checkBoxTagUdmOut";
+            this.checkBoxTagUdmOut.UseVisualStyleBackColor = true;
+            this.checkBoxTagUdmOut.MouseEnter += new System.EventHandler(this.Tag_UDMOut_MouseEnter);
+            // 
+            // checkBoxTagUdmIn
+            // 
+            resources.ApplyResources(this.checkBoxTagUdmIn, "checkBoxTagUdmIn");
+            this.checkBoxTagUdmIn.Name = "checkBoxTagUdmIn";
+            this.checkBoxTagUdmIn.UseVisualStyleBackColor = true;
+            this.checkBoxTagUdmIn.MouseEnter += new System.EventHandler(this.Tag_UDMIn_MouseEnter);
+            // 
+            // checkBoxTagHH
+            // 
+            resources.ApplyResources(this.checkBoxTagHH, "checkBoxTagHH");
+            this.checkBoxTagHH.Name = "checkBoxTagHH";
+            this.checkBoxTagHH.UseVisualStyleBackColor = true;
+            this.checkBoxTagHH.MouseEnter += new System.EventHandler(this.Tag_HH_MouseEnter);
+            // 
+            // comboBox8
+            // 
+            this.comboBox8.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tagBindingSource1, "GrupType", true));
+            this.comboBox8.DataSource = this.gruptypeBindingSource;
+            this.comboBox8.DisplayMember = "Name";
+            this.comboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.comboBox8.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox8, "comboBox8");
+            this.comboBox8.Name = "comboBox8";
+            this.comboBox8.ValueMember = "id";
+            this.comboBox8.MouseEnter += new System.EventHandler(this.Tag_GrupType_MouseEnter);
+            // 
+            // label27
+            // 
+            resources.ApplyResources(this.label27, "label27");
+            this.label27.Name = "label27";
+            // 
+            // comboBox9
+            // 
+            this.comboBox9.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tagBindingSource1, "TagType", true));
+            this.comboBox9.DataSource = this.tagTypeBindingSource;
+            this.comboBox9.DisplayMember = "Name";
+            this.comboBox9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.comboBox9.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox9, "comboBox9");
+            this.comboBox9.Name = "comboBox9";
+            this.comboBox9.ValueMember = "id";
+            this.comboBox9.MouseEnter += new System.EventHandler(this.Tag_TagType_MouseEnter);
+            // 
+            // label28
+            // 
+            resources.ApplyResources(this.label28, "label28");
+            this.label28.Name = "label28";
+            // 
+            // label29
+            // 
+            resources.ApplyResources(this.label29, "label29");
+            this.label29.Name = "label29";
+            // 
+            // textBox16
+            // 
+            this.textBox16.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "Name", true));
+            resources.ApplyResources(this.textBox16, "textBox16");
+            this.textBox16.Name = "textBox16";
+            this.textBox16.MouseEnter += new System.EventHandler(this.Tag_Name_MouseEnter);
+            // 
+            // label25
+            // 
+            resources.ApplyResources(this.label25, "label25");
+            this.label25.Name = "label25";
             // 
             // panel_TagType
             // 
@@ -2507,11 +2739,6 @@
             // 
             this.gruppaBindingSource1.DataMember = "Gruppa";
             this.gruppaBindingSource1.DataSource = this.rPTags_questiondata;
-            // 
-            // rPTags_questiondata
-            // 
-            this.rPTags_questiondata.DataSetName = "RPTags_questiondata";
-            this.rPTags_questiondata.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // grupTypeComboBox
             // 
@@ -2801,229 +3028,6 @@
             this.nameTextBox1.Name = "nameTextBox1";
             this.nameTextBox1.MouseEnter += new System.EventHandler(this.nameTextBox1_MouseEnter);
             // 
-            // panel_tag
-            // 
-            this.panel_tag.Controls.Add(this.richTextBoxTag);
-            this.panel_tag.Controls.Add(this.buttonTagCancel);
-            this.panel_tag.Controls.Add(this.buttonTagSave);
-            this.panel_tag.Controls.Add(this.comboBox7);
-            this.panel_tag.Controls.Add(filterLabel);
-            this.panel_tag.Controls.Add(relatedValue5Label);
-            this.panel_tag.Controls.Add(this.relatedValue5TextBox);
-            this.panel_tag.Controls.Add(tLA_MSGLabel);
-            this.panel_tag.Controls.Add(this.tLA_MSGTextBox);
-            this.panel_tag.Controls.Add(relatedValue4Label);
-            this.panel_tag.Controls.Add(this.relatedValue4TextBox);
-            this.panel_tag.Controls.Add(relatedValue3Label);
-            this.panel_tag.Controls.Add(this.relatedValue3TextBox);
-            this.panel_tag.Controls.Add(relatedValue2Label);
-            this.panel_tag.Controls.Add(this.relatedValue2TextBox);
-            this.panel_tag.Controls.Add(relatedValue1Label);
-            this.panel_tag.Controls.Add(this.relatedValue1TextBox);
-            this.panel_tag.Controls.Add(normalMSGLabel);
-            this.panel_tag.Controls.Add(this.normalMSGTextBox);
-            this.panel_tag.Controls.Add(alarmMSGLabel);
-            this.panel_tag.Controls.Add(this.alarmMSGTextBox);
-            this.panel_tag.Controls.Add(baseTextLabel);
-            this.panel_tag.Controls.Add(this.baseTextTextBox);
-            this.panel_tag.Controls.Add(this.label26);
-            this.panel_tag.Controls.Add(this.textBox15);
-            this.panel_tag.Controls.Add(this.checkBoxTagUdmOut);
-            this.panel_tag.Controls.Add(this.checkBoxTagUdmIn);
-            this.panel_tag.Controls.Add(this.checkBoxTagHH);
-            this.panel_tag.Controls.Add(this.comboBox8);
-            this.panel_tag.Controls.Add(this.label27);
-            this.panel_tag.Controls.Add(this.comboBox9);
-            this.panel_tag.Controls.Add(this.label28);
-            this.panel_tag.Controls.Add(this.label29);
-            this.panel_tag.Controls.Add(this.textBox16);
-            this.panel_tag.Controls.Add(this.label25);
-            resources.ApplyResources(this.panel_tag, "panel_tag");
-            this.panel_tag.Name = "panel_tag";
-            this.panel_tag.MouseEnter += new System.EventHandler(this.panel_tag_MouseEnter);
-            // 
-            // richTextBoxTag
-            // 
-            this.richTextBoxTag.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.richTextBoxTag.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.richTextBoxTag, "richTextBoxTag");
-            this.richTextBoxTag.Name = "richTextBoxTag";
-            // 
-            // buttonTagCancel
-            // 
-            resources.ApplyResources(this.buttonTagCancel, "buttonTagCancel");
-            this.buttonTagCancel.Name = "buttonTagCancel";
-            this.buttonTagCancel.UseVisualStyleBackColor = true;
-            this.buttonTagCancel.Click += new System.EventHandler(this.buttonTagCancel_Click);
-            // 
-            // buttonTagSave
-            // 
-            resources.ApplyResources(this.buttonTagSave, "buttonTagSave");
-            this.buttonTagSave.Name = "buttonTagSave";
-            this.buttonTagSave.UseVisualStyleBackColor = true;
-            this.buttonTagSave.Click += new System.EventHandler(this.buttonTagSave_Click);
-            // 
-            // comboBox7
-            // 
-            this.comboBox7.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tagBindingSource1, "Filter", true));
-            this.comboBox7.DataSource = this.filtresBindingSource;
-            this.comboBox7.DisplayMember = "Description";
-            this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.comboBox7.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBox7, "comboBox7");
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.ValueMember = "id";
-            this.comboBox7.MouseEnter += new System.EventHandler(this.Tag_Filter_MouseEnter);
-            // 
-            // tagBindingSource1
-            // 
-            this.tagBindingSource1.DataMember = "Tag";
-            this.tagBindingSource1.DataSource = this.rPTags_questiondata;
-            // 
-            // relatedValue5TextBox
-            // 
-            this.relatedValue5TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "RelatedValue5", true));
-            resources.ApplyResources(this.relatedValue5TextBox, "relatedValue5TextBox");
-            this.relatedValue5TextBox.Name = "relatedValue5TextBox";
-            // 
-            // tLA_MSGTextBox
-            // 
-            this.tLA_MSGTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "TLA_MSG", true));
-            resources.ApplyResources(this.tLA_MSGTextBox, "tLA_MSGTextBox");
-            this.tLA_MSGTextBox.Name = "tLA_MSGTextBox";
-            this.tLA_MSGTextBox.MouseEnter += new System.EventHandler(this.Tag_tLA_MSGTextBox_MouseEnter);
-            // 
-            // relatedValue4TextBox
-            // 
-            this.relatedValue4TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "RelatedValue4", true));
-            resources.ApplyResources(this.relatedValue4TextBox, "relatedValue4TextBox");
-            this.relatedValue4TextBox.Name = "relatedValue4TextBox";
-            // 
-            // relatedValue3TextBox
-            // 
-            this.relatedValue3TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "RelatedValue3", true));
-            resources.ApplyResources(this.relatedValue3TextBox, "relatedValue3TextBox");
-            this.relatedValue3TextBox.Name = "relatedValue3TextBox";
-            this.relatedValue3TextBox.MouseEnter += new System.EventHandler(this.Tag_relatedValue3TextBox_MouseEnter);
-            // 
-            // relatedValue2TextBox
-            // 
-            this.relatedValue2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "RelatedValue2", true));
-            resources.ApplyResources(this.relatedValue2TextBox, "relatedValue2TextBox");
-            this.relatedValue2TextBox.Name = "relatedValue2TextBox";
-            // 
-            // relatedValue1TextBox
-            // 
-            this.relatedValue1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "RelatedValue1", true));
-            resources.ApplyResources(this.relatedValue1TextBox, "relatedValue1TextBox");
-            this.relatedValue1TextBox.Name = "relatedValue1TextBox";
-            this.relatedValue1TextBox.MouseEnter += new System.EventHandler(this.Tag_relatedValue1TextBox_MouseEnter);
-            // 
-            // normalMSGTextBox
-            // 
-            this.normalMSGTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "NormalMSG", true));
-            resources.ApplyResources(this.normalMSGTextBox, "normalMSGTextBox");
-            this.normalMSGTextBox.Name = "normalMSGTextBox";
-            this.normalMSGTextBox.MouseEnter += new System.EventHandler(this.Tag_normalMSGTextBox_MouseEnter);
-            // 
-            // alarmMSGTextBox
-            // 
-            this.alarmMSGTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "AlarmMSG", true));
-            resources.ApplyResources(this.alarmMSGTextBox, "alarmMSGTextBox");
-            this.alarmMSGTextBox.Name = "alarmMSGTextBox";
-            this.alarmMSGTextBox.MouseEnter += new System.EventHandler(this.Tag_alarmMSGTextBox_MouseEnter);
-            // 
-            // baseTextTextBox
-            // 
-            this.baseTextTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "BaseText", true));
-            resources.ApplyResources(this.baseTextTextBox, "baseTextTextBox");
-            this.baseTextTextBox.Name = "baseTextTextBox";
-            this.baseTextTextBox.MouseEnter += new System.EventHandler(this.Tag_baseTextTextBox_MouseEnter);
-            // 
-            // label26
-            // 
-            resources.ApplyResources(this.label26, "label26");
-            this.label26.Name = "label26";
-            // 
-            // textBox15
-            // 
-            this.textBox15.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "Description", true));
-            resources.ApplyResources(this.textBox15, "textBox15");
-            this.textBox15.Name = "textBox15";
-            this.textBox15.MouseEnter += new System.EventHandler(this.Tag_Descriptiom_MouseEnter);
-            // 
-            // checkBoxTagUdmOut
-            // 
-            resources.ApplyResources(this.checkBoxTagUdmOut, "checkBoxTagUdmOut");
-            this.checkBoxTagUdmOut.Name = "checkBoxTagUdmOut";
-            this.checkBoxTagUdmOut.UseVisualStyleBackColor = true;
-            this.checkBoxTagUdmOut.MouseEnter += new System.EventHandler(this.Tag_UDMOut_MouseEnter);
-            // 
-            // checkBoxTagUdmIn
-            // 
-            resources.ApplyResources(this.checkBoxTagUdmIn, "checkBoxTagUdmIn");
-            this.checkBoxTagUdmIn.Name = "checkBoxTagUdmIn";
-            this.checkBoxTagUdmIn.UseVisualStyleBackColor = true;
-            this.checkBoxTagUdmIn.MouseEnter += new System.EventHandler(this.Tag_UDMIn_MouseEnter);
-            // 
-            // checkBoxTagHH
-            // 
-            resources.ApplyResources(this.checkBoxTagHH, "checkBoxTagHH");
-            this.checkBoxTagHH.Name = "checkBoxTagHH";
-            this.checkBoxTagHH.UseVisualStyleBackColor = true;
-            this.checkBoxTagHH.MouseEnter += new System.EventHandler(this.Tag_HH_MouseEnter);
-            // 
-            // comboBox8
-            // 
-            this.comboBox8.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tagBindingSource1, "GrupType", true));
-            this.comboBox8.DataSource = this.gruptypeBindingSource;
-            this.comboBox8.DisplayMember = "Name";
-            this.comboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.comboBox8.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBox8, "comboBox8");
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.ValueMember = "id";
-            this.comboBox8.MouseEnter += new System.EventHandler(this.Tag_GrupType_MouseEnter);
-            // 
-            // label27
-            // 
-            resources.ApplyResources(this.label27, "label27");
-            this.label27.Name = "label27";
-            // 
-            // comboBox9
-            // 
-            this.comboBox9.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tagBindingSource1, "TagType", true));
-            this.comboBox9.DataSource = this.tagTypeBindingSource;
-            this.comboBox9.DisplayMember = "Name";
-            this.comboBox9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.comboBox9.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBox9, "comboBox9");
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.ValueMember = "id";
-            this.comboBox9.MouseEnter += new System.EventHandler(this.Tag_TagType_MouseEnter);
-            // 
-            // label28
-            // 
-            resources.ApplyResources(this.label28, "label28");
-            this.label28.Name = "label28";
-            // 
-            // label29
-            // 
-            resources.ApplyResources(this.label29, "label29");
-            this.label29.Name = "label29";
-            // 
-            // textBox16
-            // 
-            this.textBox16.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tagBindingSource1, "Name", true));
-            resources.ApplyResources(this.textBox16, "textBox16");
-            this.textBox16.Name = "textBox16";
-            this.textBox16.MouseEnter += new System.EventHandler(this.Tag_Name_MouseEnter);
-            // 
-            // label25
-            // 
-            resources.ApplyResources(this.label25, "label25");
-            this.label25.Name = "label25";
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -3282,10 +3286,36 @@
             // 
             this.defectDevice_tagTableAdapter.ClearBeforeFill = true;
             // 
+            // textBox12
+            // 
+            resources.ApplyResources(this.textBox12, "textBox12");
+            this.textBox12.Name = "textBox12";
+            // 
+            // button18
+            // 
+            resources.ApplyResources(this.button18, "button18");
+            this.button18.Name = "button18";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // label14
+            // 
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
+            // 
+            // panel_TreeSearch
+            // 
+            this.panel_TreeSearch.Controls.Add(this.button18);
+            this.panel_TreeSearch.Controls.Add(this.textBox12);
+            this.panel_TreeSearch.Controls.Add(this.label14);
+            resources.ApplyResources(this.panel_TreeSearch, "panel_TreeSearch");
+            this.panel_TreeSearch.Name = "panel_TreeSearch";
+            // 
             // Form2
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel_TreeSearch);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tabControl1);
@@ -3386,12 +3416,15 @@
             this.menuStrip10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             this.tabPage1.ResumeLayout(false);
+            this.panel_tag.ResumeLayout(false);
+            this.panel_tag.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tagBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rPTags_questiondata)).EndInit();
             this.panel_TagType.ResumeLayout(false);
             this.panel_TagType.PerformLayout();
             this.panel_gruppa.ResumeLayout(false);
             this.panel_gruppa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gruppaBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rPTags_questiondata)).EndInit();
             this.panel_corpus.ResumeLayout(false);
             this.panel_corpus.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.corpusBindingSource1)).EndInit();
@@ -3401,9 +3434,6 @@
             this.panel_PLC.ResumeLayout(false);
             this.panel_PLC.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pLCBindingSource1)).EndInit();
-            this.panel_tag.ResumeLayout(false);
-            this.panel_tag.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tagBindingSource1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
@@ -3420,6 +3450,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tagTypeBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.filtresBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.defectDevice_tagBindingSource)).EndInit();
+            this.panel_TreeSearch.ResumeLayout(false);
+            this.panel_TreeSearch.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3776,5 +3808,9 @@
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.CheckBox checkBox10;
         private System.Windows.Forms.CheckBox checkBox9;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Panel panel_TreeSearch;
     }
 }

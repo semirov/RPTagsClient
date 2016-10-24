@@ -83,9 +83,9 @@ namespace RPTagsTest
 
             dataGridView7.CellEndEdit += DataGridView7_CellEndEdit;
 
-           
+
             toolStripMenuEdit.Click += ToolStripMenuEdit_Click;
-            
+
 
 
             contextMenuStrip1.Opening += ContextMenuStrip1_Opening;
@@ -95,27 +95,7 @@ namespace RPTagsTest
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            try
-            {
-                Version ver = ApplicationDeployment.CurrentDeployment.CurrentVersion;
-                this.Text += " (" + ver.ToString() + ")";
-            }
-            catch (System.Deployment.Application.InvalidDeploymentException)
-            {
-                this.Text += " (Отладка)";
-            }
-            
-
-            
-
-            startprogConfigValid(); /// проверка насроек
-
-
-            this.defectDevice_tagTableAdapter.Fill(this.rPTagsDataSet.DefectDevice_tag);
-            this.filtresTableAdapter1.Fill(this.rPTags_questiondata.Filtres);
-            this.tagTypeTableAdapter1.Fill(this.rPTags_questiondata.TagType);
-            tabControl1.Enabled = false;
-           this.corpusTableAdapter2.Fill(this.dataSetCorpus.Corpus);
+            this.corpusTableAdapter2.Fill(this.dataSetCorpus.Corpus);
             try
             {
                 SqlConnectionStringBuilder connect = new SqlConnectionStringBuilder();
@@ -137,8 +117,30 @@ namespace RPTagsTest
                 if (MessageBox.Show("Отсутствует связь с базой данных \n " + tagTableAdapter.Connection.DataSource.ToString() + " (" + tagTableAdapter.Connection.Database.ToString() + ") \n Приложение будет закрыто!", "Ошибка связи", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK)
                     this.Close();
             }
+            try
+            {
+                Version ver = ApplicationDeployment.CurrentDeployment.CurrentVersion;
+                this.Text += " (" + ver.ToString() + ")";
+            }
+            catch (System.Deployment.Application.InvalidDeploymentException)
+            {
+                this.Text += " (Отладка)";
+            }
 
-            
+            panel_TreeSearch.Enabled = false;
+            treeView1.Enabled = false;
+
+
+            startprogConfigValid(); /// проверка насроек
+
+
+            this.defectDevice_tagTableAdapter.Fill(this.rPTagsDataSet.DefectDevice_tag);
+            this.filtresTableAdapter1.Fill(this.rPTags_questiondata.Filtres);
+            this.tagTypeTableAdapter1.Fill(this.rPTags_questiondata.TagType);
+            tabControl1.Enabled = false;
+          
+
+
 
             tagIdTagTypeIDTableAdapter.Fill(rPTagsDataSet.TagIdTagTypeID);
             tagTableAdapter.Fill(this.rPTagsDataSet.Tag);
@@ -170,7 +172,7 @@ namespace RPTagsTest
             // инициализатор загрузки дерева
             if (backgroundWorkerTreeLoad.IsBusy != true)
             {
-                
+
                 backgroundWorkerTreeLoad.RunWorkerAsync();
                 toolStripStatusLabel2.Text = "Загрузка дерева:";
                 toolStripProgressBar1.Visible = true;
@@ -259,8 +261,8 @@ namespace RPTagsTest
             {
                 this.device_TagTableAdapter.FillByTagSysGr(this.rPTagsDataSet.Device_Tag, systema, gruppa, tag);
             }
-            
-            
+
+
         }
         private void backgroundWorker6_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -312,7 +314,7 @@ namespace RPTagsTest
         {
             toolStripStatusLabel4.Text = "";
             change_device_tag();
-        }   
+        }
         private void DataGridView7_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (rPTagsDataSet.Device_Tag.GetChanges(DataRowState.Modified) != null)
@@ -406,7 +408,7 @@ namespace RPTagsTest
             newForm.Owner = this;
             newForm.Show();
         }
-        
+
         private void backgroundWorker7_DoWork(object sender, DoWorkEventArgs e)
         {
             //toolStripStatusLabel4.Text = "Добавляем отсутствующие записи...";
@@ -1153,7 +1155,7 @@ namespace RPTagsTest
         {
             FileDialog();
         }
-        
+
         private void button3_Click(object sender, EventArgs e) // сохранить файл
         {
             SaveDGVToCSVfile(textBox3.Text, textBox1.Text, dataGridView8, checkBox1.Checked, Properties.Resources.Areas_AWX_stable);
@@ -1275,7 +1277,7 @@ namespace RPTagsTest
         {
             FileDialog();
         }
-        
+
         private void button6_Click(object sender, EventArgs e) // save file
         {
             SaveDGVToCSVfile(textBox6.Text, textBox7.Text, dataGridView10, checkBox2.Checked, Properties.Resources.HH_stable);
@@ -1335,7 +1337,7 @@ namespace RPTagsTest
         {
             FileDialog();
         }
-        
+
         private void button9_Click(object sender, EventArgs e) //savefile
         {
             SaveDGVToCSVfile(textBox8.Text, textBox9.Text, dataGridView11, checkBox3.Checked, Properties.Resources.UDM_register_stable);
@@ -1522,15 +1524,15 @@ namespace RPTagsTest
                                     Tag_node.Tag = row_Tag.id;
                                     // тэг к типу тега
                                     //tagType_node.Nodes.Add(Tag_node);
-                                    this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { Tag_node, tagType_node});
+                                    this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { Tag_node, tagType_node });
                                     intemcount++;
-                                    
+
                                 }
                                 if (tagType_node.Nodes.Count != 0)
                                     // тип тега к группе
                                     //gruppa_node.Nodes.Add(tagType_node);
                                     this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { tagType_node, gruppa_node });
-                                    
+
                             }
                             // группа к системе
                             //systema_node.Nodes.Add(gruppa_node);
@@ -1541,17 +1543,17 @@ namespace RPTagsTest
                         // система к ПЛК
                         //plc_node.Nodes.Add(systema_node);
                         this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { systema_node, plc_node });
-                        
+
                     }
                     //----------------------------------------------------------------------------------до сюда
                     // ПЛК к корпусу
                     //node_corpus.Nodes.Add(plc_node);
                     this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { plc_node, node_corpus });
-                    
+
                 }
                 // корпус к дереву
                 //treeView1.Nodes.Add(node_corpus);
-                this.Invoke(new AddNodeToTreeViewDelegate(AddNodeToTree), new object[] {node_corpus, treeView1 });
+                this.Invoke(new AddNodeToTreeViewDelegate(AddNodeToTree), new object[] { node_corpus, treeView1 });
                 e.Result = intemcount;
 
 
@@ -1561,15 +1563,15 @@ namespace RPTagsTest
         private void backgroundWorkerTreeLoad_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             toolStripProgressBar1.Value = e.ProgressPercentage;
-           
-            
+
+
         }
         private void backgroundWorkerTreeLoad_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-           
+            treeView1.Enabled = true;
             toolStripProgressBar1.Visible = false;
             treeView1.SelectedNode = treeView1.Nodes[0];
-            
+
             this.oPCTableAdapter.Fill(this.rPTagsDataSet.OPC);
             this.filtresTableAdapter.Fill(this.rPTagsDataSet.Filtres);
             this.tagTypeTableAdapter.Fill(this.rPTagsDataSet.TagType);
@@ -1577,18 +1579,19 @@ namespace RPTagsTest
             this.systemTypeTableAdapter.Fill(this.rPTagsDataSet.SystemType);
             this.pLCTableAdapter.Fill(this.rPTagsDataSet.PLC);
             this.corpusTableAdapter.Fill(this.rPTagsDataSet.Corpus);
-            
+            panel_TreeSearch.Enabled = true;
             tabControl1.Enabled = true;
+            treeView1.Sort();
         }
         //обновление
-        
+
         private void backgroundWorkerReloadTree_DoWork(object sender, DoWorkEventArgs e)
         {
             int intemcount = 0;
             BackgroundWorker worker = sender as BackgroundWorker;
             worker.WorkerReportsProgress = true;
 
-           
+
             switch (reloadlevel)
             {
                 case 0: //выделен корпус
@@ -1653,7 +1656,7 @@ namespace RPTagsTest
                             // система к ПЛК
                             //plc_node.Nodes.Add(systema_node);
                             this.Invoke(new AddNodeToNodeDelegate(AddNodeToNode), new object[] { systema_node, plc_node });
-                            
+
                         }
                         //----------------------------------------------------------------------------------до сюда
                         // ПЛК к корпусу
@@ -1813,6 +1816,7 @@ namespace RPTagsTest
             tabControl1.Enabled = true;
             treeView1.Enabled = true;
             toolStripProgressBar1.Visible = false;
+            treeView1.Sort();
         }
         //----!!!-- методы используемые делегатами!
         private void AddNodeToNode(TreeNode node, TreeNode parentNode)
@@ -1834,7 +1838,7 @@ namespace RPTagsTest
 
         private void treeView1_BeforeSelect(object sender, TreeViewCancelEventArgs e)
         {
-            
+
             if (current_node != e.Node)
             {
                 cancelorEndEditNode();
@@ -1896,7 +1900,7 @@ namespace RPTagsTest
                     }
                     if (!notsaved)
                     {
-                        
+
 
                         if (systema_id != 0 && gruppa_id != 0 && tag_id != 0) // если выбрана система, группа, тег - покажем только по тегу
                         {
@@ -1979,44 +1983,47 @@ namespace RPTagsTest
 
 
                                 }
-                               
+
 
                             }
                         }
-                        
-                            int i = 0;
+
+                        int i = 0;
+                        int all = 0;
                         foreach (RPTagsDataSet.Device_TagRow row in rPTagsDataSet.Device_Tag)
                         {
                             bool value = row.IsCutNull();
                             if (value)
                             {
                                 i++;
+                                all++;
                             }
                             else
                             {
                                 if (row.Cut.ToString() == "1")
                                 {
-
+                                    all++;
                                 }
                                 else
                                 {
                                     i++;
+                                    all++;
                                 }
                             }
                         }
-                        toolStripStatusLabel5.Text = "Активных записей: " + i;
+                        toolStripStatusLabel5.Text = "Активных записей: " + i + " Всего: " + all;
                         if (tabControl1.SelectedTab == tabPage7)
                         {
                             toolStripStatusLabel5.Visible = true;
-                            
+
                         }
                         else
                         {
                             toolStripStatusLabel5.Visible = false;
                         }
-                            
+
                     }
-                    
+
                 }
 
 
@@ -2037,7 +2044,7 @@ namespace RPTagsTest
             int parent_id = 0;
             if (level > 0)
                 parent_id = Convert.ToInt16(node.Parent.Tag);
-            
+
             switch (level) // выделенный объект
             {
                 case 0: //выделен корпус
@@ -2050,25 +2057,25 @@ namespace RPTagsTest
                     this.systemaTableAdapter1.FillById(this.rPTags_questiondata.Systema, id);
                     break;
                 case 3: //выделена группа
-                    this.gruppaTableAdapter1.FillById(this.rPTags_questiondata.Gruppa,id);
+                    this.gruppaTableAdapter1.FillById(this.rPTags_questiondata.Gruppa, id);
                     break;
                 case 4: //выделен груптайп
 
                     break;
                 case 5: //выделен тег
-                        this.tagTableAdapter1.FillById(this.rPTags_questiondata.Tag,id);
+                    this.tagTableAdapter1.FillById(this.rPTags_questiondata.Tag, id);
                     break;
 
-                    
+
             }
-            
+
 
         }
 
         TreeNode current_node = null;
         bool addNodeInProc = false; // если true то проиходит добавление ноды 
         bool editNodeInProc = false;
-        
+
         bool parent = false;
         bool doughter = false;
 
@@ -2118,7 +2125,7 @@ namespace RPTagsTest
                     {
                         checkBoxSystemaEnabled.Checked = false;
                     }
-                    
+
                     break;
 
                 case 3: //выделена группа
@@ -2224,9 +2231,9 @@ namespace RPTagsTest
                         alarmMSGTextBox.Enabled = false;
                         normalMSGTextBox.Enabled = false;
                         tLA_MSGTextBox.Enabled = false;
-                        
+
                         relatedValue2TextBox.Enabled = false;
-                        
+
                         relatedValue4TextBox.Enabled = false;
                         relatedValue5TextBox.Enabled = false;
                     }
@@ -2236,9 +2243,9 @@ namespace RPTagsTest
                         alarmMSGTextBox.Enabled = true;
                         normalMSGTextBox.Enabled = true;
                         tLA_MSGTextBox.Enabled = true;
-                        
+
                         relatedValue2TextBox.Enabled = true;
-                        
+
                         relatedValue4TextBox.Enabled = true;
                         relatedValue5TextBox.Enabled = true;
                     }
@@ -2248,12 +2255,12 @@ namespace RPTagsTest
                     break; /// -------------------------------------------------------------------------------------конец
 
 
-                
+
             }
         } // управление контролами при выборе в дереве
         private void editnode(TreeNode node, bool edit) // управление контролом при редактировании
         {
-            
+
             if (edit) // если нужно редактировать, то запомним ноду
             {
                 current_node = node;
@@ -2263,7 +2270,7 @@ namespace RPTagsTest
             {
                 editNodeInProc = false;
             }
-            
+
             int level = node.Level;
             switch (level)
             {
@@ -2273,12 +2280,13 @@ namespace RPTagsTest
                         buttonCorpCancel.Visible = true;
                         buttonCorpSave.Visible = true;
                         rPTags_questiondata.Corpus[0].BeginEdit();
-                    } else
+                    }
+                    else
                     {
                         buttonCorpCancel.Visible = false;
                         buttonCorpSave.Visible = false;
 
-                        
+
                         rPTags_questiondata.Corpus[0].CancelEdit();
                     }
                     break;
@@ -2363,7 +2371,7 @@ namespace RPTagsTest
                     }
                     break;
             }
-             // вызовем неперегруженный метод
+            // вызовем неперегруженный метод
         }
         private void addparentnode(TreeNode node, bool edit, bool add) // перегрузка для редактирования
         {
@@ -2522,7 +2530,7 @@ namespace RPTagsTest
                             NewTagRow.TagType = rPTags_questiondata.Tag[0].TagType;
                             NewTagRow.GrupType = rPTags_questiondata.Tag[0].GrupType;
                             NewTagRow.Filter = rPTags_questiondata.Tag[0].Filter;
-                            if(!rPTags_questiondata.Tag[0].IsNormalMSGNull())
+                            if (!rPTags_questiondata.Tag[0].IsNormalMSGNull())
                                 NewTagRow.NormalMSG = rPTags_questiondata.Tag[0].NormalMSG;
                             if (!rPTags_questiondata.Tag[0].IsRelatedValue3Null())
                                 NewTagRow.RelatedValue3 = rPTags_questiondata.Tag[0].RelatedValue3;
@@ -2549,15 +2557,15 @@ namespace RPTagsTest
                         break;
                 }
                 #endregion
-                
+
             }
-            if(!parent && doughter)
+            if (!parent && doughter)
             {
 
                 int level;
                 if (add) // если получили разрешение на добавление то поднимем флаг.
                 {
-                    
+
                     if (node.FirstNode == null) // если дочек нет
                     {
                         level = node.Level + 1;
@@ -2573,7 +2581,7 @@ namespace RPTagsTest
 
 
                     }
-                    
+
                 }
                 else
                 {
@@ -2642,7 +2650,7 @@ namespace RPTagsTest
                             }
                             else
                             {
-                                node.Parent.Nodes.Add(nodeNewSystema); 
+                                node.Parent.Nodes.Add(nodeNewSystema);
                             }
                             current_node = nodeNewSystema;
                             treeView1.SelectedNode = nodeNewSystema;
@@ -2680,7 +2688,7 @@ namespace RPTagsTest
                         {
                             TreeNode nodeNewGruppa = new TreeNode("nodeNewGruppa");
 
-                           
+
                             // 
                             nodeNewGruppa.Text = "Новый элемент";
                             nodeNewGruppa.Tag = 0;
@@ -2794,23 +2802,23 @@ namespace RPTagsTest
             switch (level)
             {
                 case 0: //выделен корпус
-                    if(node.Nodes.Count > 0) // если у ноды есть потомки то непозволим удалить без удаления потомков.
+                    if (node.Nodes.Count > 0) // если у ноды есть потомки то непозволим удалить без удаления потомков.
                     {
-                        if (MessageBox.Show("У " + node.Text + " имеются зависимые ПЛК: " + node.Nodes.Count.ToString() + "\nУдаление возможно только после того, как у " + node.Text + 
-                            "\nне останется дочерних элементов!\nПерейти к ним?" , "Удаление невозможно!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        if (MessageBox.Show("У " + node.Text + " имеются зависимые ПЛК: " + node.Nodes.Count.ToString() + "\nУдаление возможно только после того, как у " + node.Text +
+                            "\nне останется дочерних элементов!\nПерейти к ним?", "Удаление невозможно!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             treeView1.SelectedNode = node.FirstNode;
                         }
                     }
                     else
                     {
-                        if (MessageBox.Show("Элемент "+ node.Text + " будет удален!\n Подтвердить удаление?", "Удаление "+ node.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        if (MessageBox.Show("Элемент " + node.Text + " будет удален!\n Подтвердить удаление?", "Удаление " + node.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                         {
-                            
+
                             rPTags_questiondata.Corpus[0].Delete();
                             corpusTableAdapter1.Update(rPTags_questiondata.Corpus);
                             node.Remove();
-                        }  
+                        }
                     }
                     break;
                 case 1: //выделен ПЛК
@@ -2868,7 +2876,7 @@ namespace RPTagsTest
                     break;
 
                 case 5: //выделен тег
-                    
+
                     int count = Convert.ToInt16(tagTableAdapter1.GetGrupCountById(Convert.ToInt16(node.Tag.ToString())));
                     if (MessageBox.Show("Тег " + node.Text + " используется следующим количеством групп: " + count.ToString() + "\n Подтвердить удаление?", "Удаление " + node.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
@@ -2885,7 +2893,7 @@ namespace RPTagsTest
         }
         private void cancelorEndEditNode()
         {
-            
+
             if (addNodeInProc)
                 addparentnode(current_node, false, false);
             if (editNodeInProc)
@@ -2896,11 +2904,11 @@ namespace RPTagsTest
         {
             tabControl1.SelectedTab = tabPage1;
             deletenode(treeView1.SelectedNode);
-        } 
+        }
         private void ToolStripMenuEdit_Click(object sender, EventArgs e)// контекстное меню редактировать
         {
             tabControl1.SelectedTab = tabPage1;
-            editnode(treeView1.SelectedNode,true);
+            editnode(treeView1.SelectedNode, true);
 
         }
         private void ToolStripMenuAdd_Click(object sender, EventArgs e)// контекстное меню добавить родителя
@@ -2917,7 +2925,7 @@ namespace RPTagsTest
         }
 
         int reloadlevel = 0;
-        TreeNode reloadnode; 
+        TreeNode reloadnode;
         private void toolStripMenuReload_Click(object sender, EventArgs e)
         {
 
@@ -2947,33 +2955,36 @@ namespace RPTagsTest
                 tabControl1.Enabled = false;
                 treeView1.Enabled = false;
             }
-           
+
 
 
         }
-        string regExpPathPatern = "^[a-zA-Z0-9_]+$";
+        string regExpPathPatern = "^[a-zA-Z0-9_]{2,18}$";
         private void buttonCorpSave_Click(object sender, EventArgs e) // корпус сохранить
         {
             if (Regex.IsMatch(nameTextBox.Text, regExpPathPatern, RegexOptions.IgnoreCase))
             {
-            treeView1.SelectedNode.Text = nameTextBox.Text;
-            rPTags_questiondata.Corpus[corpusBindingSource1.Position].Name = nameTextBox.Text;
-            rPTags_questiondata.Corpus[corpusBindingSource1.Position].Description = descriptionTextBox.Text;
-            rPTags_questiondata.Corpus[corpusBindingSource1.Position].EndEdit();
-            corpusTableAdapter1.Update(rPTags_questiondata.Corpus);
-            treeView1.SelectedNode.Tag = rPTags_questiondata.Corpus[corpusBindingSource1.Position].id;
-            treeView1.SelectedNode.Text = rPTags_questiondata.Corpus[corpusBindingSource1.Position].Name;
-            cancelorEndEditNode();
-            }else
+                treeView1.SelectedNode.Text = nameTextBox.Text;
+                rPTags_questiondata.Corpus[corpusBindingSource1.Position].Name = nameTextBox.Text;
+                rPTags_questiondata.Corpus[corpusBindingSource1.Position].Description = descriptionTextBox.Text;
+                rPTags_questiondata.Corpus[corpusBindingSource1.Position].EndEdit();
+                corpusTableAdapter1.Update(rPTags_questiondata.Corpus);
+                treeView1.SelectedNode.Tag = rPTags_questiondata.Corpus[corpusBindingSource1.Position].id;
+                treeView1.SelectedNode.Text = rPTags_questiondata.Corpus[corpusBindingSource1.Position].Name;
+                cancelorEndEditNode();
+                treeView1.Focus();
+            }
+            else
             {
                 MessageBox.Show("В поле Name допустимы только латинские буквы и цифры", "Ошибка имени!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    
+
             }
 
         }
         private void buttonCorpCancel_Click(object sender, EventArgs e) // корпус отменить
         {
             cancelorEndEditNode();
+            treeView1.Focus();
         }
         private void buttonPLCSave_Click(object sender, EventArgs e) // плк сохранить
         {
@@ -2990,6 +3001,7 @@ namespace RPTagsTest
                 treeView1.SelectedNode.Tag = rPTags_questiondata.PLC[pLCBindingSource1.Position].id;
                 treeView1.SelectedNode.Text = rPTags_questiondata.PLC[pLCBindingSource1.Position].Name;
                 cancelorEndEditNode();
+                treeView1.Focus();
             }
             else
             {
@@ -3002,6 +3014,7 @@ namespace RPTagsTest
         private void buttonPLCCalcel_Click(object sender, EventArgs e) // плк отменить
         {
             cancelorEndEditNode();
+            treeView1.Focus();
         }
         private void buttonSystemaSave_Click(object sender, EventArgs e) // система сохранить
         {
@@ -3024,6 +3037,7 @@ namespace RPTagsTest
                 treeView1.SelectedNode.Tag = rPTags_questiondata.Systema[systemaBindingSource1.Position].id;
                 treeView1.SelectedNode.Text = rPTags_questiondata.Systema[systemaBindingSource1.Position].Name;
                 cancelorEndEditNode();
+                treeView1.Focus();
             }
             else
             {
@@ -3034,6 +3048,7 @@ namespace RPTagsTest
         private void buttonSystemaCancel_Click(object sender, EventArgs e) // система отменить
         {
             cancelorEndEditNode();
+            treeView1.Focus();
         }
         private void buttonGruppaSave_Click(object sender, EventArgs e) // группа сохранить
         {
@@ -3056,8 +3071,8 @@ namespace RPTagsTest
                 gruppaTableAdapter1.Update(rPTags_questiondata.Gruppa);
                 treeView1.SelectedNode.Tag = rPTags_questiondata.Gruppa[gruppaBindingSource1.Position].id;
                 treeView1.SelectedNode.Text = rPTags_questiondata.Gruppa[gruppaBindingSource1.Position].Name;
-
                 cancelorEndEditNode();
+                treeView1.Focus();
             }
             else
             {
@@ -3069,6 +3084,7 @@ namespace RPTagsTest
         private void buttonGruppaCancel_Click(object sender, EventArgs e) // группа отменить
         {
             cancelorEndEditNode();
+            treeView1.Focus();
         }
         private void buttonTagSave_Click(object sender, EventArgs e) // тег сохранить
         {
@@ -3120,6 +3136,7 @@ namespace RPTagsTest
                 treeView1.SelectedNode.Text = rPTags_questiondata.Tag[tagBindingSource1.Position].Name;
 
                 cancelorEndEditNode();
+                treeView1.Focus();
             }
             else
             {
@@ -3131,10 +3148,11 @@ namespace RPTagsTest
         private void buttonTagCancel_Click(object sender, EventArgs e) // тег отменить
         {
             cancelorEndEditNode();
+            treeView1.Focus();
         }
         private void ContextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
-            if(treeView1.SelectedNode != null)
+            if (treeView1.SelectedNode != null)
             {
                 int level = treeView1.SelectedNode.Level;
                 string item = treeView1.SelectedNode.Text;
@@ -3225,6 +3243,10 @@ namespace RPTagsTest
                 {
                     toolStripMenuDelete.Enabled = false;
                 }
+                else
+                {
+                    toolStripMenuDelete.Enabled = true;
+                }
             }
             else
             {
@@ -3235,12 +3257,126 @@ namespace RPTagsTest
                 toolStripMenuReload.Visible = false;
                 toolStripSeparator1.Visible = false;
             }
-            
+
         } // контекстное меню
 
+
+        #region поиск по дереву
+        private TreeNode searchTreeText(TreeNode node, string searchtext)
+        {
+            regExpPathPatern = searchtext;
+            if (Regex.IsMatch(node.Text, regExpPathPatern, RegexOptions.IgnoreCase))
+            {
+                return node;
+            }
+            return null;
+        }
+        private List<TreeNode> searhTreeNode(string searchtext)
+        {
+            List<TreeNode> SearchNode = new List<TreeNode>();
+
+            foreach (TreeNode CorpNode in treeView1.Nodes)
+            {
+
+                // уровень корпуса
+                if (searchTreeText(CorpNode, searchtext) != null)
+                {
+                    SearchNode.Add(searchTreeText(CorpNode, searchtext));
+
+                }
+                foreach (TreeNode PLCnode in CorpNode.Nodes)
+                {
+                    // уровень ПЛК
+                    if (searchTreeText(PLCnode, searchtext) != null)
+                    {
+                        SearchNode.Add(searchTreeText(PLCnode, searchtext));
+                    }
+                    foreach (TreeNode SystemaNode in PLCnode.Nodes)
+                    {
+                        // уровень система
+                        if (searchTreeText(SystemaNode, searchtext) != null)
+                        {
+                            SearchNode.Add(searchTreeText(SystemaNode, searchtext));
+                        }
+                        foreach (TreeNode GruppaNode in SystemaNode.Nodes)
+                        {
+                            // уровень группа
+                            if (searchTreeText(GruppaNode, searchtext) != null)
+                            {
+                                SearchNode.Add(searchTreeText(GruppaNode, searchtext));
+                            }
+                            foreach (TreeNode TagTypeNode in GruppaNode.Nodes)
+                            {
+                                // уровень типтега
+                                if (searchTreeText(TagTypeNode, searchtext) != null)
+                                {
+                                    SearchNode.Add(searchTreeText(TagTypeNode, searchtext));
+                                }
+                                foreach (TreeNode TagNode in TagTypeNode.Nodes)
+                                {
+                                    // уровень тег
+                                    if (searchTreeText(TagNode, searchtext) != null)
+                                    {
+                                        SearchNode.Add(searchTreeText(TagNode, searchtext));
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return SearchNode;
+        }
+
+        // поиск по дереву
+        string tempSearhText;
+        List<TreeNode> tempSearchNodeList = new List<TreeNode>();
+        int selectSearchNodeInd = 0;
+        private void button18_Click(object sender, EventArgs e)
+        {
+            if (tempSearhText != textBox12.Text)
+            {
+                tempSearhText = textBox12.Text;
+                selectSearchNodeInd = 0;
+                tempSearchNodeList = searhTreeNode(tempSearhText);
+
+
+                if (tempSearchNodeList.Count != 0)
+                {
+                    treeView1.SelectedNode = tempSearchNodeList.ElementAt(selectSearchNodeInd);
+                }
+                else
+                {
+                    MessageBox.Show("Ничего не найдено", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                selectSearchNodeInd++;
+                if (selectSearchNodeInd > tempSearchNodeList.Count - 1)
+                {
+                    selectSearchNodeInd = 0;
+                }
+                if (tempSearchNodeList.Count != 0)
+                {
+                    treeView1.SelectedNode = tempSearchNodeList.ElementAt(selectSearchNodeInd);
+                }
+                else
+                {
+                    MessageBox.Show("Все равно ничего не найдено", "Эх...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+
+
+            treeView1.Select();
+        }
+        #endregion
         #endregion
         #region административное
-        
+
+
+        #region безопасность и парольная защита
         string GetHashString(string s) // метод шифрования
         {
             //переводим строку в байт-массим  
@@ -3272,13 +3408,13 @@ namespace RPTagsTest
                 groupBox13.Visible = true;
 
             }
-         else
+            else
             {
                 MessageBox.Show("А пароль - то не настоящий...", "Упс!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
             }
-}
+        }
         private void tabPage2_Enter(object sender, EventArgs e)
         {
             groupBox10.Visible = false;
@@ -3289,10 +3425,11 @@ namespace RPTagsTest
         }
         private void button20_Click(object sender, EventArgs e)
         {
-            if(textBox17.Text != textBox19.Text)
+            if (textBox17.Text != textBox19.Text)
             {
                 MessageBox.Show("Пароли не совпадают", "Упс!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } else
+            }
+            else
             {
                 if (textBox17.Text != "" || textBox17.Text != " ")
                 {
@@ -3324,7 +3461,7 @@ namespace RPTagsTest
             if (checkBox8.Checked)
             {
                 deleteEnable = true;
-                
+
             }
             else
             {
@@ -3349,7 +3486,7 @@ namespace RPTagsTest
         {
             if (checkBox10.Checked) // если нужно запомнить разрешения
             {
-                
+
                 if (checkBox8.Checked)
                 {
                     Properties.Settings.Default.DelEnable = GetHashString("Разрешить Del" + Properties.Settings.Default.Password);
@@ -3358,7 +3495,8 @@ namespace RPTagsTest
                 {
                     Properties.Settings.Default.CutEnable = GetHashString("Разрешить Cut" + Properties.Settings.Default.Password);
                 }
-            }else
+            }
+            else
             {
                 Properties.Settings.Default.DelEnable = GetHashString(Properties.Settings.Default.Password + "Del");
                 Properties.Settings.Default.CutEnable = GetHashString(Properties.Settings.Default.Password + "Cut");
@@ -3367,11 +3505,12 @@ namespace RPTagsTest
         }
         private void startprogConfigValid()
         {
-            if(Properties.Settings.Default.DelEnable == GetHashString("Разрешить Del" + Properties.Settings.Default.Password))
+            if (Properties.Settings.Default.DelEnable == GetHashString("Разрешить Del" + Properties.Settings.Default.Password))
             {
                 checkBox8.Checked = true;
                 deleteEnable = true;
-            }else
+            }
+            else
             {
                 checkBox8.Checked = false;
                 deleteEnable = false;
@@ -3388,9 +3527,9 @@ namespace RPTagsTest
                 checkBox9.Checked = false;
             }
 
-            
-        }
 
+        }
+        #endregion
 
 
         #region подсказки
@@ -3443,7 +3582,7 @@ namespace RPTagsTest
 
         private void Tag_Descriptiom_MouseEnter(object sender, EventArgs e)
         {
-            richTextBoxTag.Text = "Description - должно содержать краткое описание тега.";
+            richTextBoxTag.Text = "Description - должно содержать краткое описание тега. Обязательное поле - используется для Тегов AWX.";
         }
 
         private void Tag_baseTextTextBox_MouseEnter(object sender, EventArgs e)
@@ -3511,14 +3650,14 @@ namespace RPTagsTest
             richTextBoxGruppa.Text = "Grup Type - определяет набор параметров котоые будут доступны по указанному имени группы.";
         }
 
-        
+
 
         private void systemaComboBox_MouseEnter(object sender, EventArgs e)
         {
             richTextBoxGruppa.Text = "Systema - определяет к какой системе будет принадлежать выбранная группа.";
         }
 
-        
+
 
         private void richTextBoxGruppa_MouseEnter(object sender, EventArgs e)
         {
@@ -3588,12 +3727,13 @@ namespace RPTagsTest
 
 
 
+
         #endregion
 
         
-    }
 
-    #endregion
+        #endregion
+    }
 }
 
 

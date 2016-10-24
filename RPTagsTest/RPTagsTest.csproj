@@ -26,9 +26,9 @@
     <InstallUrl>\\SEMIROV-F\RPTagsClient\</InstallUrl>
     <ProductName>RPTags Client</ProductName>
     <PublisherName>Norvix-Technology</PublisherName>
-    <MinimumRequiredVersion>0.9.21.12</MinimumRequiredVersion>
-    <ApplicationRevision>12</ApplicationRevision>
-    <ApplicationVersion>0.9.21.%2a</ApplicationVersion>
+    <MinimumRequiredVersion>0.9.22.6</MinimumRequiredVersion>
+    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationVersion>0.9.22.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -172,7 +172,7 @@
     <None Include="RPTagsDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <SubType>Designer</SubType>
-      <LastGenOutput>RPTagsDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>RPTagsDataSet1.Designer.cs</LastGenOutput>
     </None>
     <None Include="RPTagsDataSet.xss">
       <DependentUpon>RPTagsDataSet.xsd</DependentUpon>
@@ -210,18 +210,7 @@
   <ItemGroup>
     <Content Include="w512h5121339253474Database1512x512.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <PublishFile Include="asa-TZ\RPTagsTest.resources">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Satellite</FileType>
-    </PublishFile>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

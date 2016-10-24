@@ -208,6 +208,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "importOPC";
             this.Text = "Импорт PLC - адресов";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.importOPC_FormClosing);

@@ -5,14 +5,6 @@
     <Setting Name="Password" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="RPTagsConnectionString" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=192.168.100.11\SQLEXPRESS;Initial Catalog=RPTags;Persist Security Info=True;User ID=sa;Password=1; Connect Timeout=15&lt;/ConnectionString&gt;
-  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=192.168.100.11\SQLEXPRESS;Initial Catalog=RPTags;Persist Security Info=True;User ID=sa;Password=1; Connect Timeout=15</Value>
-    </Setting>
     <Setting Name="SPCount" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
@@ -24,6 +16,14 @@
     </Setting>
     <Setting Name="ctrlSum" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RPTagsConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=192.168.100.11\SQLEXPRESS;Initial Catalog=RPTags;Persist Security Info=True;User ID=sa;Password=1; Connect Timeout=15&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=192.168.100.11\SQLEXPRESS;Initial Catalog=RPTags;Persist Security Info=True;User ID=sa;Password=1; Connect Timeout=15</Value>
     </Setting>
   </Settings>
 </SettingsFile>
