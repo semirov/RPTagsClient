@@ -115,6 +115,16 @@ namespace RPTagsTest.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на #Ico.AwxServer.BusinessEntities.AwxSvrSource,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        ///{LocationPath},Name,DisplayName,Description,TemplateId,Input1,BaseText,DefaultDisplay,Delay,Enabled,HelpText,EnableClear,ExcludeEqualTo,DelayOnAlarmOnly,AlarmTreeWritesEnabled,AlarmTreeEnumType,DEV_Input2,DEV_AckOnRTN,DEV_Deadband,DEV_HI_Limit,DEV_HI_MsgText,DEV_HI_RequiresAck,DEV_HI_Severity,DEV_HIHI_Limit,DEV_HIHI_MsgText,DEV_HIHI_RequiresAck, [остаток строки не уместился]&quot;;.
+        /// </summary>
+        public static string TagAWX_Stable {
+            get {
+                return ResourceManager.GetString("TagAWX_Stable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на #Ico.Udm.BusinessEntities.RegisterFolder,,,,,,,,,,,,,,,,,,,,
         ///{LocationPath},Name,DisplayName,Description,Sequence,,,,,,,,,,,,,,,,
         ///,PK,,,0,,,,,,,,,,,,,,,,

@@ -26,8 +26,8 @@
     <InstallUrl>\\SEMIROV-F\RPTagsClient\</InstallUrl>
     <ProductName>RPTags Client</ProductName>
     <PublisherName>Norvix-Technology</PublisherName>
-    <MinimumRequiredVersion>0.9.22.8</MinimumRequiredVersion>
-    <ApplicationRevision>9</ApplicationRevision>
+    <MinimumRequiredVersion>0.9.22.17</MinimumRequiredVersion>
+    <ApplicationRevision>18</ApplicationRevision>
     <ApplicationVersion>0.9.22.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -165,6 +165,8 @@
     <None Include="Properties\app.manifest" />
     <None Include="Resources\Areas_AWX_stable.csv" />
     <None Include="Resources\HH_stable.csv" />
+    <None Include="Resources\sfd.csv" />
+    <None Include="Resources\TagAWX_Stable.csv" />
     <None Include="Resources\UDM_register_stable.csv" />
     <None Include="RPTagsDataSet.xsc">
       <DependentUpon>RPTagsDataSet.xsd</DependentUpon>

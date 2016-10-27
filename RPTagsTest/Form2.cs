@@ -189,11 +189,18 @@ namespace RPTagsTest
             richTextBoxPLC.ReadOnly = true;
             richTextBoxSystema.ReadOnly = true;
             richTextBoxTag.ReadOnly = true;
+
+
+
+            label15.Enabled = false;
+            textBox13.Enabled = false;
+            button21.Enabled = false;
         }
 
         private void tag_path_changer(TreeNode node)
         {
             toolStripStatusLabel1.Text = node.FullPath;
+            textBox14.Text = node.FullPath;
             tabPage1.Text = node.FullPath;
         } // путь тега для главной формы
 
@@ -251,6 +258,7 @@ namespace RPTagsTest
             if (systema != 0) // по одному
             {
                 this.device_TagTableAdapter.FillBySystema(this.rPTagsDataSet.Device_Tag, systema);
+
             }
         }
         private void fiilDevice_tag(int systema, int gruppa)
@@ -891,7 +899,7 @@ namespace RPTagsTest
             TagType_changed();
 
         }
-
+        
         //--------------OPC---------------------------------------------------------------------------------------
         private void OPC_changed()
         {
@@ -1027,10 +1035,14 @@ namespace RPTagsTest
                     }
 
                     sw.Write("\r\n");
+                    
                 }
                 if (addStb)
                 {
-                    StreamReader fs = new StreamReader(stable);
+                    StreamWriter SW = new StreamWriter(new FileStream("Temp.txt", FileMode.Create, FileAccess.Write));
+                    SW.Write(stable);
+                    SW.Close();
+                    StreamReader fs = new StreamReader("Temp.txt");
                     sw.Write("\r\n");
 
 
@@ -1046,9 +1058,11 @@ namespace RPTagsTest
 
 
                     }
+                    fs.Close();
+                    SW.Close();
                 }
-
                 sw.Close();
+                File.Delete("Temp.txt");
                 MessageBox.Show("Конфигурация " + filename + " сохранена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
@@ -1056,6 +1070,7 @@ namespace RPTagsTest
             {
                 MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return false;
+                
             }
 
             return true;
@@ -1063,8 +1078,8 @@ namespace RPTagsTest
         private string FileDialog()
         {
             string s = "C:\\";
-            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
-                PrenameDate();
+            PrenameDate();
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)   
             {
                 s = folderBrowserDialog1.SelectedPath + "\\config_" + prename;
             }
@@ -1223,7 +1238,7 @@ namespace RPTagsTest
         }
         private void button2_Click(object sender, EventArgs e) // сохранить файл
         {
-            SaveDGVToCSVfile(textBox4.Text, textBox5.Text, dataGridView9, false, "");
+            SaveDGVToCSVfile(textBox4.Text, textBox5.Text, dataGridView9, checkBox12.Checked, Properties.Resources.TagAWX_Stable);
         }
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
@@ -1239,6 +1254,8 @@ namespace RPTagsTest
                 comboBox4.Enabled = false;
                 Get_corpus = "ALL";
                 checkallcheckbox(true);
+                checkBox12.Checked = false;
+                checkBox12.Enabled = false;
             }
 
         }
@@ -1246,6 +1263,7 @@ namespace RPTagsTest
 
 
         //----------------tagHH----------------------------------------------
+        DataTable tagHH;
         private void backgroundWorker3_DoWork(object sender, DoWorkEventArgs e)
         {
 
@@ -1257,7 +1275,27 @@ namespace RPTagsTest
         {
             System.Windows.Forms.MessageBox.Show("Загрузка конфигурации TagHH завершена!");
             toolStripStatusLabel4.Text = "";
+            
+            if (checkBox11.Checked && textBox13.Text != "")
+            {
+                if (backgroundWorker9.IsBusy != true)
+                {
+                    backgroundWorker9.RunWorkerAsync();
+                    toolStripStatusLabel4.Text = "Импортируем старую конфигурацию...";
+                }
+            }else
+            {
+                if (checkBox11.Checked)
+                {
+                    MessageBox.Show("Не выбран файл текущей конфигурации!\nОбновление конфигурации созданным файлом приведет к потере накопленных данных в HyperHistorian!","Атэншн!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                }
+            }
+            
             dataGridView10.DataSource = rPTagsDataSet.TagHH;
+
+
+
+
         }
         private void button7_Click(object sender, EventArgs e) // generate
         {
@@ -1304,6 +1342,148 @@ namespace RPTagsTest
             }
         }
 
+        private void checkBox11_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox11.Checked)
+            {
+                label15.Enabled = true;
+                textBox13.Enabled = true;
+                button21.Enabled = true;
+            }
+            else
+            {
+                label15.Enabled = false;
+                textBox13.Enabled = false;
+                button21.Enabled = false;
+            }
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+            openFileDialog1.Title = "Выберите файл импорта из OPC";
+
+            string filepath = "";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filepath = openFileDialog1.FileName;
+                textBox13.Text = filepath;
+                
+            }
+        }
+        RPTagsDataSet.TagHHDataTable tempTagHH = new RPTagsDataSet.TagHHDataTable();
+        int guid_count = 0;
+        int all_count = 0;
+        private void backgroundWorker9_DoWork(object sender, DoWorkEventArgs e)
+        {
+            // обьявим воркера
+            BackgroundWorker worker = sender as BackgroundWorker;
+            worker.WorkerReportsProgress = true;
+            // объявим парсер
+            var parser = new CsvParser();
+            int linecount = 0; // счетчик линий в файле
+            bool enable = false;
+            bool parse = false;
+            foreach (var line in parser.Parse(textBox13.Text, Encoding.Default))
+            {                
+                if (enable) // если можно, то проверим не закончился ли нужный фрагмент
+                {
+                    if(line[0].ToString() == "")
+                    {
+                        enable = false;
+                        parse = false;
+                    }
+                }
+                if (parse) // вот тут мы и парсим, если не закончился нужный фрагмент
+                {
+                    RPTagsDataSet.TagHHRow dr = null;
+                    dr = tempTagHH.NewTagHHRow();
+                    for (int i = 0; i < tempTagHH.Columns.Count; i++)
+                    {
+                        dr[i] = line[i].ToString();
+                        
+                    }
+
+                    //добавляем строку в таблицу
+                    tempTagHH.Rows.Add(dr);
+                    linecount += 1;
+                    // передадим на форму состояние
+                    worker.ReportProgress(linecount);
+                }
+               
+                //нужно сделать проверку в конце чтобы начать с нужной строки
+                if (line[0].ToString() == "#Ico.HH.BusinessEntities.HHTag") // этой фразой начинается нужная нам таблица
+                {
+                    enable = true;
+                    parse = true;
+                }
+
+            }
+            // присвоим новые guid
+            rPTagsDataSet.TagHH.PColumn.ReadOnly = false;
+            foreach (DataRow row in rPTagsDataSet.TagHH.Rows)
+            {
+                all_count = 0;
+                if (enable) // если можно, то проверим не закончился ли нужный фрагмент
+                {
+                    if (row[0].ToString() == "")
+                    {
+                        enable = false;
+                        parse = false;
+                    }
+                }
+                if (parse) // вот тут мы и парсим, если не закончился нужный фрагмент
+                {
+                    string path = row[0].ToString();
+                    string tag = row[1].ToString();
+                    foreach(RPTagsDataSet.TagHHRow tagHHrow in tempTagHH)
+                    {
+                        if(tagHHrow.A == path && tagHHrow.B == tag)
+                        {
+                            //row.Cells[15].Value = tagHHrow.P.ToString();
+                            row.BeginEdit();
+                            
+                            row["P"] = tagHHrow.P.ToString();
+                            //this.Invoke(new updateDataGridViewValueDelegate(updateDataGridViewValue), new object[] {row, 15, tagHHrow.P.ToString() });
+                            row.EndEdit();
+                            row.AcceptChanges();
+                            if (tagHHrow.P.ToString() != "") 
+                            {
+                                guid_count++;
+                            }
+                        }
+                    }
+
+                }
+               // string test = row.Cells[0].Value.ToString();
+                //нужно сделать проверку в конце чтобы начать с нужной строки
+                if (row[0].ToString() == "#Ico.HH.BusinessEntities.HHTag") // этой фразой начинается нужная нам таблица
+                {
+                    enable = true;
+                    parse = true;
+                }
+
+            }
+            dataGridView10.ReadOnly = true;
+        }
+        private void backgroundWorker9_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+        private void backgroundWorker9_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            
+            toolStripStatusLabel4.Text = "Старые GUID вставлены в новую конфигурацию...";
+            if(guid_count == 0)
+            {
+                MessageBox.Show("Вероятно файл текущей конфигурации выбран не верно!\nОбновление конфигурации созданным файлом приведет к потере накопленных данных в HyperHistorian!", "Атэншн!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+        }
 
         //----------------tagUDM----------------------------------------------
         private void backgroundWorker4_DoWork(object sender, DoWorkEventArgs e)
@@ -1470,7 +1650,7 @@ namespace RPTagsTest
         }
         private void dataGridView6_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            toolStripStatusLabel2.Text = "     Какие то проблемы с датагридом";
+            toolStripStatusLabel2.Text =  e.Exception.ToString();
 
         } // обработчик ошибок
         #endregion
@@ -1997,38 +2177,85 @@ namespace RPTagsTest
 
                         int i = 0;
                         int all = 0;
-                        foreach (RPTagsDataSet.Device_TagRow row in rPTagsDataSet.Device_Tag)
+                        if (!backgroundWorker7.IsBusy)
                         {
-                            bool value = row.IsCutNull();
-                            if (value)
+                            foreach (RPTagsDataSet.Device_TagRow row in rPTagsDataSet.Device_Tag.Select())
                             {
-                                i++;
-                                all++;
-                            }
-                            else
-                            {
-                                if (row.Cut.ToString() == "1")
-                                {
-                                    all++;
-                                }
-                                else
+                                bool value = row.IsCutNull();
+                                if (value)
                                 {
                                     i++;
                                     all++;
                                 }
+                                else
+                                {
+                                    if (row.Cut.ToString() == "1")
+                                    {
+                                        all++;
+                                    }
+                                    else
+                                    {
+                                        i++;
+                                        all++;
+                                    }
+                                }
+                            }
+                            toolStripStatusLabel5.Text = "Активных записей: (" + i + ")     Всего: (" + all + ")";
+
+                            if (tabControl1.SelectedTab == tabPage7)
+                            {
+                                toolStripStatusLabel5.Visible = true;
+
+                            }
+                            else
+                            {
+                                toolStripStatusLabel5.Visible = false;
+                            }
+                            if (dataGridView7.Rows.Count > 0)
+                            {
+                                int gmp = 0;
+                                int cut = 0;
+                                int bad = 0;
+                                foreach (DataGridViewRow row in dataGridView7.Rows)
+                                {
+                                    if (row.Cells[4].Value.ToString() == "1")
+                                    {
+                                        gmp++;
+                                        row.DefaultCellStyle.BackColor = Color.DarkSeaGreen;
+
+                                    }
+                                    if (row.Cells[7].Value.ToString() == "1")
+                                    {
+                                        cut++;
+                                        row.DefaultCellStyle.BackColor = Color.Red;
+
+                                    }
+                                    if(row.Cells[7].Value.ToString() == "1" && row.Cells[4].Value.ToString() == "1")
+                                    {
+                                        bad++;
+                                        row.DefaultCellStyle.BackColor = Color.Blue;
+                                    }
+                                }
+                                if (gmp > 0)
+                                    toolStripStatusLabel5.Text += "     GMP: (" + gmp + ")";
+                                if (cut > 0)
+                                    toolStripStatusLabel5.Text += "     Cut: (" + cut + ")";
+                                if (bad > 0)
+                                {
+                                    string msg;
+                                    if(bad == 1)
+                                    {
+                                        msg = "Найден GMP критичный тег, помеченный как \nисключенный (Cut), скорее всего это ошибка";
+                                    }
+                                    else
+                                    {
+                                        msg = "Найдено более одного GMP критичного тега ("+bad+"), \nкоторые помечены как исключенные (Cut), скорее всего это ошибка";
+                                    }
+                                    
+                                    System.Windows.Forms.MessageBox.Show(msg,"Очень подозрительно...", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                }
                             }
                         }
-                        toolStripStatusLabel5.Text = "Активных записей: " + i + " Всего: " + all;
-                        if (tabControl1.SelectedTab == tabPage7)
-                        {
-                            toolStripStatusLabel5.Visible = true;
-
-                        }
-                        else
-                        {
-                            toolStripStatusLabel5.Visible = false;
-                        }
-
                     }
 
                 }
@@ -3340,6 +3567,13 @@ namespace RPTagsTest
         string tempSearhText;
         List<TreeNode> tempSearchNodeList = new List<TreeNode>();
         int selectSearchNodeInd = 0;
+        private void textBox12_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button18_Click(sender, e);
+            }
+        }
         private void button18_Click(object sender, EventArgs e)
         {
             if (tempSearhText != textBox12.Text)
@@ -3735,11 +3969,15 @@ namespace RPTagsTest
 
 
 
+
+
+
+
+        #endregion
+
         #endregion
 
         
-
-        #endregion
     }
 }
 

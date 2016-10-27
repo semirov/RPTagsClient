@@ -124,6 +124,9 @@
   <data name="HH_stable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\HH_stable.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
   </data>
+  <data name="TagAWX_Stable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sfd.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
   <data name="UDM_register_stable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\UDM_register_stable.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
   </data>
