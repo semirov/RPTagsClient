@@ -26,8 +26,8 @@
     <InstallUrl>\\SEMIROV-F\RPTagsClient\</InstallUrl>
     <ProductName>RPTags Client</ProductName>
     <PublisherName>Norvix-Technology</PublisherName>
-    <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
-    <ApplicationRevision>1</ApplicationRevision>
+    <MinimumRequiredVersion>1.0.0.4</MinimumRequiredVersion>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

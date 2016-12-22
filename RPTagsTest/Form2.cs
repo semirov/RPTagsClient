@@ -1280,7 +1280,8 @@ namespace RPTagsTest
             {
                 if (backgroundWorker9.IsBusy != true)
                 {
-                    backgroundWorker9.RunWorkerAsync();
+                    ///!!!!!          backgroundWorker9.RunWorkerAsync();
+                    pareser();
                     toolStripStatusLabel4.Text = "Импортируем старую конфигурацию...";
                 }
             }else
@@ -1379,6 +1380,10 @@ namespace RPTagsTest
         RPTagsDataSet.TagHHDataTable tempTagHH = new RPTagsDataSet.TagHHDataTable();
         int guid_count = 0;
         int all_count = 0;
+        private void pareser()
+        {
+            
+        }
         private void backgroundWorker9_DoWork(object sender, DoWorkEventArgs e)
         {
             // обьявим воркера
@@ -1390,10 +1395,10 @@ namespace RPTagsTest
             bool enable = false;
             bool parse = false;
             foreach (var line in parser.Parse(textBox13.Text, Encoding.Default))
-            {                
+            {
                 if (enable) // если можно, то проверим не закончился ли нужный фрагмент
                 {
-                    if(line[0].ToString() == "")
+                    if (line[0].ToString() == "")
                     {
                         enable = false;
                         parse = false;
@@ -1406,16 +1411,16 @@ namespace RPTagsTest
                     for (int i = 0; i < tempTagHH.Columns.Count; i++)
                     {
                         dr[i] = line[i].ToString();
-                        
+
                     }
 
                     //добавляем строку в таблицу
                     tempTagHH.Rows.Add(dr);
                     linecount += 1;
                     // передадим на форму состояние
-                    worker.ReportProgress(linecount);
+                    // worker.ReportProgress(linecount);
                 }
-               
+
                 //нужно сделать проверку в конце чтобы начать с нужной строки
                 if (line[0].ToString() == "#Ico.HH.BusinessEntities.HHTag") // этой фразой начинается нужная нам таблица
                 {
@@ -1440,19 +1445,24 @@ namespace RPTagsTest
                 if (parse) // вот тут мы и парсим, если не закончился нужный фрагмент
                 {
                     string path = row[0].ToString();
+                    path = path.Remove(0, 1);
+                    path = path.Substring(0, path.Length - 1);
+                    //path= path + '"';
                     string tag = row[1].ToString();
-                    foreach(RPTagsDataSet.TagHHRow tagHHrow in tempTagHH)
+                    tag = tag.Remove(0, 1);
+                    tag = tag.Substring(0, tag.Length - 1);
+                    foreach (RPTagsDataSet.TagHHRow tagHHrow in tempTagHH)
                     {
-                        if(tagHHrow.A == path && tagHHrow.B == tag)
+                        if (tagHHrow.A == path && tagHHrow.B == tag)
                         {
                             //row.Cells[15].Value = tagHHrow.P.ToString();
                             row.BeginEdit();
-                            
+
                             row["P"] = tagHHrow.P.ToString();
                             //this.Invoke(new updateDataGridViewValueDelegate(updateDataGridViewValue), new object[] {row, 15, tagHHrow.P.ToString() });
                             row.EndEdit();
                             row.AcceptChanges();
-                            if (tagHHrow.P.ToString() != "") 
+                            if (tagHHrow.P.ToString() != "")
                             {
                                 guid_count++;
                             }
@@ -1460,7 +1470,7 @@ namespace RPTagsTest
                     }
 
                 }
-               // string test = row.Cells[0].Value.ToString();
+                // string test = row.Cells[0].Value.ToString();
                 //нужно сделать проверку в конце чтобы начать с нужной строки
                 if (row[0].ToString() == "#Ico.HH.BusinessEntities.HHTag") // этой фразой начинается нужная нам таблица
                 {
@@ -3193,7 +3203,7 @@ namespace RPTagsTest
 
 
         }
-        string regExpPathPatern = "^[a-zA-Z0-9_]{1,18}$";
+        string regExpPathPatern = "[a-zA-Z0-9_]*";
         private void buttonCorpSave_Click(object sender, EventArgs e) // корпус сохранить
         {
             if (Regex.IsMatch(nameTextBox.Text, regExpPathPatern, RegexOptions.IgnoreCase))
