@@ -1280,8 +1280,8 @@ namespace RPTagsTest
             {
                 if (backgroundWorker9.IsBusy != true)
                 {
-                    ///!!!!!          backgroundWorker9.RunWorkerAsync();
-                    pareser();
+                    backgroundWorker9.RunWorkerAsync();
+                    
                     toolStripStatusLabel4.Text = "Импортируем старую конфигурацию...";
                 }
             }else
@@ -1380,10 +1380,7 @@ namespace RPTagsTest
         RPTagsDataSet.TagHHDataTable tempTagHH = new RPTagsDataSet.TagHHDataTable();
         int guid_count = 0;
         int all_count = 0;
-        private void pareser()
-        {
-            
-        }
+        
         private void backgroundWorker9_DoWork(object sender, DoWorkEventArgs e)
         {
             // обьявим воркера
