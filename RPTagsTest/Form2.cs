@@ -1280,9 +1280,11 @@ namespace RPTagsTest
             {
                 if (backgroundWorker9.IsBusy != true)
                 {
-                    backgroundWorker9.RunWorkerAsync();
+                    //backgroundWorker9.RunWorkerAsync();
                     
-                    toolStripStatusLabel4.Text = "Импортируем старую конфигурацию...";
+                    toolStripStatusLabel4.Text = "";
+                    old_hh_importer();
+
                 }
             }else
             {
@@ -1380,9 +1382,108 @@ namespace RPTagsTest
         RPTagsDataSet.TagHHDataTable tempTagHH = new RPTagsDataSet.TagHHDataTable();
         int guid_count = 0;
         int all_count = 0;
-        
+
+
+        private void old_hh_importer()
+        {
+            toolStripStatusLabel4.Text = "Импорт начался....";
+            var parser = new CsvParser();
+            int linecount = 0; // счетчик линий в файле
+            bool enable = false;
+            bool parse = false;
+            foreach (var line in parser.Parse(textBox13.Text, Encoding.Default))
+            {
+                if (enable) // проверим не закончился ли нужный фрагмент
+                {
+                    if (line[0].ToString() == "")
+                    {
+                        enable = false;
+                        parse = false;
+                    }
+                }
+                if (parse) // вот тут мы и парсим, если не закончился нужный фрагмент
+                {
+                    RPTagsDataSet.TagHHRow dr = null;
+                    dr = tempTagHH.NewTagHHRow();
+                    for (int i = 0; i < tempTagHH.Columns.Count; i++)
+                    {
+                        dr[i] = line[i].ToString();
+
+                    }
+
+                    //добавляем строку в таблицу
+                    tempTagHH.Rows.Add(dr);
+                    linecount += 1;
+                    // передадим на форму состояние
+                    toolStripStatusLabel4.Text = "Обработано строк: " + linecount.ToString();
+                }
+
+                //нужно сделать проверку в конце чтобы начать с нужной строки
+                if (line[0].ToString() == "#Ico.HH.BusinessEntities.HHTag") // этой фразой начинается нужная нам таблица
+                {
+                    toolStripStatusLabel4.Text = "Нужный фрагмент найден";
+                    enable = true;
+                    parse = true;
+                }
+
+            }
+            // присвоим новые guid
+            rPTagsDataSet.TagHH.PColumn.ReadOnly = false;
+            foreach (DataRow row in rPTagsDataSet.TagHH.Rows)
+            {
+                all_count = 0;
+                if (enable) // проверим не закончился ли нужный фрагмент
+                {
+                    if (row[0].ToString() == "")
+                    {
+                        enable = false;
+                        parse = false;
+                    }
+                }
+                if (parse) // вот тут мы и парсим, если не закончился нужный фрагмент
+                {
+                    string path = row[0].ToString();
+                    path = path.Remove(0, 1);
+                    path = path.Substring(0, path.Length - 1);
+                    //path= path + '"';
+                    string tag = row[1].ToString();
+                    tag = tag.Remove(0, 1);
+                    tag = tag.Substring(0, tag.Length - 1);
+                    foreach (RPTagsDataSet.TagHHRow tagHHrow in tempTagHH)
+                    {
+                        if (tagHHrow.A == path && tagHHrow.B == tag)
+                        {
+                            //row.Cells[15].Value = tagHHrow.P.ToString();
+                            row.BeginEdit();
+
+                            row["P"] = tagHHrow.P.ToString();
+                           
+                            row.EndEdit();
+                            row.AcceptChanges();
+                            if (tagHHrow.P.ToString() != "")
+                            {
+                                guid_count++;
+                                toolStripStatusLabel4.Text = "Обработано строк: " + guid_count.ToString();
+                            }
+                        }
+                    }
+
+                }
+                // string test = row.Cells[0].Value.ToString();
+                //нужно сделать проверку в конце чтобы начать с нужной строки
+                if (row[0].ToString() == "#Ico.HH.BusinessEntities.HHTag") // этой фразой начинается нужная нам таблица
+                {
+                    enable = true;
+                    parse = true;
+                }
+
+            }
+            dataGridView10.ReadOnly = true;
+            toolStripStatusLabel4.Text = "Импорт завершен! GUID - Найдено\\Вставлено: "+linecount.ToString() + '\\' + guid_count.ToString();
+        } 
         private void backgroundWorker9_DoWork(object sender, DoWorkEventArgs e)
         {
+/*
             // обьявим воркера
             BackgroundWorker worker = sender as BackgroundWorker;
             worker.WorkerReportsProgress = true;
@@ -1477,6 +1578,7 @@ namespace RPTagsTest
 
             }
             dataGridView10.ReadOnly = true;
+*/
         }
         private void backgroundWorker9_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
@@ -1619,12 +1721,7 @@ namespace RPTagsTest
         }
 
         #endregion конфигурации
-        #region подсказки
-
-
-
-
-        #endregion
+     
         #region системные
         private void deleteenable(bool enable)
         {
@@ -3200,7 +3297,7 @@ namespace RPTagsTest
 
 
         }
-        string regExpPathPatern = "[a-zA-Z0-9_]*";
+        string regExpPathPatern = "\\S*";
         private void buttonCorpSave_Click(object sender, EventArgs e) // корпус сохранить
         {
             if (Regex.IsMatch(nameTextBox.Text, regExpPathPatern, RegexOptions.IgnoreCase))
@@ -3501,12 +3598,13 @@ namespace RPTagsTest
 
         } // контекстное меню
 
-
+        string regExpSearchPatch = "";
         #region поиск по дереву
         private TreeNode searchTreeText(TreeNode node, string searchtext)
         {
-            regExpPathPatern = searchtext;
-            if (Regex.IsMatch(node.Text, regExpPathPatern, RegexOptions.IgnoreCase))
+           // regExpPathPatern = searchtext;
+           regExpSearchPatch = searchtext;
+            if (Regex.IsMatch(node.Text, regExpSearchPatch, RegexOptions.IgnoreCase))
             {
                 return node;
             }
