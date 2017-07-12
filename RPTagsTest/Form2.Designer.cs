@@ -3384,12 +3384,7 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // backgroundWorker9
-            // 
-            this.backgroundWorker9.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker9_DoWork);
-            this.backgroundWorker9.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker9_ProgressChanged);
-            this.backgroundWorker9.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker9_RunWorkerCompleted);
-            // 
+           
             // Form2
             // 
             resources.ApplyResources(this, "$this");
