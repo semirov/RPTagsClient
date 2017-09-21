@@ -1006,8 +1006,10 @@ namespace RPTagsTest
             try
             {
 
+                string filename_stable = filename + "_stable.csv";
                 filename += ".csv";
                 string fullfilepatch = patch + "\\" + filename;
+                string fullfilepatch_stable = patch + "\\" + filename_stable;
                 Directory.CreateDirectory(patch);
                 StreamWriter sw = new StreamWriter(fullfilepatch, false, Encoding.UTF8);
 
@@ -1037,7 +1039,7 @@ namespace RPTagsTest
                     sw.Write("\r\n");
                     
                 }
-                if (addStb)
+                if (addStb) // внедряем stable конфиг внутрь файла общего конфига
                 {
                     StreamWriter SW = new StreamWriter(new FileStream("Temp.txt", FileMode.Create, FileAccess.Write));
                     SW.Write(stable);
@@ -1061,6 +1063,15 @@ namespace RPTagsTest
                     fs.Close();
                     SW.Close();
                 }
+                if (!addStb) // сохраняем файл отдельно!
+                {
+                    StreamWriter SW = new StreamWriter(
+                        new FileStream(fullfilepatch_stable, FileMode.Create, FileAccess.Write)
+                        );
+                    SW.Write(stable);
+                    SW.Close();
+                    
+                }
                 sw.Close();
                 File.Delete("Temp.txt");
                 MessageBox.Show("Конфигурация " + filename + " сохранена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1075,6 +1086,7 @@ namespace RPTagsTest
 
             return true;
         }
+
         private string FileDialog()
         {
             string s = "C:\\";
@@ -1180,6 +1192,7 @@ namespace RPTagsTest
         private void button3_Click(object sender, EventArgs e) // сохранить файл
         {
             SaveDGVToCSVfile(textBox3.Text, textBox1.Text, dataGridView8, checkBox1.Checked, Properties.Resources.Areas_AWX_stable);
+
         }
         private void checkBox4_CheckedChanged(object sender, EventArgs e) // выбор всех корпусов
         {
@@ -1188,12 +1201,14 @@ namespace RPTagsTest
             {
                 comboBox2.Enabled = true;
                 checkallcheckbox(false);
+                textBox20.Text = "Stable конфиг нужно добавить в ручную!";
             }
             else
             {
                 comboBox2.Enabled = false;
                 Get_corpus = "ALL";
                 checkallcheckbox(true);
+                textBox20.Text = "";
             }
         }
 
@@ -1248,6 +1263,7 @@ namespace RPTagsTest
             {
                 comboBox4.Enabled = true;
                 checkallcheckbox(false);
+                textBox21.Text = "";
             }
             else
             {
@@ -1256,6 +1272,7 @@ namespace RPTagsTest
                 checkallcheckbox(true);
                 checkBox12.Checked = false;
                 checkBox12.Enabled = false;
+                textBox21.Text = "";
             }
 
         }
@@ -1335,6 +1352,7 @@ namespace RPTagsTest
             {
                 comboBox5.Enabled = true;
                 checkallcheckbox(false);
+                textBox22.Text = "Stable конфиг нужно добавить в ручную!";
 
             }
             else
@@ -1342,6 +1360,7 @@ namespace RPTagsTest
                 comboBox5.Enabled = false;
                 Get_corpus = "ALL";
                 checkallcheckbox(true);
+                textBox22.Text = "";
             }
         }
 
@@ -1634,6 +1653,7 @@ namespace RPTagsTest
             {
                 comboBox6.Enabled = true;
                 checkallcheckbox(false);
+                textBox23.Text = "Stable конфиг нужно добавить в ручную!";
 
             }
             else
@@ -1641,6 +1661,7 @@ namespace RPTagsTest
                 comboBox6.Enabled = false;
                 Get_corpus = "ALL";
                 checkallcheckbox(true);
+                textBox23.Text = "";
             }
         }
 
@@ -4069,11 +4090,35 @@ namespace RPTagsTest
 
 
 
-        #endregion
 
         #endregion
 
-        
+        #endregion
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox20_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox23_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolTip2_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
     }
 }
 
