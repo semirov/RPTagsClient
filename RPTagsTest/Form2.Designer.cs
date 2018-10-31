@@ -134,6 +134,7 @@
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.textBox20 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -158,6 +159,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.textBox21 = new System.Windows.Forms.TextBox();
             this.checkBox12 = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -173,6 +175,7 @@
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.textBox22 = new System.Windows.Forms.TextBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -192,6 +195,7 @@
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.textBox23 = new System.Windows.Forms.TextBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
@@ -421,10 +425,6 @@
             this.panel_TreeSearch = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.backgroundWorker9 = new System.ComponentModel.BackgroundWorker();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.textBox21 = new System.Windows.Forms.TextBox();
-            this.textBox22 = new System.Windows.Forms.TextBox();
-            this.textBox23 = new System.Windows.Forms.TextBox();
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             nameLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
@@ -1133,6 +1133,16 @@
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
             // 
+            // textBox20
+            // 
+            this.textBox20.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBox20.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBox20, "textBox20");
+            this.textBox20.ForeColor = System.Drawing.Color.Red;
+            this.textBox20.Name = "textBox20";
+            this.textBox20.ReadOnly = true;
+            this.textBox20.TextChanged += new System.EventHandler(this.textBox20_TextChanged);
+            // 
             // checkBox1
             // 
             resources.ApplyResources(this.checkBox1, "checkBox1");
@@ -1319,6 +1329,15 @@
             this.groupBox14.Name = "groupBox14";
             this.groupBox14.TabStop = false;
             // 
+            // textBox21
+            // 
+            this.textBox21.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBox21.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBox21, "textBox21");
+            this.textBox21.ForeColor = System.Drawing.Color.Red;
+            this.textBox21.Name = "textBox21";
+            this.textBox21.ReadOnly = true;
+            // 
             // checkBox12
             // 
             resources.ApplyResources(this.checkBox12, "checkBox12");
@@ -1434,6 +1453,15 @@
             resources.ApplyResources(this.groupBox7, "groupBox7");
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.TabStop = false;
+            // 
+            // textBox22
+            // 
+            this.textBox22.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBox22.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBox22, "textBox22");
+            this.textBox22.ForeColor = System.Drawing.Color.Red;
+            this.textBox22.Name = "textBox22";
+            this.textBox22.ReadOnly = true;
             // 
             // checkBox2
             // 
@@ -1578,6 +1606,16 @@
             resources.ApplyResources(this.groupBox8, "groupBox8");
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.TabStop = false;
+            // 
+            // textBox23
+            // 
+            this.textBox23.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBox23.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBox23, "textBox23");
+            this.textBox23.ForeColor = System.Drawing.Color.Red;
+            this.textBox23.Name = "textBox23";
+            this.textBox23.ReadOnly = true;
+            this.textBox23.TextChanged += new System.EventHandler(this.textBox23_TextChanged);
             // 
             // checkBox3
             // 
@@ -3394,44 +3432,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // textBox20
-            // 
-            this.textBox20.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox20.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.textBox20, "textBox20");
-            this.textBox20.ForeColor = System.Drawing.Color.Red;
-            this.textBox20.Name = "textBox20";
-            this.textBox20.ReadOnly = true;
-            this.textBox20.TextChanged += new System.EventHandler(this.textBox20_TextChanged);
-            // 
-            // textBox21
-            // 
-            this.textBox21.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox21.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.textBox21, "textBox21");
-            this.textBox21.ForeColor = System.Drawing.Color.Red;
-            this.textBox21.Name = "textBox21";
-            this.textBox21.ReadOnly = true;
-            // 
-            // textBox22
-            // 
-            this.textBox22.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox22.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.textBox22, "textBox22");
-            this.textBox22.ForeColor = System.Drawing.Color.Red;
-            this.textBox22.Name = "textBox22";
-            this.textBox22.ReadOnly = true;
-            // 
-            // textBox23
-            // 
-            this.textBox23.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox23.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.textBox23, "textBox23");
-            this.textBox23.ForeColor = System.Drawing.Color.Red;
-            this.textBox23.Name = "textBox23";
-            this.textBox23.ReadOnly = true;
-            this.textBox23.TextChanged += new System.EventHandler(this.textBox23_TextChanged);
             // 
             // toolTip2
             // 
